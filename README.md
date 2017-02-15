@@ -1,2 +1,1 @@
-# aahframework.org
-★ aah framework website ★
+# aahframework.org website
