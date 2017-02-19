@@ -1,0 +1,29 @@
+#############################################
+# i18n messages for aah framework application
+#
+# Complete configuration reference: TODO
+#############################################
+
+label {
+  pages {
+    app {
+      index {
+        title = "Welcome to aah framework, A scalable, performant, rapid development Web framework for Go"
+      }
+
+      overview {
+        title = "Overview - aah web framework for Go"
+      }
+
+      credits {
+        title = "Credits - aah web framework for Go"
+      }
+    } # end - app
+
+    docsapp {
+      index {
+        title = "Documentation - aah web framework for Go"
+      }
+    } # end - app
+  }
+}
