@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url . "index" }}"><img src="/assets/img/aah-logo-64x64.png" alt="aah framework logo"/></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li {{ if .IsOverview }}class="active"{{ end }}>
+          <a href="{{ url . "overview" }}">Overview</a>
+        </li>
+        <li {{ if .IsDocumentation }}class="active"{{ end }}>
+          <a href="{{ url . "docs.index" }}">Documentation</a>
+        </li>
+        <li {{ if .IsGetInvoled }}class="active"{{ end }}>
+          <a href="{{ url . "get_involved" }}">Get Involved</a>
+        </li>
+        <li>
+          <a href="{{ config "link.aah.roadmap" }}" target="_blank">Roadmap</a>
+        </li>
+        <!-- <li><div class="nav-social-align"><a class="github-button" href="https://github.com/go-aah/aah" data-count-href="/go-aah/aah/stargazers" data-count-api="/repos/go-aah/aah#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star aah framework on GitHub">Star</a></div></li> -->
+        <!-- <li><div class="nav-social-align"><a href="https://twitter.com/aahframework" class="twitter-follow-button" data-show-count="false">Follow @aahframework</a></div></li> -->
+      </ul>
+    </div> <!--/.nav-collapse -->
+  </div>
+</nav>
