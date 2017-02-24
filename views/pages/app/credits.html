@@ -1,0 +1,11 @@
+{{ define "title" -}}
+{{ i18n . "label.pages.app.credits.title" }}
+{{- end }}
+
+{{ define "body" -}}
+  <div class="container">
+    <div class="row md-content">
+      {{ safeHTML .Markdown }}
+    </div>
+  </div>
+{{- end }}

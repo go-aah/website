@@ -1,0 +1,71 @@
+{{ define "title" -}}
+{{ i18n . "label.pages.app.index.title" }}
+{{- end }}
+
+{{ define "body" -}}
+  <div class="container">
+    <div class="pull-right">
+      {{ import "social.html" . -}}
+    </div>
+    <div class="row text-center aah-banner">
+        <h1>aah framework</h1>
+        <h4>A scalable, performant, rapid development Web framework for Go</h4>
+        <div class="aah-getting-started">
+          <a href="{{ url . "docs.getting_started" }}" class="btn btn-success">Get started with aah</a>
+        </div>
+        <div class="aah-current-release">
+          <span>Latest release: v{{ config "aah_release.latest" }}, {{ config "aah_release.date" }}</span>
+        </div>
+    </div>
+    <!-- <div class="row get-social text-center">
+      <a class="github-button" href="https://github.com/go-aah/aah" data-count-href="/go-aah/aah/stargazers" data-count-api="/repos/go-aah/aah#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star aah framework on GitHub">Star</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="https://twitter.com/aahframework" class="twitter-follow-button" data-show-count="false">Follow @aahframework</a>
+    </div> -->
+    <div class="row">
+      <hr class="hr-drop-shadow" />
+      <div class="row framework-features text-center">
+        <p class="framework-summary">
+          aah framework makes it easy to build scalable web application and RESTFul with Go language. aah is scalable, performant and rapid development. aah values DRY and convention over configuration. It makes application development more fun, free and open source.
+        </p>
+        <div class="row feature-list">
+          <div class="col-lg-4">
+            <i class="fa fa-cogs fa-2x" aria-hidden="true"></i>
+            <h5>Configuration</h5>
+            <p>aah configuration is similar to Typesafe HOCON syntax. Flexible and easy to configure. aah is opinionated and defaults to set of conventions and configurations <a href="#">know more</a>.</p>
+          </div>
+          <div class="col-lg-4">
+            <i class="fa fa-cloud fa-2x" aria-hidden="true"></i>
+            <h5>Scalable</h5>
+            <p> <a href="#">know more</a>.</p>
+          </div>
+          <div class="col-lg-4">
+            <i class="fa fa-tachometer fa-2x" aria-hidden="true"></i>
+            <h5>High Performance</h5>
+            <p> <a href="#">know more</a>.</p>
+          </div>
+        </div>
+        <div class="row feature-list">
+          <div class="col-lg-4">
+            <i class="fa fa-reply fa-2x" aria-hidden="true"></i>
+            <h5>Reply</h5>
+            <p>aah supports various HTTP reply like HTML (layouts), JSON, JSONP, XML, Text, File (attachment, inline) and Bytes. Static file delivery via `http.ServeContent` and directory listing <a href="#">know more</a>.</p>
+          </div>
+          <div class="col-lg-4">
+            <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
+            <h5>Subdomains</h5>
+            <p>Easy to define multiple subdomains in routes.conf <a href="#">know more</a>.</p>
+          </div>
+          <div class="col-lg-4">
+            <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+            <h5>Developer Friendly</h5>
+            <p>Development is more fun, typical method name(s) aligned with industry nomenclature, essential helper functions, use aah CLI tool to hot reload, packing, etc.</p>
+          </div>
+        </div>
+        <div class="row features-know-more text-center">
+          <a class="label label-primary" href="{{ url . "overview#features" }}">Features - know more</a>
+        </div>
+      </div> <!-- ./framework-features -->
+    </div>
+  </div>
+{{- end }}
