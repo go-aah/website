@@ -1,0 +1,39 @@
+{{ define "title" -}}
+{{ i18n . "label.pages.app.get_involved.title" }}
+{{- end }}
+
+{{ define "body" -}}
+  <div class="container body-content">
+    <div class="row">
+      <h1>Get Involved</h1>
+      <p>aah framework is an open source project and you can become a part of the ongoing development. There are plenty of ways you can contribute.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3><a href="{{ config "link.aah.mailling_list" }}" target="_blank">Join the Mailing List</a></h3>
+        <p>The <a href="{{ config "link.aah.mailling_list" }}" target="_blank">aah framework</a> mailing list is where the aah community meets. Asking and answering questions on the mailing list is a great way to share knowledge about aah framework.</p>
+      </div>
+      <div class="col-lg-6">
+        <h3><a href="{{ config "link.aah.gitter" }}" target="_blank">Join the Gitter Chat</a></h3>
+        <p>Gitter is a real time chat channel like IRC. The <a href="{{ config "link.aah.gitter" }}" target="_blank">aahframework/community</a> channel is used by aah users to discuss the ins and outs of writing great aah applications.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3><a href="{{ config "link.aah.stackoverflow" }}" target="_blank">Contribute to Stack Overflow</a></h3>
+        <p>Stack Overflow is a Q&A site for programmers. Stack Overflow has a very active community of people asking and answering <a href="{{ config "link.aah.stackoverflow" }}" target="_blank">questions about aah</a>. Users can vote on each others contributions and earn reputation points.</p>
+      </div>
+      <div class="col-lg-6">
+        <h3><a href="{{ config "link.aah.github_issues" }}" target="_blank">Report Bugs</a></h3>
+        <p>Bug report helps aah framework improve, so please report any issues you have! aah uses <a href="{{ config "link.aah.github_issues" }}" target="_blank">GitHub to track issues</a>. When you report bugs, make sure you include lots of detail, including reproducible tests, example code or anything else you think might help.</p>
+      </div>
+    </div>
+    <hr/>
+    <div class="container body-content">
+      <div class="row">
+        <h3><a href="{{ url . "security_vulnerability" }}">Report Security Vulnerabilities</a></h3>
+        <p>Please <a href="{{ url . "security_vulnerability" }}">go here</a> to read more information.</p>
+      </div>
+    </div>
+  </div>
+{{- end }}
