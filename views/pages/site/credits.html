@@ -1,10 +1,10 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.app.credits.title" }}
+{{ i18n . "label.pages.site.credits.title" }}
 {{- end }}
 
 {{ define "body" -}}
-  <div class="container">
-    <div class="row md-content">
+  <div class="container body-content">
+    <div class="row">
       {{ safeHTML .Markdown }}
     </div>
   </div>

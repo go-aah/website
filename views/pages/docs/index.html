@@ -1,11 +1,22 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.docsapp.index.title" }}
+{{ i18n . "label.pages.docs.index.title" }}
 {{- end }}
 
 {{ define "body" -}}
-  <div class="container">
-    <div class="row md-content">
-      Documentation home page.
+  <div class="container body-content">
+    <div class="row">
+      <!-- page content -->
+      <div class="col-md-9 col-lg-9">
+        <div class="row docs-page-content">
+            <h1>Documentation</h1>
+        </div>
+      </div>
+      <!-- /page content -->
+      <!-- sidebar nav -->
+      <div class="col-md-3 col-lg-3">
+        {{ import "docs_sidebar.html" . }}
+      </div>
+      <!-- /sidebar nav -->
     </div>
   </div>
 {{- end }}

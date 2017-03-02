@@ -6,7 +6,7 @@
 
 label {
   pages {
-    app {
+    site {
       index {
         title = "Welcome to aah framework, A scalable, performant, rapid development Web framework for Go"
       }
@@ -15,15 +15,27 @@ label {
         title = "Overview - aah web framework for Go"
       }
 
+      get_involved {
+        title = "Get Involved - aah web framework for Go"
+      }
+
+      security {
+        title = "Security Vulnerabilities - aah web framework for Go"
+      }
+
+      contribute_code {
+        title = "Contribute to Code - aah web framework for Go"
+      }
+
       credits {
         title = "Credits - aah web framework for Go"
       }
-    } # end - app
+    } # end - site
 
-    docsapp {
+    docs {
       index {
         title = "Documentation - aah web framework for Go"
       }
-    } # end - app
+    } # end - docs
   }
 }

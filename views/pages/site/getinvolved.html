@@ -1,5 +1,5 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.app.get_involved.title" }}
+{{ i18n . "label.pages.site.get_involved.title" }}
 {{- end }}
 
 {{ define "body" -}}
@@ -8,31 +8,79 @@
       <h1>Get Involved</h1>
       <p>aah framework is an open source project and you can become a part of the ongoing development. There are plenty of ways you can contribute.</p>
     </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <h3><a href="{{ config "link.aah.mailling_list" }}" target="_blank">Join the Mailing List</a></h3>
-        <p>The <a href="{{ config "link.aah.mailling_list" }}" target="_blank">aah framework</a> mailing list is where the aah community meets. Asking and answering questions on the mailing list is a great way to share knowledge about aah framework.</p>
-      </div>
-      <div class="col-lg-6">
-        <h3><a href="{{ config "link.aah.gitter" }}" target="_blank">Join the Gitter Chat</a></h3>
-        <p>Gitter is a real time chat channel like IRC. The <a href="{{ config "link.aah.gitter" }}" target="_blank">aahframework/community</a> channel is used by aah users to discuss the ins and outs of writing great aah applications.</p>
+    <div class="row aah-col">
+      <div class="alert alert-info">
+        <strong>Please Note</strong>:
+        <p>
+          <ul>
+            <li>For general usage questions and need clarification, posting a question on StackOverflow is the way to go</li>
+            <li>Want to discuss with aah development team. Join and discuss on Mailing List and Gitter Chat is the way to go</li>
+          </ul>
+        </p>
       </div>
     </div>
-    <div class="row">
+    <div class="row aah-col">
       <div class="col-lg-6">
-        <h3><a href="{{ config "link.aah.stackoverflow" }}" target="_blank">Contribute to Stack Overflow</a></h3>
+        <h3>
+          <i class="fa fa-stack-overflow fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ config "link.aah.stackoverflow" }}" target="_blank">Contribute to Stack Overflow</a>
+        </h3>
         <p>Stack Overflow is a Q&A site for programmers. Stack Overflow has a very active community of people asking and answering <a href="{{ config "link.aah.stackoverflow" }}" target="_blank">questions about aah</a>. Users can vote on each others contributions and earn reputation points.</p>
       </div>
       <div class="col-lg-6">
-        <h3><a href="{{ config "link.aah.github_issues" }}" target="_blank">Report Bugs</a></h3>
-        <p>Bug report helps aah framework improve, so please report any issues you have! aah uses <a href="{{ config "link.aah.github_issues" }}" target="_blank">GitHub to track issues</a>. When you report bugs, make sure you include lots of detail, including reproducible tests, example code or anything else you think might help.</p>
+        <h3>
+          <i class="fa fa-book fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ url . "docs.index" }}" target="_blank">Documentation & Cookbook</a>
+        </h3>
+        <p>You're encouraged to <a href="{{ url . "docs.index" }}">improve, added documentation and provide cookbook</a> to aah framework. Even if it's small it really helps your fellow developers. For example: you can correct typo mistakes, grammer, provide documentation translation, etc.</p>
       </div>
     </div>
-    <hr/>
-    <div class="container body-content">
-      <div class="row">
-        <h3><a href="{{ url . "security_vulnerability" }}">Report Security Vulnerabilities</a></h3>
-        <p>Please <a href="{{ url . "security_vulnerability" }}">go here</a> to read more information.</p>
+
+    <div class="row aah-col">
+      <div class="col-lg-6">
+        <h3>
+          <i class="fa fa-envelope fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ config "link.aah.mailling_list" }}" target="_blank">Join the Mailing List</a>
+        </h3>
+        <p>The aah framework mailing list is a Google Groups, it's a great place to discuss with aah dev team. <a href="{{ config "link.aah.mailling_list" }}" target="_blank">Join the mailing list</a> to start your conversation. The mailing list is for discussion around the framework's development. For questions we recommend StackOverflow.</p>
+      </div>
+      <div class="col-lg-6">
+        <h3>
+          <i class="fa fa-comments fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ config "link.aah.gitter" }}" target="_blank">Join the Gitter Chat</a>
+        </h3>
+        <p>Gitter is a real time chat channel like IRC.</p>
+        <ul>
+          <li>The <a href="{{ config "link.aah.gitter" }}" target="_blank">aahframework/community</a> channel is used by aah community.</li>
+          <li>The <a href="{{ config "link.aah.gitter_dev" }}" target="_blank">aahframework/dev-team</a> channel is used by aah dev team.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row aah-col">
+      <div class="col-lg-6">
+        <h3>
+          <i class="fa fa-bug fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ config "link.aah.github_issues" }}" target="_blank">Report Bugs</a>
+        </h3>
+        <p>The aah framework uses <a href="{{ config "link.aah.github_issues" }}" target="_blank">GitHub to track issues</a>. When you report bugs, make sure you include lots of detail, including reproducible tests, example code or anything else you think might help. So please report any issues you have!</p>
+      </div>
+      <div class="col-lg-6">
+        <h3>
+          <i class="fa fa-shield fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ url . "security_vulnerability" }}">Report Security Vulnerabilities</a>
+        </h3>
+        <p>I strongly encourage people to report such problems to our private security email address, before disclosing them in a public forum. Please <a href="{{ url . "security_vulnerability" }}">click here</a> to read more information.</p>
+      </div>
+    </div>
+
+    <div class="row aah-col">
+      <div class="col-lg-6">
+        <h3>
+          <i class="fa fa-file-code-o fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
+          <a href="{{ config "link.aah.github_issues" }}" target="_blank">Contribute to Code</a>
+        </h3>
+        <p>Would you like to contribute to codebase and you know the area you want to contribute to, this is great; just <a href="{{ url . "contribute_code" }}">click here</a> to know more.</p>
       </div>
     </div>
   </div>

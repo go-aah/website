@@ -7,8 +7,6 @@
     {{ template "metatags" . -}}
     <title>{{ template "title" . -}}</title>
     {{ import "head_tags.html" . -}}
-    {{ template "head_scripts" . -}}
-    {{ template "head_styles" . -}}
   </head>
   <body>
     {{ import "header.html" . -}}
@@ -19,5 +17,3 @@
 </html>
 
 {{ define "metatags" }}{{ end }}
-{{ define "head_scripts" }}{{ end }}
-{{ define "head_styles" }}{{ end }}

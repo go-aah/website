@@ -1,0 +1,29 @@
+{{ define "title" -}}
+{{ i18n . "label.pages.site.security.title" }}
+{{- end }}
+
+{{ define "body" -}}
+  <div class="container body-content">
+    <div class="row">
+      <h1>Security Vulnerabilities</h1>
+      <p>
+        To receive all aah framework security announcements is to subscribe to the <a href="{{ config "link.aah.mailling_list_security" }}" target="_blank">aah security list</a>. The mailing list is very low traffic, and receives notifications only after Security reports have been managed by the dev team and fixes are publicly available.
+      </p>
+    </div>
+    <div class="row">
+      <h2>Reporting Vulnerabilities</h2>
+      <p>
+        I strongly encourage people to report such problems to our private security email address first, before disclosing them in a public forum.
+      </p>
+      <p>
+        All security bugs in aah framework should be reported by email to <a href="mailto:security@aahframework.org">security@aahframework.org</a>.
+      </p>
+    </div>
+    <div class="row">
+      <h2>Summary</h2>
+      <div class="row md-content">
+        {{ safeHTML .Markdown }}
+      </div>
+    </div>
+  </div>
+{{- end }}

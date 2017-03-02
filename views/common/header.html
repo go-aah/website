@@ -5,9 +5,9 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li {{ if .IsOverview }}class="active"{{ end }}>
+        <!-- <li {{ if .IsOverview }}class="active"{{ end }}>
           <a href="{{ url . "overview" }}">Overview</a>
-        </li>
+        </li> -->
         <li {{ if .IsDocumentation }}class="active"{{ end }}>
           <a href="{{ url . "docs.index" }}">Documentation</a>
         </li>
@@ -16,6 +16,9 @@
         </li>
         <li>
           <a href="{{ config "link.aah.roadmap" }}" target="_blank">Roadmap</a>
+        </li>
+        <li>
+          <a href="{{ config "link.aah.github" }}" target="_blank">Don't forget to <i class="fa fa-star fa-lg aah-color" aria-hidden="true"></i></a>
         </li>
         <!-- <li><div class="nav-social-align"><a class="github-button" href="https://github.com/go-aah/aah" data-count-href="/go-aah/aah/stargazers" data-count-api="/repos/go-aah/aah#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star aah framework on GitHub">Star</a></div></li> -->
         <!-- <li><div class="nav-social-align"><a href="https://twitter.com/aahframework" class="twitter-follow-button" data-show-count="false">Follow @aahframework</a></div></li> -->
