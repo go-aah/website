@@ -19,6 +19,12 @@ body {
   @viewport         { width: device-width; }
 }
 
+code {
+    color: #292727; /*#272525*/
+    /*background-color: rgba(27, 31, 35, 0.05);*/
+    background-color: #f5f2f0;
+}
+
 .aah-color {
   color: #e25657;
 }
@@ -141,15 +147,6 @@ body {
   z-index: 100;
 }
 
-/*fixed nav anchoe issue fix*/
-*[id]:before {
-  display: block;
-  content: " ";
-  margin-top: -85px;
-  height: 85px;
-  visibility: hidden;
-}
-
 .body-content {
   padding-top: 25px;
   padding-left: 15px;
@@ -166,6 +163,7 @@ body {
 .body-content h4,
 .body-content h5 {
   font-weight: bold;
+  padding-top: 20px;
 }
 
 .body-content h1 {
@@ -208,16 +206,22 @@ body {
   color: #2780e3;
 }
 
-.md-content {
+.body-content .row {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/*.md-content {
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .md-content h3 {
   margin-top: 40px;
-}
+}*/
 
-.sidebar-nav {
+
+/*.sidebar-nav {
   width: 250px;
   margin: 0;
   padding: 0;
@@ -247,33 +251,52 @@ body {
   text-decoration: none;
   color: #fff;
   background-color: #e25657;
+}*/
+
+.docs-sidebar .spacer {
+  margin-top: 50px;
 }
 
 .page-content {
-  height:3000px;
+  /*height:3000px;*/
   border-left: 1px solid #dcdbdb;
   padding-left: 30px;
+  /*min-height: 1700px;*/
 }
 
 .docs-page-content {
   padding-right: 30px;
-  /*border-right: 1px solid #dcdbdb;*/
-  /*min-height:500px;*/
-  height: 2500px;
+  min-height: 700px;
 }
 
-.docs-sidebar-fixed {
-  width: 21%;
-  position: fixed;
-  top: 90px;
+
+.docs-page-content p {
+  text-align: justify;
 }
 
-.docs-version, .docs-lang {
-  margin-top: 40px;
-  margin-bottom: 40px;
+.docs-page-content li {
+  padding-top: 5px;
+  padding-bottom: 7px;
 }
 
-.docs-version-dd, .docs-lang-dd {
+.docs-li-small li {
+  padding-top: 0;
+  padding-bottom: 3px;
+}
+
+.docs-sidebar {
+  width: 100%;
+  padding-left: 20px;
+  /*position: fixed;*/
+  /*top: 90px;*/
+}
+
+.docs-version {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.docs-version-dd {
   width: 250px !important;
 }
 
@@ -281,6 +304,43 @@ body {
   background-color: inherit;
   color: inherit;
   border-color: #dcdbdb;
+}
+
+.docs-sidebar-head {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.docs-sidebar hr {
+  margin-top: 5px;
+}
+
+.lb-xs {
+  font-size: 9px;
+}
+
+.lb-sm {
+  font-size: 12px;
+}
+
+.lb-md {
+  font-size: 16px;
+}
+
+.lb-lg {
+  font-size: 20px;
+}
+
+.list-style-none {
+  list-style: none;
+}
+
+.no-lpad {
+  padding-left: 0;
+}
+
+.no-rpad {
+  padding-right: 0;
 }
 
 .footer {
