@@ -1,0 +1,55 @@
+{{ $hostUrl := rurl . "host" }}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{{ $hostUrl }}/assets/js/aah.js" type="text/javascript"></script>
+  <script async defer src="{{ $hostUrl }}/assets/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+  {{ if .CodeBlock -}}
+  <script src="{{ $hostUrl }}/assets/js/prism.js"></script>
+  {{- end }}
+  <script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+
+    {{ if .ShowVersionDocs -}}
+    $('#docs_version').selectpicker('val', '{{ pparam . "version" }}');
+    $('#docs_version').on('changed.bs.select', function (e) {
+      var version = $(e.currentTarget).val();
+      redirectToVersion(version);
+    });
+    {{- end }}
+
+    $('a[href^="#"').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+        && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top - 95 //offsets for fixed header
+            }, 1000);
+            return false;
+          }
+      }
+    });
+
+    // scroll to anchor tag
+    var anchorVal = location.href.split("#")[1];
+    if($(anchorVal)) {
+      var target = $('#'+anchorVal);
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 95 //offset height of header here too.
+        }, 1000);
+        return false;
+      }
+    }
+  });
+  </script>
+  <!-- <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> -->
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  {{- safeHTML `<!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->` }}

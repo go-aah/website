@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ template "metatags" . -}}
     <title>{{ template "title" . -}}</title>
-    {{ import "head_tags.html" . -}}
-    {{ template "head_scripts" . -}}
+    {{ import "docs_head_tags.html" . -}}
   </head>
   <body>
-    {{ import "header.html" . -}}
+    {{ import "docs_header.html" . -}}
     {{ template "body" . -}}
-    {{ import "footer.html" . -}}
-    {{ import "footer_scripts.html" . -}}
+    {{ import "docs_footer.html" . -}}
+    {{ import "docs_footer_scripts.html" . -}}
   </body>
 </html>
 
 {{ define "metatags" }}{{ end }}
-{{ define "head_scripts" }}{{ end }}

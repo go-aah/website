@@ -1,0 +1,18 @@
+{{ define "title" -}}
+{{ i18n . "label.pages.docs.index.title" }}
+{{- end }}
+
+{{ define "body" -}}
+  <div class="container body-content">
+    <div class="row">
+      <!-- page content -->
+      <div class="col-md-9 col-lg-9">
+        <div class="row docs-page-content">
+            <h1>Page not available</h1>
+            <p><a href="{{ rurl . "docs.index" }}">Click here</a> to goto Documentation Home.</p>
+        </div>
+      </div>
+      <!-- /page content -->
+    </div>
+  </div>
+{{- end }}
