@@ -8,6 +8,6 @@ aahframework.org website made possible following third party library/tools. I'm 
 * This website uses the custom version of Bootstarp CSS by [bootswatch](http://bootswatch.com)
 * This website uses the [Font Awesome](http://fontawesome.io/) Icons
 * This website uses the Go Markdown processor [Blackfriday](https://github.com/russross/blackfriday)
-* This website uses the [highlight.js](https://highlightjs.org) for language syntax highlighting
+* This website uses the [prism.js](http://prismjs.com/) for language syntax highlighting
 
 Thanks.
