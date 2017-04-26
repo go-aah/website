@@ -4,7 +4,7 @@
       <div class="col-lg-6">
         <p>
           <i class="fa fa-copyright fa-fw"></i> 2016-2017 <a href="{{ config "link.jeeva.github_profile" }}" target="_blank">Jeevanandam M.</a>, All rights reserved.<br/>
-          <a href="{{ rurl . "credits" }}">Credits</a>, Build version aah v{{ .AahVersion }}, Site version {{ .AppVersion }}
+          <a href="{{ rurl . "credits" }}">Credits</a>, Site version {{ .AppVersion }}
         </p>
       </div>
       <div class="col-lg-6">
@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="text-center powered-by">
-        Powered by <a href="{{ config "link.golang" }}" target="_blank">Go Lang</a> and <a href="{{ rurl . "index" }}">aah framework</a>
+        Powered by <a href="{{ rurl . "index" }}">aah framework v{{ .AahVersion }}</a>
       </div>
     </div>
   </div>

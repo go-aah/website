@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"aahframework.org/aah.v0-unstable"
+	"aahframework.org/aah.v0"
 
 	"github.com/go-aah/website/app/controllers"
 	"github.com/go-aah/website/app/markdown"
