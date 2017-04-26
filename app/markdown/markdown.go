@@ -7,9 +7,9 @@ import (
 
 	"github.com/russross/blackfriday"
 
-	"aahframework.org/aah"
-	"aahframework.org/essentials"
-	"aahframework.org/log"
+	"aahframework.org/aah.v0-unstable"
+	"aahframework.org/essentials.v0"
+	"aahframework.org/log.v0"
 )
 
 var (
@@ -42,11 +42,12 @@ func ContentBasePath() string {
 	return filepath.Join(aah.AppBaseDir(), "content")
 }
 
-// FilePath method returns markdown file path
-func FilePath(reqPath string) string {
+// FilePath method returns markdown file path from given path.
+// it bacially remove any extension and adds ".md"
+func FilePath(reqPath, prefix string) string {
 	reqPath = strings.ToLower(strings.TrimPrefix(reqPath, "/"))
 	reqPath = ess.StripExt(reqPath) + ".md"
-	return filepath.Clean(filepath.Join(ContentBasePath(), reqPath))
+	return filepath.Clean(filepath.Join(prefix, reqPath))
 }
 
 // ReadAll method reads the markdown file and returns the bytes.
@@ -67,8 +68,7 @@ func Parse(input []byte) []byte {
 }
 
 // Get method returns the parsed markdown content for given URL path.
-func Get(reqPath string) []byte {
-	mdPath := FilePath(reqPath)
+func Get(mdPath string) []byte {
 	cache := aah.AppConfig().BoolDefault("markdown.cache", false)
 	if cache {
 		if c, found := mdCache[mdPath]; found {
@@ -90,4 +90,19 @@ func Get(reqPath string) []byte {
 // ClearCache method clears the Markdown cache.
 func ClearCache() {
 	mdCache = make(map[string][]byte)
+}
+
+// ClearCacheByFile method clears cache by file.
+func ClearCacheByFile(name string) {
+	key := ""
+	for k := range mdCache {
+		if strings.Contains(k, name) {
+			key = k
+			break
+		}
+	}
+
+	if !ess.IsStrEmpty(key) {
+		delete(mdCache, key)
+	}
 }

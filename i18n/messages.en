@@ -11,10 +11,6 @@ label {
         title = "Welcome to aah framework, A scalable, performant, rapid development Web framework for Go"
       }
 
-      overview {
-        title = "Overview - aah web framework for Go"
-      }
-
       get_involved {
         title = "Get Involved - aah web framework for Go"
       }

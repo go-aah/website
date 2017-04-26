@@ -333,6 +333,7 @@ code {
 
 .list-style-none {
   list-style: none;
+  margin-left: -15px;
 }
 
 .no-lpad {

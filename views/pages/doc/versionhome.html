@@ -16,38 +16,14 @@
                 <h3>Insights into aah framework</h3>
                 <hr>
                 <ul class="docs-li-small">
-                  <li><a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a></li>
-                  <li><a href="{{ docurlc . "docs.anatomy" }}">Anatomy - aah application</a></li>
-                  <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
-                  <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
-                  <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
-                  <li><a href="{{ docurlc . "docs.pooling" }}">Pooling</a></li>
-                  <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
-                  <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
+                  {{ import "docs_insight_links.html" . }}
                 </ul>
               </div>
               <div class="col-lg-6">
                 <h3>Framework documentation</h3>
                 <hr>
                 <ul class="docs-li-small">
-                  <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
-                  <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
-                  <li><a href="{{ docurlc . "docs.app_config" }}">App Configuration</a></li>
-                  <li><a href="{{ docurlc . "docs.routes_config" }}">Routes Configuration</a></li>
-                  <li><a href="{{ docurlc . "docs.controllers" }}">Controllers</a></li>
-                  <li class="list-style-none"><ul>
-                    <li><a href="{{ docurlc . "docs.interceptors" }}">Interceptors</a></li>
-                  </ul></li>
-                  <li><a href="{{ docurlc . "docs.reply" }}">Reply (aka Response)</a></li>
-                  <li><a href="{{ docurlc . "docs.middlewares" }}">Middlewares</a></li>
-                  <li><a href="{{ docurlc . "docs.routes_reverse_lookup" }}">Route Reverse Lookup</a></li>
-                  <li><a href="{{ docurlc . "docs.templates" }}">Templates</a></li>
-                  <li class="list-style-none"><ul>
-                    <li><a href="{{ docurlc . "docs.template_funcs" }}">Template Functions</a></li>
-                  </ul></li>
-                  <li><a href="{{ docurlc . "docs.i18n" }}">I18n</a></li>
-                  <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
-                  <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
+                  {{ import "docs_guide_links.html" . }}
                 </ul>
               </div>
             </div>
