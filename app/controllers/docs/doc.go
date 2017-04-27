@@ -25,23 +25,18 @@ type Doc struct {
 	controllers.App
 }
 
+// Before method doc brfore interceptor
+func (d *Doc) Before() {
+	d.App.Before()
+
+	d.AddViewArg("ShowVersionDocs", true).
+		AddViewArg("ShowInsightSideNav", true).
+		AddViewArg("CodeBlock", true)
+}
+
 // Index method is documentation application home page
 func (d *Doc) Index() {
-	version := releases[0]
-
-	// key := d.Req.Params.QueryValue("doc")
-	// if !ess.IsStrEmpty(key) {
-	// 	docPath, found := aah.AppConfig().String("docs." + key)
-	// 	if !found {
-	// 		d.NotFound()
-	// 		return
-	// 	}
-	//
-	// 	d.Reply().Redirect(d.ReverseURL("docs.show_doc", version, docPath))
-	// 	return
-	// }
-
-	d.Reply().Redirect(d.ReverseURL("docs.version_home", version))
+	d.Reply().Redirect(d.ReverseURL("docs.version_home", releases[0]))
 }
 
 // VersionHome method Displays the documentation in selected language. Default
@@ -49,10 +44,10 @@ func (d *Doc) Index() {
 func (d *Doc) VersionHome() {
 	version := d.Req.Params.PathValue("version")
 	if !ess.IsSliceContainsString(releases, version) {
-		switch version {
-		case "godoc.html":
+		switch ess.StripExt(version) {
+		case "godoc":
 			d.GoDoc()
-		case "tutorials.html":
+		case "tutorials":
 			d.Tutorials()
 		default:
 			queryStr := d.Req.Params.Query.Encode()
@@ -75,30 +70,30 @@ func (d *Doc) VersionHome() {
 
 // ShowDoc method displays requested documentation page based language and version.
 func (d *Doc) ShowDoc() {
-	params := d.Req.Params
-	version := params.PathValue("version")
+	version := d.Req.Params.PathValue("version")
+	d.AddViewArg("CurrentVersion", version)
 
 	branchName := util.GetBranchName(version)
 	if branchName == "master" {
 		d.AddViewArg("LatestRelease", true)
 	}
 
-	docPath := path.Clean(path.Join(
-		version,
-		params.PathValue("content")))
+	content := d.Req.Params.PathValue("content")
+	switch ess.StripExt(content)[1:] {
+	case "release-notes":
+		d.ReleaseNotes()
+		return
+	}
 
+	docPath := path.Clean(path.Join(version, content))
 	mdPath := markdown.FilePath(docPath, docBasePath)
-
 	if !ess.IsFileExists(mdPath) {
 		d.NotFound(false)
 		return
 	}
 
 	data := aah.Data{
-		"ShowVersionDocs":    true,
-		"ShowInsightSideNav": true,
-		"CodeBlock":          true,
-		"Markdown":           string(markdown.Get(mdPath)),
+		"Markdown": string(markdown.Get(mdPath)),
 	}
 	d.Reply().HTMLl("docs.html", data)
 }
@@ -106,10 +101,7 @@ func (d *Doc) ShowDoc() {
 // GoDoc method display aah framework godoc links
 func (d *Doc) GoDoc() {
 	data := aah.Data{
-		"IsGoDoc":            true,
-		"ShowVersionDocs":    true,
-		"ShowInsightSideNav": true,
-		"CodeBlock":          true,
+		"IsGoDoc": true,
 	}
 	d.Reply().HTMLlf("docs.html", "godoc.html", data)
 }
@@ -117,12 +109,29 @@ func (d *Doc) GoDoc() {
 // Tutorials method display aah framework tutorials github links or guide.
 func (d *Doc) Tutorials() {
 	data := aah.Data{
-		"IsTutorials":        true,
-		"ShowVersionDocs":    true,
-		"ShowInsightSideNav": true,
-		"CodeBlock":          true,
+		"IsTutorials": true,
 	}
 	d.Reply().HTMLlf("docs.html", "tutorials.html", data)
+}
+
+// ReleaseNotes method display aah framework release notes, changelogs, migration notes.
+func (d *Doc) ReleaseNotes() {
+	version := d.Req.Params.PathValue("version")
+	changelogMdPath := markdown.FilePath(path.Join(version, "changelog.md"), docBasePath)
+	whatsNewMdPath := markdown.FilePath(path.Join(version, "whats-new.md"), docBasePath)
+	migrationGuideMdPath := markdown.FilePath(path.Join(version, "migration-guide.md"), docBasePath)
+
+	changelog := markdown.Get(changelogMdPath)
+	whatsNew := markdown.Get(whatsNewMdPath)
+	migrationGuide := markdown.Get(migrationGuideMdPath)
+
+	data := aah.Data{
+		"IsReleaseNotes":         true,
+		"ChangelogMarkdown":      string(changelog),
+		"WhatsNewMarkdown":       string(whatsNew),
+		"MigrationGuideMarkdown": string(migrationGuide),
+	}
+	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
 }
 
 // RefreshDoc method to refresh documentation from github

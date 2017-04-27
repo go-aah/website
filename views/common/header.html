@@ -5,11 +5,17 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li {{ if .IsDocumentation }}class="active"{{ end }}>
+        <li {{ if .IsFeatures }}class="active"{{ end }}>
+          <a href="{{ rurl . "features" }}">Features</a>
+        </li>
+        <li>
           <a href="{{ rurl . "docs.index" }}">Documentation</a>
         </li>
         <li {{ if .IsGetInvoled }}class="active"{{ end }}>
           <a href="{{ rurl . "get_involved" }}">Get Involved</a>
+        </li>
+        <li {{ if .IsWhyAah }}class="active"{{ end }}>
+          <a href="{{ rurl . "why_aah" }}">Why aah?</a>
         </li>
         <li>
           <a href="{{ config "link.aah.roadmap" }}" target="_blank">Roadmap</a>

@@ -26,6 +26,14 @@ label {
       credits {
         title = "Credits - aah web framework for Go"
       }
+
+      features {
+        title = "Features - aah web framework for Go"
+      }
+
+      why_aah {
+        title = "Why aah? - aah web framework for Go"
+      }
     } # end - site
 
     docs {

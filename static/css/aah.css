@@ -77,6 +77,13 @@ code {
   color: #676767;
 }
 
+.aah-release-goreq {
+    padding-top: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #676767;
+}
+
 .aah-getting-started {
   padding-top: 70px;
 }

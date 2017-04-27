@@ -10,8 +10,6 @@ type App struct {
 // Before method is called for all the application requests
 // before the controllers action gets called.
 func (a App) Before() {
-	// a.AddViewArg("AppVersion", aah.AppBuildInfo().Version)
-
 	releases, _ := aah.AppConfig().StringList("docs.releases")
 	a.AddViewArg("Releases", releases)
 }
