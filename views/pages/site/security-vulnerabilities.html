@@ -1,6 +1,10 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.site.security.title" }}
+{{ .Article.Title }} - {{ i18n . "page.site.title.suffix" }}
 {{- end }}
+{{ define "meta_tags" -}}
+    <meta name="description" content="{{ .Article.Desc }}">
+    <meta name="keywords" content="{{ .Article.Keywords }}">
+{{ end }}
 
 {{ define "body" -}}
   <div class="container body-content">
@@ -22,7 +26,7 @@
     <div class="row">
       <h2>Summary</h2>
       <div class="row md-content">
-        {{ safeHTML .Markdown }}
+        {{ safeHTML .Article.Content }}
       </div>
     </div>
   </div>

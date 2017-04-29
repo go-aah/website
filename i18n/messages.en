@@ -1,45 +1,23 @@
 #############################################
 # i18n messages for aah framework application
 #
-# Complete configuration reference: TODO
+# Complete configuration reference:
+#   https://docs.aahframework.org/i18n.html
 #############################################
 
-label {
-  pages {
-    site {
-      index {
-        title = "Welcome to aah framework, A scalable, performant, rapid development Web framework for Go"
-      }
+page {
+  site {
+    title {
+      index = "Welcome to aah framework, A scalable, performant, rapid development Web framework for Go"
+      get_involved = "Get Involved - Gitter, Stackoverflow, Mailing List, etc. - aah web framework for Go"
+      suffix = "aah web framework for Go"
+    }
+  }
 
-      get_involved {
-        title = "Get Involved - aah web framework for Go"
-      }
-
-      security {
-        title = "Security Vulnerabilities - aah web framework for Go"
-      }
-
-      contribute_code {
-        title = "Contribute to Code - aah web framework for Go"
-      }
-
-      credits {
-        title = "Credits - aah web framework for Go"
-      }
-
-      features {
-        title = "Features - aah web framework for Go"
-      }
-
-      why_aah {
-        title = "Why aah? - aah web framework for Go"
-      }
-    } # end - site
-
-    docs {
-      index {
-        title = "Documentation - aah web framework for Go"
-      }
-    } # end - docs
+  doc {
+    title {
+      index = "Documentation - aah web framework for Go"
+      suffix = "Documentation aah web framework for Go"
+    }
   }
 }

@@ -4,11 +4,30 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ template "metatags" . -}}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Jeevanandam M.">
+    <meta name="contact" content="jeeva@myjeeva.com">
+    <meta name="copyright" content="Jeevanandam M. - https://github.com/jeevatkm">
+    <meta name="distribution" content="global">
+    <meta name="robots" content="index,follow">
+    <meta property="og:site_name" content="aah web framework for Go">
+    <meta property="og:image" content="{{ rurl . "host" }}/assets/img/aahframework.png"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ .Host }}{{ .Path }}"/>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@aahframework">
+    <meta name="twitter:creator" content="Jeevanandam M.">
+    <meta name="twitter:url" content="{{ .Host }}{{ .Path }}">
+    <meta name="twitter:image" content="{{ rurl . "host" }}/assets/img/aahframework.png">
+    {{ template "meta_tags" . -}}
     <title>{{ template "title" . -}}</title>
     {{ import "docs_head_tags.html" . -}}
   </head>
-  <body>
+  <body>{{ if eq .EnvProfile "prod" -}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2RCRQR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->{{ end -}}
     {{ import "docs_header.html" . -}}
     {{ template "body" . -}}
     {{ import "docs_footer.html" . -}}
@@ -16,4 +35,4 @@
   </body>
 </html>
 
-{{ define "metatags" }}{{ end }}
+{{ define "meta_tags" }}{{ end }}

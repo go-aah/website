@@ -64,6 +64,7 @@ func (d *Doc) VersionHome() {
 		"IsVersionHome":      true,
 		"ShowVersionDocs":    false,
 		"ShowInsightSideNav": false,
+		"CurrentVersion":     version,
 	}
 	d.Reply().HTMLl("docs.html", data)
 }
@@ -79,22 +80,21 @@ func (d *Doc) ShowDoc() {
 	}
 
 	content := d.Req.Params.PathValue("content")
-	switch ess.StripExt(content)[1:] {
+	switch ess.StripExt(util.TrimPrefixSlash(content)) {
 	case "release-notes":
 		d.ReleaseNotes()
 		return
 	}
 
 	docPath := path.Clean(path.Join(version, content))
-	mdPath := markdown.FilePath(docPath, docBasePath)
-	if !ess.IsFileExists(mdPath) {
+	mdPath := util.FilePath(docPath, docBasePath)
+	article, found := markdown.Get(mdPath)
+	if !found {
 		d.NotFound(false)
 		return
 	}
 
-	data := aah.Data{
-		"Markdown": string(markdown.Get(mdPath)),
-	}
+	data := aah.Data{"Article": article}
 	d.Reply().HTMLl("docs.html", data)
 }
 
@@ -117,19 +117,19 @@ func (d *Doc) Tutorials() {
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
 func (d *Doc) ReleaseNotes() {
 	version := d.Req.Params.PathValue("version")
-	changelogMdPath := markdown.FilePath(path.Join(version, "changelog.md"), docBasePath)
-	whatsNewMdPath := markdown.FilePath(path.Join(version, "whats-new.md"), docBasePath)
-	migrationGuideMdPath := markdown.FilePath(path.Join(version, "migration-guide.md"), docBasePath)
+	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docBasePath)
+	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docBasePath)
+	migrationGuideMdPath := util.FilePath(path.Join(version, "migration-guide.md"), docBasePath)
 
-	changelog := markdown.Get(changelogMdPath)
-	whatsNew := markdown.Get(whatsNewMdPath)
-	migrationGuide := markdown.Get(migrationGuideMdPath)
+	changelog, _ := markdown.Get(changelogMdPath)
+	whatsNew, _ := markdown.Get(whatsNewMdPath)
+	migrationGuide, _ := markdown.Get(migrationGuideMdPath)
 
 	data := aah.Data{
-		"IsReleaseNotes":         true,
-		"ChangelogMarkdown":      string(changelog),
-		"WhatsNewMarkdown":       string(whatsNew),
-		"MigrationGuideMarkdown": string(migrationGuide),
+		"IsReleaseNotes": true,
+		"Changelog":      changelog,
+		"WhatsNew":       whatsNew,
+		"MigrationGuide": migrationGuide,
 	}
 	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
 }
@@ -170,5 +170,9 @@ func init() {
 		releases, _ = aah.AppConfig().StringList("docs.releases")
 		docBasePath = aah.AppConfig().StringDefault("docs.dir", "")
 		util.RefreshDocContent()
+	})
+
+	aah.OnShutdown(func(e *aah.Event) {
+		markdown.ClearCache()
 	})
 }

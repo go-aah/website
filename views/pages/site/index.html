@@ -1,6 +1,16 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.site.index.title" }}
+{{ i18n . "page.site.title.index" }}
 {{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageDesc := `Build scalable web application and mobile apps RESTful APIs with Go language. aah framework goal is to achieve rapid, highly configurable and balanced Go web framework, from micro service to small, medium and enterprise scale.` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="aah, aah framework, web framework for go, golang, golang web framework, api framework, api golang">
+    <meta property="og:title" content="{{ i18n . "page.site.title.index" }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ i18n . "page.site.title.index" }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
 
 {{ define "body" -}}
   <div class="container">

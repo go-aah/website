@@ -2,11 +2,11 @@ package controllers
 
 import (
 	"aahframework.org/aah.v0"
-	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
 
 	"github.com/go-aah/website/app/controllers"
 	"github.com/go-aah/website/app/markdown"
+	"github.com/go-aah/website/app/util"
 )
 
 // Site struct application controller
@@ -20,44 +20,42 @@ func (s *Site) Index() {
 
 // GetInvolved method display aah framework community and contribution info.
 func (s *Site) GetInvolved() {
-	s.AddViewArg("IsGetInvoled", true)
+	s.AddViewArg("IsGetInvolved", true)
 }
 
 // Content method display the content based on request path.
 func (s *Site) Content() {
-	mdPath := markdown.FilePath(s.Req.Path, markdown.ContentBasePath())
-	data := aah.Data{
-		"Markdown":  string(markdown.Get(mdPath)),
-		"CodeBlock": true,
+	mdPath := util.FilePath(s.Req.Path, util.ContentBasePath())
+	data := aah.Data{"CodeBlock": true}
+
+	if article, found := markdown.Get(mdPath); found {
+		data["Article"] = article
+	} else {
+		s.NotFound(false)
+		return
 	}
 
-	switch ess.StripExt(s.Req.Path)[1:] {
+	switch util.CreateKey(s.Req.Path) {
 	// Display the instruction for how to contribute to code.
 	case "contribute-to-code":
 		s.AddViewArg("IsContributeCode", true)
-		s.Reply().HTMLlf("master.html", "contribute-code.html", data)
 
-	// Display aah framework instructions to report
-	// security issues privately and the disclosing to public.
-	case "security":
-		s.Reply().HTMLlf("master.html", "security.html", data)
+		// Display aah framework instructions to report
+		// security issues privately and the disclosing to public.
+	case "security-vulnerabilities":
+		s.Reply().HTMLlf("master.html", "security-vulnerabilities.html", data)
+		return
 
 	// Display aah framework features
 	case "features":
 		s.AddViewArg("IsFeatures", true)
-		s.Reply().HTMLlf("master.html", "features.html", data)
 
 	// Display why aah framework description
 	case "why-aah":
 		s.AddViewArg("IsWhyAah", true)
-		s.Reply().HTMLlf("master.html", "why-aah.html", data)
-
-	// Display aah framework website credit info.
-	case "credits":
-		s.Reply().HTMLlf("master.html", "credits.html", data)
-	default:
-		s.NotFound(false)
 	}
+
+	s.Reply().HTML(data)
 }
 
 // NotFound method for unavailable pages on the site.

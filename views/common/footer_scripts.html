@@ -4,14 +4,12 @@
   <script async defer src="/assets/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
   {{ if .CodeBlock -}}
   <script src="/assets/js/prism.js"></script>
-  {{- end }}
+  {{- end -}}
   <script>
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
   });
   </script>
-  <!-- <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> -->
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   {{- safeHTML `<!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

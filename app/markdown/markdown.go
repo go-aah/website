@@ -1,19 +1,21 @@
 package markdown
 
 import (
-	"io/ioutil"
-	"path/filepath"
+	"bufio"
+	"os"
 	"strings"
 
 	"github.com/russross/blackfriday"
 
 	"aahframework.org/aah.v0"
-	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
+
+	"github.com/go-aah/website/app/models"
 )
 
 var (
-	mdCache = make(map[string][]byte)
+	articleCache = make(map[string]*models.Article)
+	// mdCache      = make(map[string][]byte)
 
 	markdownHTMLFlags = 0 |
 		blackfriday.HTML_USE_XHTML |
@@ -35,74 +37,100 @@ var (
 		blackfriday.EXTENSION_DEFINITION_LISTS
 
 	markdownOptions = blackfriday.Options{Extensions: markdownExtensions}
+
+	isCacheEnabled bool
 )
 
-// ContentBasePath method returns the Markdown files base path.
-func ContentBasePath() string {
-	return filepath.Join(aah.AppBaseDir(), "content")
-}
-
-// FilePath method returns markdown file path from given path.
-// it bacially remove any extension and adds ".md"
-func FilePath(reqPath, prefix string) string {
-	reqPath = strings.ToLower(strings.TrimPrefix(reqPath, "/"))
-	reqPath = ess.StripExt(reqPath) + ".md"
-	return filepath.Clean(filepath.Join(prefix, reqPath))
-}
-
-// ReadAll method reads the markdown file and returns the bytes.
-func ReadAll(reqPath string) []byte {
-	bytes, err := ioutil.ReadFile(reqPath)
-	if err != nil {
-		log.Error(err)
-		return []byte("")
-	}
-	return bytes
-}
-
 // Parse method parsed the markdown content into html using blackfriday library
-// and returns the byte slice.
-func Parse(input []byte) []byte {
-	htmlRender := blackfriday.HtmlRenderer(markdownHTMLFlags, "", "")
-	return blackfriday.MarkdownOptions(input, htmlRender, markdownOptions)
-}
-
-// Get method returns the parsed markdown content for given URL path.
-func Get(mdPath string) []byte {
-	cache := aah.AppConfig().BoolDefault("markdown.cache", false)
-	if cache {
-		if c, found := mdCache[mdPath]; found {
-			return c
-		}
-	}
-
-	mf := ReadAll(mdPath)
-	content := Parse(mf)
-
-	if cache {
-		// put it in the cache
-		mdCache[mdPath] = content
-	}
-
-	return content
-}
-
-// ClearCache method clears the Markdown cache.
-func ClearCache() {
-	mdCache = make(map[string][]byte)
-}
-
-// ClearCacheByFile method clears cache by file.
-func ClearCacheByFile(name string) {
-	key := ""
-	for k := range mdCache {
-		if strings.Contains(k, name) {
-			key = k
+// and create Article object.
+func Parse(lines []string) *models.Article {
+	pos := 0
+	for idx, l := range lines {
+		if strings.TrimSpace(l) == "---" {
+			pos = idx + 1
 			break
 		}
 	}
 
-	if !ess.IsStrEmpty(key) {
-		delete(mdCache, key)
+	article := &models.Article{}
+
+	for _, v := range lines[:pos] {
+		if v == "---" {
+			break
+		}
+		idx := strings.IndexByte(v, ':')
+		if idx == -1 {
+			continue
+		}
+		switch v[:idx] {
+		case "Title":
+			article.Title = strings.TrimSpace(v[idx+1:])
+		case "Desc":
+			article.Desc = strings.TrimSpace(v[idx+1:])
+		case "Keywords":
+			article.Keywords = strings.TrimSpace(v[idx+1:])
+		}
 	}
+
+	content := strings.Join(lines[pos:], "\n")
+	htmlRender := blackfriday.HtmlRenderer(markdownHTMLFlags, "", "")
+	article.Content = string(blackfriday.MarkdownOptions([]byte(content), htmlRender, markdownOptions))
+
+	return article
+}
+
+// Get method returns the parsed markdown content for given URL path.
+func Get(mdPath string) (*models.Article, bool) {
+	if isCacheEnabled {
+		if article, found := articleCache[mdPath]; found {
+			return article, true
+		}
+	}
+
+	f, err := os.Open(mdPath)
+	if err != nil {
+		return nil, false
+	}
+
+	var lines []string
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+
+	article := Parse(lines)
+	article.File = mdPath
+
+	if article.IsContent() && isCacheEnabled {
+		articleCache[mdPath] = article
+	}
+
+	return article, article.IsContent()
+}
+
+// ClearCache method clears the Markdown cache.
+func ClearCache() {
+	log.Info("Clearing cache")
+	articleCache = make(map[string]*models.Article)
+}
+
+// ClearCacheByFile method clears cache by file.
+// func ClearCacheByFile(name string) {
+// 	key := ""
+// 	for k := range mdCache {
+// 		if strings.Contains(k, name) {
+// 			key = k
+// 			break
+// 		}
+// 	}
+//
+// 	if !ess.IsStrEmpty(key) {
+// 		delete(mdCache, key)
+// 	}
+// }
+
+func init() {
+	aah.OnStart(func(e *aah.Event) {
+		isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
+	})
 }

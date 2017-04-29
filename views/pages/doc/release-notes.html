@@ -1,5 +1,5 @@
 {{ define "title" -}}
-Release Notes {{ .CurrentVersion }} : aah web framework for Go
+Release Notes {{ .CurrentVersion }} - aah web framework for Go
 {{- end }}
 
 {{ define "body" -}}
@@ -10,13 +10,13 @@ Release Notes {{ .CurrentVersion }} : aah web framework for Go
         <div class="row docs-page-content">
             <h1>Release Notes - {{ .CurrentVersion }}</h1>
             <div>
-              {{ safeHTML .WhatsNewMarkdown }}
+              {{ safeHTML .WhatsNew.Content }}
             </div>
             <div>
-              {{ safeHTML .ChangelogMarkdown }}
+              {{ safeHTML .Changelog.Content }}
             </div>
             <div>
-              {{ safeHTML .MigrationGuideMarkdown }}
+              {{ safeHTML .MigrationGuide.Content }}
             </div>
         </div>
       </div>

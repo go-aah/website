@@ -1,11 +1,21 @@
-{{ $hostUrl := rurl . "host" }}
-<meta name="description" content="Documentation - aah, The web framework for Go">
-    <meta name="author" content="https://github.com/jeevatkm">
-    <link rel="icon" href="{{ $hostUrl }}/favicon.png" />
+{{ $hostUrl := rurl . "host" -}}
+<link rel="shortcut icon" type="image/x-icon" href="{{ $hostUrl }}/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $hostUrl }}/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $hostUrl }}/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $hostUrl }}/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="{{ $hostUrl }}/assets/manifest.json">
+    <link rel="mask-icon" href="{{ $hostUrl }}/assets/img/safari-pinned-tab.svg" color="#5bbad5">
     <link href="{{ $hostUrl }}/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ $hostUrl }}/assets/css/aah.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.css" rel="stylesheet" />
     {{ if .CodeBlock -}}
     <link href="{{ $hostUrl }}/assets/css/prism.css" rel="stylesheet" />
-    {{- end }}
+    {{ end -}}
+    {{ if eq .EnvProfile "prod" -}}<!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2RCRQR');</script>
+    <!-- End Google Tag Manager -->{{ end -}}

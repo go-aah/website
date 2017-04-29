@@ -1,5 +1,5 @@
 {{ define "title" -}}
-{{ .Article.Title }} - {{ .CurrentVersion }} {{ i18n . "page.doc.title.suffix" }}
+{{ .Article.Title }} - {{ i18n . "page.site.title.suffix" }}
 {{- end }}
 
 {{ define "meta_tags" -}}
@@ -14,22 +14,9 @@
 {{ define "body" -}}
   <div class="container body-content">
     <div class="row">
-      <!-- page content -->
-      <div class="col-md-9 col-lg-9">
-        <div class="row docs-page-content">
-          <div class="row">
-            {{ if .Article.IsContent }}
-            {{ safeHTML .Article.Content }}
-            {{ end }}
-          </div>
-        </div>
-      </div>
-      <!-- /page content -->
-      <!-- sidebar nav -->
-      <div class="col-md-3 col-lg-3">
-        {{ import "docs_sidebar.html" . }}
-      </div>
-      <!-- /sidebar nav -->
+      {{ if .Article.IsContent }}
+      {{ safeHTML .Article.Content }}
+      {{ end }}
     </div>
   </div>
 {{- end }}

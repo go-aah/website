@@ -1,3 +1,5 @@
+
+---
 ## Contributor Guidelines
 * Get the codebase using `aah contribute` command
 * Implement your changes and Format code using `goimports` command

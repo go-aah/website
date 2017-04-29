@@ -1,6 +1,17 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.docs.index.title" }}
+{{ .CurrentVersion }} {{ i18n . "page.doc.title.index" }}
 {{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageTitle := printf "%v %v" (.CurrentVersion) (i18n . "page.doc.title.index") -}}
+{{ $pageDesc := `Everything you need to know about aah framework. aah framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version release since first public release` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="aah documentation, framework documentation, insight into framework, guide">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
 
 {{ define "body" -}}
   <div class="container body-content">

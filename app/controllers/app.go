@@ -12,4 +12,6 @@ type App struct {
 func (a App) Before() {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
 	a.AddViewArg("Releases", releases)
+
+	a.AddViewArg("EnvProfile", aah.AppProfile())
 }
