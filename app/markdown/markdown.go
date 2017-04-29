@@ -15,7 +15,6 @@ import (
 
 var (
 	articleCache = make(map[string]*models.Article)
-	// mdCache      = make(map[string][]byte)
 
 	markdownHTMLFlags = 0 |
 		blackfriday.HTML_USE_XHTML |
@@ -113,21 +112,6 @@ func ClearCache() {
 	log.Info("Clearing cache")
 	articleCache = make(map[string]*models.Article)
 }
-
-// ClearCacheByFile method clears cache by file.
-// func ClearCacheByFile(name string) {
-// 	key := ""
-// 	for k := range mdCache {
-// 		if strings.Contains(k, name) {
-// 			key = k
-// 			break
-// 		}
-// 	}
-//
-// 	if !ess.IsStrEmpty(key) {
-// 		delete(mdCache, key)
-// 	}
-// }
 
 func init() {
 	aah.OnStart(func(e *aah.Event) {

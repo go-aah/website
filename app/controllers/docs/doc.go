@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"path"
+	"path/filepath"
 
 	"aahframework.org/aah.v0"
 	"aahframework.org/ahttp.v0"
@@ -164,11 +165,15 @@ func init() {
 				version,
 				aah.AppConfig().StringDefault(key, "")))
 		},
+		"absrequrl": func(viewArgs map[string]interface{}) template.URL {
+			return template.URL(fmt.Sprintf("%s://%s%s", viewArgs["Scheme"], viewArgs["Host"], viewArgs["RequestPath"]))
+		},
 	})
 
 	aah.OnStart(func(e *aah.Event) {
 		releases, _ = aah.AppConfig().StringList("docs.releases")
-		docBasePath = aah.AppConfig().StringDefault("docs.dir", "")
+		docBasePath = filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
+		_ = ess.MkDirAll(docBasePath, 0755)
 		util.RefreshDocContent()
 	})
 

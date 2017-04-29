@@ -9,9 +9,7 @@ type App struct {
 
 // Before method is called for all the application requests
 // before the controllers action gets called.
-func (a App) Before() {
+func (a *App) Before() {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
 	a.AddViewArg("Releases", releases)
-
-	a.AddViewArg("EnvProfile", aah.AppProfile())
 }

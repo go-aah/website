@@ -23,7 +23,7 @@ func GetBranchName(version string) string {
 // GetDocDirPath method returns the documentation dir path for given
 // language and version.
 func GetDocDirPath(version string) string {
-	docsDir := aah.AppConfig().StringDefault("docs.dir", "")
+	docsDir := filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
 	return filepath.Join(docsDir, version)
 }
 
