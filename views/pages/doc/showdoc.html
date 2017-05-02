@@ -3,11 +3,12 @@
 {{- end }}
 
 {{ define "meta_tags" -}}
+{{ $pageTitle := printf "%v - %v %v" (.Article.Title) (.CurrentVersion) (i18n . "page.doc.title.suffix") -}}
     <meta name="description" content="{{ .Article.Desc }}">
     <meta name="keywords" content="{{ .Article.Keywords }}">
-    <meta property="og:title" content="{{ .Article.Title }}"/>
+    <meta property="og:title" content="{{ $pageTitle }}"/>
     <meta property="og:description" content="{{ .Article.Desc }}"/>
-    <meta name="twitter:title" content="{{ .Article.Title }}">
+    <meta name="twitter:title" content="{{ $pageTitle }}">
     <meta name="twitter:description" content="{{ .Article.Desc }}">
 {{ end }}
 

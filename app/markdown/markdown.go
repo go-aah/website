@@ -109,7 +109,9 @@ func Get(mdPath string) (*models.Article, bool) {
 
 // ClearCache method clears the Markdown cache.
 func ClearCache() {
-	log.Info("Clearing cache")
+	if len(articleCache) > 0 {
+		log.Info("Clearing cache")
+	}
 	articleCache = make(map[string]*models.Article)
 }
 
