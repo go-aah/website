@@ -142,6 +142,7 @@ code {
 
 .framework-summary {
   padding: 15px 15px 0 15px;
+  text-align: justify;
 }
 
 .framework-features h3 {

@@ -20,7 +20,8 @@ func (s *Site) Index() {
 
 // GetInvolved method display aah framework community and contribution info.
 func (s *Site) GetInvolved() {
-	s.AddViewArg("IsGetInvolved", true)
+	data := aah.Data{"CodeBlock": true, "IsGetInvolved": true}
+	s.Reply().HTML(data)
 }
 
 // Content method display the content based on request path.
