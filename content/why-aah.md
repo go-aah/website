@@ -4,13 +4,18 @@ Keywords: why aah, rapid development, maintainability, performant, scalable, exp
 ---
 # Why aah framework?
 
-Framework focuses on maintainable, performance, flexible, security as project use cases expands.
+Framework focuses on maintainable, performance, configurable, security and extensible as user/application use cases expands. There are nice minimalistic, micro Go frameworks out there with own set of goals.
+
+aah framework goal is to achieve balanced Go web framework for small, medium, enterprise scale. Developer have focus on application logic instead of building infrastructure or reinventing wheels for the application.
 
   * Perfect fit for web application and RESTful APIs application.
   * Framework values
       * Don't Repeat Yourself (DRY),
       * Convention Over Configuration, and
-      * Flexible configuration option to turn on/off features as per your use case.
-  * Goal is to reach balanced framework for small, medium, enterprise scale.
+      * Flexible configuration option to turn on/off features as per application use case.
 
-TODO.
+aah framework was inspired by Rails, Hapijs, Spring framework and Revel (Direction, Implementation and Goal is different from Revel).
+
+**Read the framework [Features](/features.html) and [Documentation](https://docs.aahframework.org). If it's satisfies your use case then aah framework is for you.**
+
+No, the feature/enhancement that I'm looking for is not yet available in the aah framework. What should I do?  Well, refer the project [roadmap](https://github.com/go-aah/aah/projects/3) and please let me via [Github Issues](https://github.com/go-aah/aah/issues) or [Mailing List](https://groups.google.com/forum/#!forum/aahframework) for feature or enhancement.
