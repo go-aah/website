@@ -1,4 +1,6 @@
-
+Title: How to Contribute to Code?
+Desc: Describing steps and guidelines of how to contribute to aah framework code?
+Keywords: contribute to code, guidelines
 ---
 ## Contributor Guidelines
 * Get the codebase using `aah contribute` command

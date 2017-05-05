@@ -40,6 +40,8 @@ func (s *Site) Content() {
 	// Display the instruction for how to contribute to code.
 	case "contribute-to-code":
 		s.AddViewArg("IsContributeCode", true)
+		s.Reply().HTMLlf("master.html", "contribute-code.html", data)
+		return
 
 		// Display aah framework instructions to report
 		// security issues privately and the disclosing to public.
@@ -56,6 +58,12 @@ func (s *Site) Content() {
 		s.AddViewArg("IsWhyAah", true)
 	}
 
+	s.Reply().HTML(data)
+}
+
+// Team method display aah framework team info.
+func (s *Site) Team() {
+	data := aah.Data{"CodeBlock": true, "IsTeam": true}
 	s.Reply().HTML(data)
 }
 

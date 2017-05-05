@@ -14,9 +14,9 @@
 {{ define "body" -}}
   <div class="container body-content">
     <div class="row">
-      {{ if .Article.IsContent }}
+      {{ if .Article.IsContent -}}
       {{ safeHTML .Article.Content }}
-      {{ end }}
+      {{ end -}}
     </div>
   </div>
 {{- end }}

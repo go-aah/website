@@ -1,0 +1,64 @@
+{{ define "title" -}}
+About Team - {{ i18n . "page.site.title.suffix" }}
+{{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageTitle := printf "About Team - %v " (i18n . "page.site.title.suffix") -}}
+{{ $pageDesc := `Team behind aah framework. Author, Project Lead, Dev Team and Contributors.` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="team, about team, aah framework">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
+
+{{ define "body" -}}
+  <div class="container body-content">
+    <div class="row">
+      <h1>Team - aah framework</h1>
+      <p>
+        Get to know about aah framework team members, dev team and contributors.
+      </p>
+    </div>
+    <div class="row about-team">
+      <div class="row">
+        <h3>Author &amp; Project Lead</h3>
+        <p>
+          <a href="{{ config "link.jeeva.github_profile" }}" target="_blank">Jeevanandam M.</a> (alias Jeeva) is the author and project lead of <a href="#">aah framework</a> project. Author also contributed following libraries to the Go community.
+        </p>
+        <ul>
+          <li><a href="{{ config "link.jeeva.go_resty_repo" }}">go-resty</a> - Simple HTTP and REST client.</li>
+          <li><a href="{{ config "link.jeeva.go_model_repo" }}">go-model</a> - Robust &amp; Easy to use struct mapper and utility methods.</li>
+        </ul>
+      </div>
+      <div class="row">
+        <h3>Development Team</h3>
+        <p>As aah framework grow gradually, commited people will volunteer.</p>
+        <ul>
+          <li>Jeevanandam M. (Github: <a href="{{ config "link.jeeva.github_profile" }}" target="_blank">@jeevatkm</a>)</li>
+        </ul>
+      </div>
+      <div class="row">
+        <h3>Contributors</h3>
+        {{ $aahOrgUrl := (config "link.aah.github_org") -}}
+        <p>Just tiny contribution helps the community.</p>
+        <ul>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/aah/graphs/contributors">aah</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/tools/graphs/contributors">tools</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/router/graphs/contributors">router</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/essentials/graphs/contributors">essentials</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/config/graphs/contributors">config</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/ahttp/graphs/contributors">ahttp</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/view/graphs/contributors">view</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/security/graphs/contributors">secuirty</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/i18n/graphs/contributors">i18n</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/aruntime/graphs/contributors">aruntime</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/log/graphs/contributors">log</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/pool/graphs/contributors">pool</a></li>
+          <li><a href="{{ $aahOrgUrl | safeHTML }}/test/graphs/contributors">test</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{{- end }}

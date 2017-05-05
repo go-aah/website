@@ -1,6 +1,17 @@
 {{ define "title" -}}
-{{ i18n . "label.pages.site.contribute_code.title" }}
+{{ .Article.Title }} - {{ i18n . "page.site.title.suffix" }}
 {{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageTitle := .Article.Title -}}
+{{ $pageDesc := .Article.Desc -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="{{ .Article.Keywords }}">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
 
 {{ define "body" -}}
   <div class="container body-content">
@@ -15,7 +26,9 @@
     </div>
     <div class="row">
       <div class="row md-content">
-        {{ safeHTML .Markdown }}
+        {{ if .Article.IsContent -}}
+        {{ safeHTML .Article.Content }}
+        {{ end -}}
       </div>
     </div>
   </div>

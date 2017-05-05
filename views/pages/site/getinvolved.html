@@ -2,6 +2,17 @@
 {{ i18n . "page.site.title.get_involved" }}
 {{- end }}
 
+{{ define "meta_tags" -}}
+{{ $pageTitle := i18n . "page.site.title.get_involved" -}}
+{{ $pageDesc := `There are plenty of ways you can contribute to aah framework such as Stackoverflow Q&amp;A, Gitter Online Chat, Improve documentation, Join Mailling List, Contribute to code, etc.` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="get involved, aah community, community, online chat mailling list, contribute to code, stackoverflow Q&amp;A, improve documentation">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end -}}
+
 {{ define "body" -}}
   <div class="container body-content">
     <div class="row">
@@ -25,7 +36,7 @@
           <i class="fa fa-stack-overflow fa-lg aah-color" aria-hidden="true"></i>&nbsp;&nbsp;
           <a href="{{ config "link.aah.stackoverflow" }}" target="_blank">Contribute to Stack Overflow</a>
         </h3>
-        <p>Stack Overflow is a Q&A site for programmers. Stack Overflow has a very active community of people asking and answering <a href="{{ config "link.aah.stackoverflow" }}" target="_blank">questions</a>. Users can vote on each others contributions and earn reputation points. Post your question with `aahframework` tagged.</p>
+        <p>Stack Overflow is a Q&amp;A site for programmers. Stack Overflow has a very active community of people asking and answering <a href="{{ config "link.aah.stackoverflow" }}" target="_blank">questions</a>. Users can vote on each others contributions and earn reputation points. Post your question with `aahframework` tagged.</p>
       </div>
       <div class="col-md-6">
         <h3>
