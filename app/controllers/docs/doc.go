@@ -17,8 +17,9 @@ import (
 )
 
 var (
-	releases    []string
-	docBasePath string
+	releases      []string
+	docBasePath   string
+	editURLPrefix string
 )
 
 // Doc struct documentation application controller
@@ -95,7 +96,8 @@ func (d *Doc) ShowDoc() {
 		return
 	}
 
-	data := aah.Data{"Article": article}
+	editURL := path.Join(editURLPrefix, ess.StripExt(content)+".md")
+	data := aah.Data{"Article": article, "DocEditURL": editURL}
 	d.Reply().HTMLl("docs.html", data)
 }
 
@@ -171,6 +173,7 @@ func init() {
 	})
 
 	aah.OnStart(func(e *aah.Event) {
+		editURLPrefix = aah.AppConfig().StringDefault("docs.edit_url_prefix", "")
 		releases, _ = aah.AppConfig().StringList("docs.releases")
 		docBasePath = filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
 		_ = ess.MkDirAll(docBasePath, 0755)

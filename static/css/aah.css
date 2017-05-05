@@ -50,6 +50,11 @@ code {
   color: #e25657;
 }
 
+.btn-aah-color, .btn-aah-color:focus, .btn-aah-color:hover {
+  background-color: #e25657;
+  border-color: #e25657;
+}
+
 .navbar-nav .aah-color:hover {
   color: #fff;
 }
@@ -300,7 +305,6 @@ code {
   min-height: 700px;
 }
 
-
 .docs-page-content p {
   text-align: justify;
 }
@@ -331,6 +335,10 @@ code {
   background-color: inherit;
   color: inherit;
   border-color: #dcdbdb;
+}
+
+.docs-edit-btn {
+  padding-top: 42px;
 }
 
 .docs-sidebar-head {

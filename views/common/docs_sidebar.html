@@ -1,9 +1,8 @@
 <div class="docs-sidebar">
-
-  {{ if eq (not .IsVersionHome) (not .IsGoDoc) (not .IsTutorials) }}
+  {{ if eq (not .IsVersionHome) (not .IsGoDoc) (not .IsTutorials) -}}
   <div class="docs-version">
     <select id="docs_version" class="selectpicker docs-version-dd" data-style="btn-primary">
-      {{ range .Releases }}
+      {{ range .Releases -}}
       <option value="{{ . }}">Framework {{ . }}</option>
       {{- end }}
     </select>
@@ -11,7 +10,7 @@
   <!--  ./ docs-version -->
   {{ end }}
 
-  {{ if .ShowVersionDocs }}
+  {{ if .ShowVersionDocs -}}
   <div class="row">
     <label class="docs-sidebar-head">Documentation</label>
     <hr>
@@ -26,7 +25,7 @@
     <label class="docs-sidebar-head">Insights into aah framework</label>
     <hr>
     <ul>
-      {{ import "docs_insight_links.html" . }}
+      {{ import "docs_insight_links.html" . -}}
     </ul>
   </div>
   {{- end }}

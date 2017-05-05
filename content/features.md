@@ -86,6 +86,18 @@ aah framework supports flexible easy to [configure static files](https://docs.aa
   * Easy to build and deploy [aah application binary](https://docs.aahframework.org/aah-application-binary.html).
   * Cross compile build is supported (I'm not doing much expect recognizing cross compile build requested and setting values appropriately, rest Go does it for you).
 
+### Essentials Library
+aah framework provides go library with lot of useful helper/util methods on following areas. It helps to increase your productivity instead of re-inventing a wheel. Refer [godoc](https://godoc.org/aahframework.org/essentials.v0).
+
+  * filepath
+  * GUID (Globally Unique Identifier)
+  * Crypto random string, Math random string, random byte generation at fixed length
+  * go
+  * io
+  * os
+  * reflect
+  * string
+  * archive (zip)
 
 ## Upcoming Features
 

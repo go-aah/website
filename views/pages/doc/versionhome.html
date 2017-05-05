@@ -27,26 +27,23 @@
                 <h3>Insights into aah framework</h3>
                 <hr>
                 <ul class="docs-li-small">
-                  {{ import "docs_insight_links.html" . }}
+                  {{ import "docs_insight_links.html" . -}}
                 </ul>
               </div>
               <div class="col-xs-6 col-md-6">
                 <h3>Framework documentation</h3>
                 <hr>
                 <ul class="docs-li-small">
-                  {{ import "docs_guide_links.html" . }}
+                  {{ import "docs_guide_links.html" . -}}
                 </ul>
               </div>
             </div>
 
         </div>
-      </div>
-      <!-- /page content -->
-      <!-- sidebar nav -->
-      <div class="col-xs-6 col-md-3">
-        {{ import "docs_sidebar.html" . }}
-      </div>
-      <!-- /sidebar nav -->
+      </div> <!-- /page content -->
+      <div class="col-xs-6 col-md-3"> <!-- sidebar nav -->
+        {{ import "docs_sidebar.html" . -}}
+      </div> <!-- /sidebar nav -->      
     </div>
   </div>
 {{- end }}

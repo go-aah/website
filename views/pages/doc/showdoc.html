@@ -19,9 +19,19 @@
       <div class="col-xs-12 col-md-9">
         <div class="row docs-page-content">
           <div class="row">
-            {{ if .Article.IsContent }}
+            {{ if .LatestRelease -}}
+            <div id="docEditBtn" class="pull-right docs-edit-btn">
+              <a href="{{ .DocEditURL | safeHTML }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Doc</a>
+            </div>
+            {{ end -}}
+            {{ if .Article.IsContent -}}
             {{ safeHTML .Article.Content }}
-            {{ end }}
+            {{ end -}}
+            {{ if .LatestRelease -}}
+            <div id="docEditBtn" class="pull-right docs-edit-btn">
+              <a href="{{ .DocEditURL | safeHTML }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Doc</a>
+            </div>
+            {{ end -}}
           </div>
         </div>
       </div>
