@@ -8,16 +8,17 @@ List of feature sets provided by aah framework.
 
 ### Server
   * HTTP
-  * HTTPS [config reference](https://docs.aahframework.org/app-config.html#section-ssl)
-      * HTTP/2, optionally you can disable using configuration.
+  * HTTPS [refer config](https://docs.aahframework.org/app-config.html#section-ssl)
+      * HTTP/2, can be disabled using configuration.
       * Certificate File and Key File.
       * [Let's Encrypt CA](https://docs.aahframework.org/app-config.html#section-lets-encrypt) - automatic install and serve certificates.
   * UNIX Socket
   * [Server Extension Points](https://docs.aahframework.org/server-extension.html) and [Request Lifecycle](https://docs.aahframework.org/request-life-cycle.html).
   * `go1.8` Graceful shutdown support.
+  * Gzip Compression.
 
 ### Configuration
-aah framework uses [forge syntax](https://docs.aahframework.org/configuration.html) developed by [@brettlangdon](https://github.com/brettlangdon") similar to HOCON syntax, not 100%. Enhanced by author of aah framework [@jeevatkm](https://github.com/jeevatkm) for application, routes, project, security, i18n config files.
+aah framework uses [forge syntax](https://docs.aahframework.org/configuration.html) developed by [@brettlangdon](https://github.com/brettlangdon") very similar to HOCON syntax and not 100%. Enhanced by author of aah framework [@jeevatkm](https://github.com/jeevatkm) for application, routes, project, security, i18n config files.
 
   * Environment profile is supported. For e.g: dev, qa, prod, etc.
   * Feel free organize your config files as per need and use case with `include` reference.  
@@ -84,10 +85,10 @@ aah framework supports flexible easy to [configure static files](https://docs.aa
 
 ### Easy to use Application Binary
   * Easy to build and deploy [aah application binary](https://docs.aahframework.org/aah-application-binary.html).
-  * Cross compile build is supported (I'm not doing much expect recognizing cross compile build requested and setting values appropriately, rest Go does it for you).
+  * Cross compile build is supported (I'm not doing much except recognizing cross compile build request and setting  appropriate values then Go lang does it for you).
 
 ### Essentials Library
-aah framework provides go library with lot of useful helper/util methods on following areas. It helps to increase your productivity instead of re-inventing a wheel. Refer [godoc](https://godoc.org/aahframework.org/essentials.v0).
+aah framework provides go library comes with lot of useful helper/util methods in the following areas. It helps to increase your productivity instead of reinventing the wheel. Refer [godoc](https://godoc.org/aahframework.org/essentials.v0).
 
   * filepath
   * GUID (Globally Unique Identifier)
