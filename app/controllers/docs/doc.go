@@ -3,6 +3,7 @@ package docs
 import (
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"path"
 	"path/filepath"
 
@@ -47,6 +48,12 @@ func (d *Doc) VersionHome() {
 	version := d.Req.Params.PathValue("version")
 	if !ess.IsSliceContainsString(releases, version) {
 		switch ess.StripExt(version) {
+		case "favicon":
+			data, _ := ioutil.ReadFile(filepath.Join(aah.AppBaseDir(), "static", "img", version))
+			d.Reply().Bytes("image/x-icon", data)
+		case "robots":
+			data, _ := ioutil.ReadFile(filepath.Join(aah.AppBaseDir(), "static", version))
+			d.Reply().Bytes(ahttp.ContentTypePlainText.Raw(), data)
 		case "godoc":
 			d.GoDoc()
 		case "tutorials":

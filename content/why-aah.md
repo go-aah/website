@@ -30,6 +30,7 @@ Framework capabilities and features empowers engineering and operation/devops te
 
 #### Upcoming - Join community to stay update-to-date!
 * Application Security
+* Auto Binding
 * Input Validation and Sanitation
 * Minify HTML, JS, CSS
 * Database Abstraction
