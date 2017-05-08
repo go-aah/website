@@ -33,6 +33,7 @@ Framework capabilities and features empowers engineering and operation/devops te
 * Auto Binding
 * Input Validation and Sanitation
 * Minify HTML, JS, CSS
+* HTTP Cache Control
 * Database Abstraction
 * Rate Limiting
 * Jobs
