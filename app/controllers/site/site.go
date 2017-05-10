@@ -40,18 +40,20 @@ func (s *Site) Content() {
 	// Display the instruction for how to contribute to code.
 	case "contribute-to-code":
 		s.AddViewArg("IsContributeCode", true)
-		s.Reply().HTMLlf("master.html", "contribute-code.html", data)
+		s.Reply().HTMLf("contribute-code.html", data)
 		return
 
 		// Display aah framework instructions to report
 		// security issues privately and the disclosing to public.
 	case "security-vulnerabilities":
-		s.Reply().HTMLlf("master.html", "security-vulnerabilities.html", data)
+		s.Reply().HTMLf("security-vulnerabilities.html", data)
 		return
 
 	// Display aah framework features
 	case "features":
 		s.AddViewArg("IsFeatures", true)
+		s.Reply().HTMLf("features.html", data)
+		return
 
 	// Display why aah framework description
 	case "why-aah":

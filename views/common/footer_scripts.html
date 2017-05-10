@@ -8,6 +8,32 @@
   <script>
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+
+    $('a[href^="#"').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+        && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top - 95 //offsets for fixed header
+          }, 1000);
+          return false;
+        }
+      }
+    });
+
+    // scroll to anchor tag
+    var anchorVal = location.href.split("#")[1];
+    if($(anchorVal)) {
+      var target = $('#'+anchorVal);
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 95 //offset height of header here too.
+        }, 1000);
+        return false;
+      }
+    }
   });
   </script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

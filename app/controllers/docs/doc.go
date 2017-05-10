@@ -44,7 +44,7 @@ func (d *Doc) Index() {
 // VersionHome method Displays the documentation in selected language. Default
 // is English.
 func (d *Doc) VersionHome() {
-	version := d.Req.Params.PathValue("version")
+	version := d.Req.PathValue("version")
 	if !ess.IsSliceContainsString(releases, version) {
 		switch ess.StripExt(version) {
 		case "favicon":
@@ -77,7 +77,7 @@ func (d *Doc) VersionHome() {
 
 // ShowDoc method displays requested documentation page based language and version.
 func (d *Doc) ShowDoc() {
-	version := d.Req.Params.PathValue("version")
+	version := d.Req.PathValue("version")
 	d.AddViewArg("CurrentVersion", version)
 
 	branchName := util.GetBranchName(version)
@@ -85,7 +85,7 @@ func (d *Doc) ShowDoc() {
 		d.AddViewArg("LatestRelease", true)
 	}
 
-	content := d.Req.Params.PathValue("content")
+	content := d.Req.PathValue("content")
 	switch ess.StripExt(util.TrimPrefixSlash(content)) {
 	case "release-notes":
 		d.ReleaseNotes()
@@ -123,7 +123,7 @@ func (d *Doc) Tutorials() {
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
 func (d *Doc) ReleaseNotes() {
-	version := d.Req.Params.PathValue("version")
+	version := d.Req.PathValue("version")
 	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docBasePath)
 	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docBasePath)
 	migrationGuideMdPath := util.FilePath(path.Join(version, "migration-guide.md"), docBasePath)

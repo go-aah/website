@@ -2,10 +2,6 @@ Title: Features
 Desc: Listing of aah framework features and capabilities.
 Keywords: features, feature, aah framework, capabilities
 ---
-# Features
-
-List of feature sets provided by aah framework.
-
 ### Server
   * HTTP
   * HTTPS [refer config](https://docs.aahframework.org/app-config.html#section-ssl)
