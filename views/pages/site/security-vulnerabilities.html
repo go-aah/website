@@ -15,14 +15,14 @@
 
 {{ define "body" -}}
   <div class="container body-content">
-    <div class="row">
+    <!-- <div class="row">
       <h1>Security Vulnerabilities</h1>
       <p>
         To receive all aah framework security announcements is to subscribe to the <a href="{{ config "link.aah.mailling_list_security" }}" target="_blank">aah security list</a>. The mailing list is very low traffic, and receives notifications only after Security reports have been managed by the dev team and fixes are publicly available.
       </p>
-    </div>
+    </div> -->
     <div class="row">
-      <h2>Reporting Vulnerabilities</h2>
+      <h1>Reporting Vulnerabilities</h1>
       <p>
         I strongly encourage people to report such problems to our private security email address first, before disclosing them in a public forum.
       </p>
@@ -32,6 +32,7 @@
     </div>
     <div class="row">
       <h2>Summary</h2>
+      <p>List of security issues addressed with summary.</p>
       <div class="row body-content">
         {{ if .Article.IsContent -}}
         {{ safeHTML .Article.Content }}
