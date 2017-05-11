@@ -115,8 +115,15 @@ func ClearCache() {
 	articleCache = make(map[string]*models.Article)
 }
 
+func clearDocsCache(e *aah.Event) {
+	ClearCache()
+}
+
+func fetchMarkdownConfig(e *aah.Event) {
+	isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
+}
+
 func init() {
-	aah.OnStart(func(e *aah.Event) {
-		isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
-	})
+	aah.OnStart(fetchMarkdownConfig)
+	aah.OnShutdown(clearDocsCache)
 }

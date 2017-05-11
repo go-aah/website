@@ -27,7 +27,7 @@ Framework capabilities and features that empowers engineering and operation/devo
 #### Upcoming - Join the community to stay update-to-date!
 * Application Security
 * Auto Binding
-* Input Validation and Sanitation
+* Input Validation and Sanitization
 * Minify HTML, JS, CSS
 * HTTP Cache Control
 * Database Abstraction

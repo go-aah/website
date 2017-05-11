@@ -158,6 +158,14 @@ func (d *Doc) NotFound(isStatic bool) {
 	d.Reply().HTMLlf("docs.html", "notfound.html", data)
 }
 
+func docsContentRefresh(e *aah.Event) {
+	editURLPrefix = aah.AppConfig().StringDefault("docs.edit_url_prefix", "")
+	releases, _ = aah.AppConfig().StringList("docs.releases")
+	docBasePath = filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
+	_ = ess.MkDirAll(docBasePath, 0755)
+	util.RefreshDocContent()
+}
+
 func init() {
 	aah.AddTemplateFunc(template.FuncMap{
 		"docurlc": func(viewArgs map[string]interface{}, key string) template.HTML {
@@ -176,15 +184,5 @@ func init() {
 		},
 	})
 
-	aah.OnStart(func(e *aah.Event) {
-		editURLPrefix = aah.AppConfig().StringDefault("docs.edit_url_prefix", "")
-		releases, _ = aah.AppConfig().StringList("docs.releases")
-		docBasePath = filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
-		_ = ess.MkDirAll(docBasePath, 0755)
-		util.RefreshDocContent()
-	})
-
-	aah.OnShutdown(func(e *aah.Event) {
-		markdown.ClearCache()
-	})
+	aah.OnStart(docsContentRefresh)
 }
