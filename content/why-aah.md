@@ -23,6 +23,7 @@ Framework capabilities and features that empowers engineering and operation/devo
 * View Engine, Multi Layout and Partial Inheritance
 * Don't Repeat Yourself (DRY), Convention Over Configuration
 * Highly Customizable - option to turn on/off features as per application use case
+* Go naming conventions
 
 #### Upcoming - Join the community to stay update-to-date!
 * Application Security
