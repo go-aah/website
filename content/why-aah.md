@@ -31,6 +31,7 @@ Framework capabilities and features that empowers engineering and operation/devo
 * Input Validation and Sanitization
 * Minify HTML, JS, CSS
 * HTTP Cache Control
+* Dependency Injection (DI)
 * Database Abstraction
 * Jobs
 * Application Metrics
