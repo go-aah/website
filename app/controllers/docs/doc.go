@@ -100,8 +100,7 @@ func (d *Doc) ShowDoc() {
 		return
 	}
 
-	editURL := path.Join(editURLPrefix, ess.StripExt(content)+".md")
-	data := aah.Data{"Article": article, "DocEditURL": editURL}
+	data := aah.Data{"Article": article, "DocFile": ess.StripExt(content) + ".md"}
 	d.Reply().HTMLl("docs.html", data)
 }
 
@@ -181,6 +180,9 @@ func init() {
 		},
 		"absrequrl": func(viewArgs map[string]interface{}) template.URL {
 			return template.URL(fmt.Sprintf("%s://%s%s", viewArgs["Scheme"], viewArgs["Host"], viewArgs["RequestPath"]))
+		},
+		"docediturl": func(docFile string) template.URL {
+			return template.URL(fmt.Sprintf("%s%s", editURLPrefix, docFile))
 		},
 	})
 
