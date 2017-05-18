@@ -1,10 +1,10 @@
 Title: Why aah?
-Desc: Why aah framework? What to expect from aah framework? Rapid Development, Maintainability, Performant, Scalable, etc.
-Keywords: why aah, rapid development, maintainability, performant, scalable, expect from aah
+Desc: Why aah framework? What to expect? Upcoming? Rapid Development, Maintainability, Performant, Scalable, etc.
+Keywords: why aah, rapid development, maintainability, performant, scalable, extensibility, security, configurability, aah framework
 ---
 # Why aah framework?
 
-There are nice minimalistic, micro Go frameworks out there with own set of goals. aah focuses on maintainability, performance, configurability, security and extensibility as application use cases expands. 
+There are nice minimalistic, micro Go frameworks out there with own set of goals. aah focuses on maintainability, performance, configurability, security and extensibility as application use cases expands.
 
 aah framework's goal is to achieve rapid, highly configurable, very small footprint and balanced Go web framework for small, medium, enterprise scale. Developers have to focus on application logic instead of building infrastructure, no need to reinvent the wheel.
 
@@ -15,7 +15,7 @@ aah framework was inspired by Rails, Hapi.js and Revel (I was part of Revel's co
 #### What to expect from aah framework?
 Framework capabilities and features that empowers engineering and operation/devops teams.
 
-* Perfect fit for Web applications and/or RESTful APIs 
+* Perfect fit for Web applications and/or RESTful APIs
 * Flexible Configuration Management
 * Session Management - stateful and stateless
 * Internalization and Localization

@@ -4,8 +4,8 @@ Keywords: features, feature, aah framework, capabilities
 ---
 ### Server
   * HTTP
-  * HTTPS [refer config](https://docs.aahframework.org/app-config.html#section-ssl)
-      * HTTP/2, can be disabled using configuration.
+  * HTTPS [refer to config](https://docs.aahframework.org/app-config.html#section-ssl)
+      * HTTP/2, can be disabled via configuration.
       * Certificate File and Key File.
       * [Let's Encrypt CA](https://docs.aahframework.org/app-config.html#section-lets-encrypt) - automatic install and serve certificates.
   * UNIX Socket
@@ -62,7 +62,7 @@ Simple and efficient [Event Publisher](https://docs.aahframework.org/event-publi
 
 ### Reply Builder
   * Simple, efficient and chained [Reply builder](https://docs.aahframework.org/reply.html) to compose your response.
-  * Supported reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Bytes`, `File`, `FileInline`, `Redirect`, etc.
+  * Supports rich reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Binary`, `FileDownload`, `FileInline`, `Redirect`, etc.
 
 ### Static File Delivery
 aah framework supports flexible and easy to configure [static file](https://docs.aahframework.org/static-files.html) delivery.
@@ -73,9 +73,9 @@ aah framework supports flexible and easy to configure [static file](https://docs
   * All capabilities of `http.ServeContent`.
 
 ### Logger
-  * Simple to use [log library](https://docs.aahframework.org/log-config.html) and its configuration.
+  * Simple to use log library and it's [configuration](https://docs.aahframework.org/log-config.html).
   * Supported Log `Level`'s are `ERROR`, `WARN`, `INFO`, `DEBUG` and `TRACE`.
-  * Multiple log instances are availabe besides the default one.
+  * Multiple log instances are available besides the default one.
   * Out-of-the-box `Console` and `File` receivers are supported, `HTTP/HTTPS` receiver will be available in future releases.
   * Define your custom log message format in the config.
 
@@ -84,7 +84,7 @@ aah framework supports flexible and easy to configure [static file](https://docs
   * Cross compile build is supported (aah is only recognizing cross compile build request and setting the appropriate values, Go lang does the rest for you).
 
 ### Essentials Library
-aah helps to increase your productivity, the framework's go library provides a lot of useful helper/util methods in the following areas: 
+aah helps to increase your productivity, the framework's [essentials](https://godoc.org/aahframework.org/essentials.v0) library provides a lot of useful helper/util methods in the following areas:
 
   * filepath
   * GUID (Globally Unique Identifier)
@@ -95,8 +95,8 @@ aah helps to increase your productivity, the framework's go library provides a l
   * reflect
   * string
   * archive (zip)
-  
-Refer [godoc](https://godoc.org/aahframework.org/essentials.v0).
+
+Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
 
 ## Upcoming Features
 
