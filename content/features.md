@@ -14,31 +14,31 @@ Keywords: features, feature, aah framework, capabilities
   * Gzip Compression.
 
 ### Configuration
-aah framework uses [forge syntax](https://docs.aahframework.org/configuration.html) developed by [@brettlangdon](https://github.com/brettlangdon") very similar to HOCON syntax and not 100%. Enhanced by author of aah framework [@jeevatkm](https://github.com/jeevatkm) for application, routes, project, security, i18n config files.
+aah framework uses an enhanced version of [forge syntax](https://docs.aahframework.org/configuration.html) for application, route, project, security and i18n config files.
 
-  * Environment profile is supported. For e.g: dev, qa, prod, etc.
-  * Feel free organize your config files as per need and use case with `include` reference.  
+  * Environment profiles are supported. For e.g: dev, qa, prod, etc.
+  * Organize your config files as you need, you can always add `include` references.  
 
 ### URL Routing and Reverse Route
-  * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter) by [@julienschmidt](https://github.com/julienschmidt).
+  * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter).
   * Flexible [routes configuration](https://docs.aahframework.org/routes-config.html) for application, [static files](https://docs.aahframework.org/static-files.html) and [namespace/group](https://docs.aahframework.org/routes-config.html#namespace-group-routes).
-  * Supports Domain and Sub-domain.
+  * Supports Domains and Sub-domains.
   * Flexible reverse route URL by `route name`.
   * Access root domain and subdomain reverse routes easily from view templates and application codebase.
-  * Adding Controller with or without sub-package name for routes. So `v1`, `v2`, packages is possible.
+  * Adding Controllers with or without sub-package names for routes. So `v1`, `v2`, sub-packages are possible.
   * Redirect Trailing Slash, Auto Options, and Method Not Allowed.
-  * Custom Not Found option for not found routes.
+  * Custom Not Found options for non found routes.
 
 ### i18n Internalization and Localization
   * [Message files](https://docs.aahframework.org/i18n.html) supported with `Language ID + Region ID` or `Language ID`.
-      * Language ID is as per two-letter `ISO 639-1` standard.
-      * Region ID is as per two-letter `ISO 3166-1` standard.
+      * Language ID follows the two-letter `ISO 639-1` standard.
+      * Region ID follows the two-letter `ISO 3166-1` standard.
   * Default fallback `i18n.default` if request `Locale` is not found.
-  * Message is accessible from View template files as well as application codebase.
-  * Feel free organize your message file with sub-directories.
+  * Messages are accessible from View template files as well as application codebase.
+  * Organize your message files with sub-directories.
 
 ### Session Management
-  * aah framework provides `stateful` and `stateless` HTTP state management. Default is `stateless`. Perfect fit for Web and API application, refer [configuration](https://docs.aahframework.org/security-config.html).
+  * aah framework provides `stateful` and `stateless` HTTP state management. Default is `stateless`. Perfect fit for Web and API application, refer to [configuration](https://docs.aahframework.org/security-config.html).
   * Session data is Signed using HMAC and Encrypted using AES.
   * Out-of-the-box `cookie` and `file` session store is supported.
   * You can easily add your [own session store](https://docs.aahframework.org/session.html).
@@ -48,10 +48,10 @@ aah framework uses [forge syntax](https://docs.aahframework.org/configuration.ht
   * Multiple view layouts for your unique use case.
   * Framework provided [template funcs](https://docs.aahframework.org/template-funcs.html), Plus you can add your own easily.
   * Custom template delimiter for templates.
-  * You can add your own view engine into framework.
+  * You can add your own view engine into the framework.
 
 ### Middleware
-  * Flexible [Middleware](https://docs.aahframework.org/middleware.html) with [Abort](https://docs.aahframework.org/middleware.html#abort-the-middleware-flow) feature and taking control of [response writing](https://docs.aahframework.org/reply.html#done) from framework.
+  * Flexible [Middleware](https://docs.aahframework.org/middleware.html) with [Abort](https://docs.aahframework.org/middleware.html#abort-the-middleware-flow) feature and taking control of [response writing](https://docs.aahframework.org/reply.html#done) within the framework.
   * Bring your `http.Handler`, `http.HandlerFunc` into [aah](https://docs.aahframework.org/middleware.html#bring-go-lang-native-middleware-into-aah).
 
 ### Event Publisher/Emitter
@@ -65,26 +65,26 @@ Simple and efficient [Event Publisher](https://docs.aahframework.org/event-publi
   * Supported reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Bytes`, `File`, `FileInline`, `Redirect`, etc.
 
 ### Static File Delivery
-aah framework supports flexible easy to [configure static files](https://docs.aahframework.org/static-files.html) delivery.
+aah framework supports flexible and easy to configure [static file](https://docs.aahframework.org/static-files.html) delivery.
 
-  * Serve directory and it's subtree files.
-  * Serve individual file.
+  * Serves directory and it's subtree files.
+  * Serves individual files.
   * Directory listing.
   * All capabilities of `http.ServeContent`.
 
 ### Logger
-  * Simple to use [log library and it's configuration](https://docs.aahframework.org/log-config.html).
+  * Simple to use [log library](https://docs.aahframework.org/log-config.html) and its configuration.
   * Supported Log `Level`'s are `ERROR`, `WARN`, `INFO`, `DEBUG` and `TRACE`.
-  * Multiple log instance if you want use beside the default one.
-  * Out-of-the-box `Console` and `File` receiver is supported, `HTTP/HTTPS` receiver will be in upcoming release.
-  * Define your own log message format in the config.
+  * Multiple log instances are availabe besides the default one.
+  * Out-of-the-box `Console` and `File` receivers are supported, `HTTP/HTTPS` receiver will be available in future releases.
+  * Define your custom log message format in the config.
 
 ### Easy to use Application Binary
   * Easy to build and deploy [aah application binary](https://docs.aahframework.org/aah-application-binary.html).
-  * Cross compile build is supported (I'm not doing much except recognizing cross compile build request and setting  appropriate values then Go lang does it for you).
+  * Cross compile build is supported (aah is only recognizing cross compile build request and setting the appropriate values, Go lang does the rest for you).
 
 ### Essentials Library
-aah framework provides go library comes with lot of useful helper/util methods in the following areas. It helps to increase your productivity instead of reinventing the wheel. Refer [godoc](https://godoc.org/aahframework.org/essentials.v0).
+aah helps to increase your productivity, the framework's go library provides a lot of useful helper/util methods in the following areas: 
 
   * filepath
   * GUID (Globally Unique Identifier)
@@ -95,7 +95,9 @@ aah framework provides go library comes with lot of useful helper/util methods i
   * reflect
   * string
   * archive (zip)
+  
+Refer [godoc](https://godoc.org/aahframework.org/essentials.v0).
 
 ## Upcoming Features
 
-Please refer [Roadmap](https://github.com/go-aah/aah/projects/3) for more details.
+Please refer to the [Roadmap](https://github.com/go-aah/aah/projects/3) for more details.
