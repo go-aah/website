@@ -8,7 +8,7 @@ aah focuses on maintainability, performance, configurability, security and exten
 
 aah framework goal is to achieve rapid, highly configurable, very small footprint and balanced Go web framework for small, medium, enterprise scale. Developer have to focus on application logic instead of building infrastructure, reinventing the wheel.
 
-aah framework was inspired by Rails, Hapijs, Spring framework and Revel (I was part of the core-development team for the Revel). The direction and goal is different from Revel.
+aah framework was inspired by Rails, Hapijs and Revel (I was part of the core-development team for the Revel). The direction and goal is different from Revel.
 
 **Read the framework [Features](/features.html) and [Documentation](https://docs.aahframework.org). If it's satisfies your use case then aah framework is for you.**
 
