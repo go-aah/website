@@ -1,10 +1,12 @@
 package docs
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"path"
 	"path/filepath"
+	"strings"
 
 	"aahframework.org/aah.v0"
 	"aahframework.org/ahttp.v0"
@@ -13,6 +15,7 @@ import (
 
 	"github.com/go-aah/website/app/controllers"
 	"github.com/go-aah/website/app/markdown"
+	"github.com/go-aah/website/app/models"
 	"github.com/go-aah/website/app/util"
 )
 
@@ -142,8 +145,33 @@ func (d *Doc) ReleaseNotes() {
 
 // RefreshDoc method to refresh documentation from github
 func (d *Doc) RefreshDoc() {
-	go util.RefreshDocContent()
-	log.Info("Documentation is refresh from GitHub and Cache cleared.")
+	githubEvent := strings.TrimSpace(d.Req.Header.Get("X-Github-Event"))
+	githubDeliveryID := strings.TrimSpace(d.Req.Header.Get("X-Github-Delivery"))
+	if githubEvent != "push" || ess.IsStrEmpty(githubDeliveryID) {
+		log.Warnf("Github event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
+		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		return
+	}
+
+	hubSignature := strings.TrimSpace(d.Req.Header.Get("X-Hub-Signature"))
+	log.Infof("Github Signature: %s", hubSignature)
+	if ess.IsStrEmpty(hubSignature) || !util.IsValidHubSignature(hubSignature, d.Req.Payload) {
+		log.Warnf("Github Invalied Signature: %s", hubSignature)
+		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		return
+	}
+
+	var pushEvent models.GithubPushEvent
+	if err := json.Unmarshal(d.Req.Payload, &pushEvent); err != nil {
+		log.Error(err)
+		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		return
+	}
+
+	log.Infof("Event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
+	go util.RefreshDocContent(pushEvent)
+
+	log.Info("Docs are being refereshed from Github")
 	d.Reply().Text("Docs are being refreshed")
 }
 
@@ -161,8 +189,11 @@ func docsContentRefresh(e *aah.Event) {
 	editURLPrefix = aah.AppConfig().StringDefault("docs.edit_url_prefix", "")
 	releases, _ = aah.AppConfig().StringList("docs.releases")
 	docBasePath = filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
+
 	_ = ess.MkDirAll(docBasePath, 0755)
-	util.RefreshDocContent()
+	util.GitRefresh(releases)
+	go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
+	go markdown.LoadCache(util.ContentBasePath())
 }
 
 func init() {

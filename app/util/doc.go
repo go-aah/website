@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-aah/website/app/markdown"
+	"github.com/go-aah/website/app/models"
 
 	"aahframework.org/aah.v0"
 	"aahframework.org/essentials.v0"
@@ -30,8 +31,36 @@ func GetDocDirPath(version string) string {
 // RefreshDocContent method clone's the GitHub branch doc version wise into
 // local and if already exits it takes a update from GitHub.
 // It clears cache too.
-func RefreshDocContent() {
+func RefreshDocContent(pushEvent models.GithubPushEvent) {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
+	GitRefresh(releases)
+
+	version := pushEvent.BranchName()
+	if version == "master" {
+		version = releases[0]
+	}
+
+	log.Infof("BranchName: %s", version)
+	docDirPath := GetDocDirPath(version)
+	for _, commit := range pushEvent.Commits {
+		log.Infof("CommitID: %s, Message: %s", commit.ID, commit.Message)
+		log.Infof("Modified: %s, Removed: %s", commit.Modified, commit.Removed)
+
+		for _, f := range commit.Modified {
+			mdPath := FilePath(f, docDirPath)
+			markdown.RefreshCacheByFile(mdPath)
+		}
+
+		for _, f := range commit.Removed {
+			mdPath := FilePath(f, docDirPath)
+			markdown.RemoveCacheByFile(mdPath)
+		}
+	}
+}
+
+// GitRefresh method clone's the GitHub branch doc version wise into
+// local and if already exits it takes a update from GitHub.
+func GitRefresh(releases []string) {
 	for _, version := range releases {
 		docDirPath := GetDocDirPath(version)
 		branchName := GetBranchName(version)
@@ -40,9 +69,6 @@ func RefreshDocContent() {
 			log.Error(err)
 		}
 	}
-
-	// Clear markdown cache
-	markdown.ClearCache()
 }
 
 // ContentBasePath method returns the Markdown files base path.

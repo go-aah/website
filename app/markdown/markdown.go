@@ -3,11 +3,14 @@ package markdown
 import (
 	"bufio"
 	"os"
+	"path/filepath"
 	"strings"
+	"sync"
 
 	"github.com/russross/blackfriday"
 
 	"aahframework.org/aah.v0"
+	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
 
 	"github.com/go-aah/website/app/models"
@@ -38,6 +41,7 @@ var (
 	markdownOptions = blackfriday.Options{Extensions: markdownExtensions}
 
 	isCacheEnabled bool
+	mu             = &sync.Mutex{}
 )
 
 // Parse method parsed the markdown content into html using blackfriday library
@@ -86,9 +90,80 @@ func Get(mdPath string) (*models.Article, bool) {
 		}
 	}
 
+	article := getArticle(mdPath)
+	if article.IsContent() && isCacheEnabled {
+		mu.Lock()
+		articleCache[mdPath] = article
+		mu.Unlock()
+	}
+
+	return article, article.IsContent()
+}
+
+// LoadCache methods loads the markdown into cache for given base path.
+func LoadCache(docBasePath string) {
+	var files []string
+	excludes := ess.Excludes{".git", "LICENSE", "README.md"}
+	_ = ess.Walk(docBasePath, func(srcPath string, info os.FileInfo, err error) error {
+		if excludes.Match(filepath.Base(srcPath)) {
+			if info.IsDir() {
+				// excluding directory
+				return filepath.SkipDir
+			}
+			// excluding file
+			return nil
+		}
+
+		if !info.IsDir() {
+			files = append(files, srcPath)
+		}
+		return nil
+	})
+
+	for _, md := range files {
+		RefreshCacheByFile(md)
+	}
+}
+
+// ClearCache method clears the Markdown cache.
+func ClearCache() {
+	if len(articleCache) > 0 {
+		log.Info("Clearing cache")
+	}
+	mu.Lock()
+	articleCache = make(map[string]*models.Article)
+	mu.Unlock()
+}
+
+// RefreshCacheByFile method refereshes the Markdown cache by file.
+func RefreshCacheByFile(mdPath string) {
+	article := getArticle(mdPath)
+	if article != nil && article.IsContent() {
+		mu.Lock()
+		articleCache[mdPath] = article
+		mu.Unlock()
+		log.Infof("Refreshed file: %s", mdPath)
+	} else {
+		log.Warn("Referesh: File not found: %s", mdPath)
+	}
+}
+
+// RemoveCacheByFile method removes the Markdown cache by file.
+func RemoveCacheByFile(mdPath string) {
+	if _, found := articleCache[mdPath]; found {
+		mu.Lock()
+		delete(articleCache, mdPath)
+		mu.Unlock()
+		log.Infof("Removed from cache: %s", mdPath)
+	} else {
+		log.Warn("Remove: File not found: %s", mdPath)
+	}
+}
+
+func getArticle(mdPath string) *models.Article {
 	f, err := os.Open(mdPath)
 	if err != nil {
-		return nil, false
+		return nil
 	}
 
 	var lines []string
@@ -99,20 +174,7 @@ func Get(mdPath string) (*models.Article, bool) {
 
 	article := Parse(lines)
 	article.File = mdPath
-
-	if article.IsContent() && isCacheEnabled {
-		articleCache[mdPath] = article
-	}
-
-	return article, article.IsContent()
-}
-
-// ClearCache method clears the Markdown cache.
-func ClearCache() {
-	if len(articleCache) > 0 {
-		log.Info("Clearing cache")
-	}
-	articleCache = make(map[string]*models.Article)
+	return article
 }
 
 func clearDocsCache(e *aah.Event) {
