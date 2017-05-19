@@ -4,7 +4,7 @@ Keywords: why aah, rapid development, maintainability, performant, scalable, ext
 ---
 # Why aah framework?
 
-There are nice minimalistic, micro Go frameworks out there with own set of goals. aah focuses on maintainability, performance, configurability, security and extensibility as application use cases expands.
+There are nice minimalistic, micro Go frameworks out there with own set of goals. aah focuses on very small footprint,  maintainability, performance, configurability, security and extensibility as application use cases expands.
 
 aah framework's goal is to achieve rapid, highly configurable, very small footprint and balanced Go web framework for small, medium, enterprise scale. Developers have to focus on application logic instead of building infrastructure, no need to reinvent the wheel.
 
