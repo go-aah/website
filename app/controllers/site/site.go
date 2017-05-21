@@ -32,7 +32,7 @@ func (s *Site) Content() {
 	if article, found := markdown.Get(mdPath); found {
 		data["Article"] = article
 	} else {
-		s.NotFound(false)
+		s.NotFound()
 		return
 	}
 
@@ -70,7 +70,7 @@ func (s *Site) Team() {
 }
 
 // NotFound method for unavailable pages on the site.
-func (s *Site) NotFound(isStatic bool) {
+func (s *Site) NotFound() {
 	log.Warnf("Page not found: %s", s.Req.Path)
 	s.Reply().HTMLlf("master.html", "notfound.html", aah.Data{})
 }

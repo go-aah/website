@@ -99,7 +99,7 @@ func (d *Doc) ShowDoc() {
 	mdPath := util.FilePath(docPath, docBasePath)
 	article, found := markdown.Get(mdPath)
 	if !found {
-		d.NotFound(false)
+		d.NotFound()
 		return
 	}
 
@@ -176,7 +176,7 @@ func (d *Doc) RefreshDoc() {
 }
 
 // NotFound method handles not found URLs.
-func (d *Doc) NotFound(isStatic bool) {
+func (d *Doc) NotFound() {
 	log.Warnf("Page not found: %s", d.Req.Path)
 	data := aah.Data{
 		"IsNotFound": true,
