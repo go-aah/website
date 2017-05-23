@@ -53,7 +53,9 @@ func (d *Doc) VersionHome() {
 		case "favicon":
 			d.Reply().ContentType("image/x-icon").File(filepath.Join("img", version))
 		case "robots":
-			d.Reply().ContentType(ahttp.ContentTypePlainText.Raw()).File(version)
+			d.Reply().ContentType(ahttp.ContentTypePlainText.Raw()).File("docs_" + version)
+		case "sitemap":
+			d.Reply().ContentType(ahttp.ContentTypeXML.Raw()).File("docs_" + version)
 		case "godoc":
 			d.GoDoc()
 		case "tutorials":
