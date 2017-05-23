@@ -5,4 +5,4 @@ Keywords: report security vulnerabilities, how to report, vulnerabilities summar
 ## aah v0.x
 
 ### Fixed in v0.5.1
-  * [20170520](https://github.com/go-aah/aah/issues/44) - Possibility of directory traversal vulnerability
+  * [20170520](https://github.com/go-aah/aah/issues/44) - Possibility of directory traversal vulnerability on Static File Delivery. Thanks to [Chris Stockton](https://github.com/cstockton)
