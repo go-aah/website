@@ -77,7 +77,7 @@ func (d *Doc) VersionHome() {
 		"ShowInsightSideNav": false,
 		"CurrentVersion":     version,
 	}
-	d.Reply().HTMLl("docs.html", data)
+	d.Reply().HTMLlf("docs.html", "/doc/versionhome.html", data)
 }
 
 // ShowDoc method displays requested documentation page based language and version.
@@ -106,7 +106,7 @@ func (d *Doc) ShowDoc() {
 	}
 
 	data := aah.Data{"Article": article, "DocFile": ess.StripExt(content) + ".md"}
-	d.Reply().HTMLl("docs.html", data)
+	d.Reply().HTMLlf("docs.html", "/doc/showdoc.html", data)
 }
 
 // GoDoc method display aah framework godoc links
@@ -114,7 +114,7 @@ func (d *Doc) GoDoc() {
 	data := aah.Data{
 		"IsGoDoc": true,
 	}
-	d.Reply().HTMLlf("docs.html", "godoc.html", data)
+	d.Reply().HTMLlf("docs.html", "/doc/godoc.html", data)
 }
 
 // Tutorials method display aah framework tutorials github links or guide.
@@ -122,7 +122,7 @@ func (d *Doc) Tutorials() {
 	data := aah.Data{
 		"IsTutorials": true,
 	}
-	d.Reply().HTMLlf("docs.html", "tutorials.html", data)
+	d.Reply().HTMLlf("docs.html", "/doc/tutorials.html", data)
 }
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
@@ -142,7 +142,7 @@ func (d *Doc) ReleaseNotes() {
 		"WhatsNew":       whatsNew,
 		"MigrationGuide": migrationGuide,
 	}
-	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
+	d.Reply().HTMLlf("docs.html", "/doc/release-notes.html", data)
 }
 
 // RefreshDoc method to refresh documentation from github
@@ -184,7 +184,7 @@ func (d *Doc) NotFound() {
 		"IsNotFound": true,
 	}
 
-	d.Reply().HTMLlf("docs.html", "notfound.html", data)
+	d.Reply().HTMLlf("docs.html", "/doc/notfound.html", data)
 }
 
 func docsContentRefresh(e *aah.Event) {
