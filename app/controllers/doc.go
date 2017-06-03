@@ -1,4 +1,4 @@
-package docs
+package controllers
 
 import (
 	"encoding/json"
@@ -13,7 +13,6 @@ import (
 	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
 
-	"github.com/go-aah/website/app/controllers"
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/models"
 	"github.com/go-aah/website/app/util"
@@ -27,7 +26,7 @@ var (
 
 // Doc struct documentation application controller
 type Doc struct {
-	controllers.App
+	App
 }
 
 // Before method doc brfore interceptor
@@ -36,7 +35,8 @@ func (d *Doc) Before() {
 
 	d.AddViewArg("ShowVersionDocs", true).
 		AddViewArg("ShowInsightSideNav", true).
-		AddViewArg("CodeBlock", true)
+		AddViewArg("CodeBlock", true).
+		AddViewArg("ShowVersionNo", true)
 }
 
 // Index method is documentation application home page
@@ -77,14 +77,20 @@ func (d *Doc) VersionHome() {
 		"ShowInsightSideNav": false,
 		"CurrentVersion":     version,
 	}
-	d.Reply().HTMLlf("docs.html", "/doc/versionhome.html", data)
+	d.Reply().HTMLl("docs.html", data)
 }
 
 // ShowDoc method displays requested documentation page based language and version.
 func (d *Doc) ShowDoc() {
 	version := d.Req.PathValue("version")
-	d.AddViewArg("CurrentVersion", version)
+	isTutorial := false
+	if version == "tutorial" {
+		version = releases[0] // take the latest version
+		isTutorial = true
+		d.ViewArgs()["ShowVersionNo"] = false
+	}
 
+	d.AddViewArg("CurrentVersion", version)
 	branchName := util.GetBranchName(version)
 	if branchName == "master" {
 		d.AddViewArg("LatestRelease", true)
@@ -97,6 +103,11 @@ func (d *Doc) ShowDoc() {
 		return
 	}
 
+	// if it's add prefix
+	if isTutorial {
+		content = filepath.Join("tutorial", content)
+	}
+
 	docPath := path.Clean(path.Join(version, content))
 	mdPath := util.FilePath(docPath, docBasePath)
 	article, found := markdown.Get(mdPath)
@@ -104,9 +115,8 @@ func (d *Doc) ShowDoc() {
 		d.NotFound()
 		return
 	}
-
 	data := aah.Data{"Article": article, "DocFile": ess.StripExt(content) + ".md"}
-	d.Reply().HTMLlf("docs.html", "/doc/showdoc.html", data)
+	d.Reply().HTMLl("docs.html", data)
 }
 
 // GoDoc method display aah framework godoc links
@@ -114,15 +124,14 @@ func (d *Doc) GoDoc() {
 	data := aah.Data{
 		"IsGoDoc": true,
 	}
-	d.Reply().HTMLlf("docs.html", "/doc/godoc.html", data)
+	d.Reply().HTMLlf("docs.html", "godoc.html", data)
 }
 
 // Tutorials method display aah framework tutorials github links or guide.
 func (d *Doc) Tutorials() {
-	data := aah.Data{
-		"IsTutorials": true,
-	}
-	d.Reply().HTMLlf("docs.html", "/doc/tutorials.html", data)
+	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
+		"ShowVersionNo": false,
+	})
 }
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
@@ -142,7 +151,7 @@ func (d *Doc) ReleaseNotes() {
 		"WhatsNew":       whatsNew,
 		"MigrationGuide": migrationGuide,
 	}
-	d.Reply().HTMLlf("docs.html", "/doc/release-notes.html", data)
+	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
 }
 
 // RefreshDoc method to refresh documentation from github
@@ -184,7 +193,7 @@ func (d *Doc) NotFound() {
 		"IsNotFound": true,
 	}
 
-	d.Reply().HTMLlf("docs.html", "/doc/notfound.html", data)
+	d.Reply().HTMLlf("docs.html", "notfound.html", data)
 }
 
 func docsContentRefresh(e *aah.Event) {
@@ -194,8 +203,11 @@ func docsContentRefresh(e *aah.Event) {
 
 	_ = ess.MkDirAll(docBasePath, 0755)
 	util.GitRefresh(releases)
-	go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
-	go markdown.LoadCache(util.ContentBasePath())
+
+	if aah.AppProfile() == "prod" {
+		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
+		go markdown.LoadCache(util.ContentBasePath())
+	}
 }
 
 func init() {
@@ -215,7 +227,13 @@ func init() {
 			return template.URL(fmt.Sprintf("%s://%s%s", viewArgs["Scheme"], viewArgs["Host"], viewArgs["RequestPath"]))
 		},
 		"docediturl": func(docFile string) template.URL {
-			return template.URL(fmt.Sprintf("%s%s", editURLPrefix, docFile))
+			var pattern string
+			if strings.HasPrefix(docFile, "/") {
+				pattern = "%s%s"
+			} else {
+				pattern = "%s/%s"
+			}
+			return template.URL(fmt.Sprintf(pattern, editURLPrefix, docFile))
 		},
 	})
 

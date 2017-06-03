@@ -1,6 +1,11 @@
 package controllers
 
-import "aahframework.org/aah.v0"
+import (
+	"aahframework.org/aah.v0"
+
+	// adding minifier into website application
+	_ "github.com/aah-cb/minify"
+)
 
 // App struct application controller
 type App struct {
