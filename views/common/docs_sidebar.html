@@ -1,5 +1,5 @@
 <div class="docs-sidebar">
-  {{ if eq (not .IsVersionHome) (not .IsGoDoc) (not .IsTutorials) -}}
+  {{ if .ShowVersionNo -}}
   <div class="docs-version">
     <select id="docs_version" class="selectpicker docs-version-dd" data-style="btn-primary">
       {{ range .Releases -}}
