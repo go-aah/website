@@ -50,6 +50,10 @@ code {
   color: #e25657;
 }
 
+.inherit-color {
+  color: inherit;
+}
+
 .btn-aah-color, .btn-aah-color:focus, .btn-aah-color:hover {
   background-color: #e25657;
   border-color: #e25657;
@@ -108,6 +112,10 @@ code {
     font-size: 12px;
     font-weight: 600;
     color: #676767;
+}
+
+.aah-release-goreq a {
+  font-size: 12px;
 }
 
 .aah-getting-started {
@@ -344,6 +352,10 @@ code {
 
 .tmrgn-15 {
   margin-top: 15px;
+}
+
+.tmrgn-75 {
+  margin-top: 75px;
 }
 
 .footer {

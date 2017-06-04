@@ -91,6 +91,10 @@ func Get(mdPath string) (*models.Article, bool) {
 	}
 
 	article := getArticle(mdPath)
+	if article == nil {
+		return nil, false
+	}
+
 	if article.IsContent() && isCacheEnabled {
 		mu.Lock()
 		articleCache[mdPath] = article

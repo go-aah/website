@@ -11,13 +11,13 @@
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 
-    {{ if .ShowVersionDocs -}}
+    {{ if .ShowVersionNo -}}
     $('#docs_version').selectpicker('val', '{{ pparam . "version" }}');
     $('#docs_version').on('changed.bs.select', function (e) {
       var version = $(e.currentTarget).val();
       redirectToVersion(version);
     });
-    {{- end -}}
+    {{- end }}
     $('a[href^="#"').click(function() {
       if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
         && location.hostname == this.hostname) {

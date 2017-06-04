@@ -12,6 +12,10 @@ function redirectToVersion(version) {
 
   var pathname = window.location.pathname;
   var filename = pathname.substring(pathname.lastIndexOf("/") + 1);
-  targetUrl += '/' + filename;
+  var isVersion = /^v(\d+.\d+)$/.test(filename)
+  if (!isVersion) {
+    targetUrl += '/' + filename;
+  }
+
   window.location.href = targetUrl;
 }
