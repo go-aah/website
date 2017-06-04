@@ -2,7 +2,7 @@ Title: Features
 Desc: Listing of aah framework features and capabilities.
 Keywords: features, feature, aah framework, capabilities
 ---
-### Server
+### Server and Extension Points
   * HTTP
   * HTTPS [refer to config](https://docs.aahframework.org/app-config.html#section-ssl)
       * HTTP/2, can be disabled via configuration.
@@ -11,7 +11,7 @@ Keywords: features, feature, aah framework, capabilities
   * UNIX Socket
   * [Server Extension Points](https://docs.aahframework.org/server-extension.html) and [Request Lifecycle](https://docs.aahframework.org/request-life-cycle.html).
   * `go1.8` Graceful shutdown support.
-  * Gzip Compression.
+  * Automatic Gzip Compression if client supports it.
 
 ### Configuration
 aah framework uses an enhanced version of [forge syntax](https://docs.aahframework.org/configuration.html) for application, route, project, security and i18n config files.
@@ -22,7 +22,7 @@ aah framework uses an enhanced version of [forge syntax](https://docs.aahframewo
 ### URL Routing and Reverse Route
   * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter).
   * Flexible [routes configuration](https://docs.aahframework.org/routes-config.html) for application, [static files](https://docs.aahframework.org/static-files.html) and [namespace/group](https://docs.aahframework.org/routes-config.html#namespace-group-routes).
-  * Supports Domains and Sub-domains.
+  * Supports Domains and Sub-domains. <span class="badge lb-sm">Since v0.6</span> Wildcard subdomain supported. Refer to [tutorial](https://docs.aahframework.org/tutorial/domain-subdomain-and-wildcard-subdomain.html).
   * Flexible reverse route URL by `route name`.
   * Access root domain and subdomain reverse routes easily from view templates and application codebase.
   * Adding Controllers with or without sub-package names for routes. So `v1`, `v2`, sub-packages are possible.
@@ -34,8 +34,9 @@ aah framework uses an enhanced version of [forge syntax](https://docs.aahframewo
       * Language ID follows the two-letter `ISO 639-1` standard.
       * Region ID follows the two-letter `ISO 3166-1` standard.
   * Default fallback `i18n.default` if request `Locale` is not found.
-  * Messages are accessible from View template files as well as application codebase.
+  * Messages are accessible from View template files as well as anywhere in the application codebase.
   * Organize your message files with sub-directories.
+  * Zero coding effect on localizing your application. Refer to [i18n tutorial](https://docs.aahframework.org/tutorial/i18n.html).
 
 ### Session Management
   * aah framework provides `stateful` and `stateless` HTTP state management. Default is `stateless`. Perfect fit for Web and API application, refer to [configuration](https://docs.aahframework.org/security-config.html).
@@ -49,6 +50,7 @@ aah framework uses an enhanced version of [forge syntax](https://docs.aahframewo
   * Framework provided [template funcs](https://docs.aahframework.org/template-funcs.html), Plus you can add your own easily.
   * Custom template delimiter for templates.
   * You can add your own view engine into the framework.
+  * <span class="badge lb-sm">Since v0.6</span> You can use without layout too and take full-control of view rendering via `HTML*` methods.
 
 ### Middleware
   * Flexible [Middleware](https://docs.aahframework.org/middleware.html) with [Abort](https://docs.aahframework.org/middleware.html#abort-the-middleware-flow) feature and taking control of [response writing](https://docs.aahframework.org/reply.html#done) within the framework.
@@ -70,14 +72,22 @@ aah framework supports flexible and easy to configure [static file](https://docs
   * Serves directory and it's subtree files.
   * Serves individual files.
   * Directory listing.
+  * <span class="badge lb-sm">Since v0.6</span> Static files `Cache-Control` by mime types and default one. It gets applied only to `prod` environment profile. Refer to [config](https://docs.aahframework.org/static-files.html#cache-control).
   * All capabilities of `http.ServeContent`.
 
 ### Logger
   * Simple to use log library and it's [configuration](https://docs.aahframework.org/log-config.html).
   * Supported Log `Level`'s are `ERROR`, `WARN`, `INFO`, `DEBUG` and `TRACE`.
-  * Multiple log instances are available besides the default one.
-  * Out-of-the-box `Console` and `File` receivers are supported, `HTTP/HTTPS` receiver will be available in future releases.
+  * You can create multiple log instances besides the default one.
+  * Out-of-the-box `Console` and `File` receivers are supported, `HTTP/HTTPS` receiver `(upcoming)`.
+  * `File` receiver supports `daily` log rotation, etc.
   * Define your custom log message format in the config.
+  * <span class="badge lb-sm">Since v0.6</span> you can bind aah logger to standard Go logger.
+
+### HTML Minify
+
+* <span class="badge lb-sm">Since v0.6</span> Framework provides HTML minify feature, refer to [minify tutorial](https://docs.aahframework.org/tutorial/html-minify.html).
+* HTML minify gets applied only to `prod` environment profile.
 
 ### Easy to use Application Binary
   * Easy to build and deploy [aah application binary](https://docs.aahframework.org/aah-application-binary.html).

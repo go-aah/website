@@ -21,6 +21,8 @@ Framework capabilities and features that empowers engineering and operation/devo
 * Internalization and Localization
 * Event Publisher
 * View Engine, Multi Layout and Partial Inheritance
+* HTML minify, inline JS and CSS <span class="badge lb-xs">since v0.6</span>
+* Static files HTTP cache control <span class="badge lb-xs">since v0.6</span>
 * Don't Repeat Yourself (DRY), Convention Over Configuration
 * Highly Customizable - enable/disable any features as per application's use case
 * Go idiomatic and naming conventions
@@ -29,7 +31,6 @@ Framework capabilities and features that empowers engineering and operation/devo
 * Application Security
 * Auto Binding
 * Input Validation and Sanitization
-* Minify HTML, JS, CSS
 * WebSocket
 * Server Sent Events (SSE)
 * HTTP Cache Control
