@@ -197,14 +197,15 @@ func (d *Doc) NotFound() {
 }
 
 func docsContentRefresh(e *aah.Event) {
-	editURLPrefix = aah.AppConfig().StringDefault("docs.edit_url_prefix", "")
-	releases, _ = aah.AppConfig().StringList("docs.releases")
-	docBasePath = filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
+	cfg := aah.AppConfig()
+	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
+	releases, _ = cfg.StringList("docs.releases")
+	docBasePath = filepath.Join(cfg.StringDefault("docs.dir", ""), "aah-documentation")
 
 	_ = ess.MkDirAll(docBasePath, 0755)
 	util.GitRefresh(releases)
 
-	if aah.AppProfile() == "prod" {
+	if cfg.BoolDefault("markdown.cache", false) {
 		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
 		go markdown.LoadCache(util.ContentBasePath())
 	}
