@@ -298,6 +298,16 @@ code {
   padding-bottom: 3px;
 }
 
+.li-color li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.li-color li a:hover {
+  color: #2780e3;
+  text-decoration: underline;
+}
+
 .docs-sidebar {
   width: 100%;
   padding-left: 20px;
