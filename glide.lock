@@ -1,10 +1,10 @@
 hash: 6f31148273f3f0e8782de5645e669d620ef3bb8a3004c5cca51f1cf903a77c91
-updated: 2017-05-21T14:29:44.294041958-07:00
+updated: 2017-06-07T01:24:27.60779983-07:00
 imports:
 - name: aahframework.org/aah.v0
-  version: 40f36d861e4e685a2c9acb2de62287d39f80d490
+  version: e577358978ee343da0347e3d5e3ddf6a320be794
 - name: aahframework.org/ahttp.v0
-  version: 27e9274212a88857cdaf294d669fb8b883b916ee
+  version: e15ece4bedd71ec9c49e412e4bc6c7681a7a7e5d
 - name: aahframework.org/aruntime.v0
   version: 3368d72836c245d93409bcf73e2eb5e74cf02767
 - name: aahframework.org/config.v0
@@ -18,7 +18,7 @@ imports:
 - name: aahframework.org/i18n.v0
   version: 6089355055bb15109f7f3aefb8efd2a955115d6d
 - name: aahframework.org/log.v0
-  version: 87488f80eafb11d395c11d06e34ff3d66fbd6422
+  version: f32cca084e451e2f811eb2d82bc8cd5636741f66
 - name: aahframework.org/pool.v0
   version: b334c816f1647832a73e84af41c828171b24324c
 - name: aahframework.org/router.v0
@@ -28,13 +28,27 @@ imports:
   subpackages:
   - session
 - name: aahframework.org/view.v0
-  version: cd72e91401942456bb433044e44fd805283bcaa9
+  version: 3f4c1cf783430edeefb8cbdc98f11128f6595318
+- name: github.com/aah-cb/minify
+  version: a611e70269dfffa0d3d9fa85b5e03caa22b4d2a1
 - name: github.com/russross/blackfriday
   version: 0b647d0506a698cca42caca173e55559b12a69f2
 - name: github.com/shurcooL/sanitized_anchor_name
   version: 541ff5ee47f1dddf6a5281af78307d921524bcb5
+- name: github.com/tdewolff/buffer
+  version: df6253e2a2cda5aba1b5d0c59fc5bdf0a98ae192
+- name: github.com/tdewolff/minify
+  version: 2d28d6e43c68537a32f9b835a89d5038ebcb6ec9
+  subpackages:
+  - html
+- name: github.com/tdewolff/parse
+  version: 874ae8f11398b50821e877e5a32c6addaccc699b
+  subpackages:
+  - html
+- name: github.com/tdewolff/strconv
+  version: 3e8091f4417ebaaa3910da63a45ea394ebbfb0e3
 - name: golang.org/x/crypto
-  version: 0fe963104e9d1877082f8fb38f816fcd97eb1d10
+  version: e7ba82683099cae71475961448ab8f903ea77c26
   subpackages:
   - acme
   - acme/autocert
