@@ -47,6 +47,9 @@ func RefreshDocContent(pushEvent models.GithubPushEvent) {
 		log.Infof("Modified: %s, Removed: %s", commit.Modified, commit.Removed)
 
 		for _, f := range commit.Modified {
+			if strings.HasSuffix(f, "LICENSE") || strings.HasSuffix(f, "README.md") {
+				continue
+			}
 			mdPath := FilePath(f, docDirPath)
 			markdown.RefreshCacheByFile(mdPath)
 		}

@@ -20,7 +20,7 @@ Framework capabilities and features that empowers engineering and operation/devo
 * Session Management - stateful and stateless
 * Internalization and Localization
 * Event Publisher
-* View Engine, Multi Layout and Partial Inheritance
+* View Engine, Multi Layout, Multi Template and Partial Inheritance
 * HTML minify, inline JS and CSS <span class="badge lb-xs">since v0.6</span>
 * Static files HTTP cache control <span class="badge lb-xs">since v0.6</span>
 * Don't Repeat Yourself (DRY), Convention Over Configuration
