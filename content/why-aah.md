@@ -12,7 +12,7 @@ aah framework was inspired by Rails, Hapi.js and Revel (I was part of Revel's co
 
 **Read the framework [Features](/features.html) and [Documentation](https://docs.aahframework.org). If it satisfies your use case then aah framework is for you.**
 
-aah framework values Go Idiomatic and ecosystem. Good read [Idiomatic Go](https://dmitri.shuralyov.com/idiomatic-go), [Effective Go](https://golang.org/doc/effective_go.html) and [Reddit](https://www.reddit.com/r/golang/comments/5b2j38/what_is_idiomatic_go/).
+aah framework values Go Idiomatic and ecosystem. Good read [here](https://dmitri.shuralyov.com/idiomatic-go), [here](https://golang.org/doc/effective_go.html) and [here](https://pocketgophers.com/idiomatic-go/).
 
 #### What to expect from aah framework?
 Framework capabilities and features that empowers engineering and operation/devops teams.
