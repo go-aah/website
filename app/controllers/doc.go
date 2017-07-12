@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"aahframework.org/aah.v0"
+	"aahframework.org/aah.v0-unstable"
 	"aahframework.org/ahttp.v0"
 	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
@@ -214,7 +214,7 @@ func docsContentRefresh(e *aah.Event) {
 func init() {
 	aah.AddTemplateFunc(template.FuncMap{
 		"docurlc": func(viewArgs map[string]interface{}, key string) template.HTML {
-			params := viewArgs["RequestParams"].(*ahttp.Params)
+			params := viewArgs["_aahRequestParams"].(*ahttp.Params)
 			version := params.PathValue("version")
 			if !ess.IsSliceContainsString(releases, version) {
 				version = releases[0]
