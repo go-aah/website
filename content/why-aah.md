@@ -10,27 +10,28 @@ aah framework's goal is to achieve rapid, highly configurable, very small footpr
 
 aah framework was inspired by Rails, Hapi.js and Revel (I was part of Revel's core-development team). On the other hand, Revel and aah don't share the same direction or goals.
 
-**Read the framework [Features](/features.html) and [Documentation](https://docs.aahframework.org). If it satisfies your use case then aah framework is for you.**
+**Read the framework [Features](/features.html) and [Documentation]({{aah_docs_domain_url}}). If it satisfies your use case then aah framework is for you.**
 
-aah framework values Go Idiomatic and ecosystem. Good read [here](https://dmitri.shuralyov.com/idiomatic-go), [here](https://golang.org/doc/effective_go.html) and [here](https://pocketgophers.com/idiomatic-go/).
+aah framework values Go idiomatic and ecosystem. Good read [here](https://dmitri.shuralyov.com/idiomatic-go), [here](https://golang.org/doc/effective_go.html) and [here](https://pocketgophers.com/idiomatic-go/).
 
 #### What to expect from aah framework?
 Framework capabilities and features that empowers engineering and operation/devops teams.
 
 * Perfect fit for Web applications and/or RESTful APIs
 * Flexible Configuration Management
+* Security - Authentication and Authorization <span class="badge lb-xs">since v0.7</span>
 * Session Management - stateful and stateless
 * Internalization and Localization
 * Event Publisher
 * View Engine, Multi Layout, Multi Template and Partial Inheritance
 * HTML minify, inline JS and CSS <span class="badge lb-xs">since v0.6</span>
 * Static files HTTP cache control <span class="badge lb-xs">since v0.6</span>
+* Server Access Log <span class="badge lb-xs">since v0.7</span>
 * Don't Repeat Yourself (DRY), Convention Over Configuration
 * Highly Customizable - enable/disable any features as per application's use case
 * Go idiomatic and naming conventions
 
 #### Upcoming - Join the community to stay update-to-date!
-* Application Security
 * Auto Binding
 * Input Validation and Sanitization
 * WebSocket
