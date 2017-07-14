@@ -314,7 +314,7 @@ code {
 }
 
 .docs-version {
-  margin-top: 30px;
+  margin-top: 26px;
   margin-bottom: 20px;
 }
 
@@ -421,4 +421,54 @@ div.gs-snippet {
 
 .gsc-input {
   margin-top: -3px !important;
+}
+
+.vh-sec-hdr {
+  height: 35px;
+  background-color: #f9f6f6;
+  margin-top: 3%;
+  padding-left: 7px;
+}
+
+.vh-sec-hdr h4 {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.9em;
+  font-size: 110%;
+}
+
+.vh-sec-content {
+  margin-top: 1%;
+}
+
+.vh-sec-content a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.vh-sec-content a:hover {
+  color: #2780e3;
+}
+
+.vh-sec-content li {
+  padding-bottom: 0;
+}
+
+.vh-sec-content .sub-li li {
+  list-style: none;
+  padding-top: 3px;
+}
+
+.show-doc .vh-sec-hdr {
+  height: 25px;
+}
+
+.show-doc .vh-sec-hdr h4 {
+  line-height: 1.5em;
+  font-size: 100%;
+}
+
+.docs-dev-support .vh-sec-content li {
+  text-align: center;
 }
