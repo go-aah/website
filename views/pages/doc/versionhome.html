@@ -23,20 +23,103 @@
             <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah web framework for Go</a>.</p>
             <p>aah framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version major and minor releases since first public release v0.5.</p>
             <div class="row">
-              <div class="col-xs-6 col-md-6 no-lpad">
-                <h3>Insights into aah framework</h3>
-                <hr>
-                <ul class="docs-li-small li-color">
-                  {{ import "docs_insight_links.html" . -}}
-                </ul>
+              {{ import "docs_dev_support.html" . -}}
+
+              <div class="vh-group">
+                <div class="vh-sec-hdr">
+                  <h4>Insights into aah framework</h4>
+                </div>
+                <div class="row vh-sec-content">
+                  <div class="col-xs-6 col-md-6">
+                    <ul class="list-unstyled">
+                      <li><a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a></li>
+                      <li><a href="{{ docurlc . "docs.anatomy" }}">Anatomy - aah application</a></li>
+                      <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
+                      <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
+                      <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
+                      <li><a href="{{ docurlc . "docs.security_terminology" }}">Security Terminology</a></li>
+                      <li><a href="{{ docurlc . "docs.security_design" }}">Security Design</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                    <ul class="list-unstyled">
+                      <li><a href="{{ docurlc . "docs.rest_api_versioning" }}">RESTful API Versioning</a></li>
+                      <li><a href="{{ docurlc . "docs.pooling" }}">Pooling</a></li>
+                      <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
+                      <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div class="col-xs-6 col-md-6">
-                <h3>Framework documentation</h3>
-                <hr>
-                <ul class="docs-li-small li-color">
-                  {{ import "docs_guide_links.html" . -}}
-                </ul>
+
+              <div class="vh-group">
+                <div class="vh-sec-hdr">
+                  <h4>Framework documentation</h4>
+                </div>
+                <div class="row vh-sec-content">
+                  <div class="col-xs-4 col-md-4">
+                    <ul class="list-unstyled">
+                      <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
+                      <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
+                      <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
+                      <li class="list-style-none"><ul class="sub-li">
+                        <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extension</a></li>
+                      </ul></li>
+                      <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
+                      <li class="list-style-none"><ul class="sub-li">
+                        <li><a href="{{ docurlc . "docs.app_config" }}">App Config</a></li>
+                        <li><a href="{{ docurlc . "docs.routes_config" }}">Routes Config</a></li>
+                        <li><a href="{{ docurlc . "docs.security_config" }}">Security Config</a></li>
+                        <li><a href="{{ docurlc . "docs.log_config" }}">Log Config</a></li>
+                      </ul></li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-4 col-md-4">
+                    <ul class="list-unstyled">
+                      <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter/Publisher</a></li>
+                      <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
+                      <li><a href="{{ docurlc . "docs.controllers" }}">Controllers</a></li>
+                      <li class="list-style-none"><ul class="sub-li">
+                        <li><a href="{{ docurlc . "docs.interceptors" }}">Interceptors</a></li>
+                      </ul></li>
+                      <li><a href="#">Authentication</a></li>
+                      <li><a href="#">Authorization</a></li>
+                      <li class="list-style-none"><ul class="sub-li">
+                        <li><a href="#">Permissions</a></li>
+                      </ul></li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-4 col-md-4">
+                    <ul class="list-unstyled">
+                      <li><a href="{{ docurlc . "docs.reply" }}">Reply Builder</a></li>
+                      <li><a href="{{ docurlc . "docs.middleware" }}">Middleware</a></li>
+                      <li><a href="{{ docurlc . "docs.views" }}">Views</a></li>
+                      <li class="list-style-none"><ul class="sub-li">
+                        <li><a href="{{ docurlc . "docs.template_funcs" }}">Template Functions</a></li>
+                      </ul></li>
+                      <li><a href="{{ docurlc . "docs.i18n" }}">I18n</a></li>
+                      <li><a href="{{ docurlc . "docs.session" }}">Session</a></li>
+                      <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+
+              <div class="vh-group">
+                <div class="vh-sec-hdr">
+                  <h4>Deployment &amp; Operational</h4>
+                </div>
+                <div class="vh-sec-content">
+                  <div class="col-xs-6 col-md-6">
+                    <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.aah_application_binary" }}">Application Binary</a></li>
+                    <li><a href="{{ docurlc . "docs.deployment" }}">Deployment</a></li>
+                    <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
+                  </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
             </div>
 
         </div>

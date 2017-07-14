@@ -18,7 +18,10 @@
     <div class="row">
       <!-- page content -->
       <div class="col-xs-12 col-md-9">
-        <div class="row docs-page-content">
+        <div class="row docs-page-content show-doc">
+          <div class="row">
+            {{ import "docs_dev_support.html" . -}}
+          </div>
           <div class="row">
             {{ if .LatestRelease -}}
             <div id="docEditBtn" class="pull-right docs-edit-btn">
