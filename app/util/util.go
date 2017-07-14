@@ -9,7 +9,7 @@ import (
 	"os/exec"
 	"strings"
 
-	aah "aahframework.org/aah.v0"
+	aah "aahframework.org/aah.v0-unstable"
 	"aahframework.org/log.v0"
 )
 

@@ -214,7 +214,7 @@ func docsContentRefresh(e *aah.Event) {
 func init() {
 	aah.AddTemplateFunc(template.FuncMap{
 		"docurlc": func(viewArgs map[string]interface{}, key string) template.HTML {
-			params := viewArgs["_aahRequestParams"].(*ahttp.Params)
+			params := viewArgs[aah.KeyViewArgRequestParams].(*ahttp.Params)
 			version := params.PathValue("version")
 			if !ess.IsSliceContainsString(releases, version) {
 				version = releases[0]

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"aahframework.org/aah.v0"
+	"aahframework.org/aah.v0-unstable"
 
 	// adding minifier into website application
 	_ "github.com/aah-cb/minify"
