@@ -4,7 +4,9 @@ Keywords: credits, website, third party library/tools, thank you, thanks
 ---
 # Credits
 
-aahframework.org website was made possible by the following third party tools and libraries. I'm very thankful for their efforts and time.
+## aahframework.org website
+
+Official website made possible by the following third party tools and libraries. I'm very thankful for their efforts & time.
 
 * aah logo designed using [GIMP](https://www.gimp.org)
 * aah logo font "TimeBurner" is deigned by [NimaVisual](http://www.fontspace.com/profile/NimaVisual)
@@ -14,3 +16,17 @@ aahframework.org website was made possible by the following third party tools an
     - Icons [Font Awesome](http://fontawesome.io/)
     - Markdown rendering by [Blackfriday](https://github.com/russross/blackfriday)
     - Language syntax highlighting by [prism.js](http://prismjs.com/)
+
+
+## Third Party Libraries used by aah framework
+
+Acknowledgements, I’m very thankful to library authors and their efforts & time.
+
+### Directly Used
+
+  * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter)
+  * [Enhanced version](https://github.com/go-aah/forge) of config library [forge](https://github.com/brettlangdon/forge)
+
+### Indirectly Used
+
+  * [Pluggable HTML Minify](https://github.com/aah-cb/minify) using [tdewolff/minify](https://github.com/tdewolff/minify) library

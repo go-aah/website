@@ -31,12 +31,12 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Custom Not Found options for non found routes.
 
 ### Security - Authentication and Authorization
-  * aah framework focus on flexible and powerful security implementation, easy to use and understand, it is inspired by Shiro security library. So you can design your app secure, stable authentication, authorization, and session management.
-  * Exposes clean and intuitive API that simplifies the developer’s effort to make their application(s) secure.
+  * aah framework focus on flexible and powerful security implementation, easy to use and understand, it was inspired by [Shiro security library](https://shiro.apache.org). You can design your app secure, stable authentication, authorization, and session management.
+  * Exposes clean and intuitive API that simplifies the developer's effort to make their application(s) secure.
   * Terminology - Security can be really confusing because of the terminology used. To make life easier by clarifying some core concepts, so you understand how they’re reflected in the aah framework. Refer to [terminology]({{aah_docs_domain_url}}/security-terminology.html).
   * aah security design goals are simplify application security by being intuitive and easy to use. Refer to [security design details]({{aah_docs_domain_url}}/security-design.html).
-  * Highlights - [Authentication](#), [Authorization](#), [Session Management](#security-session-management)
-  * Very flexible, you can implement Role based or Permission based or Role and Permission based secured application.
+  * Highlights - [Authentication]({{aah_docs_domain_url}}/authentication.html), [Authorization]({{aah_docs_domain_url}}/authorization.html), [Session Management](#security-session-management)
+  * Very flexible, you can implement Role based or Permission based or Role and [Permission]({{aah_docs_domain_url}}/security-permissions.html) based secured application.
   * Out-of-the-box aah framework supports following auth schemes - `Form Auth`, `Basic Auth` and `API Auth`.
   * Caching **`upcoming`**
 
