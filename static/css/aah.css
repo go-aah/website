@@ -191,6 +191,10 @@ code {
   z-index: 100;
 }
 
+.alert-info-light {
+  background-color: #8e58a9;
+}
+
 .body-content {
   padding-top: 25px;
   padding-left: 15px;
@@ -230,11 +234,11 @@ code {
 }
 
 .body-content h4, .docs-body-content h4 {
-  font-size: 95%;
+  font-size: 100%;
 }
 
 .body-content h5, .docs-body-content h5 {
-  font-size: 80%;
+  font-size: 95%;
 }
 
 .body-content .col-lg-6, .docs-body-content .col-lg-6 {
@@ -466,7 +470,6 @@ div.gs-snippet {
 
 .show-doc .vh-sec-hdr h4 {
   line-height: 1.5em;
-  font-size: 100%;
 }
 
 .docs-dev-support .vh-sec-content li {
