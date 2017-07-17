@@ -18,7 +18,7 @@ Official website made possible by the following third party tools and libraries.
     - Language syntax highlighting by [prism.js](http://prismjs.com/)
 
 
-## Third Party Libraries used by aah framework
+## Go Libraries used by aah framework
 
 Acknowledgements, I’m very thankful to library authors and their efforts & time.
 
