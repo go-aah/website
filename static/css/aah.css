@@ -195,6 +195,16 @@ code {
   background-color: #8e58a9;
 }
 
+.alert-info-blue {
+  background-color: #d9edf7;
+  color: #31708f;
+}
+
+.alert-info-green {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
 .body-content {
   padding-top: 25px;
   padding-left: 15px;
@@ -455,6 +465,10 @@ div.gs-snippet {
   color: #2780e3;
 }
 
+.vh-sec-content ul {
+  list-style-type: none;
+}
+
 .vh-sec-content li {
   padding-bottom: 0;
 }
@@ -463,6 +477,12 @@ div.gs-snippet {
   list-style: none;
   padding-top: 3px;
 }
+
+/*.vh-sec-content ul li:before {
+  content: '-';
+  position: absolute;
+  margin-left: -10px;
+}*/
 
 .show-doc .vh-sec-hdr {
   height: 25px;

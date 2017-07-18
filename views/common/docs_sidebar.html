@@ -18,6 +18,14 @@
       {{ import "docs_guide_links.html" . }}
     </ul>
   </div>
+
+  <div class="row">
+    <label class="docs-sidebar-head">Deployment & Operational</label>
+    <hr>
+    <ul class="li-color">
+      {{ import "docs_guide_ops.html" . }}
+    </ul>
+  </div>
   {{- end }}
 
   {{ if .ShowInsightSideNav -}}
