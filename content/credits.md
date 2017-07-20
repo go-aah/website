@@ -20,13 +20,14 @@ Official website made possible by the following third party tools and libraries.
 
 ## Go Libraries used by aah framework
 
-Acknowledgements, I’m very thankful to library authors and their efforts & time.
+Acknowledgements, I'm very thankful to library authors and their efforts & time.
 
-### Directly Used
+#### Used in org github.com/go-aah
 
   * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter)
   * [Enhanced version](https://github.com/go-aah/forge) of config library [forge](https://github.com/brettlangdon/forge)
+  * [Files & directory watcher](https://github.com/radovskyb/watcher) library - cross platform
 
-### Indirectly Used
+#### Used in org github.com/aah-cb
 
   * [Pluggable HTML Minify](https://github.com/aah-cb/minify) using [tdewolff/minify](https://github.com/tdewolff/minify) library

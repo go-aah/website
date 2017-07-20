@@ -83,7 +83,8 @@ aah framework supports flexible and easy to configure [static file]({{aah_docs_d
   * Serves directory and it's subtree files.
   * Serves individual files.
   * Directory listing.
-  * <span class="badge lb-sm">Since v0.6</span> Static files `Cache-Control` by mime types and default one. It gets applied only to `prod` environment profile. Refer to [config]({{aah_docs_domain_url}}/static-files.html#cache-control).
+  * <span class="badge lb-sm">Since v0.6</span> Static files `Cache-Control` by mime types and default one. It gets applied only to `prod` environment profile. Refer to [documentation]({{aah_docs_domain_url}}/static-files.html#cache-control).
+  * <span class="badge lb-sm">Since v0.7</span> Cache Busting using file name. Refer to [documentation]({{aah_docs_domain_url}}/static-files.html#cache-busting).
   * All capabilities of `http.ServeContent`.
 
 ### Logger
