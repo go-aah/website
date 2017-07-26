@@ -40,10 +40,8 @@ var (
 
 	markdownOptions = blackfriday.Options{Extensions: markdownExtensions}
 
-	isCacheEnabled   bool
-	aahDomainURL     string
-	aahDocsDomainURL string
-	mu               = &sync.Mutex{}
+	isCacheEnabled bool
+	mu             = &sync.Mutex{}
 )
 
 // Parse method parsed the markdown content into html using blackfriday library
@@ -80,8 +78,16 @@ func Parse(lines []string) *models.Article {
 	fileContent := strings.Join(lines[pos:], "\n")
 	htmlRender := blackfriday.HtmlRenderer(markdownHTMLFlags, "", "")
 	content := string(blackfriday.MarkdownOptions([]byte(fileContent), htmlRender, markdownOptions))
+
+	// Dynamica URL placement
+	cfg := aah.AppConfig()
+	aahDomainURL := cfg.StringDefault("markdown.aah_domain_url", "https://aahframework.org")
+	aahDocsDomainURL := cfg.StringDefault("markdown.aah_docs_domain_url", "https://docs.aahframework.org")
+	aahGitbuhIssueURL := cfg.StringDefault("link.aah.github_issues", "https://github.com/go-aah/aah/issues")
 	content = strings.Replace(content, "{{aah_domain_url}}", aahDomainURL, -1)
 	content = strings.Replace(content, "{{aah_docs_domain_url}}", aahDocsDomainURL, -1)
+	content = strings.Replace(content, "{{aah_github_issues_url}}", aahGitbuhIssueURL, -1)
+
 	article.Content = content
 
 	return article
@@ -191,10 +197,7 @@ func clearDocsCache(e *aah.Event) {
 }
 
 func fetchMarkdownConfig(e *aah.Event) {
-	cfg := aah.AppConfig()
-	isCacheEnabled = cfg.BoolDefault("markdown.cache", false)
-	aahDomainURL = cfg.StringDefault("markdown.aah_domain_url", "https://aahframework.org")
-	aahDocsDomainURL = cfg.StringDefault("markdown.aah_docs_domain_url", "https://docs.aahframework.org")
+	isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
 }
 
 func init() {

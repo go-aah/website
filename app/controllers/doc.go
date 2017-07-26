@@ -83,8 +83,15 @@ func (d *Doc) VersionHome() {
 // ShowDoc method displays requested documentation page based language and version.
 func (d *Doc) ShowDoc() {
 	version := d.Req.PathValue("version")
+	content := d.Req.PathValue("content")
+
 	isTutorial := false
 	if version == "tutorial" {
+		if content == "/i18n.html" {
+			d.Reply().Redirect("/tutorial/i18n-url-query-param.html")
+			return
+		}
+
 		version = releases[0] // take the latest version
 		isTutorial = true
 		d.ViewArgs()["ShowVersionNo"] = false
@@ -96,7 +103,6 @@ func (d *Doc) ShowDoc() {
 		d.AddViewArg("LatestRelease", true)
 	}
 
-	content := d.Req.PathValue("content")
 	switch ess.StripExt(util.TrimPrefixSlash(content)) {
 	case "release-notes":
 		d.ReleaseNotes()

@@ -36,9 +36,9 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Terminology - Security can be really confusing because of the terminology used. To make life easier by clarifying some core concepts, so you understand how they’re reflected in the aah framework. Refer to [terminology]({{aah_docs_domain_url}}/security-terminology.html).
   * aah security design goals are simplify application security by being intuitive and easy to use. Refer to [security design details]({{aah_docs_domain_url}}/security-design.html).
   * Highlights - [Authentication]({{aah_docs_domain_url}}/authentication.html), [Authorization]({{aah_docs_domain_url}}/authorization.html), [Session Management](#security-session-management)
-  * Very flexible, you can implement Role based or Permission based or Role and [Permission]({{aah_docs_domain_url}}/security-permissions.html) based secured application.
-  * Out-of-the-box aah framework supports following auth schemes - `Form Auth`, `Basic Auth` and `API Auth`.
-  * Caching **`upcoming`**
+  * Very flexible, you can implement Role based or Permission based or Role and [Permissions]({{aah_docs_domain_url}}/security-permissions.html) based secured application.
+  * Out-of-the-box aah framework supports following auth schemes - `Form Auth`, `Basic Auth` and `Generic Auth`.
+  * You can define one or more `Auth Scheme` for your application and can be mapped per route basis.
 
 ### Security - Session Management
   * aah framework provides `stateful` and `stateless` HTTP state management. Default is `stateless`. It is perfect fit for Web and API application, refer to [security configuration]({{aah_docs_domain_url}}/security-config.html).
@@ -120,3 +120,5 @@ aah helps to increase your productivity, the framework's [essentials](https://go
   * archive (zip)
 
 Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
+
+<center>Happy coding! Spread the word of aah web framework for Go, Thank you!</center>
