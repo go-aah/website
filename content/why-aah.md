@@ -4,13 +4,13 @@ Keywords: why aah, rapid development, maintainability, performant, scalable, ext
 ---
 # Why aah framework?
 
-There are nice minimalist, micro, Go frameworks out there with own set of goals. aah focuses on very small footprint,  maintainability, performance, configurability, security and extensibility as application use cases expands.
+There are nice minimalist, micro, Go frameworks out there with own set of goals. aah focuses on very small footprint, security, maintainability, performance, configurability and extensibility as application use cases expands.
 
-aah framework's goal is to achieve rapid, highly configurable, very small footprint and balanced Go web framework for small, medium, enterprise scale. Developers have to focus on application logic instead of building infrastructure, no need to reinvent the wheel.
+aah framework's goal is to achieve rapid, highly configurable, very small footprint and balanced Go web framework for small, medium, enterprise scale. You have to focus on application logic instead of building infrastructure, no need to reinvent the wheel.
 
 aah framework was inspired by Rails, Hapi.js and Revel (I was part of Revel's core-development team). On the other hand, Revel and aah don't share the same direction or goals.
 
-**Read the framework [Features](/features.html) and [Documentation]({{aah_docs_domain_url}}). If it satisfies your use case then aah framework is for you.**
+**Read the [Features](/features.html) and [Documentation]({{aah_docs_domain_url}}), it expresses aah is unique among its peers. If it satisfies your use case then aah framework is for you.**
 
 aah framework values Go idiomatic and ecosystem. Good read [here](https://dmitri.shuralyov.com/idiomatic-go), [here](https://golang.org/doc/effective_go.html) and [here](https://pocketgophers.com/idiomatic-go/).
 
@@ -27,9 +27,9 @@ Framework capabilities and features that empowers engineering and operation/devo
 * HTML minify, inline JS and CSS <span class="badge lb-xs">since v0.6</span>
 * Static files HTTP cache control <span class="badge lb-xs">since v0.6</span>
 * Server Access Log <span class="badge lb-xs">since v0.7</span>
-* Don't Repeat Yourself (DRY), Convention Over Configuration
-* Highly Customizable - enable/disable any features as per application's use case
-* Go idiomatic and naming conventions
+* Don't Repeat Yourself (DRY), Conventions, Configurations
+* Highly Customizable & extensible - enable/disable any feature as per application use case
+* Go idiomatic, intuitive API, typical naming conventions
 
 #### Upcoming - Join the community to stay update-to-date!
 * Auto Binding
