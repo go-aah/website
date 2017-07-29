@@ -10,7 +10,7 @@ aah framework's goal is to achieve rapid, highly configurable, very small footpr
 
 aah framework was inspired by Rails, Hapi.js and Revel (I was part of Revel's core-development team). On the other hand, Revel and aah don't share the same direction or goals.
 
-**Read the [Features](/features.html) and [Documentation]({{aah_docs_domain_url}}), it expresses aah is unique among its peers. If it satisfies your use case then aah framework is for you.**
+**Read the [Features](/features.html) and [Documentation]({{aah_docs_domain_url}}), it expresses; aah is unique among its peers. If it satisfies your use case then aah framework is for you.**
 
 aah framework values Go idiomatic and ecosystem. Good read [here](https://dmitri.shuralyov.com/idiomatic-go), [here](https://golang.org/doc/effective_go.html) and [here](https://pocketgophers.com/idiomatic-go/).
 
