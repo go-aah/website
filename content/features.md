@@ -121,4 +121,12 @@ aah helps to increase your productivity, the framework's [essentials](https://go
 
 Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
 
+### Hot-Reload for Development
+
+  * <span class="badge lb-sm">Since v0.7</span> aah provides Hot-Reload for Development purpose.
+  * Fire the `aah run` and forget the terminal. You can focus on your code and refresh the browser to see your changes.
+  * Still lot of improvements can come-in; in-terms of formatted error display, watch files optimization, etc. So keep me posted on your issues. Gradually I will bring improvements :)
+
+
+
 <center>**Happy coding! Spread the word of aah web framework for Go, Thank you!**</center>
