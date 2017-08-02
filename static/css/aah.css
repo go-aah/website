@@ -70,6 +70,10 @@ all and (min-width:481px) and (max-width: 568px),
   .docs-version-dd {
     width: 175px !important;
   }
+
+  .aah-banner h1 {
+    font-size: 4.5em;
+  }
 }
 
 @media all and (min-width: 1200px) {
@@ -79,6 +83,10 @@ all and (min-width:481px) and (max-width: 568px),
 
   .docs-version-dd {
     width: 230px !important;
+  }
+
+  .aah-banner h1 {
+    font-size: 5.5em;
   }
 }
 
