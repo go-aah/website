@@ -16,6 +16,7 @@ Official website made possible by the following third party tools and libraries.
     - Icons [Font Awesome](http://fontawesome.io/)
     - Markdown rendering by [Blackfriday](https://github.com/russross/blackfriday)
     - Language syntax highlighting by [prism.js](http://prismjs.com/)
+    - Deep anchor links by [AnchorJS](https://www.bryanbraun.com/anchorjs/)
 
 
 ## Go Libraries used by aah framework

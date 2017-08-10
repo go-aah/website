@@ -4,7 +4,7 @@ About Team - {{ i18n . "page.site.title.suffix" }}
 
 {{ define "meta_tags" -}}
 {{ $pageTitle := printf "About Team - %v " (i18n . "page.site.title.suffix") -}}
-{{ $pageDesc := `Team behind aah framework. Author, Project Lead, Dev Team and Contributors.` -}}
+{{ $pageDesc := `Team behind aah framework. Author, Project Lead and Contributors.` -}}
     <meta name="description" content="{{ $pageDesc }}">
     <meta name="keywords" content="team, about team, aah framework">
     <meta property="og:title" content="{{ $pageTitle }}"/>
@@ -32,13 +32,7 @@ About Team - {{ i18n . "page.site.title.suffix" }}
           <li><a href="{{ config "link.jeeva.go_model_repo" }}">go-model</a> - Robust &amp; Easy to use struct mapper and utility methods.</li>
         </ul>
       </div>
-      <!-- <div class="row">
-        <h3>Development Team</h3>
-        <p>As aah framework grows gradually, more committed people will volunteer.</p>
-        <ul>
-          <li>Jeeva (Github: <a href="{{ config "link.jeeva.github_profile" }}" target="_blank">@jeevatkm</a>)</li>
-        </ul>
-      </div> -->
+
       <div class="row">
         <h3>Contributors</h3>
         {{ $aahOrgUrl := (config "link.aah.github_org") -}}

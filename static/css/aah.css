@@ -32,6 +32,10 @@ all and (min-width:481px) and (max-width: 568px),
     font-size: 3.5em !important;
   }
 
+  .aah-banner h4 {
+    font-size: 13px !important;
+  }
+
   .framework-features {
     margin-left: 15px;
     margin-right: 15px;
@@ -50,6 +54,10 @@ all and (min-width:481px) and (max-width: 568px),
 
   .aah-banner h1 {
     font-size: 3.0em !important;
+  }
+
+  .aah-banner h4 {
+    font-size: 12px !important;
   }
 
   .framework-features {
@@ -88,7 +96,7 @@ all and (min-width:481px) and (max-width: 568px),
   }
 
   .aah-banner h1 {
-    font-size: 5.5em !important;
+    font-size: 5.8em !important;
   }
 }
 
@@ -96,6 +104,10 @@ code {
     color: #292727; /*#272525*/
     /*background-color: rgba(27, 31, 35, 0.05);*/
     background-color: #f5f2f0;
+}
+
+.btn {
+  border-radius: 1px;
 }
 
 .navbar-toggle {
@@ -109,6 +121,10 @@ code {
 
 .aah-color {
   color: #e25657;
+}
+
+.aah-color-imp {
+  color: #e25657 !important;
 }
 
 .inherit-color {
@@ -160,7 +176,7 @@ code {
 .aah-banner h4 {
   font-weight: 600;
   color: #555;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .aah-current-release {
@@ -187,6 +203,7 @@ code {
 
 .aah-getting-started .btn-success {
   font-weight: bold;
+  font-size: 14px;
 }
 
 .aah-social {
@@ -354,6 +371,12 @@ code {
 .page-content {
   border-left: 1px solid #dcdbdb;
   padding-left: 30px;
+}
+
+#docEditBtn a {
+  font-size: 10px;
+  font-weight: bold;
+  padding: 5px;
 }
 
 .docs-page-content {

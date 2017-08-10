@@ -3,8 +3,6 @@ updated: 2017-08-01T11:02:14.481248666-07:00
 imports:
 - name: aahframework.org/aah.v0
   version: 34d34a895dc0cc09d3b6d710fa722fe79e92e1a5
-- name: aahframework.org/aah.v0-unstable
-  version: 971e0672c9568d1ca9d4b6e640825624866917b9
 - name: aahframework.org/ahttp.v0
   version: 4c09a9ece15039bb76afa671efbec5c5e1ec8e38
 - name: aahframework.org/aruntime.v0

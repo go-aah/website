@@ -1,15 +1,16 @@
 {{ $hostUrl := rurl . "host" -}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="{{ $hostUrl }}/assets/js/aah-{{ .AppBuildInfo.Version }}.js" type="text/javascript"></script>
-  <script async defer src="{{ $hostUrl }}/assets/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+  <script src="{{ $hostUrl }}/assets/js/aah-{{ .AppBuildInfo.Version }}.js"></script>
+  <script async defer src="{{ $hostUrl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
   {{ if .CodeBlock -}}
   <script src="{{ $hostUrl }}/assets/js/prism.js"></script>
   {{ end -}}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js"></script>
   <script>
   $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
+    tooltipHandling();
 
     {{ if .ShowVersionNo -}}
     $('#docs_version').selectpicker('val', '{{ pparam . "version" }}');
@@ -18,31 +19,8 @@
       redirectToVersion(version);
     });
     {{- end }}
-    $('a[href^="#"').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-        && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top - 95 //offsets for fixed header
-          }, 1000);
-          return false;
-        }
-      }
-    });
 
-    // scroll to anchor tag
-    var anchorVal = location.href.split("#")[1];
-    if($(anchorVal)) {
-      var target = $('#'+anchorVal);
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top - 95 //offset height of header here too.
-        }, 1000);
-        return false;
-      }
-    }
+    anchorTagHandling();
   });
   </script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

@@ -1,0 +1,18 @@
+{{ define "title" -}}
+Privacy - {{ i18n . "page.site.title.suffix" }}
+{{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageTitle := printf "Privacy - %v " (i18n . "page.site.title.suffix") -}}
+{{ $pageDesc := `Team behind aah framework. Author, Project Lead, Contributors.` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="privacy, aah framework">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
+
+{{ define "body" -}}
+
+{{- end }}

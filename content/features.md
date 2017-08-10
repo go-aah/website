@@ -1,6 +1,6 @@
 Title: Features & Capabilities
 Desc: Listing of features and capabilities provided by aah framework
-Keywords: features, feature, aah framework, capabilities
+Keywords: features, feature, aah framework, capabilities, batteries included, fully loaded
 ---
 ### Server and Extension Points
   * HTTP
