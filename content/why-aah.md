@@ -27,8 +27,9 @@ Framework capabilities and features that empowers engineering and operation/devo
 * HTML minify, inline JS and CSS <span class="badge lb-xs">since v0.6</span>
 * Static files HTTP cache control <span class="badge lb-xs">since v0.6</span>
 * Server Access Log <span class="badge lb-xs">since v0.7</span>
+* Hot-Reload for Development <span class="badge lb-xs">since v0.7</span></li>
 * Don't Repeat Yourself (DRY), Conventions, Configurations
-* Highly Customizable & extensible - enable/disable any feature as per application use case
+* Highly customizable & extensible - enable/disable any feature as per application use case
 * Go idiomatic, intuitive API, typical naming conventions
 
 #### Upcoming - Join the community to stay update-to-date!

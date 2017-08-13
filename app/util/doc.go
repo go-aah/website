@@ -7,7 +7,7 @@ import (
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/models"
 
-	"aahframework.org/aah.v0"
+	"aahframework.org/aah.v0-unstable"
 	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
 )

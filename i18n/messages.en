@@ -17,7 +17,7 @@ page {
   doc {
     title {
       index = "Documentation - aah, the web framework for Go"
-      suffix = "Documentation aah, the web framework for Go"
+      suffix = "Documentation | aah, the web framework for Go"
     }
   }
 }
