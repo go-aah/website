@@ -28,7 +28,7 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Access root domain and subdomain reverse routes easily from view templates and application codebase.
   * Adding Controllers with or without sub-package names for routes. So `v1`, `v2`, sub-packages are possible.
   * Redirect Trailing Slash, Auto Options, and Method Not Allowed.
-  * Custom Not Found options for non found routes.
+  * Custom Not Found handling via [Centralized Error Handler]({{aah_docs_domain_url}}/centralized-error-handler.html).
 
 ### Security - Authentication and Authorization
   * aah framework focus on flexible and powerful security implementation, easy to use and understand, it was inspired by [Shiro security library](https://shiro.apache.org). You can design your application secure, stable with authentication, authorization and session management.
@@ -129,4 +129,4 @@ Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
 
 
 
-<center>**Happy coding! Spread the word of aah web framework for Go, Thank you!**</center>
+<center>**Happy coding! Spread the word of `aah`, the web framework for Go. Thank you!**</center>

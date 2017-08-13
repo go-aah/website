@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"aahframework.org/aah.v0"
+	"aahframework.org/aah.v0-unstable"
 	"aahframework.org/ahttp.v0"
 	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
@@ -24,14 +24,15 @@ var (
 	editURLPrefix string
 )
 
-// Doc struct documentation application controller
-type Doc struct {
-	App
+// DocController struct documentation domain controller
+type DocController struct {
+	AppController
 }
 
 // Before method doc brfore interceptor
-func (d *Doc) Before() {
-	d.App.Before()
+func (d *DocController) Before() {
+	// Execute nested interceptor
+	d.AppController.Before()
 
 	d.AddViewArg("ShowVersionDocs", true).
 		AddViewArg("ShowInsightSideNav", true).
@@ -40,13 +41,13 @@ func (d *Doc) Before() {
 }
 
 // Index method is documentation application home page
-func (d *Doc) Index() {
+func (d *DocController) Index() {
 	d.Reply().Redirect(d.ReverseURL("docs.version_home", releases[0]))
 }
 
 // VersionHome method Displays the documentation in selected language. Default
 // is English.
-func (d *Doc) VersionHome() {
+func (d *DocController) VersionHome() {
 	version := d.Req.PathValue("version")
 	if !ess.IsSliceContainsString(releases, version) {
 		switch ess.StripExt(version) {
@@ -81,7 +82,7 @@ func (d *Doc) VersionHome() {
 }
 
 // ShowDoc method displays requested documentation page based language and version.
-func (d *Doc) ShowDoc() {
+func (d *DocController) ShowDoc() {
 	version := d.Req.PathValue("version")
 	content := d.Req.PathValue("content")
 
@@ -126,7 +127,7 @@ func (d *Doc) ShowDoc() {
 }
 
 // GoDoc method display aah framework godoc links
-func (d *Doc) GoDoc() {
+func (d *DocController) GoDoc() {
 	data := aah.Data{
 		"IsGoDoc": true,
 	}
@@ -134,14 +135,14 @@ func (d *Doc) GoDoc() {
 }
 
 // Tutorials method display aah framework tutorials github links or guide.
-func (d *Doc) Tutorials() {
+func (d *DocController) Tutorials() {
 	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
 		"ShowVersionNo": false,
 	})
 }
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
-func (d *Doc) ReleaseNotes() {
+func (d *DocController) ReleaseNotes() {
 	version := d.Req.PathValue("version")
 	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docBasePath)
 	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docBasePath)
@@ -161,7 +162,7 @@ func (d *Doc) ReleaseNotes() {
 }
 
 // RefreshDoc method to refresh documentation from github
-func (d *Doc) RefreshDoc() {
+func (d *DocController) RefreshDoc() {
 	githubEvent := strings.TrimSpace(d.Req.Header.Get("X-Github-Event"))
 	githubDeliveryID := strings.TrimSpace(d.Req.Header.Get("X-Github-Delivery"))
 	if githubEvent != "push" || ess.IsStrEmpty(githubDeliveryID) {
@@ -193,13 +194,11 @@ func (d *Doc) RefreshDoc() {
 }
 
 // NotFound method handles not found URLs.
-func (d *Doc) NotFound() {
+func (d *DocController) NotFound() {
 	log.Warnf("Page not found: %s", d.Req.Path)
-	data := aah.Data{
+	d.Reply().HTMLlf("docs.html", "notfound.html", aah.Data{
 		"IsNotFound": true,
-	}
-
-	d.Reply().HTMLlf("docs.html", "notfound.html", data)
+	})
 }
 
 func docsContentRefresh(e *aah.Event) {

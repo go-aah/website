@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Jeevanandam M.">
+    <meta name="contact" content="jeeva@myjeeva.com">
+    <meta name="copyright" content="Jeevanandam M. - https://github.com/jeevatkm">
+    <meta name="distribution" content="global">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#ffffff">
+    <title>{{ .Error.Message }} - aah, the web framework for Go</title>
+    {{ import "head_tags.html" . -}}
+  </head>
+  <body>{{ if eq .EnvProfile "prod" -}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2RCRQR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->{{- end }}
+    {{ import "header.html" . -}}

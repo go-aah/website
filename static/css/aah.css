@@ -233,6 +233,12 @@ code {
   border-top-left-radius: 1px;
 }
 
+.hr-dev-support {
+  margin-bottom: 0;
+  margin-top: 30px;
+  border-top: 1px solid #f9f6f6;
+}
+
 .framework-summary {
   padding: 15px 15px 0 15px;
   text-align: justify;
@@ -453,6 +459,12 @@ code {
   font-size: 20px;
 }
 
+.lb-drop-color {
+  background-color: #fb0305;
+  border-color: #fb0305;
+  color: #fff;
+}
+
 .list-style-none {
   list-style: none;
   margin-left: -15px;
@@ -584,4 +596,17 @@ div.gs-snippet {
 
 .docs-dev-support .vh-sec-content li {
   text-align: center;
+}
+
+.page-center-msg {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 50vh;
+}
+
+.non-h-lbl {
+  font-weight: bolder;
+  font-size: 2em;
 }
