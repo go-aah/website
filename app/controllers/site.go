@@ -1,38 +1,46 @@
 package controllers
 
 import (
-	"aahframework.org/aah.v0"
+	"net/http"
+
+	"aahframework.org/aah.v0-unstable"
 	"aahframework.org/log.v0"
 
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/util"
 )
 
-// Site struct application controller
-type Site struct {
-	App
+// SiteController struct root domain controller
+type SiteController struct {
+	AppController
 }
 
 // Index method is application home page
-func (s *Site) Index() {
+func (s *SiteController) Index() {
 	s.Reply().Ok()
 }
 
 // GetInvolved method display aah framework community and contribution info.
-func (s *Site) GetInvolved() {
-	data := aah.Data{"CodeBlock": true, "IsGetInvolved": true}
-	s.Reply().HTML(data)
+func (s *SiteController) GetInvolved() {
+	s.Reply().HTML(aah.Data{
+		"CodeBlock":     true,
+		"IsGetInvolved": true,
+	})
 }
 
 // Content method display the content based on request path.
-func (s *Site) Content() {
+func (s *SiteController) Content() {
 	mdPath := util.FilePath(s.Req.Path, util.ContentBasePath())
 	data := aah.Data{"CodeBlock": true}
 
 	if article, found := markdown.Get(mdPath); found {
 		data["Article"] = article
 	} else {
-		s.NotFound()
+		log.Warnf("Page not found: %s", s.Req.Path)
+		s.Reply().Error(&aah.Error{
+			Code:    http.StatusNotFound,
+			Message: "Not Found",
+		})
 		return
 	}
 
@@ -64,13 +72,14 @@ func (s *Site) Content() {
 }
 
 // Team method display aah framework team info.
-func (s *Site) Team() {
-	data := aah.Data{"CodeBlock": true, "IsTeam": true}
-	s.Reply().HTML(data)
+func (s *SiteController) Team() {
+	s.Reply().HTML(aah.Data{
+		"CodeBlock": true,
+		"IsTeam":    true,
+	})
 }
 
-// NotFound method for unavailable pages on the site.
-func (s *Site) NotFound() {
-	log.Warnf("Page not found: %s", s.Req.Path)
-	s.Reply().HTMLl("notfound.html", aah.Data{})
+// Privacy method display aahframework.org websit privacy information.
+func (s *SiteController) Privacy() {
+	s.Reply().Ok()
 }
