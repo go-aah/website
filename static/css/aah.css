@@ -107,7 +107,14 @@ code {
 }
 
 .btn {
-  border-radius: 1px;
+  border-radius: 2px;
+}
+
+.badge {
+  background-color: #588cc5;
+  border-radius: 2px;
+  padding-right: 3px;
+  padding-left: 3px;
 }
 
 .navbar-toggle {
@@ -460,8 +467,8 @@ code {
 }
 
 .lb-drop-color {
-  background-color: #fb0305;
-  border-color: #fb0305;
+  background-color: #f11e20;
+  border-color: #f11e20;
   color: #fff;
 }
 

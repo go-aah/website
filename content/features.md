@@ -10,7 +10,8 @@ Keywords: features, feature, aah framework, capabilities, batteries included, fu
       * [Let's Encrypt CA]({{aah_docs_domain_url}}/app-config.html#section-lets-encrypt) - automatic install and serve certificates.
   * UNIX Socket
   * [Server Extension Points]({{aah_docs_domain_url}}/server-extension.html) and [Request Lifecycle]({{aah_docs_domain_url}}/request-life-cycle.html).
-  * `go1.8` Graceful shutdown support.
+  * Custom Server TLS Config refer to [documentation]({{aah_docs_domain_url}}/server.html#custom-tls-config).
+  * `go1.8` Graceful shutdown feature.
   * Automatic Gzip Compression if client supports it.
   * <span class="badge lb-sm">Since v0.7</span> Server Access Log, refer to [documentation]({{aah_docs_domain_url}}/server-access-log.html).
 
@@ -127,6 +128,9 @@ Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
   * Fire the `aah run` and forget the terminal. You can focus on your code and refresh the browser to see your changes.
   * Still lot of improvements can come-in; in-terms of formatted error display, watch files optimization, etc. So keep me posted on your issues. Gradually I will bring improvements :)
 
+### Centralized Error Handling
+
+aah provides centralized error handling for your application. Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
 
 
 <center>**Happy coding! Spread the word of `aah`, the web framework for Go. Thank you!**</center>
