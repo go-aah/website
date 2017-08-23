@@ -45,31 +45,25 @@ func (s *SiteController) Content() {
 		return
 	}
 
+	var viewFile string
 	switch util.CreateKey(s.Req.Path) {
-	// Display the instruction for how to contribute to code.
-	case "contribute-to-code":
-		s.AddViewArg("IsContributeCode", true)
-		s.Reply().HTMLf("contribute-code.html", data)
-		return
-
-		// Display aah framework instructions to report
-		// security issues privately and the disclosing to public.
-	case "security-vulnerabilities":
-		s.Reply().HTMLf("security-vulnerabilities.html", data)
-		return
-
-	// Display aah framework features
 	case "features":
 		s.AddViewArg("IsFeatures", true)
-		s.Reply().HTMLf("features.html", data)
-		return
-
-	// Display why aah framework description
+		viewFile = "features.html"
+	case "security":
+		s.AddViewArg("IsSecurity", true)
+		viewFile = "content.html"
 	case "why-aah":
 		s.AddViewArg("IsWhyAah", true)
+		viewFile = "content.html"
+	case "contribute-to-code":
+		s.AddViewArg("IsContributeCode", true)
+		viewFile = "contribute-code.html"
+	case "security-vulnerabilities":
+		viewFile = "security-vulnerabilities.html"
 	}
 
-	s.Reply().HTML(data)
+	s.Reply().HTMLf(viewFile, data)
 }
 
 // Team method display aah framework team info.

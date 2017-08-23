@@ -30,6 +30,7 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Adding Controllers with or without sub-package names for routes. So `v1`, `v2`, sub-packages are possible.
   * Redirect Trailing Slash, Auto Options, and Method Not Allowed.
   * Custom Not Found handling via [Centralized Error Handler]({{aah_docs_domain_url}}/centralized-error-handler.html).
+  * Max Body Size configuration at route level and global level.
 
 ### Security - Authentication and Authorization
   * aah framework focus on flexible and powerful security implementation, easy to use and understand, it was inspired by [Shiro security library](https://shiro.apache.org). You can design your application secure, stable with authentication, authorization and session management.
@@ -47,6 +48,14 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Out-of-the-box `cookie` and `file` session store is supported.
   * You can easily add your [own session store]({{aah_docs_domain_url}}/session.html).  
 
+### View Engine
+  * Go view engine with [partial inheritance support]({{aah_docs_domain_url}}/views.html) (Default engine).
+  * Multiple view layouts for your unique use case.
+  * Framework provided [template funcs]({{aah_docs_domain_url}}/template-funcs.html), Plus you can add your own easily.
+  * Custom template delimiter for templates.
+  * You can add your own view engine into the framework, refer [here]({{aah_docs_domain_url}}/view.html#adding-user-defined-view-engine-into-aah).
+  * <span class="badge lb-sm">Since v0.6</span> You can use without layout too and take full-control of directory structure `pages/*` along with view rendering via `HTML*` methods.
+
 ### i18n Internalization and Localization
   * [Message files]({{aah_docs_domain_url}}/i18n.html) (aka Translation) supported with `Language ID + Region ID` or `Language ID`.
       * Language ID follows the two-letter `ISO 639-1` standard.
@@ -56,27 +65,42 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Organize your message files with sub-directories as you like.
   * Zero coding efforts on localizing your application via header `Accept-Language`, by [URL Query Parameter]({{aah_docs_domain_url}}/tutorial/i18n-url-query-param.html) or by [Path Parameter]({{aah_docs_domain_url}}/tutorial/i18n-path-param.html).
 
-### View
-  * Go view engine with [partial inheritance support]({{aah_docs_domain_url}}/views.html) (Default engine).
-  * Multiple view layouts for your unique use case.
-  * Framework provided [template funcs]({{aah_docs_domain_url}}/template-funcs.html), Plus you can add your own easily.
-  * Custom template delimiter for templates.
-  * You can add your own view engine into the framework, refer [here]({{aah_docs_domain_url}}/view.html#adding-user-defined-view-engine-into-aah).
-  * <span class="badge lb-sm">Since v0.6</span> You can use without layout too and take full-control of directory structure `pages/*` along with view rendering via `HTML*` methods.
-
 ### Middleware
   * Flexible [Middleware]({{aah_docs_domain_url}}/middleware.html) with [Abort]({{aah_docs_domain_url}}/middleware.html#abort-the-middleware-flow) feature and taking control of [response writing]({{aah_docs_domain_url}}/reply.html#done) within the framework.
   * Bring your `http.Handler`, `http.HandlerFunc` into [aah]({{aah_docs_domain_url}}/middleware.html#bring-go-lang-native-middleware-into-aah).
 
 ### Event Publisher/Emitter
-Simple and efficient [Event Publisher]({{aah_docs_domain_url}}/event-publisher.html) with Asynchronous and Synchronous publish. aah Server extension points built using event publisher.
+Simple and efficient [Event Publisher]({{aah_docs_domain_url}}/event-publisher.html) with Asynchronous and Synchronous publish.
+
+* aah Server extension points built around event publisher.
+* Supports Publish Once mode too.
 
 ### Interceptors
   * aah framework supports [per controller and per action level]({{aah_docs_domain_url}}/interceptors.html) interceptors (`Before`, `After`, `Finally` and `Panic`).
 
+### Secure HTTP Headers
+aah provides application secure headers with many safe defaults for Web and RESTful API application. [Know more about configuration]({{aah_docs_domain_url}}/security-config.html#section-http-header).
+
+  * X-XSS-Protection
+  * X-Content-Type-Options
+  * X-Frame-Options
+  * Referrer-Policy
+  * Strict-Transport-Security  (STS, aka HSTS)
+  * Content-Security-Policy (CSP)
+  * Public-Key-Pins (PKP, aka HPKP)
+  * X-Permitted-Cross-Domain-Policies
+
 ### Reply Builder
   * Simple, efficient and chained [Reply builder]({{aah_docs_domain_url}}/reply.html) to compose your response.
-  * Supports rich reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Binary`, `File`, `FileDownload`, `FileInline`, `Redirect`, etc.
+  * Supports rich reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Binary`, `File`, `FileDownload`, `FileInline`, `Redirect`, Custom Render, etc.
+
+### Centralized Error Handling
+
+<span class="badge lb-sm">Since v0.8</span> aah provides centralized error handling for your application.
+
+* Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
+* Framework propagates all Error responses to Centralized Error Handler, you can control and customized the response.
+
 
 ### Static File Delivery
 aah framework supports flexible and easy to use and configure [static file]({{aah_docs_domain_url}}/static-files.html) delivery.
@@ -128,9 +152,5 @@ Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
   * Fire the `aah run` and forget the terminal. You can focus on your code and refresh the browser to see your changes.
   * Still lot of improvements can come-in; in-terms of formatted error display, watch files optimization, etc. So keep me posted on your issues. Gradually I will bring improvements :)
 
-### Centralized Error Handling
-
-<span class="badge lb-sm">Since v0.8</span> aah provides centralized error handling for your application. Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
-
-
+<br>
 <center>**Happy coding! Spread the word of `aah`, the web framework for Go. Thank you!**</center>

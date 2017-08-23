@@ -30,7 +30,7 @@ function anchorTagHandling() {
     class: 'aah-color-imp',
     icon: '¶'
   };
-  anchors.add();
+  anchors.add().remove('.no-anchor');
 
   $('a[href^="#"').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
