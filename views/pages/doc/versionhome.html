@@ -4,7 +4,7 @@
 
 {{ define "meta_tags" -}}
 {{ $pageTitle := printf "%v %v" (.CurrentVersion) (i18n . "page.doc.title.index") -}}
-{{ $pageDesc := `Everything you need to know about aah web framework for Go. aah framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version release since first public release` -}}
+{{ $pageDesc := `Everything you need to know about aah, the web framework for Go. aah framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version release since first public release` -}}
     <meta name="description" content="{{ $pageDesc }}">
     <meta name="keywords" content="aah documentation, framework documentation, insight into framework, guide">
     <meta property="og:title" content="{{ $pageTitle }}"/>
@@ -20,7 +20,7 @@
       <div class="col-xs-12 col-md-9">
         <div class="row docs-page-content">
             <h1>aah Documentation</h1>
-            <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah web framework for Go</a>.</p>
+            <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah, the web framework for Go</a>.</p>
             <p>aah framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version major and minor releases since first public release <code>v0.5</code>.</p>
             <div class="row">
               {{ import "docs_dev_support.html" . -}}
@@ -66,32 +66,36 @@
                       <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
                       <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
                       <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extension</a></li>
+                        <li><a href="{{ docurlc . "docs.aah_server_extension" }}">-&nbsp;&nbsp;Server Extension</a></li>
                       </ul></li>
                       <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
                       <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.app_config" }}">App Config</a></li>
-                        <li><a href="{{ docurlc . "docs.routes_config" }}">Routes Config</a></li>
-                        <li><a href="{{ docurlc . "docs.security_config" }}">Security Config</a></li>
-                        <li><a href="{{ docurlc . "docs.log_config" }}">Log Config</a></li>
+                        <li><a href="{{ docurlc . "docs.app_config" }}">-&nbsp;&nbsp;App Config</a></li>
+                        <li><a href="{{ docurlc . "docs.routes_config" }}">-&nbsp;&nbsp;Routes Config</a></li>
+                        <li><a href="{{ docurlc . "docs.security_config" }}">-&nbsp;&nbsp;Security Config</a></li>
+                        <li><a href="{{ docurlc . "docs.log_config" }}">-&nbsp;&nbsp;Log Config</a></li>
                       </ul></li>
+                      <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter/Publisher</a></li>
+                      <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
                     </ul>
                   </div>
                   <div class="col-xs-12 col-sm-4 col-md-4">
                     <ul class="list-unstyled">
-                      <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter/Publisher</a></li>
-                      <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
+                      <li><a href="{{ docurlc . "docs.auto_bind" }}">Parameters - Auto Bind</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.8</span></li>
                       <li><a href="{{ docurlc . "docs.controllers" }}">Controllers</a></li>
                       <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.interceptors" }}">Interceptors</a></li>
+                        <li><a href="{{ docurlc . "docs.interceptors" }}">-&nbsp;&nbsp;Interceptors</a></li>
                       </ul></li>
                       <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.7</span></li>
                       <li><a href="{{ docurlc . "docs.authz" }}">Authorization</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.7</span></li>
                       <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.security_permissions" }}">Permissions</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.7</span></li>
+                        <li><a href="{{ docurlc . "docs.security_permissions" }}">-&nbsp;&nbsp;Permissions</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.7</span></li>
                       </ul></li>
+                      <li><a href="{{ docurlc . "docs.session" }}">Session Management</a></li>
                       <li><a href="{{ docurlc . "docs.reply" }}">Reply Builder</a></li>
                       <li><a href="{{ docurlc . "docs.middleware" }}">Middleware</a></li>
+                      <li><a href="{{ docurlc . "docs.i18n" }}">I18n Internationalization</a></li>
+                      <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.8</span></li>
                     </ul>
                   </div>
                   <div class="col-xs-12 col-sm-4 col-md-4">
@@ -99,13 +103,12 @@
 
                       <li><a href="{{ docurlc . "docs.views" }}">Views</a></li>
                       <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.template_funcs" }}">Template Functions</a></li>
+                        <li><a href="{{ docurlc . "docs.template_funcs" }}">-&nbsp;&nbsp;Template Functions</a></li>
                       </ul></li>
-                      <li><a href="{{ docurlc . "docs.i18n" }}">I18n</a></li>
-                      <li><a href="{{ docurlc . "docs.session" }}">Session</a></li>
+                      <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.8</span></li>
                       <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
                       <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.static_files" }}#cache-control">HTTP Cache-Control</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.6</span></li>
+                        <li><a href="{{ docurlc . "docs.static_files" }}#cache-control">-&nbsp;&nbsp;HTTP Cache-Control</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.6</span></li>
                       </ul></li>
                       <li><a href="{{ docurlc . "docs.error_handler" }}">Centrailzed Error Handler</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.8</span></li>
                       <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a>&nbsp;&nbsp;<span class="badge lb-xs">Since v0.8</span></li>

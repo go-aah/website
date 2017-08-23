@@ -9,7 +9,7 @@ page {
   site {
     title {
       index = "Welcome to aah, the web framework for Go, A scalable, performant, rapid development Web framework"
-      get_involved = "Get Involved - Gitter, StackOverflow, Mailing List, etc. - aah, the web framework for Go"
+      get_involved = "Get Involved - Gitter, StackOverflow, Google Groups, etc. - aah, the web framework for Go"
       suffix = "aah, the web framework for Go"
     }
   }

@@ -1,5 +1,4 @@
 /* aahframework.org CSS file */
-
 @font-face {
     font-family: timeburnerFont;
     src: url(/assets/fonts/timeburnerbold.ttf);
@@ -265,6 +264,7 @@ code {
 
 .feature-list p {
   text-align: justify;
+  font-size: 14.5px;
 }
 
 .feature-list .col-lg-4,
@@ -291,11 +291,19 @@ code {
 .alert-info-blue {
   background-color: #d9edf7;
   color: #31708f;
+  border: 1px #bce8f1 solid;
 }
 
 .alert-info-green {
   background-color: #dff0d8;
   color: #3c763d;
+  border: 1px #d6e9c6 solid;
+}
+
+.alert-info-yellow {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+  border: 1px #faebcc solid;
 }
 
 .body-content {
@@ -500,28 +508,57 @@ code {
 .footer {
   margin-top: 70px;
   font-size: 13px;
-	padding-bottom: 3%;
+  background-color: #f8f8f8;
+	padding-bottom: 2.5%;
 }
 
-.footer > .container {
-  border-top: 1px solid #dcdbdb;
+.footer a {
+  color:inherit;
+}
+.footer a:hover {
+  color: #2780e3;
+  text-decoration: none;
+}
+
+.footer .footer-block {
   padding-top: 1%;
+  color: #444141;
 }
 
-.footer > .container a {
-	color:inherit;
+.aah-footer-logo {
+  color: #5f5d5d;
+  font-size: 1.5em;
+  font-family: timeburnerFont;
+  padding-top: 4px;
 }
 
-.footer > .container a:hover {
-	color: #2780e3;
+.aah-fwk-text {
+  padding-left: 7px;
 }
 
-.footer .col-lg-6, .footer .col-xs-6 {
-  padding: 0;
+.aah-license-info {
+  margin-top: 15px;
+}
+
+.footer .footer-box {
+  font-size: 12px;
+  padding-top: 6px;
+}
+
+.footer .footer-box h3 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.footer .footer-box li {
+  margin-top: 5px;
 }
 
 .footer .powered-by {
   font-size: 12px;
+  padding-top: 2%;
 }
 
 /* Google search */
@@ -586,12 +623,6 @@ div.gs-snippet {
   list-style: none;
   padding-top: 3px;
 }
-
-/*.vh-sec-content ul li:before {
-  content: '-';
-  position: absolute;
-  margin-left: -10px;
-}*/
 
 .show-doc .vh-sec-hdr {
   height: 25px;

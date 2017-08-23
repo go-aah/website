@@ -130,7 +130,7 @@ Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
 
 ### Centralized Error Handling
 
-aah provides centralized error handling for your application. Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
+<span class="badge lb-sm">Since v0.8</span> aah provides centralized error handling for your application. Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
 
 
 <center>**Happy coding! Spread the word of `aah`, the web framework for Go. Thank you!**</center>
