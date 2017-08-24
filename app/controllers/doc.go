@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"encoding/json"
 	"fmt"
 	"html/template"
 	"path"
@@ -47,8 +46,7 @@ func (d *DocController) Index() {
 
 // VersionHome method Displays the documentation in selected language. Default
 // is English.
-func (d *DocController) VersionHome() {
-	version := d.Req.PathValue("version")
+func (d *DocController) VersionHome(version string) {
 	if !ess.IsSliceContainsString(releases, version) {
 		switch ess.StripExt(version) {
 		case "favicon":
@@ -82,10 +80,7 @@ func (d *DocController) VersionHome() {
 }
 
 // ShowDoc method displays requested documentation page based language and version.
-func (d *DocController) ShowDoc() {
-	version := d.Req.PathValue("version")
-	content := d.Req.PathValue("content")
-
+func (d *DocController) ShowDoc(version, content string) {
 	isTutorial := false
 	if version == "tutorial" {
 		if content == "/i18n.html" {
@@ -106,7 +101,7 @@ func (d *DocController) ShowDoc() {
 
 	switch ess.StripExt(util.TrimPrefixSlash(content)) {
 	case "release-notes":
-		d.ReleaseNotes()
+		d.ReleaseNotes(version)
 		return
 	}
 
@@ -142,8 +137,7 @@ func (d *DocController) Tutorials() {
 }
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
-func (d *DocController) ReleaseNotes() {
-	version := d.Req.PathValue("version")
+func (d *DocController) ReleaseNotes(version string) {
 	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docBasePath)
 	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docBasePath)
 	migrationGuideMdPath := util.FilePath(path.Join(version, "migration-guide.md"), docBasePath)
@@ -161,13 +155,14 @@ func (d *DocController) ReleaseNotes() {
 	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
 }
 
-// RefreshDoc method to refresh documentation from github
-func (d *DocController) RefreshDoc() {
+// BeforeRefreshDoc method is interceptor.
+func (d *DocController) BeforeRefreshDoc() {
 	githubEvent := strings.TrimSpace(d.Req.Header.Get("X-Github-Event"))
 	githubDeliveryID := strings.TrimSpace(d.Req.Header.Get("X-Github-Delivery"))
 	if githubEvent != "push" || ess.IsStrEmpty(githubDeliveryID) {
 		log.Warnf("Github event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
 		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		d.Abort()
 		return
 	}
 
@@ -176,21 +171,20 @@ func (d *DocController) RefreshDoc() {
 	if ess.IsStrEmpty(hubSignature) || !util.IsValidHubSignature(hubSignature, d.Req.Payload) {
 		log.Warnf("Github Invalied Signature: %s", hubSignature)
 		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		d.Abort()
 		return
 	}
-
-	var pushEvent models.GithubPushEvent
-	if err := json.Unmarshal(d.Req.Payload, &pushEvent); err != nil {
-		log.Error(err)
-		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
-		return
-	}
-
 	log.Infof("Event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
+}
+
+// RefreshDoc method to refresh documentation from github
+func (d *DocController) RefreshDoc(pushEvent *models.GithubPushEvent) {
 	go util.RefreshDocContent(pushEvent)
 
-	log.Info("Docs are being refereshed from Github")
-	d.Reply().Text("Docs are being refreshed")
+	log.Info("Github event received, docs are being refereshed")
+	d.Reply().JSON(aah.Data{
+		"message": "Docs are being refreshed",
+	})
 }
 
 // NotFound method handles not found URLs.

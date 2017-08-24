@@ -31,7 +31,7 @@ func GetDocDirPath(version string) string {
 // RefreshDocContent method clone's the GitHub branch doc version wise into
 // local and if already exits it takes a update from GitHub.
 // It clears cache too.
-func RefreshDocContent(pushEvent models.GithubPushEvent) {
+func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
 	GitRefresh(releases)
 
