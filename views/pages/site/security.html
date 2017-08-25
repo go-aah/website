@@ -1,0 +1,22 @@
+{{ define "title" -}}
+{{ .Article.Title }} - {{ i18n . "page.site.title.suffix" }}
+{{- end }}
+
+{{ define "meta_tags" -}}
+    <meta name="description" content="{{ .Article.Desc }}">
+    <meta name="keywords" content="{{ .Article.Keywords }}">
+    <meta property="og:title" content="{{ .Article.Title }}"/>
+    <meta property="og:description" content="{{ .Article.Desc }}"/>
+    <meta name="twitter:title" content="{{ .Article.Title }}">
+    <meta name="twitter:description" content="{{ .Article.Desc }}">
+{{ end }}
+
+{{ define "body" -}}
+  <div class="container body-content">
+    <div class="row aah-security">
+      {{ if .Article.IsContent -}}
+      {{ safeHTML .Article.Content }}
+      {{ end -}}
+    </div>
+  </div>
+{{- end }}

@@ -52,7 +52,7 @@ func (s *SiteController) Content() {
 		viewFile = "features.html"
 	case "security":
 		s.AddViewArg("IsSecurity", true)
-		viewFile = "content.html"
+		viewFile = "security.html"
 	case "why-aah":
 		s.AddViewArg("IsWhyAah", true)
 		viewFile = "content.html"

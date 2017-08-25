@@ -17,6 +17,7 @@ aah framework values Go idiomatic and ecosystem. Good read [here](https://dmitri
 #### What to expect from aah framework?
 Framework features and capabilities that empowers engineering and operation/devops teams.
 
+* Detailed documentation of every features, options and configurations
 * Perfect fit for Web applications and/or RESTful APIs
 * Flexible Configuration Management
 * Security - Authentication and Authorization <span class="badge lb-xs">Since v0.7</span>

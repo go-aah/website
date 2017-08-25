@@ -32,6 +32,19 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Custom Not Found handling via [Centralized Error Handler]({{aah_docs_domain_url}}/centralized-error-handler.html).
   * Max Body Size configuration at route level and global level.
 
+
+### Request Parameters - Auto Parse and Bind
+
+aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/request-parameters-auto-bind.html) request values into appropriate Go data types. It supports following:
+
+  * Bind any `Path`, `Form`, `Query` into controller action parameters.
+  * Bind `JSON` or `XML` request body into `struct`.
+  * Bind any `Path`, `Form`, `Query` into controller action `struct` fields.
+  * Bind any `Path`, `Form`, `Query` into nested `struct` following `.` notation convention.
+  * Bind supports bind of pointer and non-pointer.
+  * And you can also do combinations of above options
+  * You can added your own [custom Value Parser by Type]({{aah_docs_domain_url}}/request-parameters-auto-bind.html#adding-custom-value-parser-by-type)
+
 ### Security - Authentication and Authorization
   * aah framework focus on flexible and powerful security implementation, easy to use and understand, it was inspired by [Shiro security library](https://shiro.apache.org). You can design your application secure, stable with authentication, authorization and session management.
   * Exposes clean and intuitive API that simplifies the developer's effort to make their application secure.
@@ -69,12 +82,6 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
   * Flexible [Middleware]({{aah_docs_domain_url}}/middleware.html) with [Abort]({{aah_docs_domain_url}}/middleware.html#abort-the-middleware-flow) feature and taking control of [response writing]({{aah_docs_domain_url}}/reply.html#done) within the framework.
   * Bring your `http.Handler`, `http.HandlerFunc` into [aah]({{aah_docs_domain_url}}/middleware.html#bring-go-lang-native-middleware-into-aah).
 
-### Event Publisher/Emitter
-Simple and efficient [Event Publisher]({{aah_docs_domain_url}}/event-publisher.html) with Asynchronous and Synchronous publish.
-
-* aah Server extension points built around event publisher.
-* Supports Publish Once mode too.
-
 ### Interceptors
   * aah framework supports [per controller and per action level]({{aah_docs_domain_url}}/interceptors.html) interceptors (`Before`, `After`, `Finally` and `Panic`).
 
@@ -93,6 +100,12 @@ aah provides application secure headers with many safe defaults for Web and REST
 ### Reply Builder
   * Simple, efficient and chained [Reply builder]({{aah_docs_domain_url}}/reply.html) to compose your response.
   * Supports rich reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Binary`, `File`, `FileDownload`, `FileInline`, `Redirect`, Custom Render, etc.
+
+### Event Publisher/Emitter
+Simple and efficient [Event Publisher]({{aah_docs_domain_url}}/event-publisher.html) with Asynchronous and Synchronous publish.
+
+  * aah Server extension points built around event publisher.
+  * Supports Publish Once mode too.
 
 ### Centralized Error Handling
 

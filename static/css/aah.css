@@ -148,6 +148,7 @@ code {
   border-radius: 2px;
   padding-right: 3px;
   padding-left: 3px;
+  margin-top: -2px;
 }
 
 .navbar-toggle {
@@ -414,6 +415,15 @@ code {
 .body-content .row, .docs-body-content .row {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.body-content .aah-security ul {
+  margin-left: 2%;
+}
+
+.body-content .aah-security li {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .about-team a {
