@@ -355,10 +355,6 @@ code {
   min-height: 600px;
 }
 
-.body-content .aah-col {
-  padding-top: 20px;
-}
-
 .body-content h1 {
   font-weight: bold;
 }
@@ -421,7 +417,7 @@ code {
   margin-left: 2%;
 }
 
-.body-content .aah-security li {
+.body-content .aah-security li, .body-content .getinvolved li {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -461,6 +457,15 @@ code {
 .docs-page-content li {
   padding-top: 5px;
   padding-bottom: 7px;
+}
+
+.tutorials li {
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+.tutorials h4 {
+  padding-top: 5px;
 }
 
 .docs-li-small li {

@@ -1,6 +1,6 @@
 Title: Security
-Desc: List of application security features provided by aah framework
-Keywords: security features
+Desc: aah takes security very seriously. Document describes what aah automatically does, security considerations, etc.
+Keywords: security features, automatically does, security considerations
 ---
 # Security
 
