@@ -719,3 +719,17 @@ div.gs-snippet {
   margin-top: -13px;
   width: 575px;
 }
+
+/* Fix border overflow in Google CSE input for webkit-based browsers */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .gsib_a {
+    padding-top: 3px !important;
+  }
+}
+
+/* Fix border overflow in Google CSE input for Firefox */
+@-moz-document url-prefix() {
+  .gsib_a {
+    padding-top: 3px !important;
+  }
+}
