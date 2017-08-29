@@ -41,7 +41,7 @@ aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/
   * Bind `JSON` or `XML` request body into `struct`.
   * Bind any `Path`, `Form`, `Query` into controller action `struct` fields.
   * Bind any `Path`, `Form`, `Query` into nested `struct` following `.` notation convention.
-  * Bind supports bind of pointer and non-pointer.
+  * Bind supports bind of pointer and non-pointer target.
   * And you can also do combinations of above options
   * You can added your own [custom Value Parser by Type]({{aah_docs_domain_url}}/request-parameters-auto-bind.html#adding-custom-value-parser-by-type)
 
