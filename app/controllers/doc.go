@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"path"
 	"path/filepath"
 	"strings"
@@ -168,7 +170,17 @@ func (d *DocController) BeforeRefreshDoc() {
 
 	hubSignature := strings.TrimSpace(d.Req.Header.Get("X-Hub-Signature"))
 	log.Infof("Github Signature: %s", hubSignature)
-	if ess.IsStrEmpty(hubSignature) || !util.IsValidHubSignature(hubSignature, d.Req.Payload) {
+
+	body, err := ioutil.ReadAll(d.Req.Unwrap().Body)
+	if err != nil {
+		log.Errorf("Body read error: %s", hubSignature)
+		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		d.Abort()
+		return
+	}
+	d.Req.Unwrap().Body = ioutil.NopCloser(bytes.NewReader(body))
+
+	if ess.IsStrEmpty(hubSignature) || !util.IsValidHubSignature(hubSignature, body) {
 		log.Warnf("Github Invalied Signature: %s", hubSignature)
 		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
 		d.Abort()

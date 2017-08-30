@@ -166,4 +166,4 @@ Refer to [godoc](https://godoc.org/aahframework.org/essentials.v0).
   * Still lot of improvements can come-in; in-terms of formatted error display, watch files optimization, etc. So keep me posted on your issues. Gradually I will bring improvements :)
 
 <br>
-<center>**Happy coding! Spread the word of `aah`, the web framework for Go. Thank you!**</center>
+<center>**Spread the word of `aah`, the web framework for Go. Thank you!**</center>
