@@ -49,6 +49,21 @@ all and (min-width:481px) and (max-width: 568px),
   .auto-clear .col-xs-3:nth-child(4n+1){clear:left;}
   .auto-clear .col-xs-4:nth-child(3n+1){clear:left;}
   .auto-clear .col-xs-6:nth-child(odd){clear:left;}
+
+  .col-aoffset-cse {
+    margin-left: 11.6666667%;
+  }
+
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    padding-right: 35px;
+  }
+}
+
+@media all and (min-width:769px) and (max-width: 800px),
+all and (min-width:569px) and (max-width: 768px) {
+  .col-aoffset-cse {
+    margin-left: 16.6666667%;
+  }
 }
 
 @media all and (min-width:321px) and (max-width: 480px) {
@@ -58,6 +73,10 @@ all and (min-width:481px) and (max-width: 568px),
 
   .aah-banner h4 {
     font-size: 13px !important;
+  }
+
+  .col-aoffset-cse {
+    margin-left: 16.6666667%;
   }
 }
 
@@ -123,6 +142,10 @@ all and (min-width:481px) and (max-width: 568px),
   .auto-clear .col-md-3:nth-child(4n+1){clear:left;}
   .auto-clear .col-md-4:nth-child(3n+1){clear:left;}
   .auto-clear .col-md-6:nth-child(odd){clear:left;}
+
+  .col-aoffset-cse {
+    margin-left: 22.6666667%;
+  }
 }
 
 @media all and (min-width: 1200px) {
@@ -143,12 +166,15 @@ all and (min-width:481px) and (max-width: 568px),
   .auto-clear .col-lg-3:nth-child(4n+1){clear:left;}
   .auto-clear .col-lg-4:nth-child(3n+1){clear:left;}
   .auto-clear .col-lg-6:nth-child(odd){clear:left;}
+
+  .col-aoffset-cse {
+    margin-left: 26.6666667%;
+  }
 }
 
 code {
-    color: #292727; /*#272525*/
-    /*background-color: rgba(27, 31, 35, 0.05);*/
-    background-color: #f5f2f0;
+  color: #292727;
+  background-color: #f5f2f0;
 }
 
 .btn {
@@ -169,8 +195,8 @@ code {
 }
 
 .navbar-default .navbar-toggle, .navbar-default .navbar-toggle {
-    background-color: #e25657;
-    margin-right: 35px;
+  background-color: #e25657;
+  margin-right: 35px;
 }
 
 .aah-color {
@@ -241,10 +267,10 @@ code {
 }
 
 .aah-release-goreq {
-    padding-top: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #676767;
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #676767;
 }
 
 .aah-release-goreq a {
@@ -313,13 +339,6 @@ code {
 .feature-list p {
   text-align: justify;
   font-size: 14.5px;
-}
-
-.feature-list .col-lg-4,
-.feature-list .col-xs-6,
-.feature-list .col-md-4 {
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 .features-know-more {
@@ -581,6 +600,7 @@ code {
 .footer a {
   color:inherit;
 }
+
 .footer a:hover {
   color: #2780e3;
   text-decoration: none;
@@ -629,7 +649,7 @@ code {
 
 /* Google search */
 td.gsc-search-button, td.gsc-clear-button {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 div.gs-snippet {
@@ -647,6 +667,25 @@ div.gs-snippet {
 
 .gsc-input {
   margin-top: -3px !important;
+}
+
+#google-cse {
+  margin-top: -13px;
+  width: 575px;
+}
+
+/* Fix border overflow in Google CSE input for webkit-based browsers */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .gsib_a {
+    padding-top: 4px !important;
+  }
+}
+
+/* Fix border overflow in Google CSE input for Firefox */
+@-moz-document url-prefix() {
+  .gsib_a {
+    padding-top: 3px !important;
+  }
 }
 
 .vh-sec-hdr {
@@ -713,23 +752,4 @@ div.gs-snippet {
 .non-h-lbl {
   font-weight: bolder;
   font-size: 2em;
-}
-
-#google-cse {
-  margin-top: -13px;
-  width: 575px;
-}
-
-/* Fix border overflow in Google CSE input for webkit-based browsers */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .gsib_a {
-    padding-top: 3px !important;
-  }
-}
-
-/* Fix border overflow in Google CSE input for Firefox */
-@-moz-document url-prefix() {
-  .gsib_a {
-    padding-top: 3px !important;
-  }
 }

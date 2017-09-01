@@ -107,6 +107,11 @@ Simple and efficient [Event Publisher]({{aah_docs_domain_url}}/event-publisher.h
   * aah Server extension points built around event publisher.
   * Supports Publish Once mode too.
 
+### Content Negotiation
+Content negotiation feature is used to place `MIME` type restriction on HTTP header `Content-Type` and `Accept` for your REST API application. Some cases useful for web application too.
+
+How to configure one, refer to [documentation]({{aah_docs_domain_url}}/app-config.html#section-content-negotiation).
+
 ### Centralized Error Handling
 
 <span class="badge lb-sm">Since v0.8</span> aah provides centralized error handling for your application.
