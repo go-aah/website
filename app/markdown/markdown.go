@@ -9,7 +9,7 @@ import (
 
 	"github.com/russross/blackfriday"
 
-	"aahframework.org/aah.v0-unstable"
+	"aahframework.org/aah.v0"
 	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
 

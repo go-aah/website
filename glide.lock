@@ -1,10 +1,10 @@
 hash: 61c11b4d14d9b6fac82bd3e05abb015619512570741da963f5b5aefd482f76ff
-updated: 2017-08-01T11:02:14.481248666-07:00
+updated: 2017-09-01T16:54:00.994559015-07:00
 imports:
 - name: aahframework.org/aah.v0
-  version: 34d34a895dc0cc09d3b6d710fa722fe79e92e1a5
+  version: 12414997d4457838756dcb53e2e3b6a184d4950f
 - name: aahframework.org/ahttp.v0
-  version: 4c09a9ece15039bb76afa671efbec5c5e1ec8e38
+  version: f9b651b8092ec7477d4349bce07eb95c482306c8
 - name: aahframework.org/aruntime.v0
   version: 3368d72836c245d93409bcf73e2eb5e74cf02767
 - name: aahframework.org/config.v0
@@ -16,31 +16,31 @@ imports:
   subpackages:
   - token
 - name: aahframework.org/i18n.v0
-  version: 6089355055bb15109f7f3aefb8efd2a955115d6d
+  version: 8558a9d1e89af246eda371c0b0e66e83b12dbded
 - name: aahframework.org/log.v0
   version: a6c07023e1cb69de3f987f2bd90be33446b5ba0e
 - name: aahframework.org/router.v0
-  version: 60c3034496445dc75f3a8e7f0301693001d85f8a
+  version: 14ed79c8c87d3e368633b67ba37010f2d3d6c12a
 - name: aahframework.org/security.v0
-  version: a964d7247c8014b2d17b2e1ca67431fae8b30bdf
+  version: 308ebec6eab3744c83df77637c30adff959dc782
   subpackages:
   - acrypto
   - authc
   - authz
   - scheme
   - session
+- name: aahframework.org/valpar.v0
+  version: b66ffe09843404678baecd85d7d0401ea7d9e8f3
 - name: aahframework.org/view.v0
-  version: 0f7a62c88fd728aa1b32f8a6016c6ded50b273a1
+  version: 38179594120f15376a4d8305ccc87645f5a88637
 - name: github.com/aah-cb/minify
   version: b58c89a923a766a8c794f58e139b4c281421418a
 - name: github.com/russross/blackfriday
-  version: 0b647d0506a698cca42caca173e55559b12a69f2
-- name: github.com/shurcooL/sanitized_anchor_name
-  version: 541ff5ee47f1dddf6a5281af78307d921524bcb5
+  version: 4048872b16cc0fc2c5fd9eacf0ed2c2fedaa0c8c
 - name: github.com/tdewolff/buffer
-  version: df6253e2a2cda5aba1b5d0c59fc5bdf0a98ae192
+  version: 3fd6d6981daf9f995504e6ae31c005780dca2179
 - name: github.com/tdewolff/minify
-  version: 2d28d6e43c68537a32f9b835a89d5038ebcb6ec9
+  version: c4e300d8cb20c0f05d326e77199bd6e5d82b2a93
   subpackages:
   - html
 - name: github.com/tdewolff/parse
@@ -50,15 +50,10 @@ imports:
 - name: github.com/tdewolff/strconv
   version: 3e8091f4417ebaaa3910da63a45ea394ebbfb0e3
 - name: golang.org/x/crypto
-  version: f6b343c37ca80bfa8ea539da67a0b621f84fab1d
+  version: 81e90905daefcd6fd217b62423c0908922eadb30
   subpackages:
   - acme
   - acme/autocert
   - bcrypt
   - blowfish
-- name: golang.org/x/net
-  version: 8fd7f25955530b92e73e9e1932a41b522b22ccd9
-  subpackages:
-  - context
-  - context/ctxhttp
 testImports: []
