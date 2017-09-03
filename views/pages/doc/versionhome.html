@@ -17,7 +17,7 @@
   <div class="container docs-body-content">
     <div class="row">
       <!-- page content -->
-      <div class="col-xs-12 col-md-9">
+      <div class="col-xs-12 col-md-9 no-padding">
         <div class="row docs-page-content">
             <h1>aah Documentation</h1>
             <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah, the web framework for Go</a>.</p>
@@ -137,9 +137,11 @@
 
         </div>
       </div> <!-- /page content -->
-      <div class="col-xs-6 col-md-3"> <!-- sidebar nav -->
+      <!-- sidebar nav -->
+      <div class="col-xs-6 col-md-3">
         {{ import "docs_sidebar.html" . -}}
-      </div> <!-- /sidebar nav -->
+      </div>
+      <!-- /sidebar nav -->
     </div>
   </div>
 {{- end }}

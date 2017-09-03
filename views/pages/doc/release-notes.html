@@ -6,9 +6,9 @@ Release Notes {{ .CurrentVersion }} - aah web framework for Go
   <div class="container docs-body-content">
     <div class="row">
       <!-- page content -->
-      <div class="col-xs-12 col-md-9">
+      <div class="col-xs-12 col-md-9 no-padding">
         {{ import "docs_dev_support.html" . -}}
-        
+
         <div class="row docs-page-content">
             <h1>Release Notes - {{ .CurrentVersion }}</h1>
             <div>
@@ -21,10 +21,13 @@ Release Notes {{ .CurrentVersion }} - aah web framework for Go
               {{ safeHTML .MigrationGuide.Content }}
             </div>
         </div>
-      </div> <!-- /page content -->
-      <div class="col-xs-6 col-md-3"> <!-- sidebar nav -->
+      </div>
+      <!-- /page content -->
+      <!-- sidebar nav -->
+      <div class="col-xs-6 col-md-3">
         {{ import "docs_sidebar.html" . -}}
-      </div> <!-- /sidebar nav -->
+      </div>
+      <!-- /sidebar nav -->
     </div>
   </div>
 {{- end }}
