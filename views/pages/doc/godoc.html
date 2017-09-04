@@ -3,12 +3,82 @@ GoDoc - aah web framework for Go
 {{- end }}
 
 {{ define "body" -}}
+{{ $hostUrl := rurl . "host" -}}
   <div class="container docs-body-content">
     <div class="row">
       <!-- page content -->
       <div class="col-xs-12 col-md-9 no-padding">
         <div class="row docs-page-content">
-            <h1>Godoc - aah framework</h1>
+            <h1>Godoc &amp; Coverage</h1>
+            <div class="row">
+              <h3>Modules</h3>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Godoc</th>
+                    <th>Coverage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>aah</td>
+                    <td><a href="https://godoc.org/aahframework.org/aah.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/aah/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/aah/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>router</td>
+                    <td><a href="https://godoc.org/aahframework.org/router.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/router/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/router/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>essentials</td>
+                    <td><a href="https://godoc.org/aahframework.org/essentials.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/essentials/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/essentials/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>config</td>
+                    <td><a href="https://godoc.org/aahframework.org/config.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/config/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/config/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>ahttp</td>
+                    <td><a href="https://godoc.org/aahframework.org/ahttp.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/ahttp/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/ahttp/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>security</td>
+                    <td><a href="https://godoc.org/aahframework.org/security.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/security/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/security/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>i18n</td>
+                    <td><a href="https://godoc.org/aahframework.org/i18n.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/i18n/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/i18n/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>valpar</td>
+                    <td><a href="https://godoc.org/aahframework.org/valpar.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/valpar/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/valpar/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>aruntime</td>
+                    <td><a href="https://godoc.org/aahframework.org/aruntime.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/aruntime/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/aruntime/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>log</td>
+                    <td><a href="https://godoc.org/aahframework.org/log.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/log/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/log/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                  <tr>
+                    <td>test</td>
+                    <td><a href="https://godoc.org/aahframework.org/test.v0" target="_blank"><img src="{{ $hostUrl }}/assets/img/godoc-badge.svg" alt="godoc"></a></td>
+                    <td><a href="https://codecov.io/gh/go-aah/test/branch/master" target="_blank"><img src="https://codecov.io/gh/go-aah/test/branch/master/graph/badge.svg" alt="coverage"></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
         </div>
       </div>
       <!-- /page content -->

@@ -14,16 +14,16 @@
         {{ if not .IsVersionHome -}}
         <li><a href="{{ rurl . "docs.index" }}">Docs Home</a></li>
         {{- end }}
-        <li>
+        <li {{ if .IsGettingStarted }}class="active"{{ end }}>
           <a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a>
         </li>
-        <!-- <li>
-          <a href="{{ rurl . "docs.version_home" "godoc.html" }}">Go Docs</a>
-        </li> -->
-        <li>
+        <li {{ if .IsGodoc }}class="active"{{ end }}>
+          <a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a>
+        </li>
+        <li {{ if .IsTutorials }}class="active"{{ end }}>
           <a href="{{ rurl . "docs.version_home" "tutorials.html" }}">Tutorials</a>
         </li>
-        <li>
+        <li {{ if .IsReleaseNotes }}class="active"{{ end }}>
           <a href="{{ docurlc . "docs.release_notes" }}">Release Notes</a>
         </li>
         <li>

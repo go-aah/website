@@ -119,14 +119,19 @@ func (d *DocController) ShowDoc(version, content string) {
 		d.NotFound()
 		return
 	}
+
 	data := aah.Data{"Article": article, "DocFile": ess.StripExt(content) + ".md"}
+	if strings.HasSuffix(content, "getting-started.html") {
+		data["IsGettingStarted"] = true
+	}
+
 	d.Reply().HTMLl("docs.html", data)
 }
 
 // GoDoc method display aah framework godoc links
 func (d *DocController) GoDoc() {
 	data := aah.Data{
-		"IsGoDoc": true,
+		"IsGodoc": true,
 	}
 	d.Reply().HTMLlf("docs.html", "godoc.html", data)
 }
@@ -134,6 +139,7 @@ func (d *DocController) GoDoc() {
 // Tutorials method display aah framework tutorials github links or guide.
 func (d *DocController) Tutorials() {
 	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
+		"IsTutorials":   true,
 		"ShowVersionNo": false,
 	})
 }
