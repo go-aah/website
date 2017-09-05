@@ -758,3 +758,8 @@ div.gs-snippet {
   font-weight: bolder;
   font-size: 2em;
 }
+
+.gh-star-btn {
+  margin-top: 16px;
+  margin-left: 11px;
+}
