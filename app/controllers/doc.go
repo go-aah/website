@@ -96,7 +96,7 @@ func (d *DocController) ShowDoc(version, content string) {
 	}
 
 	d.AddViewArg("CurrentVersion", version)
-	branchName := util.GetBranchName(version)
+	branchName := util.BranchName(version)
 	if branchName == "master" {
 		d.AddViewArg("LatestRelease", true)
 	}
@@ -217,7 +217,11 @@ func docsContentRefresh(e *aah.Event) {
 	cfg := aah.AppConfig()
 	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
 	releases, _ = cfg.StringList("docs.releases")
-	docBasePath = filepath.Join(cfg.StringDefault("docs.dir", ""), "aah-documentation")
+	docBasePath = util.DocBaseDir()
+
+	if aah.AppProfile() == "prod" {
+		ess.DeleteFiles(docBasePath)
+	}
 
 	_ = ess.MkDirAll(docBasePath, 0755)
 	util.GitRefresh(releases)
