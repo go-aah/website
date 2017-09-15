@@ -14,6 +14,7 @@ Keywords: features, feature, aah framework, capabilities, batteries included, fu
   * `go1.8` Graceful shutdown feature.
   * Automatic Gzip Compression if client supports it.
   * <span class="badge lb-sm">Since v0.7</span> Server Access Log, refer to [documentation]({{aah_docs_domain_url}}/server-access-log.html).
+  * <span class="badge lb-sm">Since v0.9</span> HTTP => HTTPS redirects, just enable it in the [config]({{aah_docs_domain_url}}/app-config.html#section-redirect-http).
 
 ### Configuration
 aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}/configuration.html) (very similar to HOCON syntax) for application, route, project, security and i18n config files, etc.
