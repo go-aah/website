@@ -762,3 +762,10 @@ div.gs-snippet {
   margin-top: 16px;
   margin-left: 11px;
 }
+
+/* Text Selection color */
+::-moz-selection {  background-color: #ffe4e4; }
+::-o-selection {  background-color: #ffe4e4; }
+::-ms-selection {  background-color: #ffe4e4; }
+::-webkit-selection { background-color: #ffe4e4; }
+::selection { background-color: #ffe4e4; }
