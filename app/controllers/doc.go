@@ -131,7 +131,8 @@ func (d *DocController) ShowDoc(version, content string) {
 // GoDoc method display aah framework godoc links
 func (d *DocController) GoDoc() {
 	data := aah.Data{
-		"IsGodoc": true,
+		"IsGodoc":       true,
+		"ShowVersionNo": false,
 	}
 	d.Reply().HTMLlf("docs.html", "godoc.html", data)
 }
