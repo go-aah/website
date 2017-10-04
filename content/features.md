@@ -3,6 +3,7 @@ Desc: Listing of features and capabilities provided by aah framework
 Keywords: features, feature, aah framework, capabilities, batteries included, fully loaded
 ---
 ### Server and Extension Points
+
   * HTTP
   * HTTPS [refer to config]({{aah_docs_domain_url}}/app-config.html#section-ssl)
       * HTTP/2, can be disabled via configuration.
@@ -18,12 +19,14 @@ Keywords: features, feature, aah framework, capabilities, batteries included, fu
   * <span class="badge lb-sm">Since v0.9</span> Server Dump Request & Response, refer to [documentation]({{aah_docs_domain_url}}/server-dump-log.html).
 
 ### Configuration
+
 aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}/configuration.html) (very similar to HOCON syntax) for application, route, project, security and i18n config files, etc.
 
   * Environment profiles are supported. For e.g: dev, qa, prod, etc.
   * Organize your config files as you need, you can always add `include` references.  
 
 ### URL Routing and Reverse Route
+
   * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter).
   * Flexible [routes configuration]({{aah_docs_domain_url}}/routes-config.html) for application, [static files]({{aah_docs_domain_url}}/static-files.html) and [namespace/group]({{aah_docs_domain_url}}/routes-config.html#namespace-group-routes).
   * Supports Domains and Sub-domains. <span class="badge lb-sm">Since v0.6</span> Wildcard subdomain supported. Refer to [tutorial]({{aah_docs_domain_url}}/tutorial/domain-subdomain-and-wildcard-subdomain.html).
@@ -48,6 +51,7 @@ aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/
   * You can added your own [custom Value Parser by Type]({{aah_docs_domain_url}}/request-parameters-auto-bind.html#adding-custom-value-parser-by-type)
 
 ### Security - Authentication and Authorization
+
   * aah framework focus on flexible and powerful security implementation, easy to use and understand, it was inspired by [Shiro security library](https://shiro.apache.org). You can design your application secure, stable with authentication, authorization and session management.
   * Exposes clean and intuitive API that simplifies the developer's effort to make their application secure.
   * Terminology - Security can be really confusing because of the terminology used. To make life easier by clarifying some core concepts, so you understand how they’re reflected in the aah framework. Refer to [security terminology]({{aah_docs_domain_url}}/security-terminology.html).
@@ -58,12 +62,18 @@ aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/
   * You can define one or more `Auth Scheme` for your application and can be mapped per route basis.
 
 ### Security - Session Management
+
   * aah framework provides `stateful` and `stateless` HTTP state management. Default is `stateless`. It is perfect fit for Web and API application, refer to [security configuration]({{aah_docs_domain_url}}/security-config.html).
   * Session data is Signed using HMAC and Encrypted using AES.
   * Out-of-the-box `cookie` and `file` session store is supported.
   * You can easily add your [own session store]({{aah_docs_domain_url}}/session.html).  
 
+### Security - Anti-CSRF
+
+<span class="badge lb-sm">Since v0.9</span> aah provides automatic Anti-CSRF (Cross Site Request Forgery) protection for the aah web application. It protects all the HTML forms on the page. Anti-CSRF protection is enabled by default, refer to [documentation]({{aah_docs_domain_url}}/anti-csrf-protection.html).
+
 ### View Engine
+
   * Go view engine with [partial inheritance support]({{aah_docs_domain_url}}/views.html) (Default engine).
   * Multiple view layouts for your unique use case.
   * Framework provided [template funcs]({{aah_docs_domain_url}}/template-funcs.html), Plus you can add your own easily.
@@ -72,6 +82,7 @@ aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/
   * <span class="badge lb-sm">Since v0.6</span> You can use without layout too and take full-control of directory structure `pages/*` along with view rendering via `HTML*` methods.
 
 ### i18n Internalization and Localization
+
   * [Message files]({{aah_docs_domain_url}}/i18n.html) (aka Translation) supported with `Language ID + Region ID` or `Language ID`.
       * Language ID follows the two-letter `ISO 639-1` standard.
       * Region ID follows the two-letter `ISO 3166-1` standard.
@@ -81,13 +92,16 @@ aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/
   * Zero coding efforts on localizing your application via header `Accept-Language`, by [URL Query Parameter]({{aah_docs_domain_url}}/tutorial/i18n-url-query-param.html) or by [Path Parameter]({{aah_docs_domain_url}}/tutorial/i18n-path-param.html).
 
 ### Middleware
+
   * Flexible [Middleware]({{aah_docs_domain_url}}/middleware.html) with [Abort]({{aah_docs_domain_url}}/middleware.html#abort-the-middleware-flow) feature and taking control of [response writing]({{aah_docs_domain_url}}/reply.html#done) within the framework.
   * Bring your `http.Handler`, `http.HandlerFunc` into [aah]({{aah_docs_domain_url}}/middleware.html#bring-go-lang-native-middleware-into-aah).
 
 ### Interceptors
+
   * aah framework supports [per controller and per action level]({{aah_docs_domain_url}}/interceptors.html) interceptors (`Before`, `After`, `Finally` and `Panic`).
 
 ### Secure HTTP Headers
+
 aah provides application secure headers with many safe defaults for Web and RESTful API application. [Know more about configuration]({{aah_docs_domain_url}}/security-config.html#section-http-header).
 
   * X-XSS-Protection
@@ -100,16 +114,19 @@ aah provides application secure headers with many safe defaults for Web and REST
   * X-Permitted-Cross-Domain-Policies
 
 ### Reply Builder
+
   * Simple, efficient and chained [Reply builder]({{aah_docs_domain_url}}/reply.html) to compose your response.
   * Supports rich reply types `HTML`, `JSON`, `JSONP`, `XML`, `Text`, `Binary`, `File`, `FileDownload`, `FileInline`, `Redirect`, Custom Render, etc.
 
 ### Event Publisher/Emitter
+
 Simple and efficient [Event Publisher]({{aah_docs_domain_url}}/event-publisher.html) with Asynchronous and Synchronous publish.
 
   * aah Server extension points built around event publisher.
   * Supports Publish Once mode too.
 
 ### Content Negotiation
+
 Content negotiation feature is used to place `MIME` type restriction on HTTP header `Content-Type` and `Accept` for your REST API application. Some cases useful for web application too.
 
 How to configure one, refer to [documentation]({{aah_docs_domain_url}}/app-config.html#section-content-negotiation).
@@ -118,11 +135,12 @@ How to configure one, refer to [documentation]({{aah_docs_domain_url}}/app-confi
 
 <span class="badge lb-sm">Since v0.8</span> aah provides centralized error handling for your application.
 
-* Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
-* Framework propagates all Error responses to Centralized Error Handler, you can control and customized the response.
+  * Framework utilizes this error handler across for all the HTTP error responses. Refer to [documentation]({{aah_docs_domain_url}}/centralized-error-handler.html).
+  * Framework propagates all Error responses to Centralized Error Handler, you can control and customized the response.
 
 
 ### Static File Delivery
+
 aah framework supports flexible and easy to use and configure [static file]({{aah_docs_domain_url}}/static-files.html) delivery.
 
   * Serves directory and it's subtree files.
@@ -133,6 +151,7 @@ aah framework supports flexible and easy to use and configure [static file]({{aa
   * All capabilities of `http.ServeContent`.
 
 ### Logger
+
   * Simple to use log library and it's [configuration]({{aah_docs_domain_url}}/log-config.html).
   * Supported Log `Level`'s are `ERROR`, `WARN`, `INFO`, `DEBUG` and `TRACE`.
   * You can create multiple log instances besides the default one.
@@ -148,10 +167,12 @@ aah framework supports flexible and easy to use and configure [static file]({{aa
 * HTML minify gets applied only to `prod` environment profile.
 
 ### Easy to use Application Binary
+
   * Easy to build and deploy [aah application binary]({{aah_docs_domain_url}}/aah-application-binary.html).
   * Cross compile build is supported (aah is only recognizes cross compile build request and setting the appropriate values, Go lang does the rest for you).
 
 ### Essentials Library
+
 aah helps to increase your productivity, the framework's [essentials](https://godoc.org/aahframework.org/essentials.v0) library provides a lot of useful helper/util methods in the following areas:
 
   * filepath
