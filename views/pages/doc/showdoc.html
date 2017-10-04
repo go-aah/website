@@ -20,9 +20,6 @@
       <div class="col-xs-12 col-md-9 no-padding">
         <div class="row docs-page-content show-doc">
           <div class="row">
-            {{ import "docs_dev_support.html" . -}}
-          </div>
-          <div class="row">
             {{ if .LatestRelease -}}
             <div id="docEditBtn" class="pull-right docs-edit-btn">
               <a href="{{ docediturl .DocFile }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Improve this Doc</a>
@@ -36,6 +33,10 @@
               <a href="{{ docediturl .DocFile }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Improve this Doc</a>
             </div>
             {{ end -}}
+          </div>
+
+          <div class="row">
+            {{ import "docs_dev_support.html" . -}}
           </div>
         </div>
       </div>

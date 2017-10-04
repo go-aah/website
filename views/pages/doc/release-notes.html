@@ -7,8 +7,6 @@ Release Notes {{ .CurrentVersion }} - aah web framework for Go
     <div class="row">
       <!-- page content -->
       <div class="col-xs-12 col-md-9 no-padding">
-        {{ import "docs_dev_support.html" . -}}
-
         <div class="row docs-page-content">
             <h1>Release Notes - {{ .CurrentVersion }}</h1>
             <div>
@@ -21,6 +19,8 @@ Release Notes {{ .CurrentVersion }} - aah web framework for Go
               {{ safeHTML .MigrationGuide.Content }}
             </div>
         </div>
+
+        {{ import "docs_dev_support.html" . -}}
       </div>
       <!-- /page content -->
       <!-- sidebar nav -->

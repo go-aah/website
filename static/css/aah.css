@@ -402,6 +402,10 @@ code {
   font-size: 200%;
 }
 
+.docs-body-content h1 {
+  padding-top: 0;
+}
+
 .body-content h2, .docs-body-content h2 {
   font-size: 160%;
 }
@@ -535,7 +539,7 @@ code {
 }
 
 .docs-edit-btn {
-  padding-top: 42px;
+  padding-top: 27px;
 }
 
 .docs-sidebar-head {
@@ -649,6 +653,11 @@ code {
 .footer .powered-by {
   font-size: 12px;
   padding-top: 2%;
+}
+
+.footer .about-aah {
+  font-size: 12px;
+  margin-top: 25px;
 }
 
 /* Google search */
