@@ -37,12 +37,17 @@ func DocVersionBaseDir(version string) string {
 // It clears cache too.
 func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
-	GitRefresh(releases)
-
 	version := pushEvent.BranchName()
 	if version == "master" {
 		version = releases[0]
 	}
+
+	if !ess.IsSliceContainsString(releases, version) {
+		log.Warnf("Branch Name [%s] not found", version)
+		return
+	}
+
+	GitRefresh(releases)
 
 	log.Infof("BranchName: %s", version)
 	docVersionBaseDir := DocVersionBaseDir(version)

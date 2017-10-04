@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"path"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"aahframework.org/aah.v0"
@@ -131,8 +132,9 @@ func (d *DocController) ShowDoc(version, content string) {
 // GoDoc method display aah framework godoc links
 func (d *DocController) GoDoc() {
 	data := aah.Data{
-		"IsGodoc":       true,
-		"ShowVersionNo": false,
+		"IsGodoc":        true,
+		"ShowVersionNo":  false,
+		"CurrentVersion": releases[0],
 	}
 	d.Reply().HTMLlf("docs.html", "godoc.html", data)
 }
@@ -140,8 +142,9 @@ func (d *DocController) GoDoc() {
 // Tutorials method display aah framework tutorials github links or guide.
 func (d *DocController) Tutorials() {
 	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
-		"IsTutorials":   true,
-		"ShowVersionNo": false,
+		"IsTutorials":    true,
+		"ShowVersionNo":  false,
+		"CurrentVersion": releases[0],
 	})
 }
 
@@ -185,7 +188,6 @@ func (d *DocController) BeforeRefreshDoc() {
 		d.Abort()
 		return
 	}
-	d.Req.Unwrap().Body = ioutil.NopCloser(bytes.NewReader(body))
 
 	if ess.IsStrEmpty(hubSignature) || !util.IsValidHubSignature(hubSignature, body) {
 		log.Warnf("Github Invalied Signature: %s", hubSignature)
@@ -193,6 +195,9 @@ func (d *DocController) BeforeRefreshDoc() {
 		d.Abort()
 		return
 	}
+
+	d.Req.Unwrap().Body = ioutil.NopCloser(bytes.NewReader(body))
+
 	log.Infof("Event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
 }
 
@@ -257,6 +262,11 @@ func init() {
 				pattern = "%s/%s"
 			}
 			return template.URL(fmt.Sprintf(pattern, editURLPrefix, docFile))
+		},
+		"gteq": func(currentVersion, expectedVersion string) bool {
+			cv, _ := strconv.ParseFloat(currentVersion[1:4], 32)
+			ev, _ := strconv.ParseFloat(expectedVersion, 32)
+			return (cv >= ev)
 		},
 	})
 

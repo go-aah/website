@@ -2,10 +2,7 @@ package util
 
 import (
 	"errors"
-	"fmt"
-	"os"
 	"os/exec"
-	"path/filepath"
 
 	"aahframework.org/aah.v0"
 	"aahframework.org/essentials.v0"
@@ -39,12 +36,7 @@ func GitClone(destDir, repoURL, branchName string) error {
 
 // GitPull method to take git update from Git Repository.
 func GitPull(destDir string) error {
-	if err := os.Chdir(destDir); err != nil {
-		return err
-	}
-	gitDir := filepath.Join(destDir, ".git")
-	pullArgs := []string{fmt.Sprintf("--git-dir=%s", gitDir), "pull"}
-
+	pullArgs := []string{"-C", destDir, "pull"}
 	_, err := GitCmd(pullArgs, true)
 	return err
 }

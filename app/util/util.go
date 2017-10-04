@@ -54,6 +54,7 @@ func IsValidHubSignature(signature string, payload []byte) bool {
 	_, _ = hex.Decode(actual, []byte(signature[5:]))
 
 	secret := aah.AppConfig().StringDefault("docs.github_secert", "")
+	log.Info("Github Hook: ", secret)
 	computed := hmac.New(sha1.New, []byte(secret))
 	_, _ = computed.Write(payload)
 
