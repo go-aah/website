@@ -323,7 +323,7 @@ code {
   text-align: justify;
 }
 
-.framework-features h3 {
+.framework-features h3, .framework-features .btn-primary {
   font-weight: bold;
 }
 

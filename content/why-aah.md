@@ -4,7 +4,7 @@ Keywords: why aah, rapid web development, highly configurable, performant, maint
 ---
 # Why aah framework?
 
-There are several minimalist Go frameworks out there, each with their own set of goals. `aah`, however, is not a minimalist framework.
+There are several minimalist Go frameworks out there, each with their own set of goals. `aah`, however, is not a minimalist framework. It provides features and capabilities to build scalable, secure modern Web applications and RESTful APIs.
 
 aah has been designed to:
 
