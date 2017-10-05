@@ -768,8 +768,13 @@ div.gs-snippet {
 }
 
 .gh-star-btn {
-  margin-top: 16px;
+  margin-top: 1px;
   margin-left: 11px;
+}
+
+.gh-star-tip {
+  margin-left: 4px;
+  color: #e25657;
 }
 
 /* Text Selection color */
