@@ -18,7 +18,4 @@ aah has been designed to:
 ...and so much more! You can read about the other features in aah by [clicking here](/features.html), or dive right into aah [technical documentation]({{aah_docs_domain_url}}).
 
 <br>
-Ooh No! the feature/enhancement that I'm looking for is not currently available in the aah framework. What should I do? Well, refer to the project [roadmap](https://github.com/go-aah/aah/projects/3) or reach out to me via [Gitter Chat](https://gitter.im/aahframework/community) or [Github Issues](https://github.com/go-aah/aah/issues) or [Google Groups](https://groups.google.com/forum/#!forum/aahframework).
-
-<br>
 <center>aah framework first public version `v0.5` released to the world on May 19, 2017.</center>
