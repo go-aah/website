@@ -5,17 +5,17 @@ Keywords: features, feature, aah framework, capabilities, batteries included, fu
 ### Server and Extension Points
 
   * HTTP
-  * HTTPS [refer to config]({{aah_docs_domain_url}}/app-config.html#section-ssl)
+  * HTTPS [refer to config]({{aah_docs_domain_url}}/app-config.html#section-server-ssl)
       * HTTP/2, can be disabled via configuration.
       * Certificate File and Key File.
-      * [Let's Encrypt CA]({{aah_docs_domain_url}}/app-config.html#section-lets-encrypt) - automatic install and serve certificates.
+      * [Let's Encrypt CA]({{aah_docs_domain_url}}/app-config.html#section-server-ssl-lets-encrypt) - automatic install and serve certificates.
   * UNIX Socket
   * [Server Extension Points]({{aah_docs_domain_url}}/server-extension.html) and [Request Lifecycle]({{aah_docs_domain_url}}/request-life-cycle.html).
   * Custom Server TLS Config refer to [documentation]({{aah_docs_domain_url}}/server.html#custom-tls-config).
   * `go1.8` Graceful shutdown feature.
   * Automatic Gzip Compression if client supports it.
   * <span class="badge lb-sm">Since v0.7</span> Server Access Log, refer to [documentation]({{aah_docs_domain_url}}/server-access-log.html).
-  * <span class="badge lb-sm">Since v0.9</span> HTTP => HTTPS redirects, just enable it in the [config]({{aah_docs_domain_url}}/app-config.html#section-redirect-http).
+  * <span class="badge lb-sm">Since v0.9</span> HTTP => HTTPS redirects, just enable it in the [config]({{aah_docs_domain_url}}/app-config.html#section-server-ssl-redirect-http).
   * <span class="badge lb-sm">Since v0.9</span> Server Dump Request & Response, refer to [documentation]({{aah_docs_domain_url}}/server-dump-log.html).
 
 ### Configuration
