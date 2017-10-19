@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"path"
 	"path/filepath"
-	"strconv"
 	"strings"
 
 	"aahframework.org/aah.v0"
@@ -18,12 +17,15 @@ import (
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/models"
 	"github.com/go-aah/website/app/util"
+
+	"github.com/hashicorp/go-version"
 )
 
 var (
 	releases      []string
 	docBasePath   string
 	editURLPrefix string
+	verrep        = strings.NewReplacer("v", "", ".x", "", "-edge", "")
 )
 
 // DocController struct documentation domain controller
@@ -263,10 +265,10 @@ func init() {
 			}
 			return template.URL(fmt.Sprintf(pattern, editURLPrefix, docFile))
 		},
-		"gteq": func(currentVersion, expectedVersion string) bool {
-			cv, _ := strconv.ParseFloat(currentVersion[1:4], 32)
-			ev, _ := strconv.ParseFloat(expectedVersion, 32)
-			return (cv >= ev)
+		"vergteq": func(currentVersion, expectedVersion string) bool {
+			cv, _ := version.NewVersion(verrep.Replace(currentVersion))
+			ev, _ := version.NewVersion(verrep.Replace(expectedVersion))
+			return (cv.Equal(ev) || cv.GreaterThan(ev))
 		},
 	})
 

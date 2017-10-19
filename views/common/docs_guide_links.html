@@ -1,8 +1,14 @@
+{{ $isv08Above := vergteq .CurrentVersion "v0.8" }}
+{{ $isv09Above := vergteq .CurrentVersion "v0.9" }}
+{{ $isv010Above := vergteq .CurrentVersion "v0.10" }}
 <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
 <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
 <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
 <li class="list-style-none"><ul>
   <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extension</a></li>
+  {{ if $isv09Above }}
+  <li><a href="{{ docurlc . "docs.server_dump_log" }}">Server Dump Log</a></li>
+  {{ end }}
 </ul></li>
 <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
 <li class="list-style-none"><ul>
@@ -12,14 +18,14 @@
   <li><a href="{{ docurlc . "docs.log_config" }}">Log Config</a></li>
 </ul></li>
 <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
-{{ if gteq .CurrentVersion "0.8" }}
+{{ if $isv08Above }}
 <li><a href="{{ docurlc . "docs.auto_bind" }}">Parameters - Auto Bind</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.controllers" }}">Controllers</a></li>
 <li class="list-style-none"><ul>
   <li><a href="{{ docurlc . "docs.interceptors" }}">Interceptors</a></li>
 </ul></li>
-{{ if gteq .CurrentVersion "0.7" }}
+{{ if $isv08Above }}
 <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
 <li class="list-style-none"><ul class="sub-li">
   <li><a href="{{ docurlc . "docs.password_encoders" }}">Password Encoders</a></li>
@@ -37,23 +43,20 @@
   <li><a href="{{ docurlc . "docs.template_funcs" }}">Template Functions</a></li>
 </ul></li>
 <li><a href="{{ docurlc . "docs.i18n" }}">I18n Internationalization</a></li>
-{{ if gteq .CurrentVersion "0.8" }}
+{{ if $isv08Above }}
 <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter/Publisher</a></li>
-{{ if gteq .CurrentVersion "0.8" }}
+{{ if $isv08Above }}
 <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
 {{ end }}
-{{ if gteq .CurrentVersion "0.9" }}
+{{ if $isv09Above }}
 <li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
 <li><a href="{{ docurlc . "docs.error_handler" }}">Centrailzed Error Handler</a></li>
 <li><a href="{{ docurlc . "docs.logging" }}">Logging/Logger</a></li>
-{{ if gteq .CurrentVersion "0.9" }}
-<li><a href="{{ docurlc . "docs.server_dump_log" }}">Server Dump Log</a></li>
-{{ end }}
-{{ if gteq .CurrentVersion "0.8" }}
+{{ if $isv08Above }}
 <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.faq" }}">FAQ</a></li>
