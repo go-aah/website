@@ -24,6 +24,7 @@ aah framework uses an enhanced version of [forge syntax]({{aah_docs_domain_url}}
 
   * Environment profiles are supported. For e.g: dev, qa, prod, etc.
   * Organize your config files as you need, you can always add `include` references.  
+  * <span class="badge lb-sm">Since v0.10</span> Hot-Reload Configuration and Reinitialize on non-dev environment profile via `SIGHUP`, refer to [documentation]({{aah_docs_domain_url}}/configuration-hot-reload.html)
 
 ### URL Routing and Reverse Route
 

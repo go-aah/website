@@ -1,5 +1,10 @@
 <li><a href="{{ docurlc . "docs.aah_application_binary" }}">Application Binary</a></li>
 <li><a href="{{ docurlc . "docs.deployment" }}">Deployment</a></li>
+{{ if vergteq .CurrentVersion "v0.7" }}
 <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
+{{ end }}
+{{ if vergteq .CurrentVersion "v0.10" }}
+<li><a href="{{ docurlc . "docs.config_hot_reload" }}">Config Hot-Reload via SIGHUP</a></li>
+{{ end }}
 <li><a href="{{ docurlc . "docs.cluster_deployment" }}">Cluster Deployment</a></li>
 <li><a href="{{ docurlc . "docs.getting_started_systemd" }}">Getting started with systemd</a></li>
