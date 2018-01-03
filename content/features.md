@@ -75,6 +75,8 @@ aah provides very flexible way to [auto parse and bind]({{aah_docs_domain_url}}/
 
 ### View Engine
 
+aah provides pluggable view engine out-of-the-box. Default view engine is `Go` template engine.
+
   * Go view engine with [partial inheritance support]({{aah_docs_domain_url}}/views.html) (Default engine).
   * Multiple view layouts for your unique use case.
   * Framework provided [template funcs]({{aah_docs_domain_url}}/template-funcs.html), Plus you can add your own easily.
