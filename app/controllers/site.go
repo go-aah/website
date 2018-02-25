@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"aahframework.org/aah.v0"
-	"aahframework.org/ahttp.v0"
 	"aahframework.org/log.v0"
 
 	"github.com/go-aah/website/app/markdown"
@@ -77,15 +76,4 @@ func (s *SiteController) Team() {
 // Privacy method display aahframework.org websit privacy information.
 func (s *SiteController) Privacy() {
 	s.Reply().Ok()
-}
-
-func onPreReplyEvent(e *aah.Event) {
-	ctx := e.Data.(*aah.Context)
-	if ctx.IsStaticRoute() {
-		ctx.Res.Header().Set(ahttp.HeaderAccessControlAllowOrigin, "*")
-	}
-}
-
-func init() {
-	aah.OnPreReply(onPreReplyEvent)
 }
