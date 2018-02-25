@@ -53,6 +53,9 @@
 {{ if $isv09Above }}
 <li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
 {{ end }}
+{{ if $isv010Above }}
+<li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
+{{ end }}
 <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
 <li><a href="{{ docurlc . "docs.error_handler" }}">Centrailzed Error Handler</a></li>
 <li><a href="{{ docurlc . "docs.logging" }}">Logging/Logger</a></li>
