@@ -3,6 +3,9 @@
 {{ $isv010Above := vergteq .CurrentVersion "v0.10" }}
 <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
 <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
+{{ if $isv010Above }}
+<li><a href="{{ docurlc . "docs.init_go" }}">aah init.go file</a></li>
+{{ end }}
 <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
 <li class="list-style-none"><ul>
   <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extension</a></li>
