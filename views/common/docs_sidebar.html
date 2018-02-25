@@ -3,7 +3,7 @@
   <div class="docs-version">
     <select id="docs_version" class="selectpicker docs-version-dd" data-style="btn-primary">
       {{ range .Releases -}}
-      <option value="{{ . }}">Framework {{ . }}.x</option>
+      <option value="{{ . }}">Framework {{ dverdis . }}</option>
       {{- end }}
     </select>
   </div>

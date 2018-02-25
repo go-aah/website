@@ -15,14 +15,14 @@ aah takes security very seriously, you're welcome to do peer review of aah's 100
 aah framework automatically does following safety measures to protect aah application from various attacks.
 
   * [Auto Parse and Bind]({{aah_docs_domain_url}}/request-parameters-auto-bind.html) Request parameter does value sanitization to prevent XSS attacks, it's highly recommended to use.
-      - Any parse errors results in 400 Bad Request.
+      - Any parse errors results in `400 Bad Request`.
   * All view template functions (such as i18n, config, session, flash, etc.) provided aah does sanitization to prevent XSS attacks.
       - String values are appropriately escaped.
       - URLs are parsed and encoded appropriately.
   * Secured session cookies with AES encrypted and HMAC signed.
       - Automatically `secure` is set to true if application uses SSL/TLS and always `HttpOnly` is set to true.
   * [Anti-CSRF protection]({{aah_docs_domain_url}}/anti-csrf-protection.html) is enabled by default for web application. aah automatically protects all the HTML forms on the page.
-      - It is recommended to use Logout with POST request. For example refer to [form based auth tutorial]({{aah_docs_domain_url}}/tutorial/form-based-auth.html)
+      - It is recommended to use Logout with POST request. Refer to [form based auth tutorial]({{aah_docs_domain_url}}/tutorial/form-based-auth.html)
   * [Secure HTTP Headers]({{aah_docs_domain_url}}/security-config.html#section-http-header) with many safe defaults for Web application and RESTful API service.
       - Enforces XSS filter in the browser.
       - Sets HSTS if application uses SSL/TLS to prevent protocol downgrade attacks and cookie hijacking.
@@ -39,8 +39,8 @@ aah framework automatically does following safety measures to protect aah applic
 ## Security Considerations
 
   * aah provides very powerful, easy to use [Authentication]({{aah_docs_domain_url}}/authentication.html) and [Authorization]({{aah_docs_domain_url}}/authorization.html) capabilities to secure your application. Inspired by apache Shiro library.
-      - Use `Before` action interceptor to check user has appropriate roles and permissions. Then permit  user to access the data.
+      - Use `Before` action interceptor to check user has appropriate roles and permissions. Then permit user to access the data.
       - **`Upcoming`** Automatic roles and permissions check for individual routes via configuration.
   * Don't use a weak sign key and encryption key for Session. The `aah new` generates strong one for you automatically.
   * Don't use a weak sign key and encryption key for Anti-CSRF. The `aah new` generates strong one for you automatically.
-  * **`Upcoming`** CORS protection - preflight.
+  * CORS protection - preflight.
