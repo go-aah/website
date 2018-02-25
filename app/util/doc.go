@@ -1,6 +1,8 @@
 package util
 
 import (
+	"fmt"
+	"html/template"
 	"path/filepath"
 	"strings"
 
@@ -8,8 +10,14 @@ import (
 	"github.com/go-aah/website/app/models"
 
 	"aahframework.org/aah.v0"
+	"aahframework.org/ahttp.v0"
 	"aahframework.org/essentials.v0"
 	"aahframework.org/log.v0"
+)
+
+var (
+	releases      []string
+	editURLPrefix string
 )
 
 // BranchName method returns the confirmed branch name
@@ -36,7 +44,6 @@ func DocVersionBaseDir(version string) string {
 // local and if already exits it takes a update from GitHub.
 // It clears cache too.
 func RefreshDocContent(pushEvent *models.GithubPushEvent) {
-	releases, _ := aah.AppConfig().StringList("docs.releases")
 	version := pushEvent.BranchName()
 	if version == "master" {
 		version = releases[0]
@@ -105,4 +112,49 @@ func TrimPrefixSlash(str string) string {
 func CreateKey(rpath string) string {
 	key := ess.StripExt(TrimPrefixSlash(rpath))
 	return strings.Replace(key, "/", "-", -1)
+}
+
+// PullGithubDocsAndLoadCache method pulls github docs and populate documentation
+// in the cache
+func PullGithubDocsAndLoadCache(e *aah.Event) {
+	cfg := aah.AppConfig()
+	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
+	releases, _ = cfg.StringList("docs.releases")
+	docBasePath := DocBaseDir()
+
+	if aah.AppProfile() == "prod" {
+		ess.DeleteFiles(docBasePath)
+	}
+
+	_ = ess.MkDirAll(docBasePath, 0755)
+	GitRefresh(releases)
+
+	if cfg.BoolDefault("markdown.cache", false) {
+		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
+		go markdown.LoadCache(ContentBasePath())
+	}
+}
+
+// TmplDocURLc method compose documentation navi URL based on version
+func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
+	params := viewArgs[aah.KeyViewArgRequestParams].(*ahttp.Params)
+	version := params.PathValue("version")
+	if !ess.IsSliceContainsString(releases, version) {
+		version = releases[0]
+	}
+
+	return template.HTML(fmt.Sprintf("/%s/%s",
+		version,
+		aah.AppConfig().StringDefault(key, "")))
+}
+
+// TmplDocEditURL method compose github documentation edit URL
+func TmplDocEditURL(docFile string) template.URL {
+	var pattern string
+	if strings.HasPrefix(docFile, "/") {
+		pattern = "%s%s"
+	} else {
+		pattern = "%s/%s"
+	}
+	return template.URL(fmt.Sprintf(pattern, editURLPrefix, docFile))
 }

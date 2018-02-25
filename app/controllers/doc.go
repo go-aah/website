@@ -2,8 +2,6 @@ package controllers
 
 import (
 	"bytes"
-	"fmt"
-	"html/template"
 	"io/ioutil"
 	"path"
 	"path/filepath"
@@ -17,15 +15,11 @@ import (
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/models"
 	"github.com/go-aah/website/app/util"
-
-	"github.com/hashicorp/go-version"
 )
 
 var (
-	releases      []string
-	docBasePath   string
-	editURLPrefix string
-	verrep        = strings.NewReplacer("v", "", ".x", "", "-edge", "")
+	releases    []string
+	docBasePath string
 )
 
 // DocController struct documentation domain controller
@@ -221,56 +215,8 @@ func (d *DocController) NotFound() {
 	})
 }
 
-func docsContentRefresh(e *aah.Event) {
-	cfg := aah.AppConfig()
-	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
-	releases, _ = cfg.StringList("docs.releases")
+// LoadValuesFromConfig method loads required value from configuration and others
+func LoadValuesFromConfig(e *aah.Event) {
+	releases, _ = aah.AppConfig().StringList("docs.releases")
 	docBasePath = util.DocBaseDir()
-
-	if aah.AppProfile() == "prod" {
-		ess.DeleteFiles(docBasePath)
-	}
-
-	_ = ess.MkDirAll(docBasePath, 0755)
-	util.GitRefresh(releases)
-
-	if cfg.BoolDefault("markdown.cache", false) {
-		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
-		go markdown.LoadCache(util.ContentBasePath())
-	}
-}
-
-func init() {
-	aah.AddTemplateFunc(template.FuncMap{
-		"docurlc": func(viewArgs map[string]interface{}, key string) template.HTML {
-			params := viewArgs[aah.KeyViewArgRequestParams].(*ahttp.Params)
-			version := params.PathValue("version")
-			if !ess.IsSliceContainsString(releases, version) {
-				version = releases[0]
-			}
-
-			return template.HTML(fmt.Sprintf("/%s/%s",
-				version,
-				aah.AppConfig().StringDefault(key, "")))
-		},
-		"absrequrl": func(viewArgs map[string]interface{}) template.URL {
-			return template.URL(fmt.Sprintf("%s://%s%s", viewArgs["Scheme"], viewArgs["Host"], viewArgs["RequestPath"]))
-		},
-		"docediturl": func(docFile string) template.URL {
-			var pattern string
-			if strings.HasPrefix(docFile, "/") {
-				pattern = "%s%s"
-			} else {
-				pattern = "%s/%s"
-			}
-			return template.URL(fmt.Sprintf(pattern, editURLPrefix, docFile))
-		},
-		"vergteq": func(currentVersion, expectedVersion string) bool {
-			cv, _ := version.NewVersion(verrep.Replace(currentVersion))
-			ev, _ := version.NewVersion(verrep.Replace(expectedVersion))
-			return (cv.Equal(ev) || cv.GreaterThan(ev))
-		},
-	})
-
-	aah.OnStart(docsContentRefresh)
 }

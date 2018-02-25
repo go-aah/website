@@ -4,11 +4,16 @@
 package main
 
 import (
+	"html/template"
+
 	"aahframework.org/aah.v0"
-	ahttp "aahframework.org/ahttp.v0"
 
 	// Registering HTML minifier for web application
 	_ "github.com/aah-cb/minify"
+
+	"github.com/go-aah/website/app/controllers"
+	"github.com/go-aah/website/app/markdown"
+	"github.com/go-aah/website/app/util"
 )
 
 func init() {
@@ -37,14 +42,19 @@ func init() {
 	//
 	// aah.OnStart(db.Connect)
 	// aah.OnStart(cache.Load)
+	aah.OnStart(controllers.LoadValuesFromConfig)
+	aah.OnStart(markdown.FetchMarkdownConfig)
+	aah.OnStart(util.PullGithubDocsAndLoadCache)
 
 	// Event: OnShutdown
 	// Published on receiving OS Signals `SIGINT` or `SIGTERM`.
 	//
 	// aah.OnShutdown(cache.Flush)
 	// aah.OnShutdown(db.Disconnect)
+	aah.OnShutdown(markdown.ClearCache)
 
-	aah.OnPreReply(onPreReplyEvent)
+	// Event: OnPreReply
+	aah.OnPreReply(util.AllowAllOriginForStaticFiles)
 
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 	// Middleware's
@@ -67,11 +77,15 @@ func init() {
 		aah.ActionMiddleware,
 	)
 
-}
+	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+	// Register template methods
+	//__________________________________________________________________________
+	aah.AddTemplateFunc(template.FuncMap{
+		"docurlc":    util.TmplDocURLc,
+		"docediturl": util.TmplDocEditURL,
+		"absrequrl":  util.TmplAbsReqURL,
+		"vergteq":    util.TmplVerGtEq,
+		"dverdis":    util.TmplDVerDis,
+	})
 
-func onPreReplyEvent(e *aah.Event) {
-	ctx := e.Data.(*aah.Context)
-	if ctx.IsStaticRoute() {
-		ctx.Res.Header().Set(ahttp.HeaderAccessControlAllowOrigin, "*")
-	}
 }

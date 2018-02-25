@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"aahframework.org/aah.v0"
+	"aahframework.org/ahttp.v0"
 	"aahframework.org/log.v0"
 )
 
@@ -59,4 +60,12 @@ func IsValidHubSignature(signature string, payload []byte) bool {
 	_, _ = computed.Write(payload)
 
 	return hmac.Equal(computed.Sum(nil), actual)
+}
+
+// AllowAllOriginForStaticFiles adds `AccessControlAllowOrigin: *` header on static file response.
+func AllowAllOriginForStaticFiles(e *aah.Event) {
+	ctx := e.Data.(*aah.Context)
+	if ctx.IsStaticRoute() {
+		ctx.Res.Header().Set(ahttp.HeaderAccessControlAllowOrigin, "*")
+	}
 }

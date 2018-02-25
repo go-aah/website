@@ -140,16 +140,6 @@ func LoadCache(docBasePath string) {
 	}
 }
 
-// ClearCache method clears the Markdown cache.
-func ClearCache() {
-	if len(articleCache) > 0 {
-		log.Info("Clearing cache")
-	}
-	mu.Lock()
-	articleCache = make(map[string]*models.Article)
-	mu.Unlock()
-}
-
 // RefreshCacheByFile method refereshes the Markdown cache by file.
 func RefreshCacheByFile(mdPath string) {
 	article := getArticle(mdPath)
@@ -192,15 +182,17 @@ func getArticle(mdPath string) *models.Article {
 	return article
 }
 
-func clearDocsCache(e *aah.Event) {
-	ClearCache()
+// ClearCache method clears the Markdown cache.
+func ClearCache(e *aah.Event) {
+	if len(articleCache) > 0 {
+		log.Info("Clearing cache")
+	}
+	mu.Lock()
+	articleCache = make(map[string]*models.Article)
+	mu.Unlock()
 }
 
-func fetchMarkdownConfig(e *aah.Event) {
+// Gets markdown cache config value
+func FetchMarkdownConfig(e *aah.Event) {
 	isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
-}
-
-func init() {
-	aah.OnStart(fetchMarkdownConfig)
-	aah.OnShutdown(clearDocsCache)
 }
