@@ -166,7 +166,7 @@
                       {{ if $isv07Above }}
                       <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
                       {{ end }}
-                      {{ if vergteq .CurrentVersion "v0.10" }}
+                      {{ if $isv010Above }}
                       <li><a href="{{ docurlc . "docs.config_hot_reload" }}">Config Hot-Reload via SIGHUP</a></li>
                       {{ end }}
                     </ul>
@@ -175,6 +175,9 @@
                     <ul class="list-unstyled">
                       <li><a href="{{ docurlc . "docs.cluster_deployment" }}">Cluster Deployment</a></li>
                       <li><a href="{{ docurlc . "docs.getting_started_systemd" }}">Getting started with systemd</a></li>
+                      {{ if $isv010Above }}
+                      <li><a href="{{ docurlc . "docs.getting_started_docker" }}">Getting started with Docker</a></li>
+                      {{ end }}
                     </ul>
                   </div>
                   <div class="col-xs-12 col-sm-4 col-md-4">
