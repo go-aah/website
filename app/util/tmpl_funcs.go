@@ -4,12 +4,6 @@ import (
 	"fmt"
 	"html/template"
 	"strings"
-
-	"github.com/hashicorp/go-version"
-)
-
-var (
-	verrep = strings.NewReplacer("v", "", ".x", "", "-edge", "")
 )
 
 // TmplAbsReqURL method create absolute URL
@@ -19,9 +13,7 @@ func TmplAbsReqURL(viewArgs map[string]interface{}) template.URL {
 
 // TmplVerGtEq method compare two versions
 func TmplVerGtEq(currentVersion, expectedVersion string) bool {
-	cv, _ := version.NewVersion(verrep.Replace(currentVersion))
-	ev, _ := version.NewVersion(verrep.Replace(expectedVersion))
-	return (cv.Equal(ev) || cv.GreaterThan(ev))
+	return VersionGtEq(currentVersion, expectedVersion)
 }
 
 // TmplDVerDis method creates display version string for dropdown

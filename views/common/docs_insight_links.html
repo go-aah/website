@@ -3,7 +3,7 @@
 <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
 <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
 <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
-{{ if vergteq .CurrentVersion "v0.7" }}
+{{ if .Isv07AndGr }}
 <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
 <li><a href="{{ docurlc . "docs.security_design" }}">Security - Design</a></li>
 <li><a href="{{ docurlc . "docs.security_permissions" }}">Security - Permissions</a></li>

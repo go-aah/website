@@ -73,8 +73,9 @@ func (d *DocController) VersionHome(version string) {
 		"IsVersionHome":      true,
 		"ShowVersionDocs":    false,
 		"ShowInsightSideNav": false,
-		"CurrentVersion":     version,
+		"CurrentDocVersion":  version,
 	}
+	d.addDocVersionComparison(version)
 	d.Reply().HTMLl("docs.html", data)
 }
 
@@ -92,7 +93,8 @@ func (d *DocController) ShowDoc(version, content string) {
 		d.ViewArgs()["ShowVersionNo"] = false
 	}
 
-	d.AddViewArg("CurrentVersion", version)
+	d.AddViewArg("CurrentDocVersion", version)
+	d.addDocVersionComparison(version)
 	branchName := util.BranchName(version)
 	if branchName == "master" {
 		d.AddViewArg("LatestRelease", true)
@@ -128,19 +130,21 @@ func (d *DocController) ShowDoc(version, content string) {
 // GoDoc method display aah framework godoc links
 func (d *DocController) GoDoc() {
 	data := aah.Data{
-		"IsGodoc":        true,
-		"ShowVersionNo":  false,
-		"CurrentVersion": releases[0],
+		"IsGodoc":           true,
+		"ShowVersionNo":     false,
+		"CurrentDocVersion": releases[0],
 	}
+	d.addDocVersionComparison(releases[0])
 	d.Reply().HTMLlf("docs.html", "godoc.html", data)
 }
 
 // Tutorials method display aah framework tutorials github links or guide.
 func (d *DocController) Tutorials() {
+	d.addDocVersionComparison(releases[0])
 	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
-		"IsTutorials":    true,
-		"ShowVersionNo":  false,
-		"CurrentVersion": releases[0],
+		"IsTutorials":       true,
+		"ShowVersionNo":     false,
+		"CurrentDocVersion": releases[0],
 	})
 }
 
@@ -213,6 +217,14 @@ func (d *DocController) NotFound() {
 	d.Reply().HTMLlf("docs.html", "notfound.html", aah.Data{
 		"IsNotFound": true,
 	})
+}
+
+func (d *DocController) addDocVersionComparison(curVer string) {
+	cv := util.VerRep.Replace(curVer)
+	for _, ver := range releases {
+		keyPart := util.VerKeyRep.Replace(ver)
+		d.AddViewArg("Is"+keyPart+"AndGr", util.VersionGtEq(cv, util.VerRep.Replace(ver)))
+	}
 }
 
 // LoadValuesFromConfig method loads required value from configuration and others

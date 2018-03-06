@@ -12,6 +12,7 @@ import (
 	"aahframework.org/aah.v0"
 	"aahframework.org/ahttp.v0"
 	"aahframework.org/log.v0"
+	"github.com/hashicorp/go-version"
 )
 
 const (
@@ -19,6 +20,11 @@ const (
 
 	// len(SignaturePrefix) + len(hex(sha1))
 	signatureLength = 45
+)
+
+var (
+	VerRep    = strings.NewReplacer("v", "", ".x", "", "-edge", "")
+	VerKeyRep = strings.NewReplacer(".x", "", "-edge", "", ".", "")
 )
 
 // ExecCmd method to execute command line arguments.
@@ -68,4 +74,11 @@ func AllowAllOriginForStaticFiles(e *aah.Event) {
 	if ctx.IsStaticRoute() {
 		ctx.Res.Header().Set(ahttp.HeaderAccessControlAllowOrigin, "*")
 	}
+}
+
+// VersionGtEq method compare two semantic versions
+func VersionGtEq(currentVersion, expectedVersion string) bool {
+	cv, _ := version.NewVersion(currentVersion)
+	ev, _ := version.NewVersion(expectedVersion)
+	return (cv.Equal(ev) || cv.GreaterThan(ev))
 }
