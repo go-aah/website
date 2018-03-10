@@ -1,9 +1,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/assets/js/aah-{{ .AppBuildInfo.Version }}.js"></script>
-  <script async defer src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="{{ rurl . "host" }}/assets/js/aah-{{ .AppBuildInfo.Version }}.js"></script>
+  <script async defer src="{{ rurl . "host" }}/assets/js/ie10-viewport-bug-workaround.js"></script>
   {{ if .CodeBlock -}}
-  <script src="/assets/js/prism.js"></script>
+  <script src="{{ rurl . "host" }}/assets/js/prism.js"></script>
   {{- end -}}
   <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js"></script>
   <script>
