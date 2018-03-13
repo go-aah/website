@@ -143,9 +143,14 @@ func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 		version = releases[0]
 	}
 
-	return template.HTML(fmt.Sprintf("/%s/%s",
-		version,
-		aah.AppConfig().StringDefault(key, "")))
+	fileName := aah.AppConfig().StringDefault(key, "")
+	if key == "docs.error_handler" {
+		if VersionGtEq(VerKeyRep.Replace(version), "v0.10") {
+			fileName = "error-handling.html"
+		}
+	}
+
+	return template.HTML(fmt.Sprintf("/%s/%s", version, fileName))
 }
 
 // TmplDocEditURL method compose github documentation edit URL

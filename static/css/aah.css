@@ -28,14 +28,14 @@ all and (min-width:481px) and (max-width: 568px),
   }
 
   .aah-banner h1 {
-    font-size: 4em !important;
+    font-size: 6em !important;
   }
 
   .aah-banner h4 {
     font-size: 11px !important;
   }
 
-  .framework-features {
+  .aah-section {
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -68,7 +68,7 @@ all and (min-width:569px) and (max-width: 768px) {
 
 @media all and (min-width:321px) and (max-width: 480px) {
   .aah-banner h1 {
-    font-size: 3em !important;
+    font-size: 7em !important;
   }
 
   .aah-banner h4 {
@@ -87,14 +87,14 @@ all and (min-width:569px) and (max-width: 768px) {
   }
 
   .aah-banner h1 {
-    font-size: 3.0em !important;
+    font-size: 5em !important;
   }
 
   .aah-banner h4 {
     font-size: 12px !important;
   }
 
-  .framework-features {
+  .aah-section {
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -158,7 +158,7 @@ all and (min-width:569px) and (max-width: 768px) {
   }
 
   .aah-banner h1 {
-    font-size: 5.8em !important;
+    font-size: 11em !important;
   }
 
   .auto-clear .col-lg-1:nth-child(12n+1){clear:left;}
@@ -240,9 +240,11 @@ code {
 }
 
 .aah-banner {
-  padding-top: 60px;
-  padding-bottom: 40px;
+  /* padding-top: 60px;
+  margin-top: 60px; */
+  /* padding-bottom: 40px; */
   color: inherit;
+  height: 450px;
 }
 
 .aah-banner h1 {
@@ -276,14 +278,23 @@ code {
   font-size: 12px;
 }
 
-.aah-getting-started {
+.aah-hey-im-here {
+  padding-top: 80px;
+}
+
+.aah-hey-im-here .btn-success {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* .aah-getting-started {
   padding-top: 70px;
 }
 
 .aah-getting-started .btn-success {
   font-weight: bold;
   font-size: 14px;
-}
+} */
 
 .aah-social {
   margin-top: 10px;
@@ -303,14 +314,14 @@ code {
   color: #e25657;
 }
 
-.hr-drop-shadow {
+/* .hr-drop-shadow {
   height: 15px;
   border: 0;
   box-shadow: inset 0 15px 15px -15px #e6e6e6;
   margin: 0;
   border-top-right-radius: 1px;
   border-top-left-radius: 1px;
-}
+} */
 
 .hr-dev-support {
   margin-bottom: 0;
@@ -318,30 +329,52 @@ code {
   border-top: 1px solid #f9f6f6;
 }
 
+/* #aah-introduction h3 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /* font-family: timeburnerFont; */
+  font-size: 2em;
+} */
+
 .framework-summary {
   padding: 15px 15px 0 15px;
-  text-align: justify;
+  /* text-align: justify; */
 }
 
-.framework-features h3, .framework-features .btn-primary {
+.aah-section-outer {
+  padding-top: 25px;
+}
+
+.aah-section h3 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 2em;
+}
+
+.aah-section p {
+  font-size: 1.2em;
+}
+
+.aah-section h3, .aah-section .btn-primary {
   font-weight: bold;
 }
 
 .feature-list {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .feature-list h5 {
   font-weight: bold;
+  font-size: 16px;
 }
 
 .feature-list p {
-  text-align: justify;
-  font-size: 14.5px;
+  text-align: left;
+  font-size: 15px;
 }
 
 .features-know-more {
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .aah-scalable-icon {
@@ -768,7 +801,7 @@ div.gs-snippet {
 }
 
 .gh-star-btn {
-  margin-top: 1px;
+  margin-top: 15px;
   margin-left: 11px;
 }
 

@@ -19,62 +19,64 @@
     <div class="pull-right">
       {{ import "social.html" . -}}
     </div>
-    <div class="row text-center aah-banner">
-        <h1>aah framework</h1>
-        <h4 class="no-anchor">A scalable, performant, rapid development Web framework for Go</h4>
-        <div class="aah-getting-started">
-          <a href="{{ $docIndexUrl }}getting-started.html" class="btn btn-success">Get started with aah</a>
-        </div>
+    <div id="aahBanner" class="row text-center aah-banner">
+        <h1>aah</h1>
+        <h4 class="no-anchor">A secure, flexible, rapid development Go web framework</h4>
         <div class="aah-current-release">
           <span>Latest release v{{ config "aah_release.latest" }}, {{ config "aah_release.date" }}</span>
         </div>
         <div class="aah-release-goreq">
           Requires <span style="font-size:14.5px">&ge;</span> go1.8, <a href="{{ $docIndexUrl }}release-notes.html" class="inherit-color">Release Notes</a>
         </div>
+        <div class="aah-hey-im-here">
+          <a href="#introduction" class="btn btn-success btn-aah-color">Hey, I'm here!</a>
+        </div>
+        <!-- <div class="aah-getting-started">
+          <a href="{{ $docIndexUrl }}getting-started.html" class="btn btn-success">Get started</a>
+        </div> -->
     </div>
 
-    <div class="row">
+    <div class="row aah-section-outer auto-clear">
       <hr class="hr-drop-shadow" />
-      <div class="row framework-features text-center">
-        <p class="framework-summary">
-          aah framework makes it easy to build scalable web apps and mobile apps API in Go. aah is balanced Go web framework for small, medium, enterprise scale. You have to focus on application logic instead of building infrastructure, reinventing the wheel. aah embraces Don't Repeat Yourself, Conventions, Configurations, it makes Go application development more fun, free and open source.
-        </p>
+      <div class="row aah-section text-center">
+        <h3 id="introduction">Introducing <span>aah framework</span></h3>
+        <div class="framework-summary">
+          <p>aah makes it easy to build secure, scalable, high performance Web and RESTful application with Go. Enterprise grade features out-of-the-box.</p>
+          <p>Code less, achieve your goals and aah is open source.</p>
+        </div>
         <div class="row auto-clear feature-list">
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fa fa-cogs fa-2x aah-color" aria-hidden="true"></i>
-            <h5 class="no-anchor">Configuration</h5>
-            <p>aah configuration is similar to Typesafe HOCON syntax. Flexible and easy to configure. aah is opinionated and defaults to set of conventions and configurations <a href="{{ rurl . "docs.index" }}configuration.html">know more</a>.</p>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <i class="fa fa-shield fa-3x aah-color" aria-hidden="true"></i>
+            <h5 class="no-anchor">Uncompromising Security</h5>
+            <p>Security aware framework, secure session cookie/file/store, CSRF prevention, XSS prevention, powerful authentication and authorization. Bulit-in enterprise-grade protection by default.</p>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fa fa-shield fa-2x aah-color" aria-hidden="true"></i>
-            <h5 class="no-anchor">Security</h5>
-            <p>Easy to use and powerful application security - Authentication, Authorization and Session Management. Secure HTTP headers, Request Inputs and Template funcs Sanitization, and provides capabilities to address OWASP top 10 web application security risks.</p>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <i class="fa fa-reply fa-3x aah-color" aria-hidden="true"></i>
+            <h5 class="no-anchor">Powerful Reply Builder</h5>
+            <p>RESTful or Render with your choice of view engine - Enhanced Go, Pug (Jade), many more to come.</p>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fa fa-tachometer fa-2x aah-color" aria-hidden="true"></i>
-            <h5 class="no-anchor">High Performance</h5>
-            <p>Optimized Routing, HTTP/2, very small memory footprint, less GC overhead also uses memory pooling, optimized middlewares and pragmatic design.</p>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <i class="fa fa-tachometer fa-3x aah-color" aria-hidden="true"></i>
+            <h5 class="no-anchor">High Performance, Scalable</h5>
+            <p>Pragmatic design and optimized implementation, HTTP/2, small memory footprint, less GC overhead.</p>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fa fa-signal fa-2x aah-color" aria-hidden="true"></i> <i class="fa fa-expand aah-color aah-scalable-icon" aria-hidden="true"></i>
-            <h5 class="no-anchor">Scalable</h5>
-            <p>Build scalable web apps and mobile apps APIs comfortably. aah is very flexible, well structured and capabilities to fulfil modern application needs.</p>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fa fa-reply fa-2x aah-color" aria-hidden="true"></i>
-            <h5 class="no-anchor">Rich Content Reply</h5>
-            <p>aah provides intuitive Reply builder to compose your HTTP response. Supports various types of reply, HTML (mutli-layouts), JSON, JSONP, XML, Text, File (sendfile, attachment, inline) and Binary. Also Static files delivery and directory listing <a href="{{ rurl . "docs.index" }}reply.html">know more</a>.</p>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <i class="fa fa-code fa-2x aah-color" aria-hidden="true"></i>
-            <h5 class="no-anchor">Developer Friendly</h5>
-            <p>Development is more fun, typical method name(s) aligned with industry nomenclature, you have to just focus on your application logic, use aah CLI tool to quick start, run, hot-reload, cross-compile build, etc.</p>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <i class="fa fa-code fa-3x aah-color" aria-hidden="true"></i>
+            <h5 class="no-anchor">Developer Friendly, easy to use</h5>
+            <p>Clean, well documented, highly configurable, hot-reload, CLI tool. aah take cares of infrastructure and bolierplate code, etc. You can focus on your application logic.</p>
           </div>
         </div>
+        <!-- <div class="row features-short">
+          <ul class="list-inline">
+            <li class="list-inline-item"><i class="fa fa-mobile-alt aah-color" aria-hidden="true"> SPA/Mobile app support</li>
+            <li class="list-inline-item"><i class="fa fa-cog aah-color" aria-hidden="true"> Multi-environment configuration</li>
+            <li class="list-inline-item"><i class="fa fa-elementor aah-color" aria-hidden="true"> Event Emitter/Publisher</li>
+          </ul>
+        </div> -->
         <div class="row features-know-more text-center">
-          <a class="btn btn-primary btn-aah-color" href="{{ rurl . "features" }}">…and so much more!</a>
+          <a class="btn btn-primary btn-aah-color" href="{{ rurl . "features" }}">...get to know more!</a>
         </div>
-      </div> <!-- ./framework-features -->
+      </div> <!-- ./aah-section -->
     </div>
   </div>
 {{- end }}

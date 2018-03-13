@@ -35,6 +35,9 @@
   <li><a href="{{ docurlc . "docs.security_permissions" }}">Permissions</a></li>
 </ul></li>
 {{ end }}
+{{ if .Isv010AndGr }}
+<li><a href="{{ docurlc . "docs.validation" }}">Data Validation</a></li>
+{{ end }}
 <li><a href="{{ docurlc . "docs.session" }}">Session Management</a></li>
 <li><a href="{{ docurlc . "docs.reply" }}">Reply Builder</a></li>
 <li><a href="{{ docurlc . "docs.middleware" }}">Middleware</a></li>
@@ -57,7 +60,9 @@
 <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
-<li><a href="{{ docurlc . "docs.error_handler" }}">Centrailzed Error Handler</a></li>
+{{ if .Isv08AndGr }}
+<li><a href="{{ docurlc . "docs.error_handler" }}">{{ if .Isv010AndGr }}Error Handling{{ else }}Centrailzed Error Handler{{ end }}</a></li>
+{{ end }}
 <li><a href="{{ docurlc . "docs.logging" }}">Logging/Logger</a></li>
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
