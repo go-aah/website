@@ -78,7 +78,14 @@ func init() {
 	)
 
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-	// Register template methods
+	// Add Application Error Handler
+	// Doc: https://docs.aahframework.org/error-handling.html
+	//__________________________________________________________________________
+	// aah.SetErrorHandler(AppErrorHandler)
+
+	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+	// Add Custom Template Functions
+	// Doc: https://docs.aahframework.org/template-funcs.html
 	//__________________________________________________________________________
 	aah.AddTemplateFunc(template.FuncMap{
 		"docurlc":    util.TmplDocURLc,
@@ -87,5 +94,28 @@ func init() {
 		"vergteq":    util.TmplVerGtEq,
 		"dverdis":    util.TmplDVerDis,
 	})
+
+	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+	// Add Custom Session Store
+	// Doc: https://docs.aahframework.org/session.html
+	//__________________________________________________________________________
+	// aah.AddSessionStore("redis", &RedisSessionStore{})
+
+	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+	// Add Custom value Parser
+	// Doc: https://docs.aahframework.org/request-parameters-auto-bind.html
+	//__________________________________________________________________________
+	// if err := aah.AddValueParser(reflect.TypeOf(CustomType{}), customParser); err != nil {
+	//   log.Error(err)
+	// }
+
+	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+	// Add Custom Validation Functions
+	// Doc: https://godoc.org/gopkg.in/go-playground/validator.v9
+	//__________________________________________________________________________
+	// Obtain aah validator instance, then add yours
+	// validator := valpar.Validator()
+	//
+	// // Add your validation funcs
 
 }
