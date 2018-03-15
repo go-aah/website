@@ -32,7 +32,7 @@ all and (min-width:481px) and (max-width: 568px),
   }
 
   .aah-banner h4 {
-    font-size: 11px !important;
+    font-size: 1em !important;
   }
 
   .aah-section {
@@ -72,7 +72,7 @@ all and (min-width:569px) and (max-width: 768px) {
   }
 
   .aah-banner h4 {
-    font-size: 13px !important;
+    font-size: 1em !important;
   }
 
   .col-aoffset-cse {
@@ -240,42 +240,39 @@ code {
 }
 
 .aah-banner {
-  /* padding-top: 60px;
-  margin-top: 60px; */
-  /* padding-bottom: 40px; */
   color: inherit;
   height: 450px;
 }
 
 .aah-banner h1 {
   font-weight: bolder;
-  color: #333333;
+  color: #444;
   font-size: 5em;
   font-family: timeburnerFont;
 }
 
 .aah-banner h4 {
-  font-weight: 600;
+  font-weight: 400;
   color: #555;
-  font-size: 15px;
+  font-size: 1.3em;
 }
 
 .aah-current-release {
   padding-top: 30px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 1em;
+  font-weight: 500;
   color: #676767;
 }
 
 .aah-release-goreq {
   padding-top: 5px;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 1em;
+  font-weight: 500;
   color: #676767;
 }
 
 .aah-release-goreq a {
-  font-size: 12px;
+  /* font-size: 0.9em; */
 }
 
 .aah-hey-im-here {
@@ -286,15 +283,6 @@ code {
   font-weight: bold;
   font-size: 14px;
 }
-
-/* .aah-getting-started {
-  padding-top: 70px;
-}
-
-.aah-getting-started .btn-success {
-  font-weight: bold;
-  font-size: 14px;
-} */
 
 .aah-social {
   margin-top: 10px;
@@ -314,31 +302,14 @@ code {
   color: #e25657;
 }
 
-/* .hr-drop-shadow {
-  height: 15px;
-  border: 0;
-  box-shadow: inset 0 15px 15px -15px #e6e6e6;
-  margin: 0;
-  border-top-right-radius: 1px;
-  border-top-left-radius: 1px;
-} */
-
 .hr-dev-support {
   margin-bottom: 0;
   margin-top: 30px;
   border-top: 1px solid #f9f6f6;
 }
 
-/* #aah-introduction h3 {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  /* font-family: timeburnerFont; */
-  font-size: 2em;
-} */
-
 .framework-summary {
   padding: 15px 15px 0 15px;
-  /* text-align: justify; */
 }
 
 .aah-section-outer {
@@ -364,13 +335,14 @@ code {
 }
 
 .feature-list h5 {
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 21px;
 }
 
 .feature-list p {
   text-align: left;
-  font-size: 15px;
+  font-size: 15.5px;
+  color: #4e4e4e;
 }
 
 .features-know-more {
@@ -420,6 +392,7 @@ code {
 
 .body-content h1 {
   font-weight: bold;
+  color: #444;
 }
 
 .docs-body-content h1,
@@ -429,14 +402,17 @@ code {
 .body-content h5, .docs-body-content h5 {
   font-weight: bold;
   padding-top: 20px;
+  padding-bottom: 15px;
+  color: #444;
 }
 
 .body-content h1, .docs-body-content h1 {
-  font-size: 200%;
+  font-size: 225%;
 }
 
 .docs-body-content h1 {
-  padding-top: 0;
+  padding-top: 5px;
+  padding-bottom: 22px;
 }
 
 .body-content h2, .docs-body-content h2 {
@@ -524,11 +500,17 @@ code {
 
 .docs-page-content p {
   text-align: justify;
+  font-size: 1em;
 }
 
 .docs-page-content li {
   padding-top: 5px;
   padding-bottom: 7px;
+}
+
+.docs-page-content .code-toolbar {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .tutorials li {
@@ -691,6 +673,8 @@ code {
 .footer .about-aah {
   font-size: 12px;
   margin-top: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /* Google search */
