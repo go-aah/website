@@ -26,7 +26,7 @@ function tooltipHandling() {
 
 function anchorTagHandling() {
   anchors.options = {
-    placement: 'right',
+    placement: 'left',
     class: 'aah-color-imp',
     icon: '¶'
   };

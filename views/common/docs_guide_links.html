@@ -49,7 +49,7 @@
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
 {{ end }}
-<li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter/Publisher</a></li>
+<li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
 {{ end }}
@@ -63,7 +63,7 @@
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.error_handler" }}">{{ if .Isv010AndGr }}Error Handling{{ else }}Centrailzed Error Handler{{ end }}</a></li>
 {{ end }}
-<li><a href="{{ docurlc . "docs.logging" }}">Logging/Logger</a></li>
+<li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
 {{ end }}

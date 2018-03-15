@@ -9,6 +9,7 @@
   {{ end -}}
   <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js"></script>
   <script>
+  anchorTagHandling();
   $(document).ready(function(){
     tooltipHandling();
 
@@ -19,8 +20,6 @@
       redirectToVersion(version);
     });
     {{- end }}
-
-    anchorTagHandling();
   });
   </script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

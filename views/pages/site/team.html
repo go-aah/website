@@ -1,9 +1,9 @@
 {{ define "title" -}}
-About Team - {{ i18n . "page.site.title.suffix" }}
+{{ i18n . "page.site.title.team" }}
 {{- end }}
 
 {{ define "meta_tags" -}}
-{{ $pageTitle := printf "About Team - %v " (i18n . "page.site.title.suffix") -}}
+{{ $pageTitle := i18n . "page.site.title.team" -}}
 {{ $pageDesc := `Team behind aah framework. Author, Project Lead and Contributors.` -}}
     <meta name="description" content="{{ $pageDesc }}">
     <meta name="keywords" content="team, about team, aah framework">

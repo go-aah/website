@@ -1,0 +1,42 @@
+{{ define "title" -}}
+{{ i18n . "page.site.title.support" }}
+{{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageTitle := i18n . "page.site.title.support" -}}
+{{ $pageDesc := `Support, help, aah Go web framework` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="support, help, aah Go web framework, aah">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
+
+{{ define "body" -}}
+{{ $gh_issue_link := config "link.aah.github_issues" }}
+<div class="container body-content">
+  <div class="row text-justify">
+    <h1 class="text-center">aah framework support</h1>
+    <div class="row aah-support-section">
+      <div class="row auto-clear">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <a href="{{ config "link.aah.gitter" }}" target="_blank"><i class="fab fa-gitter fa-4x" aria-hidden="true"></i>
+          <p>Chat on Gitter Channel</p></a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <a href="{{ $gh_issue_link }}" target="_blank"><i class="fab fa-github fa-4x" aria-hidden="true"></i>
+          <p>Raise issues on GitHub</p></a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <a href="{{ config "link.aah.stackoverflow" }}" target="_blank"><i class="fab fa-stack-overflow fa-4x" aria-hidden="true"></i>
+          <p>Use <code>aahframework</code> tag on StackOverflow</p></a>
+        </div>
+        <div class="text-center aah-report">
+          Report aah improvements and bugs at <a href="{{ $gh_issue_link }}">GitHub Issues</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{- end }}

@@ -26,11 +26,11 @@
         <li {{ if .IsTutorials }}class="active"{{ end }}>
           <a href="{{ rurl . "docs.version_home" "tutorials.html" }}">Tutorials</a>
         </li>
-        <li {{ if .IsGodoc }}class="active"{{ end }}>
-          <a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a>
+        <li {{ if .IsSupport }}class="active"{{ end }}>
+          <a href="{{ rurl . "support" }}">Support</a>
         </li>
-        <li {{ if .IsWhyAah }}class="active"{{ end }}>
-          <a href="{{ rurl . "why_aah" }}">Why aah?</a>
+        <li {{ if .IsAbout }}class="active"{{ end }}>
+          <a href="{{ rurl . "about" }}">About</a>
         </li>
         <li>
           <!-- <div class="label gh-star-tip">Support aah :)</div> -->

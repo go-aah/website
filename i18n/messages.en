@@ -8,16 +8,20 @@
 page {
   site {
     title {
-      index = "Welcome to aah, the web framework for Go, A scalable, performant, rapid development Web framework"
-      get_involved = "Get Involved - Gitter, StackOverflow, Google Groups, etc. - aah, the web framework for Go"
-      suffix = "aah, the web framework for Go"
+      index = "Welcome to aah, Go web framework"
+      get_involved = "Get Involved - Gitter, StackOverflow, Google Groups, etc. - aah Go web framework"
+      team = "Team - aah Go web framework"
+      support = "Support - aah Go web framework"
+      privacy = "Privacy - aah Go web framework"
+      about = "About - aah Go web framework"
+      suffix = "aah Go web framework"
     }
   }
 
   doc {
     title {
-      index = "Documentation - aah, the web framework for Go"
-      suffix = "Documentation | aah, the web framework for Go"
+      index = "Documentation - aah Go web framework"
+      suffix = "Documentation | aah Go web framework"
     }
   }
 }

@@ -1,12 +1,12 @@
 Title: Credits
-Desc: aahframework.org website made possible following third party library/tools. I'm thankful for their efforts and time.
+Desc: aahframework.org website made possible with following third party library/tools. I'm thankful for their efforts and time.
 Keywords: credits, website, third party library/tools, thank you, thanks
 ---
 # Credits
 
 ## aahframework.org website
 
-Official website made possible by the following third party tools and libraries. I'm very thankful for their efforts & time.
+Official website made possible with following third party tools and libraries. I'm very thankful for their efforts & time.
 
 * aah logo is designed using [GIMP](https://www.gimp.org)
 * aah logo font "TimeBurner" is deigned by [NimaVisual](http://www.fontspace.com/profile/NimaVisual)

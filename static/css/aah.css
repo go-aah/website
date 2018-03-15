@@ -172,6 +172,16 @@ all and (min-width:569px) and (max-width: 768px) {
   }
 }
 
+@media all and (min-width: 1400px) {
+  .container {
+    width: 1300px;
+  }
+
+  .docs-version-dd {
+    width: 265px !important;
+  }
+}
+
 code {
   color: #292727;
   background-color: #f5f2f0;
@@ -196,6 +206,11 @@ code {
 
 .navbar-default .navbar-toggle, .navbar-default .navbar-toggle {
   background-color: #e25657;
+}
+
+.navbar-right {
+  font-weight: 500;
+  font-size: 1.25em;
 }
 
 .aah-color {
@@ -309,11 +324,16 @@ code {
 }
 
 .framework-summary {
-  padding: 15px 15px 0 15px;
+  padding-top: 15px;
 }
 
 .aah-section-outer {
   padding-top: 25px;
+}
+
+.aah-section {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .aah-section h3 {
@@ -647,6 +667,44 @@ code {
 
 .aah-license-info {
   margin-top: 15px;
+}
+
+.about-aah-section {
+  padding-top: 25px;
+  font-size: 1.3em;
+}
+
+.about-aah-section li {
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+.about-aah-quote {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.aah-first-release {
+  margin-top: 70px;
+}
+
+.aah-support-section {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.aah-support-section p {
+  font-size: 1.5em;
+  margin-top: 30px;
+}
+
+.aah-support-section a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.aah-support-section .aah-report {
+  margin-top: 300px;
 }
 
 .footer .footer-box {

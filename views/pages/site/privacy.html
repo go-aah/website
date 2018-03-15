@@ -1,9 +1,9 @@
 {{ define "title" -}}
-Privacy - {{ i18n . "page.site.title.suffix" }}
+{{ i18n . "page.site.title.privacy" }}
 {{- end }}
 
 {{ define "meta_tags" -}}
-{{ $pageTitle := printf "Privacy - %v " (i18n . "page.site.title.suffix") -}}
+{{ $pageTitle := i18n . "page.site.title.privacy" -}}
 {{ $pageDesc := `aahframework.org and its subdomains privacy policy.` -}}
     <meta name="description" content="{{ $pageDesc }}">
     <meta name="keywords" content="privacy, aah framework">

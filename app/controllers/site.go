@@ -52,9 +52,6 @@ func (s *SiteController) Content() {
 	case "security":
 		s.AddViewArg("IsSecurity", true)
 		viewFile = "security.html"
-	case "why-aah":
-		s.AddViewArg("IsWhyAah", true)
-		viewFile = "content.html"
 	case "contribute-to-code":
 		s.AddViewArg("IsContributeCode", true)
 		viewFile = "contribute-code.html"
@@ -68,12 +65,25 @@ func (s *SiteController) Content() {
 // Team method display aah framework team info.
 func (s *SiteController) Team() {
 	s.Reply().HTML(aah.Data{
-		"CodeBlock": true,
-		"IsTeam":    true,
+		"IsTeam": true,
 	})
 }
 
 // Privacy method display aahframework.org websit privacy information.
 func (s *SiteController) Privacy() {
 	s.Reply().Ok()
+}
+
+// About method to show info about aah framework.
+func (s *SiteController) About() {
+	s.Reply().HTML(aah.Data{
+		"IsAbout": true,
+	})
+}
+
+// Support method to display support aah page.
+func (s *SiteController) Support() {
+	s.Reply().HTML(aah.Data{
+		"IsSupport": true,
+	})
 }
