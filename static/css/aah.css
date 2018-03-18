@@ -481,6 +481,10 @@ code {
    margin: 0 !important;
 }
 
+.body-content .aah-security p {
+  font-size: 1.1em;
+}
+
 .body-content .aah-security ul {
   margin-left: 2%;
 }
