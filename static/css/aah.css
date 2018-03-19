@@ -862,3 +862,22 @@ div.gs-snippet {
 ::-ms-selection {  background-color: #ffe4e4; }
 ::-webkit-selection { background-color: #ffe4e4; }
 ::selection { background-color: #ffe4e4; }
+
+/* Back to Top */
+#back2Top {
+  width: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  z-index: 999;
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#back2Top:hover {
+  cursor: pointer;
+}
