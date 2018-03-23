@@ -1,22 +1,53 @@
 {{ define "title" -}}
-{{ .Article.Title }} - {{ i18n . "page.site.title.suffix" }}
+{{ i18n . "page.site.title.security" }}
 {{- end }}
 
 {{ define "meta_tags" -}}
-    <meta name="description" content="{{ .Article.Desc }}">
-    <meta name="keywords" content="{{ .Article.Keywords }}">
-    <meta property="og:title" content="{{ .Article.Title }}"/>
-    <meta property="og:description" content="{{ .Article.Desc }}"/>
-    <meta name="twitter:title" content="{{ .Article.Title }}">
-    <meta name="twitter:description" content="{{ .Article.Desc }}">
+{{ $pageTitle := i18n . "page.site.title.security" -}}
+{{ $pageDesc := `aah is a security aware framework and its easy to use. It was inspired by Apache Shiro security library` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="security, security aware framework, enterprise-grade protection">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
 {{ end }}
 
 {{ define "body" -}}
-  <div class="container body-content">
+  <div class="container-fluid aah-container-fluid">
     <div class="row aah-security">
-      {{ if .Article.IsContent -}}
-      {{ safeHTML .Article.Content }}
-      {{ end -}}
+      <h1>Security</h1>
+      <p>build uncompromised security into your application</p>
+    </div>
+    <div class="row aah-security-section">
+      <p class="summary">aah is a security aware framework and its easy to use. It was inspired by <a href="https://shiro.apache.org/" target="_blank">Apache Shiro security library</a>.</p>
+      <p class="summary">aah takes security very seriously, you’re welcome to do peer review of aah’s 100% open source code to ensure nobody’s aah application is ever compromised or hacked. As an application developer you’re responsible for any security breaches. I do my best to make sure aah application is as secure as possible.</p>
+      <div class="">
+        <h3>What aah automatically does?</h3>
+        <p>aah automatically does following safety measures to protect your application from various attacks.</p>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Secure session data on cookie/file/store, optionaly AES encrypted and HTTP only.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;CSRF prevention for web application, it protects all HTML forms on the page.</li>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;It's recommended to use user Logout with POST request.</li>
+          </ul>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;XSS prevention - on Auto parse and bind, view engine and template functions.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Secure HTTP headers with many safe defaults for Web application and RESTful API service.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;To protect against DDoS attacks caused by large HTTP request bodies by enforcing a hard limit.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Static file delivery prevents directory traversal vulnerability.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;All errors and traces from application gets logged into log file, not exposed outside on environment profile prod.</li>
+        </ul>
+      </div>
+      <div class="">
+        <h3>Introducing Authentication and Authorization</h3>
+        <p>Powerful security feature yet easy to use with application code base and view files.</p>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Cool session management for web applications and stateless for RESTful.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;You can implement Role based or Permission based or Role and Permissions based</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;OOTB supported auth schemes are Form Auth, Basic Auth and Generic Auth.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Mutliple auth-schemes within application and each can be mapped per route basis.</li>
+        </ul>
+      </div>
     </div>
   </div>
 {{- end }}

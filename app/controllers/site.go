@@ -74,10 +74,10 @@ func (s *SiteController) Privacy() {
 	s.Reply().Ok()
 }
 
-// About method to show info about aah framework.
-func (s *SiteController) About() {
+// WhyAah method to show info about aah framework.
+func (s *SiteController) WhyAah() {
 	s.Reply().HTML(aah.Data{
-		"IsAbout": true,
+		"IsWhyAah": true,
 	})
 }
 

@@ -1,8 +1,4 @@
 /* aahframework.org CSS file */
-@font-face {
-    font-family: timeburnerFont;
-    src: url(/assets/fonts/timeburnerbold.ttf);
-}
 
 body {
   padding-top: 74px;
@@ -18,10 +14,162 @@ body {
   @viewport         { width: device-width; }
 }
 
-@media all and (min-width:769px) and (max-width: 800px),
+@media all and (min-width:320px) {
+  .aah-container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  #back2Top {
+    right: 5px !important;
+    bottom: 5px !important;
+  }
+}
+
+@media all and (min-width:320px) {
+  .aah-banner h1 {
+    font-size: 6.5em !important;
+  }
+  .aah-banner h4 {
+    font-size: 0.9em !important;
+  }
+  .aah-current-release {
+    font-size: 0.8em !important;
+  }
+  .aah-release-goreq {
+    font-size: 0.7em !important;
+  }
+  .aah-intro-section h2 {
+    font-size: 2em !important;
+  }
+  .aah-intro-section .summary {
+    font-size: 1.05em !important;
+  }
+  .aah-social {
+    padding-right: 7px !important;
+  }
+  .short-feature-list {
+    padding-top: 20px !important;
+  }
+  .short-feature-list .col-xs-12 {
+    padding-top: 45px;
+  }
+}
+
+@media all and (min-width:370px) {
+  .aah-banner h1 {
+    font-size: 7em !important;
+  }
+  .aah-banner h4 {
+    font-size: 1em !important;
+  }
+  .aah-intro-section h2 {
+    font-size: 2.5em !important;
+  }
+  .aah-intro-section .summary {
+    font-size: 1.1em !important;
+  }
+}
+
+@media all and (min-width:560px) {
+  .aah-banner {
+    min-height: 450px;
+  }
+  .aah-banner h1 {
+    font-size: 7.5em !important;
+  }
+  .aah-banner h4 {
+    font-size: 1em !important;
+  }
+  .aah-intro-section h2 {
+    font-size: 2.5em !important;
+  }
+  .aah-intro-section .summary {
+    font-size: 1.5em !important;
+  }
+}
+
+@media all and (min-width:660px) {
+  .aah-banner {
+    min-height: 450px;
+  }
+  .aah-banner h1 {
+    font-size: 8em !important;
+  }
+  .aah-banner h4 {
+    font-size: 1em !important;
+  }
+  .aah-intro-section h2 {
+    font-size: 3em !important;
+  }
+  .aah-intro-section .summary {
+    font-size: 1.6em !important;
+  }
+}
+
+@media all and (min-width:760px) {
+  .aah-banner h1 {
+    font-size: 9em !important;
+  }
+  .aah-banner h4 {
+    font-size: 1em !important;
+  }
+  .aah-intro-section h2 {
+    font-size: 3.3em !important;
+  }
+  .aah-intro-section .summary {
+    font-size: 1.7em !important;
+  }
+  .navbar-fixed-top {
+    font-size: 8.5px !important;
+  }
+  .short-feature-list .col-xs-12 {
+    padding-top: 10px;
+  }
+  .auto-clear .col-sm-6:nth-child(odd) { clear: left;}
+}
+
+@media all and (min-width:1020px) {
+  .aah-banner h1 {
+    font-size: 11em !important;
+  }
+  .aah-banner h4 {
+    font-size: 1.2em !important;
+  }
+  .aah-current-release {
+    font-size: 1em !important;
+  }
+  .aah-release-goreq {
+    font-size: 0.9em !important;
+  }
+  .aah-intro-section h2 {
+    padding-top: 50px !important;
+    font-size: 3.5em !important;
+  }
+  .aah-intro-section .summary {
+    font-size: 1.9em !important;
+  }
+  .navbar-fixed-top {
+    font-size: 13px !important;
+  }
+  .short-feature-list .col-md-3 {
+    width: 50%;
+  }
+  .aah-container-fluid {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+  #back2Top {
+    right: 20px !important;
+    bottom: 20px !important;
+  }
+}
+
+/* @media all and (min-width:769px) and (max-width: 800px),
 all and (min-width:569px) and (max-width: 768px),
 all and (min-width:481px) and (max-width: 568px),
  all and (min-width:321px) and (max-width: 480px) {
+
+
   .aah-banner {
     margin-left: 5px;
     margin-right: 5px;
@@ -29,6 +177,12 @@ all and (min-width:481px) and (max-width: 568px),
 
   .aah-banner h1 {
     font-size: 6em !important;
+  }
+
+  .aah-intro-section h2 {
+    font-size: 3em;
+    font-weight: bold;
+    padding-top: 30px;
   }
 
   .aah-banner h4 {
@@ -57,9 +211,9 @@ all and (min-width:481px) and (max-width: 568px),
   .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     padding-right: 35px;
   }
-}
+} */
 
-@media all and (min-width:769px) and (max-width: 800px),
+/*@media all and (min-width:769px) and (max-width: 800px),
 all and (min-width:569px) and (max-width: 768px) {
   .col-aoffset-cse {
     margin-left: 16.6666667%;
@@ -173,18 +327,35 @@ all and (min-width:569px) and (max-width: 768px) {
 }
 
 @media all and (min-width: 1400px) {
-  .container {
-    width: 1300px;
+  .aah-banner h1 {
+    font-size: 11em;
   }
 
   .docs-version-dd {
     width: 265px !important;
+  }
+} */
+
+@media all and (min-width:1200px) {
+  .short-feature-list {
+    padding-top: 60px !important;
+  }
+  .short-feature-list .col-md-3 {
+    width: 25%;
+  }
+  .auto-clear .col-sm-6:nth-child(odd) {
+    clear: unset;
   }
 }
 
 code {
   color: #292727;
   background-color: #f5f2f0;
+}
+
+.aah-container-fluid {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .btn {
@@ -236,7 +407,7 @@ code {
 
 .navbar-default {
   min-height: 74px;
-  border-bottom: 1px solid #dcdbdb;
+  /* border-bottom: 1px solid #dcdbdb; */
 }
 
 .navbar-brand {
@@ -262,7 +433,7 @@ code {
 .aah-banner h1 {
   font-weight: bolder;
   color: #444;
-  font-size: 5em;
+  font-size: 12em;
   font-family: timeburnerFont;
 }
 
@@ -281,7 +452,7 @@ code {
 
 .aah-release-goreq {
   padding-top: 5px;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 500;
   color: #676767;
 }
@@ -297,6 +468,31 @@ code {
 .aah-hey-im-here .btn-success {
   font-weight: bold;
   font-size: 14px;
+}
+
+.aah-intro-section {
+  height: 392px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  color: #fff;
+  margin-left: -50px;
+  margin-right: -50px;
+}
+
+.aah-intro-section h2 {
+  font-size: 5em;
+  font-weight: bold;
+  padding-top: 30px;
+}
+
+.aah-intro-section .summary {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 35px;
+  font-size: 2em;
 }
 
 .aah-social {
@@ -317,17 +513,36 @@ code {
   color: #e25657;
 }
 
-.hr-dev-support {
+.short-feature-list {
+  padding-top: 60px;
+  /* color: #4e4e4e; */
+}
+
+.short-feature-list h5 {
+  font-weight: 500;
+  font-size: 1.6em;
+}
+
+.short-feature-list p {
+  font-size: 1.1em;
+  color: #4e4e4e;
+}
+
+ .aah-know-more {
+  padding-top: 50px;
+}
+
+.short-feature-list .aah-know-more .btn-primary {
+  font-weight: bold;
+}
+
+/* .hr-dev-support {
   margin-bottom: 0;
   margin-top: 30px;
   border-top: 1px solid #f9f6f6;
-}
+} */
 
-.framework-summary {
-  padding-top: 15px;
-}
-
-.aah-section-outer {
+/* .aah-section-outer {
   padding-top: 25px;
 }
 
@@ -361,18 +576,155 @@ code {
 
 .feature-list p {
   text-align: left;
-  font-size: 15.5px;
+  font-size: 16px;
   color: #4e4e4e;
 }
 
 .features-know-more {
   padding-top: 30px;
+} */
+
+.aah-features {
+  height: 456px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  color: #fff;
+  margin-right: -50px;
+  margin-left: -50px;
 }
 
-.aah-scalable-icon {
+.aah-features h1 {
+  color: #fff !important;
+  font-size: 8em !important;
+  text-align: center;
+  line-height: 260px;
+  font-weight: 500;
+}
+
+.aah-features p {
+  text-align: center;
+  font-size: 2.7em;
+}
+
+.feature-list-section {
+  padding-top: 50px;
+}
+
+.feature-list-section h2 {
+  font-weight: 500;
+}
+
+.feature-list-section div {
+  min-height: 240px;
+}
+
+.feature-list-section p, .feature-list-section li {
+  font-size: 1.2em;
+}
+
+.feature-list-section li {
+  word-wrap: break-word;
+  overflow-wrap:break-word;
+  padding-left: 15px;
+}
+
+.feature-list-section i {
+  font-size: 0.9em;
+}
+/* .aah-scalable-icon {
   position: absolute;
   margin-left: -25px;
   z-index: 100;
+} */
+
+.aah-security {
+  height: 456px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  color: #fff;
+  margin-right: -50px;
+  margin-left: -50px;
+}
+
+.aah-security h1 {
+  color: #fff !important;
+  font-size: 8em !important;
+  text-align: center;
+  line-height: 260px;
+  font-weight: 500;
+}
+
+.aah-security p {
+  text-align: center;
+  font-size: 2.7em;
+}
+
+.aah-security-section {
+  padding-top: 50px;
+}
+
+.aah-security-section .summary {
+  font-size: 1.2em;
+}
+
+.aah-security-section h3 {
+  font-weight: 500;
+  padding-top: 20px;
+  font-size: 2.5em;
+}
+
+.aah-security-section p, .aah-security-section li {
+  font-size: 1.2em;
+}
+
+.aah-security-section li {
+  padding-left: 60px;
+  padding-top: 10px;
+}
+
+.why-aah {
+  height: 456px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  /* color: #fff; */
+  margin-right: -50px;
+  margin-left: -50px;
+}
+
+.why-aah h1 {
+  color: #525252;
+  font-size: 8em !important;
+  text-align: center;
+  line-height: 160px;
+  font-weight: 500;
+}
+
+.why-aah-section {
+  padding-top: 50px;
+  font-size: 1.3em;
+}
+
+.why-aah-section .summary {
+  text-align: justify;
+  font-size: 1.35em;
+}
+
+.why-aah-section li {
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+.why-aah-section .aah-first-release {
+  margin-top: 50px;
 }
 
 .alert-info-light {
@@ -671,25 +1023,6 @@ code {
 
 .aah-license-info {
   margin-top: 15px;
-}
-
-.about-aah-section {
-  padding-top: 25px;
-  font-size: 1.3em;
-}
-
-.about-aah-section li {
-  padding-left: 50px;
-  padding-top: 10px;
-}
-
-.about-aah-quote {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.aah-first-release {
-  margin-top: 70px;
 }
 
 .aah-support-section {

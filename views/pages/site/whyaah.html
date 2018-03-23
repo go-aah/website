@@ -1,0 +1,35 @@
+{{ define "title" -}}
+{{ i18n . "page.site.title.about" }}
+{{- end }}
+
+{{ define "meta_tags" -}}
+{{ $pageTitle := i18n . "page.site.title.about" -}}
+{{ $pageDesc := `aah aims to provide necessary components to build modern Web/API application with flexibility, security, high performance, scalable framework and yet lightweight. aah takes care of infrastructure, boilerplate code, repetitive activities, etc. aah is not a micro web framework.` -}}
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="about, why aah, aah go web framework, aah">
+    <meta property="og:title" content="{{ $pageTitle }}"/>
+    <meta property="og:description" content="{{ $pageDesc }}"/>
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDesc }}">
+{{ end }}
+
+{{ define "body" -}}
+<div class="container-fluid aah-container-fluid">
+  <div class="row why-aah">
+    <h1>Why aah?</h1>
+    <!-- <p>build uncompromised security into your application</p> -->
+  </div>
+  <div class="why-aah-section">
+    <p class="summary">aah aims to provide necessary components to build modern Web/API application with flexibility, security, high performance, scalable framework and yet <i>lightweight</i>. aah takes care of infrastructure, boilerplate code, repetitive activities, etc. aah is not a micro web framework.</p> <br>
+    <p>Have a look at <a href="{{ rurl . "features" }}">features</a> to know your benefits of using aah and its very well <a href="{{ rurl . "docs.index" }}">documented</a>.</p>
+    <ul class="list-unstyled">
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Security aware framework, secure session, CSRF prevention, XSS prevention, authentication, authorization</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Provides proven project structure and organization of application pieces.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Extensible at every module/feature. If you're constrained, immediately raise an issue at GitHub.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Highly Maintainable, it grows along with your application.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Gradually getting mature and feature sets are getting added release by release.</li>
+    </ul>
+    <p class="aah-first-release text-center">aah Go web framework initial stable version <code>0.5</code> released on May 19, 2017.</p>
+  </div>
+</div>
+{{- end }}

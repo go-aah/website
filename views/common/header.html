@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid aah-container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2">
           <span class="sr-only">Toggle navigation</span>
@@ -29,8 +29,8 @@
         <li {{ if .IsSupport }}class="active"{{ end }}>
           <a href="{{ rurl . "support" }}">Support</a>
         </li>
-        <li {{ if .IsAbout }}class="active"{{ end }}>
-          <a href="{{ rurl . "about" }}">About</a>
+        <li {{ if .IsWhyAah }}class="active"{{ end }}>
+          <a href="{{ rurl . "why_aah" }}">Why aah?</a>
         </li>
         <li>
           <!-- <div class="label gh-star-tip">Support aah :)</div> -->
