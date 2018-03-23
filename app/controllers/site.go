@@ -46,12 +46,6 @@ func (s *SiteController) Content() {
 
 	var viewFile string
 	switch util.CreateKey(s.Req.Path) {
-	case "features":
-		s.AddViewArg("IsFeatures", true)
-		viewFile = "features.html"
-	case "security":
-		s.AddViewArg("IsSecurity", true)
-		viewFile = "security.html"
 	case "contribute-to-code":
 		s.AddViewArg("IsContributeCode", true)
 		viewFile = "contribute-code.html"
@@ -85,5 +79,19 @@ func (s *SiteController) WhyAah() {
 func (s *SiteController) Support() {
 	s.Reply().HTML(aah.Data{
 		"IsSupport": true,
+	})
+}
+
+// Features method to show aah features.
+func (s *SiteController) Features() {
+	s.Reply().HTML(aah.Data{
+		"IsFeatures": true,
+	})
+}
+
+// Security method to show aah security info.
+func (s *SiteController) Security() {
+	s.Reply().HTML(aah.Data{
+		"IsSecurity": true,
 	})
 }
