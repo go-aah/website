@@ -119,7 +119,11 @@ func (d *DocController) ShowDoc(version, content string) {
 		return
 	}
 
-	data := aah.Data{"Article": article, "DocFile": ess.StripExt(content) + ".md"}
+	data := aah.Data{
+		"Article":   article,
+		"DocFile":   ess.StripExt(content) + ".md",
+		"IsShowDoc": true,
+	}
 	if strings.HasSuffix(content, "getting-started.html") {
 		data["IsGettingStarted"] = true
 	}

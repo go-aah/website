@@ -76,6 +76,8 @@ body {
   .why-aah-section .summary {
     font-size: 1.2em !important;
   }
+  .aah-search-base-version #aahDocSearch { width: 300px !important; }
+  .docs-body-content { margin-top: 100px !important; }
 }
 
 @media all and (min-width:370px) {
@@ -106,6 +108,7 @@ body {
   .why-aah h1 {
     font-size: 4.5em !important;
   }
+  .docs-body-content { margin-top: 100px !important; }
 }
 
 @media all and (min-width:560px) {
@@ -139,6 +142,8 @@ body {
   .why-aah h1 {
     font-size: 5.5em !important;
   }
+  .docs-version-dd { margin-top: -5px; }
+  .docs-body-content { margin-top: 70px !important; }
 }
 
 @media all and (min-width:660px) {
@@ -438,6 +443,7 @@ all and (min-width:569px) and (max-width: 768px) {
   .why-aah h1 {
     font-size: 8em !important;
   }
+  .aah-search-base-version #aahDocSearch { width: 450px !important; }
   .auto-clear .col-sm-6:nth-child(odd) { clear: unset; }
   .auto-clear .col-lg-6:nth-child(odd) { clear: left; }
 }
@@ -844,6 +850,7 @@ code {
 }
 
 .docs-body-content {
+  margin-top: 70px;
   padding-left: 15px;
   padding-right: 15px;
   min-height: 600px;
@@ -985,17 +992,7 @@ code {
 .docs-sidebar {
   width: 100%;
   padding-left: 20px;
-}
-
-.docs-version {
-  margin-top: 26px;
-  margin-bottom: 20px;
-}
-
-.docs-version-dd .btn-primary, .docs-lang-dd .btn-primary {
-  background-color: inherit;
-  color: inherit;
-  border-color: #dcdbdb;
+  padding-top: 10px;
 }
 
 .docs-edit-btn {
@@ -1146,8 +1143,36 @@ code {
   padding-right: 5px;
 }
 
+/*  Algoli Search */
+.aah-search-base-version {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+}
+.aah-search-base-version #aahDocSearch {
+  width: 450px;
+  border-radius: 3px;
+}
+.aah-search-base-version .form-control:focus {
+  box-shadow:none;
+  -webkit-box-shadow:none;
+  border-color:#cccccc;
+}
+.docs-version-dd {
+  width: 210px !important;
+}
+.docs-version-dd .btn-primary, .docs-lang-dd .btn-primary {
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid #cccccc;
+}
+
+
 /* Google search */
-td.gsc-search-button, td.gsc-clear-button {
+/* td.gsc-search-button, td.gsc-clear-button {
   visibility: hidden;
 }
 
@@ -1171,21 +1196,21 @@ div.gs-snippet {
 #google-cse {
   margin-top: -13px;
   width: 575px;
-}
+}*/
 
 /* Fix border overflow in Google CSE input for webkit-based browsers */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/* @media screen and (-webkit-min-device-pixel-ratio:0) {
   .gsib_a {
     padding-top: 4px !important;
   }
-}
+} */
 
 /* Fix border overflow in Google CSE input for Firefox */
-@-moz-document url-prefix() {
+/*@-moz-document url-prefix() {
   .gsib_a {
     padding-top: 3px !important;
   }
-}
+} */
 
 .vh-sec-hdr {
   height: 35px;

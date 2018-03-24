@@ -1,4 +1,5 @@
 {{ $hostUrl := rurl . "host" -}}
+{{ $cdnHost := config "cdn.host" }}
 <link rel="shortcut icon" type="image/x-icon" href="{{ $hostUrl }}/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="{{ $hostUrl }}/assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ $hostUrl }}/assets/img/favicon-32x32.png">
@@ -6,6 +7,13 @@
     <link rel="manifest" href="{{ $hostUrl }}/assets/manifest.json">
     <link rel="mask-icon" href="{{ $hostUrl }}/assets/img/safari-pinned-tab.svg" color="#5bbad5">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <style>
+    @font-face { font-family: timeburnerFont; src: url({{ $cdnHost }}/assets/fonts/timeburnerbold.ttf); }
+    .aah-intro-section { background-image: url({{ $cdnHost }}/assets/img/tile-bg.jpg); }
+    .aah-features { background-image: url({{ $cdnHost }}/assets/img/features-bg.jpg); }
+    .aah-security { background-image: url({{ $cdnHost }}/assets/img/security-bg.jpg); }
+    .why-aah { background-image: url({{ $cdnHost }}/assets/img/whyaah-bg.jpg); }
+    </style>
     <link href="{{ $hostUrl }}/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ $hostUrl }}/assets/css/aah-{{ .AppBuildInfo.Version }}.css" rel="stylesheet" />
     <link href="//use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -13,6 +21,7 @@
     {{ if .CodeBlock -}}
     <link href="{{ $hostUrl }}/assets/css/prism.css" rel="stylesheet" />
     {{ end -}}
+    <link href="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet" /> 
     {{ if eq .EnvProfile "prod" -}}<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

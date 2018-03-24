@@ -26,7 +26,7 @@ function tooltipHandling() {
 
 function anchorTagHandling() {
   anchors.options = {
-    placement: 'left',
+    placement: 'right',
     class: 'aah-color-imp',
     icon: '¶'
   };
@@ -39,7 +39,7 @@ function anchorTagHandling() {
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html,body').animate({
-          scrollTop: target.offset().top - 95 //offsets for fixed header
+          scrollTop: target.offset().top - 160 //offsets for fixed header
         }, 1200);
         window.location.hash = this.hash
         return false;
@@ -53,7 +53,7 @@ function anchorTagHandling() {
     var target = $('#'+anchorVal);
     if (target.length) {
       $('html,body').animate({
-        scrollTop: target.offset().top - 95 //offset height of header here too.
+        scrollTop: target.offset().top - 160 //offset height of header here too.
       }, 1000);
       return false;
     }
@@ -91,4 +91,33 @@ $(document).ready(function() {
     $('html,body').animate({ scrollTop: 0 }, 1500);
     return false;
   });
+
+  $('#heyImHereBtn').click(function() {
+    var aahBanner = $('#aahBanner');
+    var height = parseInt(aahBanner.css('height'));
+    if (height > 484) {
+      aahBanner.css('height', height-65);
+    }
+  });
 });
+
+(function($) {
+    var element = $('.follow-scroll'), elementOffset = element.offset();
+    if (elementOffset) {
+      var originalY = elementOffset.top;
+
+      // Space between element and top of screen (when scrolling)
+      var topMargin = 70;
+
+      // Should probably be set in CSS; but here just for emphasis
+      element.css('position', 'relative');
+
+      $(window).on('scroll', function(event) {
+          var scrollTop = $(window).scrollTop();
+
+          element.stop(false, false).animate({
+              top: scrollTop < originalY ? 0 : scrollTop - originalY + topMargin
+          }, -100);
+      });
+    }
+})(jQuery);

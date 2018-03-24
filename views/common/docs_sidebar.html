@@ -1,15 +1,4 @@
 <div class="docs-sidebar">
-  {{ if .ShowVersionNo -}}
-  <div class="docs-version">
-    <select id="docs_version" class="selectpicker docs-version-dd" data-style="btn-primary">
-      {{ range .Releases -}}
-      <option value="{{ . }}">Framework {{ dverdis . }}</option>
-      {{- end }}
-    </select>
-  </div>
-  <!--  ./ docs-version -->
-  {{ end }}
-
   {{ if .ShowVersionDocs -}}
   <div class="row">
     <label class="docs-sidebar-head">Documentation</label>

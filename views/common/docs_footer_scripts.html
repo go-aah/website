@@ -8,6 +8,7 @@
   <script src="{{ $hostUrl }}/assets/js/prism.js"></script>
   {{ end -}}
   <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
   <script>
   anchorTagHandling();
   $(document).ready(function(){
@@ -20,6 +21,13 @@
       redirectToVersion(version);
     });
     {{- end }}
+  });
+  docsearch({
+   apiKey: '5bf567d6e1256b14e36d4bd6b9a65e84',
+   indexName: 'aahframework',
+   inputSelector: '#aahDocSearch',
+   algoliaOptions: { 'facetFilters': ["version:{{ .CurrentDocVersion }}"] },
+  //  debug: {{ if eq .EnvProfile "prod" -}}false{{ else }}true{{ end }}
   });
   </script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
