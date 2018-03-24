@@ -19,125 +19,128 @@
       <h1>Features</h1>
       <p>that empowers engineering and devops</p>
     </div>
-    <div class="row feature-list-section">
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Server and Extension Points</h2>
-        <p>aah provides powerful features OOTB with server.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;HTTP, HTTPS (Certs & Let's Encrypt), HTTP/2, UNIX Socket</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Server extension points</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Graceful shutdown, Automatic Gzip compression.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Access Log, Dump request and response.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Routing</h2>
-        <p>Natively Multi-Tenant supports Domain, Sub-domains, Namespace/group.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Flexible route and reverse route via route name.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Well integrated with error handling flow.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Rich support for RESTful; such versioning strategies, etc.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Path params with validation, Auto-bind, etc.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Configuration</h2>
-        <p>aah configuration syntax is very similar to HOCON syntax.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Organize config files and refer it using <code>include</code> references.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Reload app configuration via <code>SIGHUP</code> on non-dev profile.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Multi-Environment Configuration</h2>
-        <p>aah supports the concept of <code>profile</code> which allows you to organize your configurations in different environment (defined by profile) easily.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;By default <code>dev</code> and <code>prod</code> profiles are defined.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Define what you need; such as <code>dev</code>, <code>qa</code>, etc.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Parameters Auto Parse and Bind</h2>
-        <p>aah provides very flexible way to auto parse and bind request values into appropriate Go data types.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Bind Path, Form, Query into controller action parameters or struct fields.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Bind JSON or XML request body into struct.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Supports bind of (non-)pointer target and custom Value Parser by Type.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Powerful Reply</h2>
-        <p>aah is natively RESTful or Render with your choice of view engine and HTML minify.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Enhanced Go view engine, Pug (Jade) view engine, many more to come.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Powerful reply builder for easily compose response.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Reply HTML, JSON, JSONP, XML, File, Bytes, etc.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">SPA/Mobile app support</h2>
-        <p>aah supports the trend of separate front-end architecture.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Rich RESTful support, stateless by default.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Content negotiation on <code>Content-Type</code> and <code>Accept</code></li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Built-in CORS support.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Powerful security implementation.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Event handling and dispatching</h2>
-        <p>aah provides simple and efficient Event Publisher with Asynchronous and Synchronous capabilities.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;aah server extension points built around event publisher.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Supports publish once feature too.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">i18n Internationaliztion</h2>
-        <p>aah provides i18n support aka messages by following standard Language ID:<code>ISO 639-1</code>, Region ID:<code>ISO 3166-1</code>.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Just configure application, your application localized.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Access messages from anywhere in the application.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Organize your message files with sub-directories as you like.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Logging</h2>
-        <p>aah provides simple yet powerful log capabilities with Fields, Child Logger.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Console and File logger provided OOTB.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Human (Text) and machine (JSON) readable log format.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Supports Hooks and drop-in replacement for pkg <code>log</code>.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Error Handling</h2>
-        <p>aah provides well structured errors; flexible and hierarchical propagation flow of error handling in your application.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Controller level error handler.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Centralized error handler.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Default error handler.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">Static File Delivery</h2>
-        <p>Easy to use static file delivery.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Serve directory and its sub-directories.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Individual files and directory listing.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Header <code>Cache-Control</code> by MIME type.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Simple cache busting via filename.</li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-lg-6">
-        <h2 class="no-anchor">systemd and Docker</h2>
-        <p>aah CLI provides command to generate config files. Its a good start point with necessary configuration for development and production.</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;For docker; Dockerfile.dev and Dockerfile.prod (multi-stage build for minimal size).</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;<code>.service</code> file for registering with systemd.</li>
-        </ul>
+    <div class="row">
+      <div class="feature-list-section auto-clear">
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Server and Extension Points</h2>
+          <p>aah provides powerful features OOTB with server.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;HTTP, HTTPS (Certs & Let's Encrypt), HTTP/2, UNIX Socket</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Server extension points</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Graceful shutdown, Automatic Gzip compression.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Access Log, Dump request and response.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Routing</h2>
+          <p>Natively Multi-Tenant supports Domain, Sub-domains, Namespace/group.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Flexible route and reverse route via route name.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Well integrated with error handling flow.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Rich support for RESTful; such versioning strategies, etc.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Path params with validation, Auto-bind, etc.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Configuration</h2>
+          <p>aah configuration syntax is very similar to HOCON syntax.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Organize config files and refer it using <code>include</code> references.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Reload app configuration via <code>SIGHUP</code> on non-dev profile.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Multi-Environment Configuration</h2>
+          <p>aah supports the concept of <code>profile</code> which allows you to organize your configurations in different environment (defined by profile) easily.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;By default <code>dev</code> and <code>prod</code> profiles are defined.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Define what you need; such as <code>dev</code>, <code>qa</code>, etc.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Parameters Auto Parse and Bind</h2>
+          <p>aah provides very flexible way to auto parse and bind request values into appropriate Go data types.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Bind Path, Form, Query into controller action parameters or struct fields.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Bind JSON or XML request body into struct.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Supports bind of (non-)pointer target and custom Value Parser by Type.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Powerful Reply</h2>
+          <p>aah is natively RESTful or Render with your choice of view engine and HTML minify.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Enhanced Go view engine, Pug (Jade) view engine, many more to come.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Powerful reply builder for easily compose response.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Reply HTML, JSON, JSONP, XML, File, Bytes, etc.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">SPA/Mobile app support</h2>
+          <p>aah supports the trend of separate front-end architecture.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Rich RESTful support, stateless by default.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Content negotiation on <code>Content-Type</code> and <code>Accept</code></li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Built-in CORS support.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Powerful security implementation.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Event handling and dispatching</h2>
+          <p>aah provides simple and efficient Event Publisher with Asynchronous and Synchronous capabilities.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;aah server extension points built around event publisher.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Supports publish once feature too.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">i18n Internationaliztion</h2>
+          <p>aah provides i18n support aka messages by following standard Language ID:<code>ISO 639-1</code>, Region ID:<code>ISO 3166-1</code>.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Just configure application, your application localized.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Access messages from anywhere in the application.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Organize your message files with sub-directories as you like.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Logging</h2>
+          <p>aah provides simple yet powerful log capabilities with Fields, Child Logger.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Console and File logger provided OOTB.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Human (Text) and machine (JSON) readable log format.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Supports Hooks and drop-in replacement for pkg <code>log</code>.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Error Handling</h2>
+          <p>aah provides well structured errors; flexible and hierarchical propagation flow of error handling in your application.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Controller level error handler.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Centralized error handler.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Default error handler.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">Static File Delivery</h2>
+          <p>Easy to use static file delivery.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Serve directory and its sub-directories.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Individual files and directory listing.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Header <code>Cache-Control</code> by MIME type.</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Simple cache busting via filename.</li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <h2 class="no-anchor">systemd and Docker</h2>
+          <p>aah CLI provides command to generate config files. Its a good start point with necessary configuration for development and production.</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;For docker; Dockerfile.dev and Dockerfile.prod (multi-stage build for minimal size).</li>
+            <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;<code>.service</code> file for registering with systemd.</li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <div class="row text-center tmrgn-35">
       <p>Dig into aah documentation to take advantage these features and benefits.</p>
     </div>
@@ -146,7 +149,7 @@
         <p>aah framework values Go idiomatic and ecosystem. Good read <a href="https://dmitri.shuralyov.com/idiomatic-go" target="_blank">here</a>, <a href="https://golang.org/doc/effective_go.html" target="_blank">here</a> and <a href="https://pocketgophers.com/idiomatic-go/">here</a>.</p>
       </div> -->
 
-    <div class="tmrgn-15">
+    <div class="row tmrgn-15">
       <p>Ooh No! the feature/enhancement that I'm looking for is not currently available in the aah framework. What should I do? Well, refer to the project <a href="https://github.com/go-aah/aah/projects/3" target="_blank">roadmap</a> or reach out to me via <a href="https://gitter.im/aahframework/community" target="_blank">Gitter Chat</a>, <a href="https://github.com/go-aah/aah/issues">Github Issues</a>.</p>
     </div>
   </div>
