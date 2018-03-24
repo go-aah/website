@@ -9,14 +9,14 @@ Keywords: credits, website, third party library/tools, thank you, thanks
 Official website made possible with following third party tools and libraries. I'm very thankful for their efforts & time.
 
 * aah logo is designed using [GIMP](https://www.gimp.org)
-* aah logo font "TimeBurner" is deigned by [NimaVisual](http://www.fontspace.com/profile/NimaVisual)
-* Website is developed using powerful [aah](https://aahframework.org) - a web framework for the Go language
-* Website uses:
-    - Custom version of Bootstrap CSS by [bootswatch](http://bootswatch.com)
-    - Icons [Font Awesome](http://fontawesome.io/)
-    - Markdown rendering by [Blackfriday](https://github.com/russross/blackfriday)
-    - Language syntax highlighting by [prism.js](http://prismjs.com/)
-    - Deep anchor links by [AnchorJS](https://www.bryanbraun.com/anchorjs/)
+* aah logo and website uses font "TimeBurner" is deigned by [NimaVisual](http://www.fontspace.com/profile/NimaVisual)
+* Developed using powerful [aah Go web framework](https://aahframework.org)
+* Custom version of Bootstrap CSS by [bootswatch](http://bootswatch.com)
+* Icons [Font Awesome](http://fontawesome.io/)
+* Markdown rendering by [Blackfriday](https://github.com/russross/blackfriday)
+* Language syntax highlighting by [prism.js](http://prismjs.com/)
+* Deep anchor links by [AnchorJS](https://www.bryanbraun.com/anchorjs/)
+* aah documentation search powered by [Algolia](https://algolia.com)
 
 ## Service Providers used by aah
 
@@ -25,6 +25,7 @@ Acknowledgement, I'm very thankful for Service Providers generosity towards Open
   * aah Source Code hosting - [GitHub](https://github.com/go-aah)
   * aah Build System - [Travis CI](https://travis-ci.org/go-aah)
   * aah Code Coverage - [Codecov](https://codecov.io/gh/go-aah)
+  * CDN for USA & EU - [INXY Host](https://inxy.host)
 
 ## Go Libraries used by aah
 

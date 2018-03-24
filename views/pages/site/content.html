@@ -12,8 +12,8 @@
 {{ end }}
 
 {{ define "body" -}}
-  <div class="container-fluid aah-container-fluid body-content">
-    <div class="row">
+  <div class="container-fluid aah-container-fluid site-body-content">
+    <div>
       {{ if .Article.IsContent -}}
       {{ safeHTML .Article.Content }}
       {{ end -}}

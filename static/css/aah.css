@@ -261,178 +261,6 @@ body {
   }
 }
 
-/* @media all and (min-width:769px) and (max-width: 800px),
-all and (min-width:569px) and (max-width: 768px),
-all and (min-width:481px) and (max-width: 568px),
- all and (min-width:321px) and (max-width: 480px) {
-
-
-  .aah-banner {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .aah-banner h1 {
-    font-size: 6em !important;
-  }
-
-  .aah-intro-section h2 {
-    font-size: 3em;
-    font-weight: bold;
-    padding-top: 30px;
-  }
-
-  .aah-banner h4 {
-    font-size: 1em !important;
-  }
-
-  .aah-section {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .footer-text-align {
-    text-align: center;
-  }
-
-  .auto-clear .col-xs-1:nth-child(12n+1){clear:left;}
-  .auto-clear .col-xs-2:nth-child(6n+1){clear:left;}
-  .auto-clear .col-xs-3:nth-child(4n+1){clear:left;}
-  .auto-clear .col-xs-4:nth-child(3n+1){clear:left;}
-  .auto-clear .col-xs-6:nth-child(odd){clear:left;}
-
-  .col-aoffset-cse {
-    margin-left: 11.6666667%;
-  }
-
-  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    padding-right: 35px;
-  }
-} */
-
-/*@media all and (min-width:769px) and (max-width: 800px),
-all and (min-width:569px) and (max-width: 768px) {
-  .col-aoffset-cse {
-    margin-left: 16.6666667%;
-  }
-}
-
-@media all and (min-width:321px) and (max-width: 480px) {
-  .aah-banner h1 {
-    font-size: 7em !important;
-  }
-
-  .aah-banner h4 {
-    font-size: 1em !important;
-  }
-
-  .col-aoffset-cse {
-    margin-left: 16.6666667%;
-  }
-}
-
-@media all and (min-width:0px) and (max-width: 320px) {
-  .aah-banner {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .aah-banner h1 {
-    font-size: 5em !important;
-  }
-
-  .aah-banner h4 {
-    font-size: 12px !important;
-  }
-
-  .aah-section {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .footer-text-align {
-    text-align: center;
-  }
-}
-
-@media all and (min-width:0px) and (max-width: 592px) {
-  #google-cse {
-    width: auto !important;
-  }
-}
-
-@media all and (min-width:768px) and (max-width: 991px){
-  .nav>li>a {
-    padding: 15px 10px !important;
-  }
-
-  .auto-clear .col-sm-1:nth-child(12n+1){clear:left;}
-  .auto-clear .col-sm-2:nth-child(6n+1){clear:left;}
-  .auto-clear .col-sm-3:nth-child(4n+1){clear:left;}
-  .auto-clear .col-sm-4:nth-child(3n+1){clear:left;}
-  .auto-clear .col-sm-6:nth-child(odd){clear:left;}
-}
-
-@media all and (min-width:0px) and (max-width: 991px) {
-  #google-cse {
-    margin-top: -15px !important;
-  }
-}
-
-@media all and (min-width: 992px) {
-  .container {
-    width: 950px;
-  }
-
-  .docs-version-dd {
-    width: 175px !important;
-  }
-
-  .auto-clear .col-md-1:nth-child(12n+1){clear:left;}
-  .auto-clear .col-md-2:nth-child(6n+1){clear:left;}
-  .auto-clear .col-md-3:nth-child(4n+1){clear:left;}
-  .auto-clear .col-md-4:nth-child(3n+1){clear:left;}
-  .auto-clear .col-md-6:nth-child(odd){clear:left;}
-
-  .col-aoffset-cse {
-    margin-left: 22.6666667%;
-  }
-}
-
-@media all and (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-
-  .docs-version-dd {
-    width: 230px !important;
-  }
-
-  .aah-banner h1 {
-    font-size: 11em !important;
-  }
-
-  .auto-clear .col-lg-1:nth-child(12n+1){clear:left;}
-  .auto-clear .col-lg-2:nth-child(6n+1){clear:left;}
-  .auto-clear .col-lg-3:nth-child(4n+1){clear:left;}
-  .auto-clear .col-lg-4:nth-child(3n+1){clear:left;}
-  .auto-clear .col-lg-6:nth-child(odd){clear:left;}
-
-  .col-aoffset-cse {
-    margin-left: 26.6666667%;
-  }
-}
-
-@media all and (min-width: 1400px) {
-  .aah-banner h1 {
-    font-size: 11em;
-  }
-
-  .docs-version-dd {
-    width: 265px !important;
-  }
-} */
-
 @media all and (min-width:1200px) {
   .short-feature-list {
     padding-top: 60px !important;
@@ -557,10 +385,6 @@ code {
   color: #676767;
 }
 
-.aah-release-goreq a {
-  /* font-size: 0.9em; */
-}
-
 .aah-hey-im-here {
   padding-top: 80px;
 }
@@ -636,54 +460,6 @@ code {
   font-weight: bold;
 }
 
-/* .hr-dev-support {
-  margin-bottom: 0;
-  margin-top: 30px;
-  border-top: 1px solid #f9f6f6;
-} */
-
-/* .aah-section-outer {
-  padding-top: 25px;
-}
-
-.aah-section {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.aah-section h3 {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 2em;
-}
-
-.aah-section p {
-  font-size: 1.2em;
-}
-
-.aah-section h3, .aah-section .btn-primary {
-  font-weight: bold;
-}
-
-.feature-list {
-  margin-top: 60px;
-}
-
-.feature-list h5 {
-  font-weight: 500;
-  font-size: 21px;
-}
-
-.feature-list p {
-  text-align: left;
-  font-size: 16px;
-  color: #4e4e4e;
-}
-
-.features-know-more {
-  padding-top: 30px;
-} */
-
 .aah-features {
   height: 456px;
   background-position: center;
@@ -734,11 +510,6 @@ code {
 .feature-list-section i {
   font-size: 0.9em;
 }
-/* .aah-scalable-icon {
-  position: absolute;
-  margin-left: -25px;
-  z-index: 100;
-} */
 
 .aah-security {
   height: 456px;
@@ -795,7 +566,6 @@ code {
   background-size: cover;
   opacity: 0.9;
   filter: alpha(opacity=90);
-  /* color: #fff; */
   margin-right: -50px;
   margin-left: -50px;
 }
@@ -814,7 +584,6 @@ code {
 }
 
 .why-aah-section .summary {
-  /* text-align: justify; */
   font-size: 1.3em;
 }
 
@@ -847,6 +616,16 @@ code {
   background-color: #fcf8e3;
   color: #8a6d3b;
   border: 1px #faebcc solid;
+}
+
+.site-body-content h1 {
+  font-weight: bold;
+}
+.site-body-content h2,
+.site-body-content h3,
+.site-body-content h4,
+.site-body-content h5 {
+  font-weight: 500;
 }
 
 .docs-body-content {
@@ -1169,48 +948,6 @@ code {
   color: inherit;
   border: 1px solid #cccccc;
 }
-
-
-/* Google search */
-/* td.gsc-search-button, td.gsc-clear-button {
-  visibility: hidden;
-}
-
-div.gs-snippet {
-  padding-left: 9px;
-}
-
-.gs-result .gs-title, .gs-result .gs-title * {
-  text-decoration: none !important;
-}
-
-.gsc-control-cse {
-  padding-top: 0;
-  margin-top: -2px;
-}
-
-.gsc-input {
-  margin-top: -3px !important;
-}
-
-#google-cse {
-  margin-top: -13px;
-  width: 575px;
-}*/
-
-/* Fix border overflow in Google CSE input for webkit-based browsers */
-/* @media screen and (-webkit-min-device-pixel-ratio:0) {
-  .gsib_a {
-    padding-top: 4px !important;
-  }
-} */
-
-/* Fix border overflow in Google CSE input for Firefox */
-/*@-moz-document url-prefix() {
-  .gsib_a {
-    padding-top: 3px !important;
-  }
-} */
 
 .vh-sec-hdr {
   height: 35px;

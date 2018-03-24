@@ -6,7 +6,7 @@
 {{ $pageTitle := i18n . "page.site.title.privacy" -}}
 {{ $pageDesc := `aahframework.org and its subdomains privacy policy.` -}}
     <meta name="description" content="{{ $pageDesc }}">
-    <meta name="keywords" content="privacy, aah framework">
+    <meta name="keywords" content="privacy, aah framework, aah">
     <meta property="og:title" content="{{ $pageTitle }}"/>
     <meta property="og:description" content="{{ $pageDesc }}"/>
     <meta name="twitter:title" content="{{ $pageTitle }}">
@@ -14,8 +14,8 @@
 {{ end }}
 
 {{ define "body" -}}
-<div class="container-fluid aah-container-fluid body-content">
-  <div class="row text-justify">
+<div class="container-fluid aah-container-fluid site-body-content">
+  <div class="text-justify">
     <h1>Privacy Policy</h1>
     <p>Last updated: Aug 29, 2017.</p>
     <p>aah framework is open source project released under MIT License unless otherwise noted. Please assume that everything you contribute intentionally to aah project is public. This includes emails on mailing lists, online discussions of all sorts or documentation that you post to this website or version control repositories.</p>
