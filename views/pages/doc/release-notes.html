@@ -1,14 +1,14 @@
 {{ define "title" -}}
-Release Notes {{ .CurrentVersion }} - aah Go web framework
+Release Notes {{ .CurrentDocVersion }} - aah Go web framework
 {{- end }}
 
 {{ define "body" -}}
   <div class="container-fluid aah-container-fluid docs-body-content">
-    <div class="row">
+    <div class="aah-release-notes">
       <!-- page content -->
       <div class="col-xs-12 col-md-9 no-padding">
         <div class="row docs-page-content">
-            <h1>Release Notes - {{ .CurrentVersion }}</h1>
+            <h1>Release Notes - {{ .CurrentDocVersion }}</h1>
             <div>
               {{ safeHTML .WhatsNew.Content }}
             </div>

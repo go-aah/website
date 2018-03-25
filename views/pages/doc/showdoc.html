@@ -15,10 +15,10 @@
 
 {{ define "body" -}}
   <div class="container-fluid aah-container-fluid docs-body-content">
-    <div class="row">
+    <div class="row show-doc" {{ if .isTutorial }}style="margin-top:-50px;"{{ end }}>
       <!-- page content -->
       <div class="col-xs-12 col-md-9 no-padding">
-        <div class="row docs-page-content show-doc">
+        <div class="row docs-page-content">
           <div class="row">
             {{ if .LatestRelease -}}
             <div id="docEditBtn" class="pull-right docs-edit-btn">

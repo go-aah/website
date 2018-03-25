@@ -549,6 +549,7 @@ code {
 .aah-security-section h3 {
   font-weight: 500;
   padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 2.5em;
 }
 
@@ -919,6 +920,44 @@ code {
   text-decoration: none;
 }
 
+.getinvolved  h1,
+.aah-security-vuln h1 {
+  font-size: 3em;
+  padding-bottom: 20px;
+}
+
+.getinvolved  h1, .getinvolved h3,
+.aah-security-vuln h1 {
+  font-weight: 500;
+}
+
+.getinvolved p, .getinvolved li,
+.aah-security-vuln p, .aah-security-vuln li,
+.aah-security-vuln-section p, .aah-security-vuln-section li {
+  font-size: 1.2em;
+}
+
+.getinvolved h3 a {
+  color: inherit;
+}
+
+.getinvolved h3 a:hover {
+  text-decoration: none;
+}
+
+.aah-security-vuln {
+  margin-top: 10px;
+}
+
+.aah-security-vuln-section h2 {
+  font-weight: 500;
+}
+
+.aah-security-vuln-section h3 {
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
 .footer .footer-box {
   font-size: 12px;
   padding-top: 6px;
@@ -1034,6 +1073,25 @@ code {
 
 .docs-dev-support .vh-sec-content li {
   text-align: center;
+}
+
+.aah-release-notes .docs-page-content h1 {
+  font-weight: 500;
+  font-size: 4em;
+}
+
+.aah-release-notes .docs-page-content h2 {
+  font-weight: 500;
+  font-size: 2.5em;
+}
+
+.aah-release-notes .docs-page-content h4 {
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.aah-release-notes .docs-page-content p, .aah-release-notes .docs-page-content li{
+  font-size: 1.2em;
 }
 
 .page-center-msg {

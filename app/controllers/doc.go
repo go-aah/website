@@ -129,6 +129,7 @@ func (d *DocController) ShowDoc(version, content string) {
 		"DocFile":          ess.StripExt(content) + ".md",
 		"IsShowDoc":        true,
 		"IsGettingStarted": strings.HasSuffix(content, "getting-started.html"),
+		"isTutorial":       isTutorial,
 	}
 
 	d.Reply().HTMLl("docs.html", data)
@@ -166,10 +167,11 @@ func (d *DocController) ReleaseNotes(version string) {
 	migrationGuide, _ := markdown.Get(migrationGuideMdPath)
 
 	data := aah.Data{
-		"IsReleaseNotes": true,
-		"Changelog":      changelog,
-		"WhatsNew":       whatsNew,
-		"MigrationGuide": migrationGuide,
+		"IsReleaseNotes":    true,
+		"CurrentDocVersion": version,
+		"Changelog":         changelog,
+		"WhatsNew":          whatsNew,
+		"MigrationGuide":    migrationGuide,
 	}
 	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
 }
