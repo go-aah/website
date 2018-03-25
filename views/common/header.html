@@ -20,7 +20,7 @@
         <li {{ if .IsSecurity }}class="active"{{ end }}>
           <a href="{{ rurl . "security" }}">Security</a>
         </li>
-        <li {{ if or .IsVersionHome .IsShowDoc }}class="active"{{ end }}>
+        <li {{ if or .IsVersionHome .IsShowDoc }}{{ if eq .IsGettingStarted false }}class="active"{{ end }}{{ end }}>
           <a href="{{ rurl . "docs.index" }}">Documentation</a>
         </li>
         <li {{ if .IsTutorials }}class="active"{{ end }}>

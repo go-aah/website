@@ -22,7 +22,7 @@
           <div class="row">
             {{ if .LatestRelease -}}
             <div id="docEditBtn" class="pull-right docs-edit-btn">
-              <a href="{{ docediturl .DocFile }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fas fa-pencil-square-o" aria-hidden="true"></i> Improve this Doc</a>
+              <a href="{{ docediturl .DocFile }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fas fa-edit" aria-hidden="true"></i> Improve this Doc</a>
             </div>
             {{ end -}}
             {{ if .Article.IsContent -}}
@@ -30,7 +30,7 @@
             {{ end -}}
             {{ if .LatestRelease -}}
             <div id="docEditBtn" class="pull-right docs-edit-btn">
-              <a href="{{ docediturl .DocFile }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fas fa-pencil-square-o" aria-hidden="true"></i> Improve this Doc</a>
+              <a href="{{ docediturl .DocFile }}" target="_blank" class="btn btn-primary btn-sm btn-aah-color"><i class="fas fa-edit" aria-hidden="true"></i> Improve this Doc</a>
             </div>
             {{ end -}}
           </div>

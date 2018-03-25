@@ -1,27 +1,24 @@
 <div class="docs-sidebar">
   {{ if .ShowVersionDocs -}}
-  <div class="row">
+  <div class="clear">
     <label class="docs-sidebar-head">Documentation</label>
-    <hr>
-    <ul class="li-color">
+    <ul class="li-color list-unstyled">
       {{ import "docs_guide_links.html" . }}
     </ul>
   </div>
 
-  <div class="row">
-    <label class="docs-sidebar-head">Deployment & Operational</label>
-    <hr>
-    <ul class="li-color">
+  <div class="clear">
+    <label class="docs-sidebar-head">Deployment &amp; DevOps</label>
+    <ul class="li-color list-unstyled">
       {{ import "docs_guide_ops.html" . }}
     </ul>
   </div>
   {{- end }}
 
   {{ if .ShowInsightSideNav -}}
-  <div class="row">
+  <div class="clear">
     <label class="docs-sidebar-head">Insights into aah framework</label>
-    <hr>
-    <ul class="li-color">
+    <ul class="li-color list-unstyled">
       {{ import "docs_insight_links.html" . -}}
     </ul>
   </div>

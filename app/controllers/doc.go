@@ -54,6 +54,10 @@ func (d *DocController) VersionHome(version string) {
 			d.Reply().ContentType(ahttp.ContentTypePlainText.String()).File("docs_" + version)
 		case "sitemap":
 			d.Reply().ContentType(ahttp.ContentTypeXML.String()).File("docs_" + version)
+		case "browserconfig":
+			d.Reply().ContentType(ahttp.ContentTypeXML.String()).File(version)
+		case "site", "manifest":
+			d.Reply().ContentType(ahttp.ContentTypeJSON.String()).File(version)
 		case "godoc":
 			d.GoDoc()
 		case "tutorials":
@@ -71,6 +75,7 @@ func (d *DocController) VersionHome(version string) {
 
 	data := aah.Data{
 		"IsVersionHome":      true,
+		"IsGettingStarted":   false,
 		"ShowVersionDocs":    false,
 		"ShowInsightSideNav": false,
 		"CurrentDocVersion":  version,
@@ -120,12 +125,10 @@ func (d *DocController) ShowDoc(version, content string) {
 	}
 
 	data := aah.Data{
-		"Article":   article,
-		"DocFile":   ess.StripExt(content) + ".md",
-		"IsShowDoc": true,
-	}
-	if strings.HasSuffix(content, "getting-started.html") {
-		data["IsGettingStarted"] = true
+		"Article":          article,
+		"DocFile":          ess.StripExt(content) + ".md",
+		"IsShowDoc":        true,
+		"IsGettingStarted": strings.HasSuffix(content, "getting-started.html"),
 	}
 
 	d.Reply().HTMLl("docs.html", data)

@@ -22,13 +22,15 @@
     });
     {{- end }}
   });
-  docsearch({
-   apiKey: '5bf567d6e1256b14e36d4bd6b9a65e84',
-   indexName: 'aahframework',
-   inputSelector: '#aahDocSearch',
-   algoliaOptions: { 'facetFilters': ["version:{{ .CurrentDocVersion }}"] },
-  //  debug: {{ if eq .EnvProfile "prod" -}}false{{ else }}true{{ end }}
-  });
+  // add only if searchbox exists
+  if ($('#aahDocSearch').length) {
+    docsearch({
+     apiKey: '5bf567d6e1256b14e36d4bd6b9a65e84',
+     indexName: 'aahframework',
+     inputSelector: '#aahDocSearch',
+     algoliaOptions: { 'facetFilters': ["version:{{ .CurrentDocVersion }}"] },
+    });
+  }
   </script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   {{- safeHTML `<!--[if lt IE 9]>

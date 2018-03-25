@@ -4,15 +4,15 @@ Tutorials - aah Go web framework
 
 {{ define "body" -}}
   <div class="container-fluid aah-container-fluid docs-body-content">
-    <div class="row">
+    <div class="row tutorials">
       <!-- page content -->
-      <div class="col-xs-12 col-md-9 no-padding">
-        <div class="row docs-page-content tutorials">
+      <div class="col-xs-12 col-md-9">
+        <div class="docs-page-content">
             <h1>Tutorials - aah Go web framework</h1>
             <p>Tutorials take you by the hand through a series of steps to create <code>aah</code> application. Start here if you’re new to aah framework or Web application development.</p>
-            <div class="row">
+            <div>
               <h3>Series of steps to learn and start with aah framework</h3>
-              <ul>
+              <ul class="list-unstyled lpad-15">
                 <li><a href="/anatomy-aah-application.html" target="_blank">Step 1: Learning aah project structure</a></li>
                 <li><a href="/tutorial/web-hello-world.html">Step 2: Creating a Hello World aah Web application</a></li>
                 <li><a href="/tutorial/api-hello-world.html">Step 3: Creating a Hello World aah API application</a></li>
@@ -21,11 +21,11 @@ Tutorials - aah Go web framework
                 <li><a href="/request-life-cycle.html">Step 6: Request Lifecycle</a></li>
               </ul>
             </div>
-            <div class="row">
+            <div class="row clear">
               <h2>Starters, Examples and Tutorials</h2>
               <p>Share yours by creating a pull request <a href="{{ config "link.aah.github_org" }}/tutorials">here</a>.</p>
-              <div class="row auto-clear">
-                <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="auto-clear">
+                <div class="col-xs-12 col-sm-6 col-lg-6">
                   <h4 class="no-anchor">Form &amp; Multipart Form</h4>
                   <ul>
                     <li><a href="/tutorial/form-submission.html">Form Submission</a></li>
@@ -33,14 +33,14 @@ Tutorials - aah Go web framework
                   </ul>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-6 col-lg-6">
                   <h4 class="no-anchor">RESTful APIs</h4>
                   <ul>
                     <li><a href="/tutorial/rest-api.html">REST API</a></li>
                   </ul>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-6 col-lg-6">
                   <h4 class="no-anchor">Authentication &amp; Authorization</h4>
                   <ul>
                     <li><a href="/tutorial/form-based-auth.html">Form-based Auth</a></li>
@@ -49,7 +49,7 @@ Tutorials - aah Go web framework
                   </ul>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-6 col-lg-6">
                   <h4 class="no-anchor">Internationalization/Localization</h4>
                   <ul>
                     <li><a href="/tutorial/i18n-url-query-param.html">i18n URL Query String</a></li>
@@ -57,7 +57,7 @@ Tutorials - aah Go web framework
                   </ul>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-6 col-lg-6">
                   <h4 class="no-anchor">Other Topics</h4>
                   <ul>
                     <li><a href="/tutorial/domain-subdomain-and-wildcard-subdomain.html">Domain, Subdomain and Wildcard Subdomain</a></li>

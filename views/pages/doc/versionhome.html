@@ -15,188 +15,182 @@
 
 {{ define "body" -}}
   <div class="container-fluid aah-container-fluid docs-body-content">
-    <div class="row">
-      <!-- page content -->
-      <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
-        <div class="row docs-page-content">
-            <h1>aah Documentation</h1>
-            <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah Go web framework</a>.</p>
-            <p>Framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version major and minor releases since first public release <code>v0.5</code>.</p>
-            <div class="row">
-              <div class="vh-group">
-                <div class="vh-sec-hdr">
-                  <h4>Insights into aah framework</h4>
+    <!-- page content -->
+    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
+      <div class="docs-page-content version-home">
+          <h1>aah Documentation</h1>
+          <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah Go web framework</a>.</p>
+          <div class="row">
+            <div class="vh-group">
+              <div class="vh-sec-hdr">
+                <h2>Insights into aah framework</h2>
+              </div>
+              <div class="row vh-sec-content">
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a></li>
+                    <li><a href="{{ docurlc . "docs.anatomy" }}">Anatomy - aah application</a></li>
+                    <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
+                    <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
+                    <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
+                    <li><a href="{{ docurlc . "docs.rest_api_versioning" }}">RESTful API Versioning</a></li>
+                  </ul>
                 </div>
-                <div class="row vh-sec-content">
-                  <div class="col-xs-12 col-sm-4 col-lg-4">
-                    <ul class="list-unstyled">
-                      <li><a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a></li>
-                      <li><a href="{{ docurlc . "docs.anatomy" }}">Anatomy - aah application</a></li>
-                      <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
-                      <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
-                      <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
-                      {{ if .Isv07AndGr }}
-                      <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
-                      <li><a href="{{ docurlc . "docs.security_design" }}">Security - Design</a></li>
-                      <li><a href="{{ docurlc . "docs.security_permissions" }}">Security - Permissions</a></li>
-                      {{ end }}
-                    </ul>
-                  </div>
-                  <div class="col-xs-12 col-sm-4 col-lg-4">
-                    <ul class="list-unstyled">
-                      {{ if .Isv07AndGr }}
-                      <li><a href="{{ docurlc . "docs.security_subject" }}">Security - Subject</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.rest_api_versioning" }}">RESTful API Versioning</a></li>
-                      <li><a href="{{ docurlc . "docs.pooling" }}">Pooling</a></li>
-                      <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
-                      <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
-                      <li><a href="{{ docurlc . "docs.go_aah_code_quality" }}">Coding Standards and Code Quality</a></li>
-                      <li><a href="{{ docurlc . "docs.release_notes" }}">Release Notes</a></li>
-                      <li><a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a></li>
-                    </ul>
-                  </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    {{ if .Isv07AndGr }}
+                    <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
+                    <li><a href="{{ docurlc . "docs.security_design" }}">Security - Design</a></li>
+                    <li><a href="{{ docurlc . "docs.security_permissions" }}">Security - Permissions</a></li>
+                    <li><a href="{{ docurlc . "docs.security_subject" }}">Security - Subject</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.pooling" }}">Pooling</a></li>
+                    <li><a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
+                    <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
+                    <li><a href="{{ docurlc . "docs.go_aah_code_quality" }}">Coding Standards and Code Quality</a></li>
+                    <li><a href="{{ docurlc . "docs.release_notes" }}">Release Notes</a></li>
+                  </ul>
                 </div>
               </div>
+            </div>
 
-              <div class="vh-group">
-                <div class="vh-sec-hdr">
-                  <h4>Framework documentation</h4>
-                </div>
-                <div class="row vh-sec-content">
-                  <div class="col-xs-12 col-sm-3 col-lg-3">
-                    <ul class="list-unstyled">
-                      <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
-                      <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
-                      {{ if .Isv010AndGr }}
-                      <li><a href="{{ docurlc . "docs.init_go" }}">aah init.go file</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.aah_server_extension" }}">-&nbsp;&nbsp;Server Extension</a></li>
-                        {{ if .Isv09AndGr }}
-                        <li><a href="{{ docurlc . "docs.server_dump_log" }}">-&nbsp;&nbsp;Server Dump Log</a></li>
-                        {{ end }}
-                      </ul></li>
-                      <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.app_config" }}">-&nbsp;&nbsp;App Config</a></li>
-                        <li><a href="{{ docurlc . "docs.routes_config" }}">-&nbsp;&nbsp;Routes Config</a></li>
-                        <li><a href="{{ docurlc . "docs.security_config" }}">-&nbsp;&nbsp;Security Config</a></li>
-                        <li><a href="{{ docurlc . "docs.log_config" }}">-&nbsp;&nbsp;Log Config</a></li>
-                      </ul></li>
-                      <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
-                      {{ if .Isv08AndGr }}
-                      <li><a href="{{ docurlc . "docs.auto_bind" }}">Parameters - Auto Bind</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.controllers" }}">Controllers</a></li>
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.interceptors" }}">-&nbsp;&nbsp;Interceptors</a></li>
-                      </ul></li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-12 col-sm-3 col-lg-3">
-                    <ul class="list-unstyled">
-                      {{ if .Isv07AndGr }}
-                      <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.password_encoders" }}">-&nbsp;&nbsp;Password Encoders</a></li>
-                      </ul></li>
-                      <li><a href="{{ docurlc . "docs.authz" }}">Authorization</a></li>
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.security_permissions" }}">-&nbsp;&nbsp;Permissions</a></li>
-                      </ul></li>
-                      {{ end }}
-                      {{ if .Isv010AndGr }}
-                      <li><a href="{{ docurlc . "docs.validation" }}">Data Validation</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.session" }}">Session Management</a></li>
-                      <li><a href="{{ docurlc . "docs.reply" }}">Reply Builder</a></li>
-                      <li><a href="{{ docurlc . "docs.middleware" }}">Middleware</a></li>
-                      <li><a href="{{ docurlc . "docs.views" }}">Views</a></li>
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.template_funcs" }}">-&nbsp;&nbsp;Template Functions</a></li>
-                      </ul></li>
-                      <li><a href="{{ docurlc . "docs.i18n" }}">I18n Internationalization</a></li>
-                      {{ if .Isv08AndGr }}
-                      <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-12 col-sm-3 col-lg-3">
-                    <ul class="list-unstyled">
-                      {{ if .Isv08AndGr }}
-                      <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
-                      {{ end }}
+            <div class="vh-group">
+              <div class="vh-sec-hdr">
+                <h2>Framework documentation</h2>
+              </div>
+              <div class="row vh-sec-content">
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
+                    <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
+                    {{ if .Isv010AndGr }}
+                    <li><a href="{{ docurlc . "docs.init_go" }}">aah init.go file</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.aah_server_extension" }}">-&nbsp;&nbsp;Server Extension</a></li>
                       {{ if .Isv09AndGr }}
-                      <li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
+                      <li><a href="{{ docurlc . "docs.server_dump_log" }}">-&nbsp;&nbsp;Server Dump Log</a></li>
                       {{ end }}
-                      {{ if .Isv010AndGr }}
-                      <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
-                      {{ if .Isv06AndGr }}
-                      <li class="list-style-none"><ul class="sub-li">
-                        <li><a href="{{ docurlc . "docs.static_files" }}#cache-control">-&nbsp;&nbsp;HTTP Cache-Control</a></li>
-                      </ul></li>
-                      {{ end }}
-                      {{ if .Isv08AndGr }}
-                      <li>
-                        <a href="{{ docurlc . "docs.error_handler" }}">{{ if .Isv010AndGr }}Error Handling{{ else }}Centrailzed Error Handler{{ end }}</a>
-                      </li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
-                      {{ if .Isv08AndGr }}
-                      <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
-                      {{ end }}
-                      <li><a href="{{ docurlc . "docs.faq" }}">FAQ</a></li>
-                    </ul>
-                  </div>
+                    </ul></li>
+                    <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.app_config" }}">-&nbsp;&nbsp;App Config</a></li>
+                      <li><a href="{{ docurlc . "docs.routes_config" }}">-&nbsp;&nbsp;Routes Config</a></li>
+                      <li><a href="{{ docurlc . "docs.security_config" }}">-&nbsp;&nbsp;Security Config</a></li>
+                      <li><a href="{{ docurlc . "docs.log_config" }}">-&nbsp;&nbsp;Log Config</a></li>
+                    </ul></li>
+                    <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
+                    {{ if .Isv08AndGr }}
+                    <li><a href="{{ docurlc . "docs.auto_bind" }}">Parameters - Auto Bind</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.controllers" }}">Controllers</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.interceptors" }}">-&nbsp;&nbsp;Interceptors</a></li>
+                    </ul></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    {{ if .Isv07AndGr }}
+                    <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.password_encoders" }}">-&nbsp;&nbsp;Password Encoders</a></li>
+                    </ul></li>
+                    <li><a href="{{ docurlc . "docs.authz" }}">Authorization</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.security_permissions" }}">-&nbsp;&nbsp;Permissions</a></li>
+                    </ul></li>
+                    {{ end }}
+                    {{ if .Isv010AndGr }}
+                    <li><a href="{{ docurlc . "docs.validation" }}">Data Validation</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.session" }}">Session Management</a></li>
+                    <li><a href="{{ docurlc . "docs.reply" }}">Reply Builder</a></li>
+                    <li><a href="{{ docurlc . "docs.middleware" }}">Middleware</a></li>
+                    <li><a href="{{ docurlc . "docs.views" }}">Views</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.template_funcs" }}">-&nbsp;&nbsp;Template Functions</a></li>
+                    </ul></li>
+                    <li><a href="{{ docurlc . "docs.i18n" }}">I18n Internationalization</a></li>
+                    {{ if .Isv08AndGr }}
+                    <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    {{ if .Isv08AndGr }}
+                    <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
+                    {{ end }}
+                    {{ if .Isv09AndGr }}
+                    <li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
+                    {{ end }}
+                    {{ if .Isv010AndGr }}
+                    <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
+                    {{ if .Isv06AndGr }}
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.static_files" }}#cache-control">-&nbsp;&nbsp;HTTP Cache-Control</a></li>
+                    </ul></li>
+                    {{ end }}
+                    {{ if .Isv08AndGr }}
+                    <li>
+                      <a href="{{ docurlc . "docs.error_handler" }}">{{ if .Isv010AndGr }}Error Handling{{ else }}Centrailzed Error Handler{{ end }}</a>
+                    </li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
+                    {{ if .Isv08AndGr }}
+                    <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
+                    {{ end }}
+                    <li><a href="{{ docurlc . "docs.faq" }}">FAQ</a></li>
+                  </ul>
                 </div>
               </div>
+            </div>
 
-              <div class="vh-group">
-                <div class="vh-sec-hdr">
-                  <h4>Deployment &amp; Operational</h4>
+            <div class="vh-group">
+              <div class="vh-sec-hdr">
+                <h2>Deployment &amp; DevOps</h2>
+              </div>
+              <div class="row vh-sec-content">
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.aah_application_binary" }}">Application Binary</a></li>
+                    <li><a href="{{ docurlc . "docs.deployment" }}">Deployment</a></li>
+                    {{ if .Isv07AndGr }}
+                    <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
+                    {{ end }}
+                    {{ if .Isv010AndGr }}
+                    <li><a href="{{ docurlc . "docs.config_hot_reload" }}">Config Hot-Reload via SIGHUP</a></li>
+                    {{ end }}
+                  </ul>
                 </div>
-                <div class="row vh-sec-content">
-                  <div class="col-xs-12 col-sm-3 col-lg-3">
-                    <ul class="list-unstyled">
-                      <li><a href="{{ docurlc . "docs.aah_application_binary" }}">Application Binary</a></li>
-                      <li><a href="{{ docurlc . "docs.deployment" }}">Deployment</a></li>
-                      {{ if .Isv07AndGr }}
-                      <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
-                      {{ end }}
-                      {{ if .Isv010AndGr }}
-                      <li><a href="{{ docurlc . "docs.config_hot_reload" }}">Config Hot-Reload via SIGHUP</a></li>
-                      {{ end }}
-                    </ul>
-                  </div>
-                  <div class="col-xs-12 col-sm-3 col-lg-3">
-                    <ul class="list-unstyled">
-                      <li><a href="{{ docurlc . "docs.cluster_deployment" }}">Cluster Deployment</a></li>
-                      <li><a href="{{ docurlc . "docs.getting_started_systemd" }}">Getting started with systemd</a></li>
-                      {{ if .Isv010AndGr }}
-                      <li><a href="{{ docurlc . "docs.getting_started_docker" }}">Getting started with Docker</a></li>
-                      {{ end }}
-                    </ul>
-                  </div>
-                  <div class="col-xs-12 col-sm-3 col-lg-3">
-                    <div class="">
-                      &nbsp;
-                    </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.cluster_deployment" }}">Cluster Deployment</a></li>
+                    <li><a href="{{ docurlc . "docs.getting_started_systemd" }}">Getting started with systemd</a></li>
+                    {{ if .Isv010AndGr }}
+                    <li><a href="{{ docurlc . "docs.getting_started_docker" }}">Getting started with Docker</a></li>
+                    {{ end }}
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <div class="">
+                    &nbsp;
                   </div>
                 </div>
               </div>
-            </div> <!-- /docs-page-content -->
-        </div>
-      </div> <!-- /page content -->
-      <!-- sidebar nav -->
-      <!-- <div class="col-xs-6 col-md-3">
-        {{ import "docs_sidebar.html" . -}}
-      </div> -->
-      <!-- /sidebar nav -->
-    </div>
+            </div>
+          </div> <!-- /docs-page-content -->
+      </div>
+    </div> <!-- /page content -->
   </div>
 {{- end }}
