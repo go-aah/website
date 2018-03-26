@@ -1,9 +1,10 @@
+{{ $cdnHost := config "cdn.host" }}
 <footer class="footer">
   <div class="container-fluid aah-container-fluid">
     <div class="row">
       <div class="footer-block">
         <div class="col-xs-12 col-md-5">
-          <p class="aah-footer-logo"><img src="{{ rurl . "host" }}/assets/img/aah-logo-32x32.png" alt="aah footer logo"><span class="aah-fwk-text">framework</span></p>
+          <p class="aah-footer-logo"><img src="{{ $cdnHost }}/assets/img/aah-logo-32x32.png" alt="aah footer logo"><span class="aah-fwk-text">framework</span></p>
           <p>
             &copy; <script>document.write(new Date().getFullYear())</script> <a href="{{ config "link.jeeva.github_profile" }}" target="_blank">Jeevanandam M.</a>, All rights reserved.<br/>
             <a href="{{ rurl . "credits" }}">Credits</a>, <a href="{{ rurl . "team" }}">Team</a>, <a href="{{ rurl . "docs.index" }}faq.html">FAQ</a>, <a href="{{ rurl . "privacy" }}">Privacy</a>

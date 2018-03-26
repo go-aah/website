@@ -1,10 +1,10 @@
 {{ $cdnHost := config "cdn.host" }}
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ rurl . "host" }}/assets/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ rurl . "host" }}/assets/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ rurl . "host" }}/assets/img/favicon-16x16.png">
-    <link rel="manifest" href="{{ rurl . "host" }}/assets/manifest.json">
-    <link rel="mask-icon" href="{{ rurl . "host" }}/assets/img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $cdnHost }}/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $cdnHost }}/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $cdnHost }}/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="{{ $cdnHost }}/assets/manifest.json">
+    <link rel="mask-icon" href="{{ $cdnHost }}/assets/img/safari-pinned-tab.svg" color="#5bbad5">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <style>
     @font-face { font-family: timeburnerFont; src: url({{ $cdnHost }}/assets/fonts/timeburnerbold.ttf); }
@@ -13,11 +13,11 @@
     .aah-security { background-image: url({{ $cdnHost }}/assets/img/security-bg.jpg); }
     .why-aah { background-image: url({{ $cdnHost }}/assets/img/whyaah-bg.jpg); }
     </style>
-    <link href="{{ rurl . "host" }}/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="{{ rurl . "host" }}/assets/css/aah-{{ .AppBuildInfo.Version }}.css" rel="stylesheet" />
+    <link href="{{ $cdnHost }}/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ $cdnHost }}/assets/css/aah-{{ .AppBuildInfo.Version }}.css" rel="stylesheet" />
     <link href="//use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     {{ if .CodeBlock -}}
-    <link href="/assets/css/prism.css" rel="stylesheet" />
+    <link href="{{ $cdnHost }}/assets/css/prism.css" rel="stylesheet" />
     {{ end -}}
     {{ if eq .EnvProfile "prod" -}}<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

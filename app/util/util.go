@@ -78,16 +78,32 @@ func AllowAllOriginForStaticFiles(e *aah.Event) {
 
 // VersionGtEq method compare two semantic versions
 func VersionGtEq(currentVersion, expectedVersion string) bool {
-	cv, err := version.NewVersion(currentVersion)
+	cv, err := version.NewVersion(VerRep.Replace(currentVersion))
 	if err != nil {
 		log.Error("Current version: ", currentVersion, err)
 		return false
 	}
 
-	ev, err := version.NewVersion(expectedVersion)
+	ev, err := version.NewVersion(VerRep.Replace(expectedVersion))
 	if err != nil {
 		log.Error("Expected version: ", expectedVersion, err)
 		return false
 	}
 	return (cv.Equal(ev) || cv.GreaterThan(ev))
+}
+
+// VersionLtEq method compare two semantic versions
+func VersionLtEq(currentVersion, expectedVersion string) bool {
+	cv, err := version.NewVersion(VerRep.Replace(currentVersion))
+	if err != nil {
+		log.Error("Current version: ", currentVersion, err)
+		return false
+	}
+
+	ev, err := version.NewVersion(VerRep.Replace(expectedVersion))
+	if err != nil {
+		log.Error("Expected version: ", expectedVersion, err)
+		return false
+	}
+	return (cv.Equal(ev) || cv.LessThan(ev))
 }

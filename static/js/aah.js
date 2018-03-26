@@ -49,7 +49,7 @@ function anchorTagHandling() {
 
   // scroll to anchor tag
   var anchorVal = location.href.split("#")[1];
-  if($(anchorVal).length) {
+  if(anchorVal) {
     var target = $('#'+anchorVal);
     if (target.length) {
       $('html,body').animate({

@@ -3,6 +3,7 @@ package controllers
 import (
 	"bytes"
 	"io/ioutil"
+	"net/http"
 	"path"
 	"path/filepath"
 	"strings"
@@ -86,10 +87,28 @@ func (d *DocController) VersionHome(version string) {
 
 // ShowDoc method displays requested documentation page based language and version.
 func (d *DocController) ShowDoc(version, content string) {
+
+	// handle doc updates
+	switch content {
+	case "/error-handling.html":
+		if util.VersionLtEq(version, "v0.9") {
+			d.Reply().Redirect(d.ReverseURL("docs.show_doc", version, "/centralized-error-handler.html"))
+			return
+		}
+	case "/centralized-error-handler.html":
+		if util.VersionGtEq(version, "v0.10") {
+			d.Reply().RedirectSts(
+				d.ReverseURL("docs.show_doc", version, "/error-handling.html"),
+				http.StatusMovedPermanently,
+			)
+			return
+		}
+	}
+
 	isTutorial := false
 	if version == "tutorial" {
 		if content == "/i18n.html" {
-			d.Reply().Redirect("/tutorial/i18n-url-query-param.html")
+			d.Reply().RedirectSts("/tutorial/i18n-url-query-param.html", http.StatusMovedPermanently)
 			return
 		}
 
@@ -232,7 +251,7 @@ func (d *DocController) addDocVersionComparison(curVer string) {
 	cv := util.VerRep.Replace(curVer)
 	for _, ver := range releases {
 		keyPart := util.VerKeyRep.Replace(ver)
-		d.AddViewArg("Is"+keyPart+"AndGr", util.VersionGtEq(cv, util.VerRep.Replace(ver)))
+		d.AddViewArg("Is"+keyPart+"AndGr", util.VersionGtEq(cv, ver))
 	}
 }
 

@@ -73,7 +73,7 @@
                     {{ end }}
                     <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
                     <li class="list-style-none"><ul class="sub-li">
-                      <li><a href="{{ docurlc . "docs.aah_server_extension" }}">-&nbsp;&nbsp;Server Extension</a></li>
+                      <li><a href="{{ docurlc . "docs.aah_server_extension" }}">-&nbsp;&nbsp;Server Extensions</a></li>
                       {{ if .Isv09AndGr }}
                       <li><a href="{{ docurlc . "docs.server_dump_log" }}">-&nbsp;&nbsp;Server Dump Log</a></li>
                       {{ end }}
@@ -136,11 +136,9 @@
                     <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
                     {{ end }}
                     <li><a href="{{ docurlc . "docs.static_files" }}">Static Files</a></li>
-                    {{ if .Isv06AndGr }}
                     <li class="list-style-none"><ul class="sub-li">
                       <li><a href="{{ docurlc . "docs.static_files" }}#cache-control">-&nbsp;&nbsp;HTTP Cache-Control</a></li>
                     </ul></li>
-                    {{ end }}
                     {{ if .Isv08AndGr }}
                     <li>
                       <a href="{{ docurlc . "docs.error_handler" }}">{{ if .Isv010AndGr }}Error Handling{{ else }}Centrailzed Error Handler{{ end }}</a>

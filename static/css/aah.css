@@ -262,6 +262,9 @@ body {
 }
 
 @media all and (min-width:1200px) {
+  .aah-banner h1 {
+    font-size: 12em !important;
+  }
   .short-feature-list {
     padding-top: 60px !important;
   }
@@ -729,18 +732,23 @@ code {
 }
 
 .docs-page-content {
-  margin-right: 20px;
+  margin-right: 10px;
   min-height: 700px;
 }
 
 .docs-page-content p {
   text-align: justify;
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 .docs-page-content li {
   padding-top: 5px;
   padding-bottom: 7px;
+  font-size: 1.1em;
+}
+
+.docs-page-content li ul li {
+  font-size: 1em;
 }
 
 .docs-page-content .code-toolbar {
@@ -1077,7 +1085,7 @@ code {
 
 .aah-release-notes .docs-page-content h1 {
   font-weight: 500;
-  font-size: 4em;
+  font-size: 3.5em;
 }
 
 .aah-release-notes .docs-page-content h2 {
@@ -1087,7 +1095,7 @@ code {
 
 .aah-release-notes .docs-page-content h4 {
   font-weight: 500;
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 
 .aah-release-notes .docs-page-content p, .aah-release-notes .docs-page-content li{

@@ -144,12 +144,6 @@ func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 	}
 
 	fileName := aah.AppConfig().StringDefault(key, "")
-	if key == "docs.error_handler" {
-		if VersionGtEq(VerKeyRep.Replace(version), "v0.10") {
-			fileName = "error-handling.html"
-		}
-	}
-
 	return template.HTML(fmt.Sprintf("/%s/%s", version, fileName))
 }
 
