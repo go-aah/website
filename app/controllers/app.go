@@ -15,3 +15,8 @@ func (a *AppController) Before() {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
 	a.AddViewArg("Releases", releases)
 }
+
+// HealthCheck method is used ping..pong health check
+func (a *AppController) HealthCheck() {
+	a.Reply().Text("pong")
+}
