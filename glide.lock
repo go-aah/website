@@ -1,12 +1,12 @@
 hash: 61c11b4d14d9b6fac82bd3e05abb015619512570741da963f5b5aefd482f76ff
-updated: 2017-10-05T19:51:38.416531-07:00
+updated: 2018-03-28T21:47:46.186442-07:00
 imports:
 - name: aahframework.org/aah.v0
-  version: 8b555337dd42b3caa0853ae4481da008b224ac3d
+  version: e07da1a6273bb9fdbdcb2ff77b2060f006b3a668
 - name: aahframework.org/ahttp.v0
   version: f9b651b8092ec7477d4349bce07eb95c482306c8
 - name: aahframework.org/aruntime.v0
-  version: 3368d72836c245d93409bcf73e2eb5e74cf02767
+  version: 2086b0399afb84f1c086b25acb4d772c2e59a6af
 - name: aahframework.org/config.v0
   version: 5e0e808cbd7cfa9a9b51c26adb2af891bd73ccda
 - name: aahframework.org/essentials.v0
@@ -20,9 +20,9 @@ imports:
 - name: aahframework.org/log.v0
   version: 7ff095b578d1d2181abeae6645175c9bd8d1bda5
 - name: aahframework.org/router.v0
-  version: 30fc4da59735c16b359b537d3f13e009d8b690a5
+  version: 8bf553ff8ef98147ef76429290c0f464ae1ccd04
 - name: aahframework.org/security.v0
-  version: 96ba5d8ea885d7e373d906852e0e3baf62568832
+  version: 5262136536c40f5ce6b80bc9d79c7c1085209b15
   subpackages:
   - acrypto
   - anticsrf
@@ -32,27 +32,33 @@ imports:
   - scheme
   - session
 - name: aahframework.org/valpar.v0
-  version: b66ffe09843404678baecd85d7d0401ea7d9e8f3
+  version: 66837635ff82050dd02a19f595fcfdd1005c2e6f
 - name: aahframework.org/view.v0
-  version: 8f7e38b08f6a2f5298a65db32985676c2c9adf7a
+  version: 48b4077ff026a6a4fe2d92ca813da1f44c4bc218
 - name: github.com/aah-cb/minify
-  version: b58c89a923a766a8c794f58e139b4c281421418a
+  version: 3de6ebeb5f28ef490cefabd63232aa94057d0696
+- name: github.com/go-playground/locales
+  version: f63010822830b6fe52288ee52d5a1151088ce039
+  subpackages:
+  - currency
+- name: github.com/go-playground/universal-translator
+  version: 71201497bace774495daed26a3874fd339e0b538
+- name: github.com/hashicorp/go-version
+  version: 23480c0665776210b5fbbac6eaaee40e3e6a96b7
 - name: github.com/russross/blackfriday
-  version: 4048872b16cc0fc2c5fd9eacf0ed2c2fedaa0c8c
-- name: github.com/tdewolff/buffer
-  version: 3fd6d6981daf9f995504e6ae31c005780dca2179
+  version: 55d61fa8aa702f59229e6cff85793c22e580eaf5
 - name: github.com/tdewolff/minify
-  version: d515420d53baa000cbf801c6fafd43e774704413
+  version: dfa6461293239be46daa289dd3492e76d9de469a
   subpackages:
   - html
 - name: github.com/tdewolff/parse
-  version: e4ac711ab0bf625c08270ba17557c30b2c1c5c2d
+  version: c7248c06ec341eb47cf9feb37855d3cf64097a9c
   subpackages:
+  - buffer
   - html
-- name: github.com/tdewolff/strconv
-  version: 3e8091f4417ebaaa3910da63a45ea394ebbfb0e3
+  - strconv
 - name: golang.org/x/crypto
-  version: 9419663f5a44be8b34ca85f08abc5fe1be11f8a3
+  version: 88942b9c40a4c9d203b82b3731787b672d6e809b
   subpackages:
   - acme
   - acme/autocert
@@ -60,4 +66,6 @@ imports:
   - blowfish
   - pbkdf2
   - scrypt
+- name: gopkg.in/go-playground/validator.v9
+  version: 8ce234ff024d85b3848e485decba806385d6e276
 testImports: []
