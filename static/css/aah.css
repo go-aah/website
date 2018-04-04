@@ -1150,3 +1150,20 @@ code {
 #back2Top:hover {
   cursor: pointer;
 }
+
+.sponsors .algolia {
+  padding-top: 5px;
+  width: 50px;
+  font-size: 2.5em;
+}
+.sponsors .algolia a:hover {
+  color: inherit;
+}
+.sponsors .keycdn {
+  padding-top: 5px;
+}
+.sponsors .keycdn img {
+  width: 100px;
+  height: 30px;
+  opacity: 0.8;
+}

@@ -16,16 +16,17 @@ Official website made possible with following third party tools and libraries. I
 * Markdown rendering by [Blackfriday](https://github.com/russross/blackfriday)
 * Language syntax highlighting by [prism.js](http://prismjs.com/)
 * Deep anchor links by [AnchorJS](https://www.bryanbraun.com/anchorjs/)
-* aah documentation search powered by [Algolia](https://algolia.com)
+
 
 ## Service Providers used by aah
 
 Acknowledgement, I'm very thankful for Service Providers generosity towards Open Source projects.
 
-  * aah Source Code hosting - [GitHub](https://github.com/go-aah)
-  * aah Build System - [Travis CI](https://travis-ci.org/go-aah)
-  * aah Code Coverage - [Codecov](https://codecov.io/gh/go-aah)
-  * CDN for USA & EU - [INXY Host](https://inxy.host)
+  * Source Code Repository - [GitHub](https://github.com/go-aah)
+  * Continuous Integration/Build System - [Travis CI](https://travis-ci.org/go-aah)
+  * Code Coverage - [Codecov](https://codecov.io/gh/go-aah)
+  * Documentation Search - [Algolia](https://algolia.com)
+  * Content Delivery Network (CDN) - [KeyCDN](https://www.keycdn.com)
 
 ## Go Libraries used by aah
 
