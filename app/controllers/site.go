@@ -23,7 +23,6 @@ func (s *SiteController) Index() {
 // GetInvolved method display aah framework community and contribution info.
 func (s *SiteController) GetInvolved() {
 	s.Reply().HTML(aah.Data{
-		"CodeBlock":     true,
 		"IsGetInvolved": true,
 	})
 }
@@ -31,7 +30,7 @@ func (s *SiteController) GetInvolved() {
 // Content method display the content based on request path.
 func (s *SiteController) Content() {
 	mdPath := util.FilePath(s.Req.Path, util.ContentBasePath())
-	data := aah.Data{"CodeBlock": true}
+	data := aah.Data{}
 
 	if article, found := markdown.Get(mdPath); found {
 		data["Article"] = article

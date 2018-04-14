@@ -1,5 +1,24 @@
 {{ $cdnHost := config "cdn.host" }}
-<link rel="shortcut icon" type="image/x-icon" href="{{ $cdnHost }}/favicon.ico" />
+<!-- dns-prefetch -->
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com/">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net/">
+<link rel="dns-prefetch" href="//fonts.googleapis.com/">
+<link rel="dns-prefetch" href="//use.fontawesome.com/">
+<link rel="dns-prefetch" href="//logos.keycdn.com">
+<link rel="dns-prefetch" href="{{ $cdnHost }}/">
+<!-- Preconnect -->
+<link rel="preconnect" href="{{ $cdnHost }}" crossorigin>
+<!-- Preload -->
+<link rel="preload" href="{{ $cdnHost }}/assets/fonts/timeburnerbold.ttf" as="font" crossorigin>
+<link rel="preload" href="{{ $cdnHost }}/assets/img/aah-logo-64x64.png" as="image">
+<link rel="preload" href="{{ $cdnHost }}/assets/img/aah-logo-32x32.png" as="image">
+<link rel="preload" href="//logos.keycdn.com/keycdn-logo-black.png" as="image">
+<link rel="preload" href="{{ $cdnHost }}/assets/css/aah-{{ .AppBuildInfo.Version }}.css" as="style">
+<link rel="preload" href="{{ $cdnHost }}/assets/js/aah-{{ .AppBuildInfo.Version }}.js" as="script">
+<link rel="preload" href="{{ $cdnHost }}/assets/css/prism.css" as="style">
+<link rel="preload" href="{{ $cdnHost }}/assets/js/prism.js" as="script">
+
+<link rel="shortcut icon" type="image/x-icon" href="{{ $cdnHost }}/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ $cdnHost }}/assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ $cdnHost }}/assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ $cdnHost }}/assets/img/favicon-16x16.png">
@@ -16,9 +35,7 @@
     <link href="{{ $cdnHost }}/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ $cdnHost }}/assets/css/aah-{{ .AppBuildInfo.Version }}.css" rel="stylesheet" />
     <link href="//use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-    {{ if .CodeBlock -}}
     <link href="{{ $cdnHost }}/assets/css/prism.css" rel="stylesheet" />
-    {{ end -}}
     {{ if eq .EnvProfile "prod" -}}<!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

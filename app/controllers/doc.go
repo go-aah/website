@@ -35,7 +35,6 @@ func (d *DocController) Before() {
 
 	d.AddViewArg("ShowVersionDocs", true).
 		AddViewArg("ShowInsightSideNav", true).
-		AddViewArg("CodeBlock", true).
 		AddViewArg("ShowVersionNo", true)
 }
 
