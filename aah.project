@@ -18,7 +18,7 @@ build {
   # during a compile and build, aah CLI will try to get dependencies
   # using 'go get <package>'.
   # Default value is `false`.
-  #dep_get = true
+  dep_get = true
 
   flags = ["-i"]
 
