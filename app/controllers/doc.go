@@ -50,15 +50,20 @@ func (d *DocController) VersionHome(version string) {
 	if !ess.IsSliceContainsString(releases, version) {
 		switch ess.StripExt(version) {
 		case "favicon":
-			d.Reply().ContentType("image/x-icon").File(filepath.Join("img", version))
+			d.Reply().ContentType("image/x-icon").
+				File(filepath.Join("static", "img", version))
 		case "robots":
-			d.Reply().ContentType(ahttp.ContentTypePlainText.String()).File("docs_" + version)
+			d.Reply().ContentType(ahttp.ContentTypePlainText.String()).
+				File(filepath.Join("static", "docs_"+version))
 		case "sitemap":
-			d.Reply().ContentType(ahttp.ContentTypeXML.String()).File("docs_" + version)
+			d.Reply().ContentType(ahttp.ContentTypeXML.String()).
+				File(filepath.Join("static", "docs_"+version))
 		case "browserconfig":
-			d.Reply().ContentType(ahttp.ContentTypeXML.String()).File(version)
+			d.Reply().ContentType(ahttp.ContentTypeXML.String()).
+				File(filepath.Join("static", version))
 		case "site", "manifest":
-			d.Reply().ContentType(ahttp.ContentTypeJSON.String()).File(version)
+			d.Reply().ContentType(ahttp.ContentTypeJSON.String()).
+				File(filepath.Join("static", version))
 		case "godoc":
 			d.GoDoc()
 		case "tutorials":
