@@ -2,7 +2,6 @@ package markdown
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -86,7 +85,6 @@ func Parse(lines []string) *models.Article {
 	aahDocsDomainURL := cfg.StringDefault("markdown.aah_docs_domain_url", "https://docs.aahframework.org")
 	aahGitbuhIssueURL := cfg.StringDefault("link.aah.github_issues", "https://github.com/go-aah/aah/issues")
 	aahCDNHost := cfg.StringDefault("cdn.host", "//cdn.aahframework.org")
-	fmt.Println("DEV: aahCDNHost", aahCDNHost)
 	content = strings.Replace(content, "{{aah_domain_url}}", aahDomainURL, -1)
 	content = strings.Replace(content, "{{aah_docs_domain_url}}", aahDocsDomainURL, -1)
 	content = strings.Replace(content, "{{aah_github_issues_url}}", aahGitbuhIssueURL, -1)
