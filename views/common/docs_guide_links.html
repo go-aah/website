@@ -50,6 +50,9 @@
 <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+{{ if .Isv011AndGr }}
+<li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a></li>
+{{ end }}
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
 {{ end }}

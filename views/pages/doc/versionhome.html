@@ -122,6 +122,9 @@
                     <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
                     {{ end }}
                     <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+                    {{ if .Isv011AndGr }}
+                    <li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a></li>
+                    {{ end }}
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">

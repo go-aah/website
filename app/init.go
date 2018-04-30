@@ -53,9 +53,6 @@ func init() {
 	// aah.OnShutdown(db.Disconnect)
 	aah.OnShutdown(markdown.ClearCache)
 
-	// Event: OnPreReply
-	aah.OnPreReply(util.AllowAllOriginForStaticFiles)
-
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 	// Middleware's
 	// Doc: https://docs.aahframework.org/middleware.html
@@ -118,4 +115,30 @@ func init() {
 	//
 	// // Add your validation funcs
 
+}
+
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+// HTTP Events
+//
+// Subscribing HTTP events on app start.
+//__________________________________________________________________________
+
+func SubscribeHTTPEvents(_ *aah.Event) {
+	he := aah.AppHTTPEngine()
+
+	// Event: OnRequest
+	// he.OnRequest(myserverext.OnRequest)
+
+	// Event: OnPreReply
+	he.OnPreReply(util.AllowAllOriginForStaticFiles)
+
+	// Event: OnPostReply
+	// he.OnPostReply(myserverext.OnPostReply)
+
+	// Event: OnPreAuth
+	// he.OnPreAuth(myserverext.OnPreAuth)
+
+	// Event: OnPostAuth
+	// Published right after the successful Authentication
+	// he.OnPostAuth(security.PostAuthEvent)
 }
