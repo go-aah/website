@@ -45,6 +45,7 @@ func init() {
 	aah.OnStart(controllers.LoadValuesFromConfig)
 	aah.OnStart(markdown.FetchMarkdownConfig)
 	aah.OnStart(util.PullGithubDocsAndLoadCache)
+	aah.OnStart(SubscribeHTTPEvents)
 
 	// Event: OnShutdown
 	// Published on receiving OS Signals `SIGINT` or `SIGTERM`.
