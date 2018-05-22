@@ -1167,3 +1167,10 @@ code {
   height: 30px;
   opacity: 0.8;
 }
+
+.new-sup {
+  margin-left: 6px;
+  color: #d20e6e;
+  font-weight: bold;
+  font-size: 80%;
+}
