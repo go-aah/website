@@ -3,6 +3,7 @@ package util
 import (
 	"fmt"
 	"html/template"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -92,7 +93,7 @@ func GitRefresh(releases []string) {
 
 // ContentBasePath method returns the Markdown files base path.
 func ContentBasePath() string {
-	return filepath.Join(aah.AppBaseDir(), "content")
+	return filepath.Join(aah.AppVirtualBaseDir(), "content")
 }
 
 // FilePath method returns markdown file path from given path.
@@ -120,6 +121,12 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 	cfg := aah.AppConfig()
 	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
 	releases, _ = cfg.StringList("docs.releases")
+
+	keepLocalVersion := os.Getenv("KEEP_FILES")
+	if len(keepLocalVersion) > 0 {
+		return
+	}
+
 	docBasePath := DocBaseDir()
 
 	if aah.AppProfile() == "prod" {

@@ -168,7 +168,7 @@ func RemoveCacheByFile(mdPath string) {
 }
 
 func getArticle(mdPath string) *models.Article {
-	f, err := os.Open(mdPath)
+	f, err := aah.AppVFS().Open(mdPath)
 	if err != nil {
 		return nil
 	}
