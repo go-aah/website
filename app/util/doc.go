@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -101,7 +102,7 @@ func ContentBasePath() string {
 func FilePath(reqPath, prefix string) string {
 	reqPath = strings.ToLower(TrimPrefixSlash(reqPath))
 	reqPath = ess.StripExt(reqPath) + ".md"
-	return filepath.Clean(filepath.Join(prefix, reqPath))
+	return path.Clean(path.Join(prefix, reqPath))
 }
 
 // TrimPrefixSlash method trims the prefix slash from the given path
