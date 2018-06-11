@@ -145,8 +145,8 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 
 // TmplDocURLc method compose documentation navi URL based on version
 func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
-	params := viewArgs[aah.KeyViewArgRequestParams].(*ahttp.Params)
-	version := params.PathValue("version")
+	req := viewArgs[aah.KeyViewArgRequest].(*ahttp.Request)
+	version := req.PathValue("version")
 	if !ess.IsSliceContainsString(releases, version) {
 		version = releases[0]
 	}

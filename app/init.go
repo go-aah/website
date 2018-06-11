@@ -48,11 +48,10 @@ func init() {
 	aah.OnStart(SubscribeHTTPEvents)
 
 	// Event: OnShutdown
-	// Published on receiving OS Signals `SIGINT` or `SIGTERM`.
 	//
-	// aah.OnShutdown(cache.Flush)
-	// aah.OnShutdown(db.Disconnect)
-	aah.OnShutdown(markdown.ClearCache)
+	// aah.OnPostShutdown(cache.Flush)
+	// aah.OnPostShutdown(db.Disconnect)
+	aah.OnPostShutdown(markdown.ClearCache)
 
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 	// Middleware's

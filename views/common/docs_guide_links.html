@@ -5,7 +5,10 @@
 {{ end }}
 <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
 <li class="list-style-none"><ul class="list-unstyled">
-  <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extension</a></li>
+  <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extensions</a></li>
+  {{ if .Isv07AndGr }}
+  <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
+  {{ end }}
   {{ if .Isv09AndGr }}
   <li><a href="{{ docurlc . "docs.server_dump_log" }}">Server Dump Log</a></li>
   {{ end }}
@@ -28,6 +31,12 @@
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
 <li class="list-style-none"><ul class="list-unstyled">
+  {{ if .Isv011AndGr }}
+  <li><a href="{{ docurlc . "docs.form_auth_scheme" }}">Form</a></li>
+  <li><a href="{{ docurlc . "docs.basic_auth_scheme" }}">Basic</a></li>
+  <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">OAuth2</a><sup class="new-sup">new</sup></li>
+  <li><a href="{{ docurlc . "docs.generic_auth_scheme" }}">Generic</a></li>
+  {{ end }}
   <li><a href="{{ docurlc . "docs.password_encoders" }}">Password Encoders</a></li>
 </ul></li>
 <li><a href="{{ docurlc . "docs.authz" }}">Authorization</a></li>
@@ -57,7 +66,7 @@
 <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
 {{ end }}
 {{ if .Isv09AndGr }}
-<li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
+<li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF</a></li>
 {{ end }}
 {{ if .Isv010AndGr }}
 <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
