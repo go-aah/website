@@ -282,9 +282,10 @@ body {
   .auto-clear .col-lg-6:nth-child(odd) { clear: left; }
 }
 
-code {
+pre, code {
   color: #292727;
   background-color: #f5f2f0;
+  font-family: Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
 }
 
 .aah-container-fluid {
@@ -503,13 +504,22 @@ code {
 }
 
 .feature-list-section p, .feature-list-section li {
-  font-size: 1.2em;
+  font-size: 1.15em;
+}
+
+.feature-list-section li a {
+  color: inherit;
+}
+
+.feature-list-section li a:hover {
+  color: #2780e3;
 }
 
 .feature-list-section li {
   word-wrap: break-word;
   overflow-wrap:break-word;
   padding-left: 15px;
+  line-height: 1.7em;
 }
 
 .feature-list-section i {
@@ -754,6 +764,10 @@ code {
 .docs-page-content .code-toolbar {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.docs-page-content thead {
+  background-color: #f9f9f9;
 }
 
 .tutorials {
