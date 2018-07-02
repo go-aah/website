@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"aahframework.org/aah.v0"
-	"aahframework.org/log.v0"
 
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/util"
@@ -16,28 +15,28 @@ type SiteController struct {
 }
 
 // Index method is application home page
-func (s *SiteController) Index() {
-	s.Reply().Ok()
+func (c *SiteController) Index() {
+	c.Reply().Ok()
 }
 
 // GetInvolved method display aah framework community and contribution info.
-func (s *SiteController) GetInvolved() {
-	s.Reply().HTML(aah.Data{
+func (c *SiteController) GetInvolved() {
+	c.Reply().HTML(aah.Data{
 		"CodeBlock":     true,
 		"IsGetInvolved": true,
 	})
 }
 
 // Content method display the content based on request path.
-func (s *SiteController) Content() {
-	mdPath := util.FilePath(s.Req.Path, util.ContentBasePath())
+func (c *SiteController) Content() {
+	mdPath := util.FilePath(c.Req.Path, util.ContentBasePath())
 	data := aah.Data{"CodeBlock": true}
 
 	if article, found := markdown.Get(mdPath); found {
 		data["Article"] = article
 	} else {
-		log.Warnf("Page not found: %s", s.Req.Path)
-		s.Reply().Error(&aah.Error{
+		c.Log().Warnf("Page not found: %s", c.Req.Path)
+		c.Reply().Error(&aah.Error{
 			Code:    http.StatusNotFound,
 			Message: "Not Found",
 		})
@@ -45,53 +44,53 @@ func (s *SiteController) Content() {
 	}
 
 	var viewFile string
-	switch util.CreateKey(s.Req.Path) {
+	switch util.CreateKey(c.Req.Path) {
 	case "contribute-to-code":
-		s.AddViewArg("IsContributeCode", true)
+		c.AddViewArg("IsContributeCode", true)
 		viewFile = "contribute-code.html"
 	case "security-vulnerabilities":
 		viewFile = "security-vulnerabilities.html"
 	}
 
-	s.Reply().HTMLf(viewFile, data)
+	c.Reply().HTMLf(viewFile, data)
 }
 
 // Team method display aah framework team info.
-func (s *SiteController) Team() {
-	s.Reply().HTML(aah.Data{
+func (c *SiteController) Team() {
+	c.Reply().HTML(aah.Data{
 		"IsTeam": true,
 	})
 }
 
 // Privacy method display aahframework.org websit privacy information.
-func (s *SiteController) Privacy() {
-	s.Reply().Ok()
+func (c *SiteController) Privacy() {
+	c.Reply().Ok()
 }
 
 // WhyAah method to show info about aah framework.
-func (s *SiteController) WhyAah() {
-	s.Reply().HTML(aah.Data{
+func (c *SiteController) WhyAah() {
+	c.Reply().HTML(aah.Data{
 		"IsWhyAah": true,
 	})
 }
 
 // Support method to display support aah page.
-func (s *SiteController) Support() {
-	s.Reply().HTML(aah.Data{
+func (c *SiteController) Support() {
+	c.Reply().HTML(aah.Data{
 		"IsSupport": true,
 	})
 }
 
 // Features method to show aah features.
-func (s *SiteController) Features() {
-	s.Reply().HTML(aah.Data{
+func (c *SiteController) Features() {
+	c.Reply().HTML(aah.Data{
 		"IsFeatures": true,
 	})
 }
 
 // Security method to show aah security info.
-func (s *SiteController) Security() {
-	s.Reply().HTML(aah.Data{
+func (c *SiteController) Security() {
+	c.Reply().HTML(aah.Data{
 		"IsSecurity": true,
 	})
 }

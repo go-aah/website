@@ -65,7 +65,7 @@
               <div class="row vh-sec-content">
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
+                    <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI</a></li>
                     <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
                     {{ if .Isv010AndGr }}
                     <li><a href="{{ docurlc . "docs.init_go" }}">aah init.go file</a></li>
@@ -161,10 +161,10 @@
                     <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
                     {{ if .Isv011AndGr }}
                     <li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.cryptography" }}">Cryptography</a></li>
+                    <li><a href="{{ docurlc . "docs.cookie_manager" }}">Cookie Manager</a></li>
                     {{ end }}
-                    {{ if .Isv08AndGr }}
-                    <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
-                    {{ end }}
+                    <li><a href="https://godoc.org/aahframework.org/essentials.v0" target="_blank">Essentials</a></li>
                     <li><a href="{{ docurlc . "docs.faq" }}">FAQ</a></li>
                   </ul>
                 </div>
