@@ -47,7 +47,7 @@ func init() {
 	aah.OnStart(util.PullGithubDocsAndLoadCache)
 	aah.OnStart(SubscribeHTTPEvents)
 
-	// Event: OnShutdown
+	// Event: OnPostShutdown
 	//
 	// aah.OnPostShutdown(cache.Flush)
 	// aah.OnPostShutdown(db.Disconnect)

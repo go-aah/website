@@ -24,8 +24,8 @@
         <li {{ if or .IsVersionHome .IsShowDoc }}{{ if eq .IsGettingStarted false }}class="active"{{ end }}{{ end }}>
           <a href="{{ rurl . "docs.index" }}">Documentation</a>
         </li>
-        <li {{ if .IsTutorials }}class="active"{{ end }}>
-          <a href="{{ rurl . "docs.version_home" "tutorials.html" }}">Tutorials</a>
+        <li {{ if .IsExamples }}class="active"{{ end }}>
+          <a href="{{ rurl . "docs.version_home" "examples.html" }}">Examples</a>
         </li>
         <li {{ if .IsSupport }}class="active"{{ end }}>
           <a href="{{ rurl . "support" }}">Support</a>

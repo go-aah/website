@@ -1,6 +1,7 @@
 package util
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"os"
@@ -140,6 +141,19 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 	if cfg.BoolDefault("markdown.cache", false) {
 		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
 		go markdown.LoadCache(ContentBasePath())
+	}
+}
+
+// ReadJSON method read the JSON file for given path and unmarshals into given object.
+func ReadJSON(ctx *aah.Context, jsonPath string, v interface{}) {
+	f, err := aah.AppVFS().Open(jsonPath)
+	if err != nil {
+		ctx.Log().Errorf("%s: %v", jsonPath, err)
+	}
+	defer ess.CloseQuietly(f)
+
+	if err = json.NewDecoder(f).Decode(v); err != nil {
+		ctx.Log().Errorf("%s: %v", jsonPath, err)
 	}
 }
 

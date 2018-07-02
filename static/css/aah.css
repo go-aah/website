@@ -566,8 +566,12 @@ pre, code {
   font-size: 2.5em;
 }
 
-.aah-security-section p, .aah-security-section li {
+.aah-security-section p, .aah-security-section li, .aah-security-section li ul li {
   font-size: 1.2em;
+}
+
+.aah-security-section li ul li {
+  font-size: 1.02em;
 }
 
 .aah-security-section li {
@@ -770,16 +774,16 @@ pre, code {
   background-color: #f9f9f9;
 }
 
-.tutorials {
+.examples {
   margin-top: -50px;
 }
 
-.tutorials .docs-page-content li {
+.examples .docs-page-content li {
   padding-top: 3px;
   padding-bottom: 2px;
 }
 
-.tutorials .docs-page-content h4 {
+.examples .docs-page-content h4 {
   padding-top: 5px;
 }
 

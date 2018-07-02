@@ -22,6 +22,7 @@ const (
 	signatureLength = 45
 )
 
+// Version number cleaner
 var (
 	VerRep    = strings.NewReplacer("v", "", ".x", "", "-edge", "")
 	VerKeyRep = strings.NewReplacer(".x", "", "-edge", "", ".", "")

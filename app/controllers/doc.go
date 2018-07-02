@@ -41,7 +41,7 @@ func (d *DocController) Before() {
 
 // Index method is documentation application home page
 func (d *DocController) Index() {
-	d.Reply().Redirect(d.ReverseURL("docs.version_home", releases[0]))
+	d.Reply().Redirect(d.RouteURL("docs.version_home", releases[0]))
 }
 
 // VersionHome method Displays the documentation in selected language. Default
@@ -66,11 +66,11 @@ func (d *DocController) VersionHome(version string) {
 				File(filepath.Join("static", version))
 		case "godoc":
 			d.GoDoc()
-		case "tutorials":
-			d.Tutorials()
+		case "examples":
+			d.Examples()
 		default:
-			queryStr := d.Req.Params.Query.Encode()
-			targetURL := d.ReverseURL("docs.show_doc", releases[0], version)
+			queryStr := d.Req.URL().Query().Encode()
+			targetURL := d.RouteURL("docs.show_doc", releases[0], version)
 			if !ess.IsStrEmpty(queryStr) {
 				targetURL = targetURL + "?" + queryStr
 			}
@@ -92,34 +92,30 @@ func (d *DocController) VersionHome(version string) {
 
 // ShowDoc method displays requested documentation page based language and version.
 func (d *DocController) ShowDoc(version, content string) {
-
-	// handle doc updates
+	// handle certian doc path and updates
 	switch content {
+	case "/release-notes.html":
+		d.ReleaseNotes(version)
+		return
 	case "/error-handling.html":
 		if util.VersionLtEq(version, "v0.9") {
-			d.Reply().Redirect(d.ReverseURL("docs.show_doc", version, "/centralized-error-handler.html"))
+			d.Reply().Redirect(d.RouteURL("docs.show_doc", version, "/centralized-error-handler.html"))
 			return
 		}
 	case "/centralized-error-handler.html":
 		if util.VersionGtEq(version, "v0.10") {
-			d.Reply().RedirectSts(
-				d.ReverseURL("docs.show_doc", version, "/error-handling.html"),
+			d.Reply().RedirectWithStatus(
+				d.RouteURL("docs.show_doc", version, "/error-handling.html"),
 				http.StatusMovedPermanently,
 			)
 			return
 		}
 	}
 
-	isTutorial := false
-	if version == "tutorial" {
-		if content == "/i18n.html" {
-			d.Reply().RedirectSts("/tutorial/i18n-url-query-param.html", http.StatusMovedPermanently)
-			return
-		}
-
-		version = releases[0] // take the latest version
-		isTutorial = true
-		d.ViewArgs()["ShowVersionNo"] = false
+	var pathSeg string
+	if !util.IsVersionNo(version) {
+		pathSeg = version
+		version = releases[0]
 	}
 
 	d.AddViewArg("CurrentDocVersion", version)
@@ -129,21 +125,15 @@ func (d *DocController) ShowDoc(version, content string) {
 		d.AddViewArg("LatestRelease", true)
 	}
 
-	switch ess.StripExt(util.TrimPrefixSlash(content)) {
-	case "release-notes":
-		d.ReleaseNotes(version)
-		return
-	}
-
-	// if it's add prefix
-	if isTutorial {
-		content = filepath.Join("tutorial", content)
-	}
-
-	docPath := path.Clean(path.Join(version, content))
+	docPath := path.Clean(path.Join(version, pathSeg, content))
 	mdPath := util.FilePath(docPath, docBasePath)
 	article, found := markdown.Get(mdPath)
 	if !found {
+		if util.VersionLtEq(version, "v0.10") {
+			d.Reply().Redirect(d.RouteURL("docs.show_doc", version, "authentication.html"))
+			return
+		}
+
 		d.NotFound()
 		return
 	}
@@ -153,7 +143,6 @@ func (d *DocController) ShowDoc(version, content string) {
 		"DocFile":          ess.StripExt(content) + ".md",
 		"IsShowDoc":        true,
 		"IsGettingStarted": strings.HasSuffix(content, "getting-started.html"),
-		"isTutorial":       isTutorial,
 	}
 
 	d.Reply().HTMLl("docs.html", data)
@@ -161,22 +150,41 @@ func (d *DocController) ShowDoc(version, content string) {
 
 // GoDoc method display aah framework godoc links
 func (d *DocController) GoDoc() {
-	data := aah.Data{
+	jsonPath := path.Join(util.ContentBasePath(), "godoc.json")
+	var godoc []*struct {
+		Name       string `json:"name"`
+		ImportPath string `json:"importPath"`
+		Codecov    string `json:"codecov"`
+	}
+	util.ReadJSON(d.Context, jsonPath, &godoc)
+
+	d.addDocVersionComparison(releases[0])
+	d.Reply().HTMLlf("docs.html", "godoc.html", aah.Data{
 		"IsGodoc":           true,
 		"ShowVersionNo":     false,
 		"CurrentDocVersion": releases[0],
-	}
-	d.addDocVersionComparison(releases[0])
-	d.Reply().HTMLlf("docs.html", "godoc.html", data)
+		"Godoc":             godoc,
+	})
 }
 
-// Tutorials method display aah framework tutorials github links or guide.
-func (d *DocController) Tutorials() {
+// Examples method display aah framework examples github links or guide.
+func (d *DocController) Examples() {
+	jsonPath := path.Join(util.ContentBasePath(), "examples.json")
+	var groups []*struct {
+		GroupHeading string `json:"groupHeading"`
+		Examples     []*struct {
+			DisplayName string `json:"displayName"`
+			Name        string `json:"name"`
+		} `json:"examples"`
+	}
+	util.ReadJSON(d.Context, jsonPath, &groups)
+
 	d.addDocVersionComparison(releases[0])
-	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
-		"IsTutorials":       true,
+	d.Reply().HTMLlf("docs.html", "examples.html", aah.Data{
+		"IsExamples":        true,
 		"ShowVersionNo":     false,
 		"CurrentDocVersion": releases[0],
+		"Examples":          groups,
 	})
 }
 

@@ -185,7 +185,7 @@ func ClearCache(e *aah.Event) {
 	mu.Unlock()
 }
 
-// Gets markdown cache config value
+// FetchMarkdownConfig gets markdown related config value
 func FetchMarkdownConfig(e *aah.Event) {
 	cfg := aah.AppConfig()
 	isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
@@ -195,8 +195,9 @@ func FetchMarkdownConfig(e *aah.Event) {
 		"{{aah_domain_url}}", cfg.StringDefault("markdown.aah_domain_url", "https://aahframework.org"),
 		"{{aah_docs_domain_url}}", cfg.StringDefault("markdown.aah_docs_domain_url", "https://docs.aahframework.org"),
 		"{{aah_github_issues_url}}", cfg.StringDefault("link.aah.github_issues", "https://aahframework.org/issues"),
+		"{{aah_issues_url}}", cfg.StringDefault("link.aah.github_issues", "https://aahframework.org/issues"),
 		"{{aah_cdn_host}}", cfg.StringDefault("cdn.host", "//cdn.aahframework.org"),
-		"{{aah-examples}}", cfg.StringDefault("markdown.aah_examples_url", "https://aahframework.org/examples"),
+		"{{aah_examples_url}}", cfg.StringDefault("markdown.aah_examples_url", "https://aahframework.org/examples"),
 		"<table>", `<table class="table table-bordered table-hover">`,
 	)
 }
