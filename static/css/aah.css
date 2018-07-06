@@ -922,18 +922,19 @@ pre, code {
 }
 
 .aah-support {
-  min-height: 450px;
+  min-height: 550px;
 }
 
 .aah-support h1 {
   font-weight: 500;
   font-size: 4em;
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .aah-support-section {
   text-align: center;
   padding-top: 100px;
+  padding-right: 40px;
 }
 
 .aah-support-section p {
@@ -944,6 +945,10 @@ pre, code {
 .aah-support-section a {
   color: inherit;
   text-decoration: none;
+}
+
+.aah-support-section i:hover {
+  color: #3857ba;
 }
 
 .getinvolved  h1,
