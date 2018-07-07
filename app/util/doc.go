@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"os"
 	"path"
 	"path/filepath"
 	"strings"
@@ -123,11 +122,6 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 	cfg := aah.AppConfig()
 	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
 	releases, _ = cfg.StringList("docs.releases")
-
-	keepLocalVersion := os.Getenv("KEEP_FILES")
-	if len(keepLocalVersion) > 0 {
-		return
-	}
 
 	docBasePath := DocBaseDir()
 
