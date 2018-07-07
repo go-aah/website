@@ -14,23 +14,26 @@
 {{ end }}
 
 {{ define "body" -}}
-{{ $gh_issue_link := config "link.aah.github_issues" }}
 <div class="container-fluid aah-container-fluid">
   <div class="row aah-support">
-    <h1 class="text-center">aah framework support</h1>
+    <h1 class="text-center">aah support</h1>
     <div class="row aah-support-section">
       <div class="row auto-clear">
-        <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
           <a href="{{ config "link.aah.gitter" }}" target="_blank"><i class="fab fa-gitter fa-4x" aria-hidden="true"></i>
           <p>Chat on Gitter Channel</p></a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-          <a href="{{ $gh_issue_link }}" target="_blank"><i class="fab fa-github fa-4x" aria-hidden="true"></i>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+          <a href="{{ config "link.aah.slack" }}" target="_blank"><i class="fab fa-slack fa-4x" aria-hidden="true"></i>
+          <p><code>#aah</code> on Gophers Slack </p></a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+          <a href="{{ config "link.aah.github_issues" }}" target="_blank"><i class="fab fa-github fa-4x" aria-hidden="true"></i>
           <p>Raise issues on GitHub</p></a>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
           <a href="{{ config "link.aah.stackoverflow" }}" target="_blank"><i class="fab fa-stack-overflow fa-4x" aria-hidden="true"></i>
-          <p>Use <code>aahframework</code> tag on StackOverflow</p></a>
+          <p>Use <code>aah</code> tag on StackOverflow</p></a>
         </div>
       </div>
     </div>

@@ -1,8 +1,11 @@
 package util
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
+	"os"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -92,7 +95,7 @@ func GitRefresh(releases []string) {
 
 // ContentBasePath method returns the Markdown files base path.
 func ContentBasePath() string {
-	return filepath.Join(aah.AppBaseDir(), "content")
+	return filepath.Join(aah.AppVirtualBaseDir(), "content")
 }
 
 // FilePath method returns markdown file path from given path.
@@ -100,7 +103,7 @@ func ContentBasePath() string {
 func FilePath(reqPath, prefix string) string {
 	reqPath = strings.ToLower(TrimPrefixSlash(reqPath))
 	reqPath = ess.StripExt(reqPath) + ".md"
-	return filepath.Clean(filepath.Join(prefix, reqPath))
+	return path.Clean(path.Join(prefix, reqPath))
 }
 
 // TrimPrefixSlash method trims the prefix slash from the given path
@@ -120,6 +123,12 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 	cfg := aah.AppConfig()
 	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
 	releases, _ = cfg.StringList("docs.releases")
+
+	keepLocalVersion := os.Getenv("KEEP_FILES")
+	if len(keepLocalVersion) > 0 {
+		return
+	}
+
 	docBasePath := DocBaseDir()
 
 	if aah.AppProfile() == "prod" {
@@ -135,10 +144,23 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 	}
 }
 
+// ReadJSON method read the JSON file for given path and unmarshals into given object.
+func ReadJSON(ctx *aah.Context, jsonPath string, v interface{}) {
+	f, err := aah.AppVFS().Open(jsonPath)
+	if err != nil {
+		ctx.Log().Errorf("%s: %v", jsonPath, err)
+	}
+	defer ess.CloseQuietly(f)
+
+	if err = json.NewDecoder(f).Decode(v); err != nil {
+		ctx.Log().Errorf("%s: %v", jsonPath, err)
+	}
+}
+
 // TmplDocURLc method compose documentation navi URL based on version
 func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
-	params := viewArgs[aah.KeyViewArgRequestParams].(*ahttp.Params)
-	version := params.PathValue("version")
+	req := viewArgs[aah.KeyViewArgRequest].(*ahttp.Request)
+	version := req.PathValue("version")
 	if !ess.IsSliceContainsString(releases, version) {
 		version = releases[0]
 	}

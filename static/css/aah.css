@@ -282,9 +282,10 @@ body {
   .auto-clear .col-lg-6:nth-child(odd) { clear: left; }
 }
 
-code {
+pre, code {
   color: #292727;
   background-color: #f5f2f0;
+  font-family: Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
 }
 
 .aah-container-fluid {
@@ -503,13 +504,22 @@ code {
 }
 
 .feature-list-section p, .feature-list-section li {
-  font-size: 1.2em;
+  font-size: 1.15em;
+}
+
+.feature-list-section li a {
+  color: inherit;
+}
+
+.feature-list-section li a:hover {
+  color: #2780e3;
 }
 
 .feature-list-section li {
   word-wrap: break-word;
   overflow-wrap:break-word;
   padding-left: 15px;
+  line-height: 1.7em;
 }
 
 .feature-list-section i {
@@ -556,8 +566,12 @@ code {
   font-size: 2.5em;
 }
 
-.aah-security-section p, .aah-security-section li {
+.aah-security-section p, .aah-security-section li, .aah-security-section li ul li {
   font-size: 1.2em;
+}
+
+.aah-security-section li ul li {
+  font-size: 1.02em;
 }
 
 .aah-security-section li {
@@ -756,16 +770,20 @@ code {
   margin-bottom: 25px;
 }
 
-.tutorials {
+.docs-page-content thead {
+  background-color: #f9f9f9;
+}
+
+.examples {
   margin-top: -50px;
 }
 
-.tutorials .docs-page-content li {
+.examples .docs-page-content li {
   padding-top: 3px;
   padding-bottom: 2px;
 }
 
-.tutorials .docs-page-content h4 {
+.examples .docs-page-content h4 {
   padding-top: 5px;
 }
 
@@ -904,18 +922,19 @@ code {
 }
 
 .aah-support {
-  min-height: 450px;
+  min-height: 550px;
 }
 
 .aah-support h1 {
   font-weight: 500;
   font-size: 4em;
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 .aah-support-section {
   text-align: center;
   padding-top: 100px;
+  padding-right: 40px;
 }
 
 .aah-support-section p {
@@ -926,6 +945,10 @@ code {
 .aah-support-section a {
   color: inherit;
   text-decoration: none;
+}
+
+.aah-support-section i:hover {
+  color: #3857ba;
 }
 
 .getinvolved  h1,
@@ -1166,4 +1189,11 @@ code {
   width: 100px;
   height: 30px;
   opacity: 0.8;
+}
+
+.new-sup {
+  margin-left: 6px;
+  color: #d20e6e;
+  font-weight: bold;
+  font-size: 80%;
 }

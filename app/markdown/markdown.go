@@ -41,7 +41,9 @@ var (
 	markdownOptions = blackfriday.Options{Extensions: markdownExtensions}
 
 	isCacheEnabled bool
-	mu             = &sync.Mutex{}
+
+	mu              = &sync.Mutex{}
+	contentPreparer *strings.Replacer
 )
 
 // Parse method parsed the markdown content into html using blackfriday library
@@ -78,16 +80,7 @@ func Parse(lines []string) *models.Article {
 	fileContent := strings.Join(lines[pos:], "\n")
 	htmlRender := blackfriday.HtmlRenderer(markdownHTMLFlags, "", "")
 	content := string(blackfriday.MarkdownOptions([]byte(fileContent), htmlRender, markdownOptions))
-
-	// Dynamica URL placement
-	cfg := aah.AppConfig()
-	aahDomainURL := cfg.StringDefault("markdown.aah_domain_url", "https://aahframework.org")
-	aahDocsDomainURL := cfg.StringDefault("markdown.aah_docs_domain_url", "https://docs.aahframework.org")
-	aahGitbuhIssueURL := cfg.StringDefault("link.aah.github_issues", "https://github.com/go-aah/aah/issues")
-	content = strings.Replace(content, "{{aah_domain_url}}", aahDomainURL, -1)
-	content = strings.Replace(content, "{{aah_docs_domain_url}}", aahDocsDomainURL, -1)
-	content = strings.Replace(content, "{{aah_github_issues_url}}", aahGitbuhIssueURL, -1)
-
+	content = contentPreparer.Replace(content)
 	article.Content = content
 
 	return article
@@ -166,7 +159,7 @@ func RemoveCacheByFile(mdPath string) {
 }
 
 func getArticle(mdPath string) *models.Article {
-	f, err := os.Open(mdPath)
+	f, err := aah.AppVFS().Open(mdPath)
 	if err != nil {
 		return nil
 	}
@@ -192,7 +185,19 @@ func ClearCache(e *aah.Event) {
 	mu.Unlock()
 }
 
-// Gets markdown cache config value
+// FetchMarkdownConfig gets markdown related config value
 func FetchMarkdownConfig(e *aah.Event) {
+	cfg := aah.AppConfig()
 	isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
+
+	// Dynamica URL placement
+	contentPreparer = strings.NewReplacer(
+		"{{aah_domain_url}}", cfg.StringDefault("markdown.aah_domain_url", "https://aahframework.org"),
+		"{{aah_docs_domain_url}}", cfg.StringDefault("markdown.aah_docs_domain_url", "https://docs.aahframework.org"),
+		"{{aah_github_issues_url}}", cfg.StringDefault("link.aah.github_issues", "https://aahframework.org/issues"),
+		"{{aah_issues_url}}", cfg.StringDefault("link.aah.github_issues", "https://aahframework.org/issues"),
+		"{{aah_cdn_host}}", cfg.StringDefault("cdn.host", "//cdn.aahframework.org"),
+		"{{aah_examples_url}}", cfg.StringDefault("markdown.aah_examples_url", "https://aahframework.org/examples"),
+		"<table>", `<table class="table table-bordered table-hover">`,
+	)
 }

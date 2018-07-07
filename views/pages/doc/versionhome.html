@@ -19,38 +19,36 @@
     <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
       <div class="docs-page-content version-home">
           <h1>aah Documentation</h1>
-          <p>Everything you need to know about <a href="{{ rurl . "index" }}">aah Go web framework</a>.</p>
+          <p>Everything to know about <a href="{{ rurl . "index" }}">aah Go web framework</a> is right here.</p>
           <div class="row">
             <div class="vh-group">
               <div class="vh-sec-hdr">
-                <h2>Insights into aah framework</h2>
+                <h2>Insights into aah</h2>
               </div>
               <div class="row vh-sec-content">
                 <div class="col-xs-12 col-sm-3 col-lg-3">
-                  <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a></li>
+                  <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.anatomy" }}">Anatomy - aah application</a></li>
                     <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
-                    <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
                     <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
                     <li><a href="{{ docurlc . "docs.rest_api_versioning" }}">RESTful API Versioning</a></li>
+                    <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
-                  <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
+                  <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.security_design" }}">Security - Design</a></li>
                     <li><a href="{{ docurlc . "docs.security_permissions" }}">Security - Permissions</a></li>
                     <li><a href="{{ docurlc . "docs.security_subject" }}">Security - Subject</a></li>
                     <li><a href="{{ docurlc . "docs.pooling" }}">Pooling</a></li>
-                    <li><a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a></li>
+                    <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
-                  <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
+                  <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
                     <li><a href="{{ docurlc . "docs.go_aah_code_quality" }}">Coding Standards and Code Quality</a></li>
+                    <li><a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a></li>
                     <li><a href="{{ docurlc . "docs.release_notes" }}">Release Notes</a></li>
                   </ul>
                 </div>
@@ -59,12 +57,12 @@
 
             <div class="vh-group">
               <div class="vh-sec-hdr">
-                <h2>Framework documentation</h2>
+                <h2>Development</h2>
               </div>
               <div class="row vh-sec-content">
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
+                    <li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI</a></li>
                     <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
                     {{ if .Isv010AndGr }}
                     <li><a href="{{ docurlc . "docs.init_go" }}">aah init.go file</a></li>
@@ -80,11 +78,14 @@
                     <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
                     <li class="list-style-none"><ul class="sub-li">
                       <li><a href="{{ docurlc . "docs.app_config" }}">-&nbsp;&nbsp;App Config</a></li>
-                      <li><a href="{{ docurlc . "docs.routes_config" }}">-&nbsp;&nbsp;Routes Config</a></li>
                       <li><a href="{{ docurlc . "docs.security_config" }}">-&nbsp;&nbsp;Security Config</a></li>
                       <li><a href="{{ docurlc . "docs.log_config" }}">-&nbsp;&nbsp;Log Config</a></li>
                     </ul></li>
                     <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
+                    <li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
+                    <li class="list-style-none"><ul class="sub-li">
+                      <li><a href="{{ docurlc . "docs.routes_config" }}">-&nbsp;&nbsp;Routes Config</a></li>
+                    </ul></li>
                     {{ if .Isv08AndGr }}
                     <li><a href="{{ docurlc . "docs.auto_bind" }}">Parameters - Auto Bind</a></li>
                     {{ end }}
@@ -98,6 +99,12 @@
                   <ul class="list-unstyled">
                     <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
                     <li class="list-style-none"><ul class="sub-li">
+                      {{ if .Isv011AndGr }}
+                      <li><a href="{{ docurlc . "docs.form_auth_scheme" }}">-&nbsp;&nbsp;Form</a></li>
+                      <li><a href="{{ docurlc . "docs.basic_auth_scheme" }}">-&nbsp;&nbsp;Basic</a></li>
+                      <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">-&nbsp;&nbsp;OAuth2</a><sup class="new-sup">new</sup></li>
+                      <li><a href="{{ docurlc . "docs.generic_auth_scheme" }}">-&nbsp;&nbsp;Generic</a></li>
+                      {{ end }}
                       <li><a href="{{ docurlc . "docs.password_encoders" }}">-&nbsp;&nbsp;Password Encoders</a></li>
                     </ul></li>
                     <li><a href="{{ docurlc . "docs.authz" }}">Authorization</a></li>
@@ -118,16 +125,22 @@
                     {{ if .Isv08AndGr }}
                     <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
                     {{ end }}
+                    {{ if not .Isv011AndGr }}
                     <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+                    {{ end }}
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
+                    {{ if .Isv011AndGr }}
+                    <li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+                    {{ end }}
                     {{ if .Isv08AndGr }}
                     <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
                     {{ end }}
                     {{ if .Isv09AndGr }}
-                    <li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
+                    <li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF</a></li>
                     {{ end }}
                     {{ if .Isv010AndGr }}
                     <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
@@ -142,9 +155,12 @@
                     </li>
                     {{ end }}
                     <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
-                    {{ if .Isv08AndGr }}
-                    <li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
+                    {{ if .Isv011AndGr }}
+                    <li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.cryptography" }}">Cryptography</a></li>
+                    <li><a href="{{ docurlc . "docs.cookie_manager" }}">Cookie Manager</a></li>
                     {{ end }}
+                    <li><a href="https://godoc.org/aahframework.org/essentials.v0" target="_blank">Essentials</a></li>
                     <li><a href="{{ docurlc . "docs.faq" }}">FAQ</a></li>
                   </ul>
                 </div>

@@ -1,0 +1,78 @@
+[
+   {
+      "groupHeading":"Form & Multipart Form",
+      "examples":[
+         {
+            "displayName":"Form Submission",
+            "name":"form",
+            "desc":"demonstrates Form Submission with aah framework. That's includes Auto parse and bind (nested struct bind and input sanitization to prevent XSS attacks)"
+         },
+         {
+            "displayName":"Multipart File Upload",
+            "name":"form-fileupload"
+         }
+      ]
+   },
+   {
+      "groupHeading":"RESTful APIs",
+      "examples":[
+         {
+            "displayName":"REST API",
+            "name":"rest-api"
+         }
+      ]
+   },
+   {
+      "groupHeading":"Authentication & Authorization",
+      "examples":[
+         {
+            "displayName":"Form-based Auth",
+            "name":"form-based-auth"
+         },
+         {
+            "displayName":"REST API Basic Auth",
+            "name":"rest-api-basic-auth"
+         },
+         {
+            "displayName":"REST API JWT Auth",
+            "name":"rest-api-jwt-auth"
+         },
+         {
+            "displayName":"OAuth2 Login - Facebook, Google, GitHub",
+            "name":"oauth2-social-login"
+         }
+      ]
+   },
+   {
+      "groupHeading":"Real-time Apps",
+      "examples":[
+         {
+            "displayName":"Simple Chat - WebSocket",
+            "name":"simple-chat"
+         }
+      ]
+   },
+   {
+      "groupHeading":"Internationalization & Localization",
+      "examples":[
+         {
+            "displayName":"i18n URL Query String",
+            "name":"i18n-url-query-param"
+         },
+         {
+            "displayName":"i18n URL Path Param",
+            "name":"i18n-url-path-param"
+         }
+      ]
+   },
+   {
+      "groupHeading":"General",
+      "examples":[
+         {
+            "displayName":"Domain, Subdomain and Wildcard Subdomain",
+            "name":"domain-subdomain",
+            "desc": "It gives an idea how to use Domain, Subdomain and Wildcard Subdomain with aah."
+         }
+      ]
+   }
+]

@@ -11,7 +11,6 @@ import (
 	"aahframework.org/aah.v0"
 	"aahframework.org/ahttp.v0"
 	"aahframework.org/essentials.v0"
-	"aahframework.org/log.v0"
 
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/models"
@@ -29,46 +28,51 @@ type DocController struct {
 }
 
 // Before method doc brfore interceptor
-func (d *DocController) Before() {
+func (c *DocController) Before() {
 	// Execute nested interceptor
-	d.AppController.Before()
+	c.AppController.Before()
 
-	d.AddViewArg("ShowVersionDocs", true).
+	c.AddViewArg("ShowVersionDocs", true).
 		AddViewArg("ShowInsightSideNav", true).
 		AddViewArg("ShowVersionNo", true)
 }
 
 // Index method is documentation application home page
-func (d *DocController) Index() {
-	d.Reply().Redirect(d.ReverseURL("docs.version_home", releases[0]))
+func (c *DocController) Index() {
+	c.Reply().Redirect(c.RouteURL("docs.version_home", releases[0]))
 }
 
 // VersionHome method Displays the documentation in selected language. Default
 // is English.
-func (d *DocController) VersionHome(version string) {
+func (c *DocController) VersionHome(version string) {
 	if !ess.IsSliceContainsString(releases, version) {
 		switch ess.StripExt(version) {
 		case "favicon":
-			d.Reply().ContentType("image/x-icon").File(filepath.Join("img", version))
+			c.Reply().ContentType("image/x-icon").
+				File(filepath.Join("static", "img", version))
 		case "robots":
-			d.Reply().ContentType(ahttp.ContentTypePlainText.String()).File("docs_" + version)
+			c.Reply().ContentType(ahttp.ContentTypePlainText.String()).
+				File(filepath.Join("static", "docs_"+version))
 		case "sitemap":
-			d.Reply().ContentType(ahttp.ContentTypeXML.String()).File("docs_" + version)
+			c.Reply().ContentType(ahttp.ContentTypeXML.String()).
+				File(filepath.Join("static", "docs_"+version))
 		case "browserconfig":
-			d.Reply().ContentType(ahttp.ContentTypeXML.String()).File(version)
+			c.Reply().ContentType(ahttp.ContentTypeXML.String()).
+				File(filepath.Join("static", version))
 		case "site", "manifest":
-			d.Reply().ContentType(ahttp.ContentTypeJSON.String()).File(version)
+			c.Reply().ContentType(ahttp.ContentTypeJSON.String()).
+				File(filepath.Join("static", version))
 		case "godoc":
-			d.GoDoc()
-		case "tutorials":
-			d.Tutorials()
+			c.GoDoc()
+		case "examples":
+			c.Examples()
 		default:
-			queryStr := d.Req.Params.Query.Encode()
-			targetURL := d.ReverseURL("docs.show_doc", releases[0], version)
+			queryStr := c.Req.URL().Query().Encode()
+			targetURL := c.RouteURL("docs.show_doc", releases[0], version)
 			if !ess.IsStrEmpty(queryStr) {
 				targetURL = targetURL + "?" + queryStr
 			}
-			d.Reply().Redirect(targetURL)
+			c.Reply().Redirect(targetURL)
 		}
 		return
 	}
@@ -80,65 +84,59 @@ func (d *DocController) VersionHome(version string) {
 		"ShowInsightSideNav": false,
 		"CurrentDocVersion":  version,
 	}
-	d.addDocVersionComparison(version)
-	d.Reply().HTMLl("docs.html", data)
+	c.addDocVersionComparison(version)
+	c.Reply().HTMLl("docs.html", data)
 }
 
 // ShowDoc method displays requested documentation page based language and version.
-func (d *DocController) ShowDoc(version, content string) {
-
-	// handle doc updates
+func (c *DocController) ShowDoc(version, content string) {
+	// handle certian doc path and updates
 	switch content {
+	case "/release-notes.html":
+		c.ReleaseNotes(version)
+		return
 	case "/error-handling.html":
 		if util.VersionLtEq(version, "v0.9") {
-			d.Reply().Redirect(d.ReverseURL("docs.show_doc", version, "/centralized-error-handler.html"))
+			c.Reply().Redirect(c.RouteURL("docs.show_doc", version, "/centralized-error-handler.html"))
 			return
 		}
 	case "/centralized-error-handler.html":
 		if util.VersionGtEq(version, "v0.10") {
-			d.Reply().RedirectSts(
-				d.ReverseURL("docs.show_doc", version, "/error-handling.html"),
+			c.Reply().RedirectWithStatus(
+				c.RouteURL("docs.show_doc", version, "/error-handling.html"),
 				http.StatusMovedPermanently,
 			)
 			return
 		}
 	}
 
-	isTutorial := false
-	if version == "tutorial" {
-		if content == "/i18n.html" {
-			d.Reply().RedirectSts("/tutorial/i18n-url-query-param.html", http.StatusMovedPermanently)
-			return
-		}
-
-		version = releases[0] // take the latest version
-		isTutorial = true
-		d.ViewArgs()["ShowVersionNo"] = false
+	var pathSeg string
+	if !util.IsVersionNo(version) {
+		pathSeg = version
+		version = releases[0]
 	}
 
-	d.AddViewArg("CurrentDocVersion", version)
-	d.addDocVersionComparison(version)
+	c.AddViewArg("CurrentDocVersion", version)
+	c.addDocVersionComparison(version)
 	branchName := util.BranchName(version)
 	if branchName == "master" {
-		d.AddViewArg("LatestRelease", true)
+		c.AddViewArg("LatestRelease", true)
 	}
 
-	switch ess.StripExt(util.TrimPrefixSlash(content)) {
-	case "release-notes":
-		d.ReleaseNotes(version)
-		return
-	}
-
-	// if it's add prefix
-	if isTutorial {
-		content = filepath.Join("tutorial", content)
-	}
-
-	docPath := path.Clean(path.Join(version, content))
+	docPath := path.Clean(path.Join(version, pathSeg, content))
 	mdPath := util.FilePath(docPath, docBasePath)
 	article, found := markdown.Get(mdPath)
 	if !found {
-		d.NotFound()
+		if util.VersionLtEq(version, "v0.10") {
+			if strings.Contains(content, "auth-schemes") {
+				c.Reply().Redirect(c.RouteURL("docs.show_doc", version, "authentication.html"))
+			} else if strings.Contains(content, "cryptography") {
+				c.Reply().Redirect(c.RouteURL("docs.version_home", "cryptography.html"))
+			}
+			return
+		}
+
+		c.NotFound()
 		return
 	}
 
@@ -147,35 +145,53 @@ func (d *DocController) ShowDoc(version, content string) {
 		"DocFile":          ess.StripExt(content) + ".md",
 		"IsShowDoc":        true,
 		"IsGettingStarted": strings.HasSuffix(content, "getting-started.html"),
-		"isTutorial":       isTutorial,
 	}
 
-	d.Reply().HTMLl("docs.html", data)
+	c.Reply().HTMLl("docs.html", data)
 }
 
 // GoDoc method display aah framework godoc links
-func (d *DocController) GoDoc() {
-	data := aah.Data{
+func (c *DocController) GoDoc() {
+	jsonPath := path.Join(util.ContentBasePath(), "godoc.json")
+	var godoc []*struct {
+		Name       string `json:"name"`
+		ImportPath string `json:"importPath"`
+		Codecov    string `json:"codecov"`
+	}
+	util.ReadJSON(c.Context, jsonPath, &godoc)
+
+	c.addDocVersionComparison(releases[0])
+	c.Reply().HTMLlf("docs.html", "godoc.html", aah.Data{
 		"IsGodoc":           true,
 		"ShowVersionNo":     false,
 		"CurrentDocVersion": releases[0],
-	}
-	d.addDocVersionComparison(releases[0])
-	d.Reply().HTMLlf("docs.html", "godoc.html", data)
+		"Godoc":             godoc,
+	})
 }
 
-// Tutorials method display aah framework tutorials github links or guide.
-func (d *DocController) Tutorials() {
-	d.addDocVersionComparison(releases[0])
-	d.Reply().HTMLlf("docs.html", "tutorials.html", aah.Data{
-		"IsTutorials":       true,
+// Examples method display aah framework examples github links or guide.
+func (c *DocController) Examples() {
+	jsonPath := path.Join(util.ContentBasePath(), "examples.json")
+	var groups []*struct {
+		GroupHeading string `json:"groupHeading"`
+		Examples     []*struct {
+			DisplayName string `json:"displayName"`
+			Name        string `json:"name"`
+		} `json:"examples"`
+	}
+	util.ReadJSON(c.Context, jsonPath, &groups)
+
+	c.addDocVersionComparison(releases[0])
+	c.Reply().HTMLlf("docs.html", "examples.html", aah.Data{
+		"IsExamples":        true,
 		"ShowVersionNo":     false,
 		"CurrentDocVersion": releases[0],
+		"Examples":          groups,
 	})
 }
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
-func (d *DocController) ReleaseNotes(version string) {
+func (c *DocController) ReleaseNotes(version string) {
 	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docBasePath)
 	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docBasePath)
 	migrationGuideMdPath := util.FilePath(path.Join(version, "migration-guide.md"), docBasePath)
@@ -184,6 +200,7 @@ func (d *DocController) ReleaseNotes(version string) {
 	whatsNew, _ := markdown.Get(whatsNewMdPath)
 	migrationGuide, _ := markdown.Get(migrationGuideMdPath)
 
+	c.addDocVersionComparison(version)
 	data := aah.Data{
 		"IsReleaseNotes":    true,
 		"CurrentDocVersion": version,
@@ -191,71 +208,75 @@ func (d *DocController) ReleaseNotes(version string) {
 		"WhatsNew":          whatsNew,
 		"MigrationGuide":    migrationGuide,
 	}
-	d.Reply().HTMLlf("docs.html", "release-notes.html", data)
+	c.Reply().HTMLlf("docs.html", "release-notes.html", data)
 }
 
 // BeforeRefreshDoc method is interceptor.
-func (d *DocController) BeforeRefreshDoc() {
-	githubEvent := strings.TrimSpace(d.Req.Header.Get("X-Github-Event"))
-	githubDeliveryID := strings.TrimSpace(d.Req.Header.Get("X-Github-Delivery"))
+func (c *DocController) BeforeRefreshDoc() {
+	githubEvent := strings.TrimSpace(c.Req.Header.Get("X-Github-Event"))
+	githubDeliveryID := strings.TrimSpace(c.Req.Header.Get("X-Github-Delivery"))
 	if githubEvent != "push" || ess.IsStrEmpty(githubDeliveryID) {
-		log.Warnf("Github event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
-		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
-		d.Abort()
+		c.Log().Warnf("Github event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
+		c.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		c.Abort()
 		return
 	}
 
-	hubSignature := strings.TrimSpace(d.Req.Header.Get("X-Hub-Signature"))
-	log.Infof("Github Signature: %s", hubSignature)
+	hubSignature := strings.TrimSpace(c.Req.Header.Get("X-Hub-Signature"))
+	c.Log().Infof("Github Signature: %s", hubSignature)
 
-	body, err := ioutil.ReadAll(d.Req.Unwrap().Body)
+	body, err := ioutil.ReadAll(c.Req.Unwrap().Body)
 	if err != nil {
-		log.Errorf("Body read error: %s", hubSignature)
-		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
-		d.Abort()
+		c.Log().Errorf("Body read error: %s", hubSignature)
+		c.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		c.Abort()
 		return
 	}
 
 	if ess.IsStrEmpty(hubSignature) || !util.IsValidHubSignature(hubSignature, body) {
-		log.Warnf("Github Invalied Signature: %s", hubSignature)
-		d.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
-		d.Abort()
+		c.Log().Warnf("Github Invalied Signature: %s", hubSignature)
+		c.Reply().BadRequest().JSON(aah.Data{"message": "bad request"})
+		c.Abort()
 		return
 	}
 
-	d.Req.Unwrap().Body = ioutil.NopCloser(bytes.NewReader(body))
+	c.Req.Unwrap().Body = ioutil.NopCloser(bytes.NewReader(body))
 
-	log.Infof("Event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
+	c.Log().Infof("Event: %s, DeliveryID: %s", githubEvent, githubDeliveryID)
 }
 
 // RefreshDoc method to refresh documentation from github
-func (d *DocController) RefreshDoc(pushEvent *models.GithubPushEvent) {
+func (c *DocController) RefreshDoc(pushEvent *models.GithubPushEvent) {
 	go util.RefreshDocContent(pushEvent)
 
-	log.Info("Github event received, docs are being refereshed")
-	d.Reply().JSON(aah.Data{
+	c.Log().Info("Github event received, docs are being refereshed")
+	c.Reply().JSON(aah.Data{
 		"message": "Docs are being refreshed",
 	})
 }
 
 // NotFound method handles not found URLs.
-func (d *DocController) NotFound() {
-	log.Warnf("Page not found: %s", d.Req.Path)
-	d.Reply().HTMLlf("docs.html", "notfound.html", aah.Data{
+func (c *DocController) NotFound() {
+	c.Log().Warnf("Page not found: %s", c.Req.Path)
+	c.Reply().HTMLlf("docs.html", "notfound.html", aah.Data{
 		"IsNotFound": true,
 	})
 }
 
-func (d *DocController) addDocVersionComparison(curVer string) {
+func (c *DocController) addDocVersionComparison(curVer string) {
 	cv := util.VerRep.Replace(curVer)
 	for _, ver := range releases {
 		keyPart := util.VerKeyRep.Replace(ver)
-		d.AddViewArg("Is"+keyPart+"AndGr", util.VersionGtEq(cv, ver))
+		c.AddViewArg("Is"+keyPart+"AndGr", util.VersionGtEq(cv, ver))
 	}
 }
 
 // LoadValuesFromConfig method loads required value from configuration and others
 func LoadValuesFromConfig(e *aah.Event) {
 	releases, _ = aah.AppConfig().StringList("docs.releases")
-	docBasePath = util.DocBaseDir()
+	docBasePath = "/aah/documentation"
+
+	if err := aah.AppVFS().AddMount(docBasePath, util.DocBaseDir()); err != nil {
+		aah.AppLog().Error(err)
+	}
 }

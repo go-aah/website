@@ -1,11 +1,11 @@
-<li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI Tool</a></li>
+<li><a href="{{ docurlc . "docs.aah_cli" }}">aah CLI</a></li>
 <li><a href="{{ docurlc . "docs.aah_project_file" }}">aah project file</a></li>
 {{ if .Isv010AndGr }}
 <li><a href="{{ docurlc . "docs.init_go" }}">aah init.go file</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.aah_server" }}">Server</a></li>
 <li class="list-style-none"><ul class="list-unstyled">
-  <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extension</a></li>
+  <li><a href="{{ docurlc . "docs.aah_server_extension" }}">Server Extensions</a></li>
   <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
   {{ if .Isv09AndGr }}
   <li><a href="{{ docurlc . "docs.server_dump_log" }}">Server Dump Log</a></li>
@@ -14,11 +14,14 @@
 <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
 <li class="list-style-none"><ul class="list-unstyled">
   <li><a href="{{ docurlc . "docs.app_config" }}">App Config</a></li>
-  <li><a href="{{ docurlc . "docs.routes_config" }}">Routes Config</a></li>
   <li><a href="{{ docurlc . "docs.security_config" }}">Security Config</a></li>
   <li><a href="{{ docurlc . "docs.log_config" }}">Log Config</a></li>
 </ul></li>
 <li><a href="{{ docurlc . "docs.request_response" }}">Request and Response</a></li>
+<li><a href="{{ docurlc . "docs.routing" }}">Routing</a></li>
+<li class="list-style-none"><ul class="list-unstyled">
+  <li><a href="{{ docurlc . "docs.routes_config" }}">Routes Config</a></li>
+</ul></li>
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.auto_bind" }}">Parameters - Auto Bind</a></li>
 {{ end }}
@@ -29,6 +32,12 @@
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
 <li class="list-style-none"><ul class="list-unstyled">
+  {{ if .Isv011AndGr }}
+  <li><a href="{{ docurlc . "docs.form_auth_scheme" }}">Form</a></li>
+  <li><a href="{{ docurlc . "docs.basic_auth_scheme" }}">Basic</a></li>
+  <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">OAuth2</a><sup class="new-sup">new</sup></li>
+  <li><a href="{{ docurlc . "docs.generic_auth_scheme" }}">Generic</a></li>
+  {{ end }}
   <li><a href="{{ docurlc . "docs.password_encoders" }}">Password Encoders</a></li>
 </ul></li>
 <li><a href="{{ docurlc . "docs.authz" }}">Authorization</a></li>
@@ -51,11 +60,14 @@
 <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+{{ if .Isv011AndGr }}
+<li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a><sup class="new-sup">new</sup></li>
+{{ end }}
 {{ if .Isv08AndGr }}
 <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
 {{ end }}
 {{ if .Isv09AndGr }}
-<li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF Protection</a></li>
+<li><a href="{{ docurlc . "docs.anti_csrf" }}">Anti-CSRF</a></li>
 {{ end }}
 {{ if .Isv010AndGr }}
 <li><a href="{{ docurlc . "docs.cors" }}">CORS</a></li>
@@ -65,7 +77,10 @@
 <li><a href="{{ docurlc . "docs.error_handler" }}">{{ if .Isv010AndGr }}Error Handling{{ else }}Centrailzed Error Handler{{ end }}</a></li>
 {{ end }}
 <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
-{{ if .Isv08AndGr }}
-<li><a href="{{ docurlc . "docs.external_json_library" }}">External JSON Library</a></li>
+{{ if .Isv011AndGr }}
+<li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a><sup class="new-sup">new</sup></li>
+<li><a href="{{ docurlc . "docs.cryptography" }}">Cryptography</a></li>
+<li><a href="{{ docurlc . "docs.cookie_manager" }}">Cookie Manager</a></li>
 {{ end }}
+<li><a href="https://godoc.org/aahframework.org/essentials.v0" target="_blank">Essentials</a></li>
 <li><a href="{{ docurlc . "docs.faq" }}">FAQ</a></li>

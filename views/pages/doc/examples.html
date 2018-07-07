@@ -1,0 +1,42 @@
+{{ define "title" -}}
+Examples - aah Go web framework
+{{- end }}
+
+{{ define "body" -}}
+  <div class="container-fluid aah-container-fluid docs-body-content">
+    <div class="row examples">
+      <!-- page content -->
+      <div class="col-xs-12 col-md-9">
+        <div class="docs-page-content">
+            <h1>aah Examples</h1>
+            {{ $exampleBaseUrl := (config "link.aah.examples") }}
+            <div class="row clear">
+              <p>Share yours by creating a pull request <a href="{{ $exampleBaseUrl }}">aahframework.org/examples</a>.</p>
+              <div class="auto-clear">
+                {{ range $group := .Examples }}
+                <div class="col-xs-12 col-sm-6 col-lg-6">
+                  <h4 class="no-anchor">{{ .GroupHeading }}</h4>
+                  <ul>
+                    {{ range $examples := $group.Examples }}
+                    <li><a href="{{ $exampleBaseUrl }}/{{ $examples.Name }}" target="_blank">{{ $examples.DisplayName }}</a></li>
+                    {{ end }}
+                  </ul>
+                </div>
+                {{ end }}
+              </div>
+            </div> <!-- end - Examples -->
+
+            <div class="alert alert-info-green tmrgn-75">
+              Gradually I will be adding more examples here. Speard the word of <strong>aah</strong>, the web framework for Go!
+            </div>
+        </div>
+      </div>
+      <!-- /page content -->
+      <!-- sidebar nav -->
+      <div class="col-xs-6 col-md-3">
+        {{ import "docs_sidebar.html" . -}}
+      </div>
+      <!-- /sidebar nav -->
+    </div>
+  </div>
+{{- end }}

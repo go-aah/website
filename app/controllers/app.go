@@ -11,12 +11,12 @@ type AppController struct {
 
 // Before method is called for all the application requests
 // before the controllers action gets called.
-func (a *AppController) Before() {
+func (c *AppController) Before() {
 	releases, _ := aah.AppConfig().StringList("docs.releases")
-	a.AddViewArg("Releases", releases)
+	c.AddViewArg("Releases", releases)
 }
 
 // HealthCheck method is used ping..pong health check
-func (a *AppController) HealthCheck() {
-	a.Reply().Text("pong")
+func (c *AppController) HealthCheck() {
+	c.Reply().Text("pong")
 }

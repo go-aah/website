@@ -45,16 +45,13 @@ func init() {
 	aah.OnStart(controllers.LoadValuesFromConfig)
 	aah.OnStart(markdown.FetchMarkdownConfig)
 	aah.OnStart(util.PullGithubDocsAndLoadCache)
+	aah.OnStart(SubscribeHTTPEvents)
 
-	// Event: OnShutdown
-	// Published on receiving OS Signals `SIGINT` or `SIGTERM`.
+	// Event: OnPostShutdown
 	//
-	// aah.OnShutdown(cache.Flush)
-	// aah.OnShutdown(db.Disconnect)
-	aah.OnShutdown(markdown.ClearCache)
-
-	// Event: OnPreReply
-	aah.OnPreReply(util.AllowAllOriginForStaticFiles)
+	// aah.OnPostShutdown(cache.Flush)
+	// aah.OnPostShutdown(db.Disconnect)
+	aah.OnPostShutdown(markdown.ClearCache)
 
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 	// Middleware's
@@ -63,7 +60,7 @@ func init() {
 	// Executed in the order they are defined. It is recommended; NOT to change
 	// the order of pre-defined aah framework middleware's.
 	//__________________________________________________________________________
-	aah.Middlewares(
+	aah.AppHTTPEngine().Middlewares(
 		aah.RouteMiddleware,
 		aah.CORSMiddleware,
 		aah.BindMiddleware,
@@ -118,4 +115,30 @@ func init() {
 	//
 	// // Add your validation funcs
 
+}
+
+//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+// HTTP Events
+//
+// Subscribing HTTP events on app start.
+//__________________________________________________________________________
+
+func SubscribeHTTPEvents(_ *aah.Event) {
+	he := aah.AppHTTPEngine()
+
+	// Event: OnRequest
+	// he.OnRequest(myserverext.OnRequest)
+
+	// Event: OnPreReply
+	he.OnPreReply(util.AllowAllOriginForStaticFiles)
+
+	// Event: OnPostReply
+	// he.OnPostReply(myserverext.OnPostReply)
+
+	// Event: OnPreAuth
+	// he.OnPreAuth(myserverext.OnPreAuth)
+
+	// Event: OnPostAuth
+	// Published right after the successful Authentication
+	// he.OnPostAuth(security.PostAuthEvent)
 }

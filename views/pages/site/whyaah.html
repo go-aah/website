@@ -4,9 +4,9 @@
 
 {{ define "meta_tags" -}}
 {{ $pageTitle := i18n . "page.site.title.whyaah" -}}
-{{ $pageDesc := `aah aims to provide necessary components to build modern Web and API application with secure, high performance, scalable yet lightweight, flexible. aah takes care of infrastructure, boilerplate code, repetitive activities, reusable components, etc. aah is not a micro web framework.` -}}
+{{ $pageDesc := `aah aims to provide necessary components to build modern Web and API applications. aah framework is secure, scalable and flexible. It takes full care of infrastructure, boilerplate code, repetitive activities, reusable components, etc. aah is not a micro web framework yet lightweight.` -}}
     <meta name="description" content="{{ $pageDesc }}">
-    <meta name="keywords" content="about, why aah, aah go web framework, aah">
+    <meta name="keywords" content="about, why aah, aah go web framework, aah, aah framework">
     <meta property="og:title" content="{{ $pageTitle }}"/>
     <meta property="og:description" content="{{ $pageDesc }}"/>
     <meta name="twitter:title" content="{{ $pageTitle }}">
@@ -19,14 +19,15 @@
     <h1>Why aah?</h1>
   </div>
   <div class="why-aah-section">
-    <p class="summary">aah aims to provide necessary components to build modern Web and API application with secure, high performance, scalable yet <i>lightweight, flexible</i>. aah takes care of infrastructure, boilerplate code, repetitive activities, reusable components, etc. &nbsp;aah is not a micro web framework.</p> <br>
-    <p>Have a look at the <a href="{{ rurl . "features" }}">features</a> to know your benefits of using aah and its very well <a href="{{ rurl . "docs.index" }}">documented</a>.</p>
+    <p class="summary">aah aims to provide necessary components to build modern Web and API applications. aah framework is secure, scalable and flexible. It takes full care of infrastructure, boilerplate code, repetitive activities, reusable components, etc. &nbsp;aah is not a micro web framework yet <i>lightweight</i>.</p> <br>
+    <p>Have a look at the <a href="{{ rurl . "features" }}">features</a> to know the benefits of using aah and it is very well <a href="{{ rurl . "docs.index" }}">documented</a>.</p>
     <ul class="list-unstyled">
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Truly easy to use and configuration driven.</li>
       <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Security aware framework, secure session, CSRF prevention, XSS prevention, authentication, authorization, etc.</li>
-      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Extensible at module/feature level. If not, immediately raise an issue at GitHub.</li>
-      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Highly maintainable, reduce time to delivery, supports your application growth.</li>
-      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Provides proven project structure, configuration and organization for application pieces.</li>
-      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Gradually maturing and feature-sets getting enhanced release by release.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Extensible at module level. If not, then immediately raise an <a href="{{ config "link.aah.github_issues" }}">issue</a>.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Highly maintainable, reduced delivery time, supports application growth.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Provides proven project structure, configuration and organization for an application.</li>
+      <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;&nbsp;Steadily maturing framework and the feature-sets are getting enhanced release by release.</li>
     </ul>
     <p class="aah-first-release text-center">aah's initial stable version <code>0.5</code> was released on May 19, 2017.</p>
   </div>

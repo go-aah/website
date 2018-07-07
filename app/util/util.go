@@ -22,6 +22,7 @@ const (
 	signatureLength = 45
 )
 
+// Version number cleaner
 var (
 	VerRep    = strings.NewReplacer("v", "", ".x", "", "-edge", "")
 	VerKeyRep = strings.NewReplacer(".x", "", "-edge", "", ".", "")
@@ -106,4 +107,11 @@ func VersionLtEq(currentVersion, expectedVersion string) bool {
 		return false
 	}
 	return (cv.Equal(ev) || cv.LessThan(ev))
+}
+
+// IsVersionNo method returns true if given string is vaild version no
+// otherwise false.
+func IsVersionNo(v string) bool {
+	_, err := version.NewVersion(VerRep.Replace(v))
+	return err == nil
 }

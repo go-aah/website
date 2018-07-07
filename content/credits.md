@@ -38,8 +38,9 @@ Acknowledgement, I'm very thankful to library authors and their efforts & time.
   * [Enhanced version](https://github.com/go-aah/forge) of config library [forge](https://github.com/brettlangdon/forge)
   * [Files & directory watcher](https://github.com/radovskyb/watcher) library - cross platform
   * [Validator](https://github.com/go-playground/validator) library
+  * [WebSocket](https://github.com/gobwas/ws) library
 
 #### Used in org github.com/aah-cb
 
   * [Pluggable HTML Minify](https://github.com/aah-cb/minify) using library [github.com/tdewolff/minify](https://github.com/tdewolff/minify)
-  * [Pug View Engine (formerly known as Jade)](https://github.com/aah-cb/ve-pug) using library  [github.com/Joker/jade](https://github.com/Joker/jade)
+  * [Pug View Engine (formerly known as Jade)](https://github.com/aah-cb/ve-pug) using library  [github.com/Joker/jade](https://github.com/Joker/jade) (temporarily support removed due upstream lib issue)
