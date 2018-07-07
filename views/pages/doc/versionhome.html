@@ -27,28 +27,25 @@
               </div>
               <div class="row vh-sec-content">
                 <div class="col-xs-12 col-sm-3 col-lg-3">
-                  <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.getting_started" }}">Getting Started</a></li>
+                  <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.anatomy" }}">Anatomy - aah application</a></li>
                     <li><a href="{{ docurlc . "docs.configuration" }}">Configuration</a></li>
                     <li><a href="{{ docurlc . "docs.request_lifecycle" }}">Request Lifecycle</a></li>
                     <li><a href="{{ docurlc . "docs.rest_api_versioning" }}">RESTful API Versioning</a></li>
+                    <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
-                  <ul class="list-unstyled">
-                    {{ if .Isv07AndGr }}
-                    <li><a href="{{ docurlc . "docs.security_terminology" }}">Security - Terminology</a></li>
+                  <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.security_design" }}">Security - Design</a></li>
                     <li><a href="{{ docurlc . "docs.security_permissions" }}">Security - Permissions</a></li>
                     <li><a href="{{ docurlc . "docs.security_subject" }}">Security - Subject</a></li>
-                    {{ end }}
                     <li><a href="{{ docurlc . "docs.pooling" }}">Pooling</a></li>
+                    <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
-                  <ul class="list-unstyled">
-                    <li><a href="{{ docurlc . "docs.versioning" }}">Versioning</a></li>
+                  <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
                     <li><a href="{{ docurlc . "docs.go_aah_code_quality" }}">Coding Standards and Code Quality</a></li>
                     <li><a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a></li>
@@ -99,7 +96,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
-                    {{ if .Isv07AndGr }}
                     <li><a href="{{ docurlc . "docs.authc" }}">Authentication</a></li>
                     <li class="list-style-none"><ul class="sub-li">
                       {{ if .Isv011AndGr }}
@@ -114,7 +110,6 @@
                     <li class="list-style-none"><ul class="sub-li">
                       <li><a href="{{ docurlc . "docs.security_permissions" }}">-&nbsp;&nbsp;Permissions</a></li>
                     </ul></li>
-                    {{ end }}
                     {{ if .Isv010AndGr }}
                     <li><a href="{{ docurlc . "docs.validation" }}">Data Validation</a></li>
                     {{ end }}
@@ -180,9 +175,7 @@
                   <ul class="list-unstyled">
                     <li><a href="{{ docurlc . "docs.aah_application_binary" }}">Application Binary</a></li>
                     <li><a href="{{ docurlc . "docs.deployment" }}">Deployment</a></li>
-                    {{ if .Isv07AndGr }}
                     <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
-                    {{ end }}
                     {{ if .Isv010AndGr }}
                     <li><a href="{{ docurlc . "docs.config_hot_reload" }}">Config Hot-Reload via SIGHUP</a></li>
                     {{ end }}

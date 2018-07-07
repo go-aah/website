@@ -1,8 +1,6 @@
 <li><a href="{{ docurlc . "docs.aah_application_binary" }}">Application Binary</a></li>
 <li><a href="{{ docurlc . "docs.deployment" }}">Deployment</a></li>
-{{ if .Isv07AndGr }}
 <li><a href="{{ docurlc . "docs.server_access_log" }}">Server Access Log</a></li>
-{{ end }}
 {{ if .Isv010AndGr }}
 <li><a href="{{ docurlc . "docs.config_hot_reload" }}">Config Hot-Reload via SIGHUP</a></li>
 {{ end }}
