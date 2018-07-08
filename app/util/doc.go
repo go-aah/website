@@ -56,7 +56,7 @@ func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 		return
 	}
 
-	GitRefresh(releases)
+	GitRefresh(releases...)
 
 	log.Infof("BranchName: %s", version)
 	docVersionBaseDir := DocVersionBaseDir(version)
@@ -81,12 +81,12 @@ func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 
 // GitRefresh method clone's the GitHub branch doc version wise into
 // local and if already exits it takes a update from GitHub.
-func GitRefresh(releases []string) {
+func GitRefresh(releases ...string) {
 	for _, version := range releases {
 		docDirPath := DocVersionBaseDir(version)
 		branchName := BranchName(version)
-		err := GitCloneAndPull(docDirPath, branchName)
-		if err != nil {
+		log.Infof("Git refresh: %s => %s", version, docDirPath)
+		if err := GitCloneAndPull(docDirPath, branchName); err != nil {
 			log.Error(err)
 		}
 	}
@@ -130,7 +130,8 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 	}
 
 	_ = ess.MkDirAll(docBasePath, 0755)
-	GitRefresh(releases)
+	GitRefresh(releases[0])
+	go GitRefresh(releases[1:]...)
 
 	if cfg.BoolDefault("markdown.cache", false) {
 		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
