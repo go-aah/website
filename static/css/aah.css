@@ -1017,6 +1017,11 @@ pre, code {
   padding-right: 5px;
 }
 
+.footer .about-aah code {
+  background-color: inherit;
+  font-weight: bold;
+}
+
 /*  Algoli Search */
 .aah-search-base-version {
   padding-top: 20px;
