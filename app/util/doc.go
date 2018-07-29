@@ -164,6 +164,11 @@ func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 	return template.HTML(fmt.Sprintf("/%s/%s", version, fileName))
 }
 
+// TmplRDocURL method returns the doc relative url with give prefix.
+func TmplRDocURL(rootPrefix template.URL, key string) template.URL {
+	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix), releases[0], aah.AppConfig().StringDefault(key, "")))
+}
+
 // TmplDocEditURL method compose github documentation edit URL
 func TmplDocEditURL(docFile string) template.URL {
 	var pattern string

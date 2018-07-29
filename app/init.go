@@ -86,6 +86,7 @@ func init() {
 	//__________________________________________________________________________
 	aah.AddTemplateFunc(template.FuncMap{
 		"docurlc":    util.TmplDocURLc,
+		"docurl":     util.TmplRDocURL,
 		"docediturl": util.TmplDocEditURL,
 		"absrequrl":  util.TmplAbsReqURL,
 		"vergteq":    util.TmplVerGtEq,

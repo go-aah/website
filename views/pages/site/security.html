@@ -20,7 +20,7 @@
       <p>build uncompromised security into your application</p>
     </div>
     <div class="aah-security-section">
-      <p class="summary">aah is a security aware framework and its easy to use. It was inspired by <a href="https://shiro.apache.org/" target="_blank">Apache Shiro security library</a>.</p>
+      <p class="summary text-center ft-16em">aah is a security aware framework. Enterprise-grade features and easy to use.</p><br>
       <p class="summary">aah takes security very seriously, you’re welcome to do peer review of aah’s 100% open source code to ensure nobody’s aah application is ever compromised or hacked. As an application developer you’re responsible for any security breaches. I do my best to make sure aah application is as secure as possible.</p>
       <div class="">
         <h3>What aah automatically does?</h3>
@@ -38,15 +38,19 @@
           <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;All errors and traces from application gets logged into log file, not exposed outside on environment profile prod.</li>
         </ul>
       </div>
-      <div class="">
+      <div>
         <h3>Introducing Authentication and Authorization</h3>
-        <p>Powerful security feature yet easy to use with application code base and view files.</p>
+        <p>Powerful security feature yet easy to use with application code base and view files. It is inspired by <a href="https://shiro.apache.org/" target="_blank">Apache Shiro security library</a>.</p>
         <ul class="list-unstyled">
           <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Cool session management for web applications and stateless for RESTful.</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;You can implement Role based or Permission based or Role and Permissions based</li>
-          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;OOTB supported auth schemes are Form Auth, Basic Auth and Generic Auth.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;aah supports ACL, RBAC, ABAC, or custom (name your own). This is the capabilities of aah security design.</li>
+          <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;OOTB supported auth schemes are Form Auth, Basic Auth, OAuth2 and Generic Auth.</li>
           <li><i class="fas fa-angle-right" aria-hidden="true"></i>&nbsp;Mutliple auth-schemes within application and each can be mapped per route basis.</li>
         </ul>
+      </div>
+      <div><br><br>
+        {{ $docRoot := (rurl . "docs.index") }}
+        <p class="text-center">Learn more about <a href="{{ docurl $docRoot "docs.security_terminology" }}">Security - Terminology</a>, <a href="{{ docurl $docRoot "docs.security_design" }}">Security - Design</a>, <a href="{{ docurl $docRoot "docs.authc" }}">Authentication</a>, <a href="{{ docurl $docRoot "docs.authz" }}">Authorization</a></p>
       </div>
     </div>
   </div>

@@ -885,6 +885,10 @@ pre, code {
   margin-top: 75px;
 }
 
+.ft-16em {
+  font-size: 1.6em !important;
+}
+
 .footer {
   margin-top: 70px;
   font-size: 13px;
