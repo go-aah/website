@@ -6,10 +6,10 @@ package main
 import (
 	"html/template"
 
-	"aahframework.org/aah.v0"
+	"aahframe.work/aah"
 
 	// Registering HTML minifier for web application
-	_ "github.com/aah-cb/minify"
+	// _ "github.com/aah-cb/minify"
 
 	"github.com/go-aah/website/app/controllers"
 	"github.com/go-aah/website/app/markdown"

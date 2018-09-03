@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	"aahframework.org/aah.v0"
+	"aahframe.work/aah"
 
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/util"

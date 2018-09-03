@@ -11,10 +11,10 @@ import (
 	"github.com/go-aah/website/app/markdown"
 	"github.com/go-aah/website/app/models"
 
-	"aahframework.org/aah.v0"
-	"aahframework.org/ahttp.v0"
-	"aahframework.org/essentials.v0"
-	"aahframework.org/log.v0"
+	"aahframe.work/aah"
+	"aahframe.work/aah/ahttp"
+	"aahframe.work/aah/essentials"
+	"aahframe.work/aah/log"
 )
 
 var (

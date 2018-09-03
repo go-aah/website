@@ -9,9 +9,9 @@ import (
 
 	"github.com/russross/blackfriday"
 
-	"aahframework.org/aah.v0"
-	"aahframework.org/essentials.v0"
-	"aahframework.org/log.v0"
+	"aahframe.work/aah"
+	"aahframe.work/aah/essentials"
+	"aahframe.work/aah/log"
 
 	"github.com/go-aah/website/app/models"
 )
