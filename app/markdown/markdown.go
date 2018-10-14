@@ -9,11 +9,11 @@ import (
 
 	"github.com/russross/blackfriday"
 
-	"aahframe.work/aah"
-	"aahframe.work/aah/essentials"
-	"aahframe.work/aah/log"
+	"aahframe.work"
+	"aahframe.work/essentials"
+	"aahframe.work/log"
 
-	"github.com/go-aah/website/app/models"
+	"aahframework.org/website/app/models"
 )
 
 var (

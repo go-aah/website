@@ -1,6 +1,6 @@
 package models
 
-import "aahframe.work/aah/essentials"
+import "aahframe.work/essentials"
 
 // Article hold parsed data of one Markdown file.
 type Article struct {

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"aahframe.work/aah"
+	"aahframe.work"
 )
 
 // AppController struct application controller

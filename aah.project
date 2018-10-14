@@ -20,7 +20,7 @@ build {
   # Default value is `false`.
   dep_get = true
 
-  flags = ["-i"]
+  flags = ["-i", "-v"]
 
   ldflags = ""
 

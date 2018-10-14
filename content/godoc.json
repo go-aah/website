@@ -1,7 +1,7 @@
 [
    {
       "name":"aah",
-      "importPath":"aahframe.work/aah",
+      "importPath":"aahframe.work",
       "codecov":"https://codecov.io/gh/go-aah/aah/branch/master"
    },
    {
@@ -16,7 +16,7 @@
    },
    {
       "name":"essentials",
-      "importPath":"aahframe.work/aah/essentials",
+      "importPath":"aahframe.work/essentials",
       "codecov":"https://codecov.io/gh/go-aah/essentials/branch/master"
    },
    {
@@ -26,7 +26,7 @@
    },
    {
       "name":"ahttp",
-      "importPath":"aahframe.work/aah/ahttp",
+      "importPath":"aahframe.work/ahttp",
       "codecov":"https://codecov.io/gh/go-aah/ahttp/branch/master"
    },
    {
@@ -56,7 +56,7 @@
    },
    {
       "name":"log",
-      "importPath":"aahframe.work/aah/log",
+      "importPath":"aahframe.work/log",
       "codecov":"https://codecov.io/gh/go-aah/log/branch/master"
    },
    {

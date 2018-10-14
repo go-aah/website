@@ -9,9 +9,9 @@ import (
 	"os/exec"
 	"strings"
 
-	"aahframe.work/aah"
-	"aahframe.work/aah/ahttp"
-	"aahframe.work/aah/log"
+	"aahframe.work"
+	"aahframe.work/ahttp"
+	"aahframe.work/log"
 	"github.com/hashicorp/go-version"
 )
 

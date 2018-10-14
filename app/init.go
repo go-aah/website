@@ -6,14 +6,14 @@ package main
 import (
 	"html/template"
 
-	"aahframe.work/aah"
+	"aahframe.work"
 
 	// Registering HTML minifier for web application
 	// _ "github.com/aah-cb/minify"
 
-	"github.com/go-aah/website/app/controllers"
-	"github.com/go-aah/website/app/markdown"
-	"github.com/go-aah/website/app/util"
+	"aahframework.org/website/app/controllers"
+	"aahframework.org/website/app/markdown"
+	"aahframework.org/website/app/util"
 )
 
 func init() {

@@ -8,13 +8,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"aahframe.work/aah"
-	"aahframe.work/aah/ahttp"
-	"aahframe.work/aah/essentials"
+	"aahframe.work"
+	"aahframe.work/ahttp"
+	"aahframe.work/essentials"
 
-	"github.com/go-aah/website/app/markdown"
-	"github.com/go-aah/website/app/models"
-	"github.com/go-aah/website/app/util"
+	"aahframework.org/website/app/markdown"
+	"aahframework.org/website/app/models"
+	"aahframework.org/website/app/util"
 )
 
 var (

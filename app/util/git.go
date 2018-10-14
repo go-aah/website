@@ -4,9 +4,9 @@ import (
 	"errors"
 	"os/exec"
 
-	"aahframe.work/aah"
-	"aahframe.work/aah/essentials"
-	"aahframe.work/aah/log"
+	"aahframe.work"
+	"aahframe.work/essentials"
+	"aahframe.work/log"
 )
 
 var (
