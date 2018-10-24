@@ -24,7 +24,7 @@ var (
 
 // BranchName method returns the confirmed branch name
 func BranchName(version string) string {
-	releases, _ := aah.AppConfig().StringList("docs.releases")
+	releases, _ := aah.App().Config().StringList("docs.releases")
 	if version == releases[0] {
 		return "master"
 	}
@@ -33,7 +33,7 @@ func BranchName(version string) string {
 
 // DocBaseDir method returns the aah documentation based directory.
 func DocBaseDir() string {
-	return filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
+	return filepath.Join(aah.App().Config().StringDefault("docs.dir", ""), "aah-documentation")
 }
 
 // DocVersionBaseDir method returns the documentation dir path for given
@@ -94,7 +94,7 @@ func GitRefresh(releases ...string) {
 
 // ContentBasePath method returns the Markdown files base path.
 func ContentBasePath() string {
-	return filepath.Join(aah.AppVirtualBaseDir(), "content")
+	return filepath.Join(aah.App().VirtualBaseDir(), "content")
 }
 
 // FilePath method returns markdown file path from given path.
@@ -119,13 +119,13 @@ func CreateKey(rpath string) string {
 // PullGithubDocsAndLoadCache method pulls github docs and populate documentation
 // in the cache
 func PullGithubDocsAndLoadCache(e *aah.Event) {
-	cfg := aah.AppConfig()
+	cfg := aah.App().Config()
 	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
 	releases, _ = cfg.StringList("docs.releases")
 
 	docBasePath := DocBaseDir()
 
-	if aah.AppProfile() == "prod" {
+	if aah.App().IsProfile("prod")  {
 		ess.DeleteFiles(docBasePath)
 	}
 
@@ -141,7 +141,7 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 
 // ReadJSON method read the JSON file for given path and unmarshals into given object.
 func ReadJSON(ctx *aah.Context, jsonPath string, v interface{}) {
-	f, err := aah.AppVFS().Open(jsonPath)
+	f, err := aah.App().VFS().Open(jsonPath)
 	if err != nil {
 		ctx.Log().Errorf("%s: %v", jsonPath, err)
 	}
@@ -160,13 +160,13 @@ func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 		version = releases[0]
 	}
 
-	fileName := aah.AppConfig().StringDefault(key, "")
+	fileName := aah.App().Config().StringDefault(key, "")
 	return template.HTML(fmt.Sprintf("/%s/%s", version, fileName))
 }
 
 // TmplRDocURL method returns the doc relative url with give prefix.
 func TmplRDocURL(rootPrefix template.URL, key string) template.URL {
-	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix), releases[0], aah.AppConfig().StringDefault(key, "")))
+	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix), releases[0], aah.App().Config().StringDefault(key, "")))
 }
 
 // TmplDocEditURL method compose github documentation edit URL

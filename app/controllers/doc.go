@@ -273,12 +273,13 @@ func (c *DocController) addDocVersionComparison(curVer string) {
 
 // LoadValuesFromConfig method loads required value from configuration and others
 func LoadValuesFromConfig(e *aah.Event) {
-	releases, _ = aah.AppConfig().StringList("docs.releases")
+	app := aah.App()
+	releases, _ = app.Config().StringList("docs.releases")
 	docBasePath = "/aah/documentation"
 	docPhysicalBasePath := util.DocBaseDir()
 	_ = ess.MkDirAll(docPhysicalBasePath, 0755)
 
-	if err := aah.AppVFS().AddMount(docBasePath, docPhysicalBasePath); err != nil {
-		aah.AppLog().Fatal("vfs:", err)
+	if err := app.VFS().AddMount(docBasePath, docPhysicalBasePath); err != nil {
+		app.Log().Fatal("vfs:", err)
 	}
 }

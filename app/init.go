@@ -9,7 +9,7 @@ import (
 	"aahframe.work"
 
 	// Registering HTML minifier for web application
-	// _ "github.com/aah-cb/minify"
+	_ "aahframe.work/minify/html"
 
 	"aahframework.org/website/app/controllers"
 	"aahframework.org/website/app/markdown"
@@ -17,6 +17,7 @@ import (
 )
 
 func init() {
+	app := aah.App()
 
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 	// Server Extensions
@@ -42,16 +43,16 @@ func init() {
 	//
 	// aah.OnStart(db.Connect)
 	// aah.OnStart(cache.Load)
-	aah.OnStart(controllers.LoadValuesFromConfig)
-	aah.OnStart(markdown.FetchMarkdownConfig)
-	aah.OnStart(util.PullGithubDocsAndLoadCache)
-	aah.OnStart(SubscribeHTTPEvents)
+	app.OnStart(controllers.LoadValuesFromConfig)
+	app.OnStart(markdown.FetchMarkdownConfig)
+	app.OnStart(util.PullGithubDocsAndLoadCache)
+	app.OnStart(SubscribeHTTPEvents)
 
 	// Event: OnPostShutdown
 	//
 	// aah.OnPostShutdown(cache.Flush)
 	// aah.OnPostShutdown(db.Disconnect)
-	aah.OnPostShutdown(markdown.ClearCache)
+	app.OnPostShutdown(markdown.ClearCache)
 
 	//‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 	// Middleware's
@@ -60,7 +61,7 @@ func init() {
 	// Executed in the order they are defined. It is recommended; NOT to change
 	// the order of pre-defined aah framework middleware's.
 	//__________________________________________________________________________
-	aah.AppHTTPEngine().Middlewares(
+	app.HTTPEngine().Middlewares(
 		aah.RouteMiddleware,
 		aah.CORSMiddleware,
 		aah.BindMiddleware,
@@ -84,7 +85,7 @@ func init() {
 	// Add Custom Template Functions
 	// Doc: https://docs.aahframework.org/template-funcs.html
 	//__________________________________________________________________________
-	aah.AddTemplateFunc(template.FuncMap{
+	app.AddTemplateFunc(template.FuncMap{
 		"docurlc":    util.TmplDocURLc,
 		"docurl":     util.TmplRDocURL,
 		"docediturl": util.TmplDocEditURL,
@@ -125,7 +126,7 @@ func init() {
 //__________________________________________________________________________
 
 func SubscribeHTTPEvents(_ *aah.Event) {
-	he := aah.AppHTTPEngine()
+	he := aah.App().HTTPEngine()
 
 	// Event: OnRequest
 	// he.OnRequest(myserverext.OnRequest)

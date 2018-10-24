@@ -154,12 +154,12 @@ func RemoveCacheByFile(mdPath string) {
 		mu.Unlock()
 		log.Infof("Removed from cache: %s", mdPath)
 	} else {
-		log.Warn("Remove: File not found: %s", mdPath)
+		log.Warnf("Remove: File not found: %s", mdPath)
 	}
 }
 
 func getArticle(mdPath string) *models.Article {
-	f, err := aah.AppVFS().Open(mdPath)
+	f, err := aah.App().VFS().Open(mdPath)
 	if err != nil {
 		return nil
 	}
@@ -187,8 +187,8 @@ func ClearCache(e *aah.Event) {
 
 // FetchMarkdownConfig gets markdown related config value
 func FetchMarkdownConfig(e *aah.Event) {
-	cfg := aah.AppConfig()
-	isCacheEnabled = aah.AppConfig().BoolDefault("markdown.cache", false)
+	cfg := aah.App().Config()
+	isCacheEnabled = cfg.BoolDefault("markdown.cache", false)
 
 	// Dynamica URL placement
 	contentPreparer = strings.NewReplacer(
