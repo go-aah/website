@@ -102,7 +102,7 @@
                       {{ if .Isv011AndGr }}
                       <li><a href="{{ docurlc . "docs.form_auth_scheme" }}">-&nbsp;&nbsp;Form</a></li>
                       <li><a href="{{ docurlc . "docs.basic_auth_scheme" }}">-&nbsp;&nbsp;Basic</a></li>
-                      <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">-&nbsp;&nbsp;OAuth2</a><sup class="new-sup">new</sup></li>
+                      <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">-&nbsp;&nbsp;OAuth2</a></li>
                       <li><a href="{{ docurlc . "docs.generic_auth_scheme" }}">-&nbsp;&nbsp;Generic</a></li>
                       {{ end }}
                       <li><a href="{{ docurlc . "docs.password_encoders" }}">-&nbsp;&nbsp;Password Encoders</a></li>
@@ -133,8 +133,11 @@
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
                     {{ if .Isv011AndGr }}
-                    <li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a></li>
                     <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+                    {{ end }}
+                    {{ if .Isv012AndGr }}
+                    <li><a href="{{ docurlc . "docs.cache" }}">Cache Manager</a><sup class="new-sup">new</sup></li>
                     {{ end }}
                     {{ if .Isv08AndGr }}
                     <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
@@ -156,7 +159,7 @@
                     {{ end }}
                     <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
                     {{ if .Isv011AndGr }}
-                    <li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a></li>
                     <li><a href="{{ docurlc . "docs.cryptography" }}">Cryptography</a></li>
                     <li><a href="{{ docurlc . "docs.cookie_manager" }}">Cookie Manager</a></li>
                     {{ end }}
