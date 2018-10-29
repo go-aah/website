@@ -1,7 +1,7 @@
 module aahframework.org/website
 
 require (
-	aahframe.work v0.0.0-20181024052212-5cb3b31d02c3
+	aahframe.work v0.0.0-20181028100816-d6cafe0fb360
 	aahframe.work/minify/html v0.0.0-20181024053927-02e24ad3366e
 	github.com/hashicorp/go-version v1.0.0
 	github.com/russross/blackfriday v1.5.2
