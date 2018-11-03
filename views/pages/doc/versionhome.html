@@ -172,6 +172,31 @@
 
             <div class="vh-group">
               <div class="vh-sec-hdr">
+                <h2>Debugging, Diagnosis &amp; Profiling</h2>
+              </div>
+              <div class="row vh-sec-content">
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    {{ if .Isv012AndGr }}
+                    <li><a href="{{ docurlc . "docs.diagnosis_profiling" }}">Diagnosis and Profiling</a><sup class="new-sup">new</sup></li>
+                    {{ end }}
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.debugging" }}">Debugging aah Application</a><sup class="new-sup">new</sup></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <div class="">
+                    &nbsp;
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="vh-group">
+              <div class="vh-sec-hdr">
                 <h2>Deployment &amp; DevOps</h2>
               </div>
               <div class="row vh-sec-content">
@@ -201,6 +226,7 @@
                 </div>
               </div>
             </div>
+            
           </div> <!-- /docs-page-content -->
       </div>
     </div> <!-- /page content -->
