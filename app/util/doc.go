@@ -125,7 +125,7 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 
 	docBasePath := DocBaseDir()
 
-	if aah.App().IsProfile("prod")  {
+	if aah.App().IsEnvProfile("prod")  {
 		ess.DeleteFiles(docBasePath)
 	}
 
