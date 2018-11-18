@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="{{ .Scheme }}:{{ $cdnHost }}/assets/img/aahframework.png">
     {{ template "meta_tags" . -}}
     <title>{{ template "title" . -}}</title>
-    {{ import "head_tags.html" . -}}
+    {{ include "/common/head_tags.html" . -}}
     {{ template "head_scripts" . -}}
   </head>
   <body>{{ if eq .EnvProfile "prod" -}}
@@ -33,10 +33,10 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2RCRQR"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->{{- end }}
-    {{ import "header.html" . -}}
+    {{ include "/common/header.html" . -}}
     {{ template "body" . -}}
-    {{ import "footer.html" . -}}
-    {{ import "footer_scripts.html" . -}}
+    {{ include "/common/footer.html" . -}}
+    {{ include "/common/footer_scripts.html" . -}}
   </body>
 </html>
 

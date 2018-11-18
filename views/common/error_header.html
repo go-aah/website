@@ -12,11 +12,11 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="theme-color" content="#ffffff">
     <title>{{ .Error.Message }} - aah Go web framework</title>
-    {{ import "head_tags.html" . -}}
+    {{ include "/common/head_tags.html" . -}}
   </head>
   <body>{{ if eq .EnvProfile "prod" -}}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2RCRQR"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->{{- end }}
-    {{ import "header.html" . -}}
+    {{ include "/common/header.html" . -}}

@@ -3,21 +3,21 @@
   <div class="clear">
     <label class="docs-sidebar-head">Documentation</label>
     <ul class="li-color list-unstyled">
-      {{ import "docs_guide_links.html" . }}
+      {{ include "/common/docs_guide_links.html" . }}
     </ul>
   </div>
 
   <div class="clear">
     <label class="docs-sidebar-head">Debugging, Diagnosis &amp; Profiling</label>
     <ul class="li-color list-unstyled">
-      {{ import "docs_guide_debug_profile.html" . }}
+      {{ include "/common/docs_guide_debug_profile.html" . }}
     </ul>
   </div>
 
   <div class="clear">
     <label class="docs-sidebar-head">Deployment &amp; DevOps</label>
     <ul class="li-color list-unstyled">
-      {{ import "docs_guide_ops.html" . }}
+      {{ include "/common/docs_guide_ops.html" . }}
     </ul>
   </div>
   {{- end }}
@@ -26,7 +26,7 @@
   <div class="clear">
     <label class="docs-sidebar-head">Insights into aah</label>
     <ul class="li-color list-unstyled">
-      {{ import "docs_insight_links.html" . -}}
+      {{ include "/common/docs_insight_links.html" . -}}
     </ul>
   </div>
   {{- end }}
