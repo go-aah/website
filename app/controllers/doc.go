@@ -92,15 +92,15 @@ func (c *DocController) VersionHome(version string) {
 func (c *DocController) ShowDoc(version, content string) {
 	// handle certian doc path and updates
 	switch content {
-	case "/release-notes.html":
+	case "release-notes.html":
 		c.ReleaseNotes(version)
 		return
-	case "/error-handling.html":
+	case "error-handling.html":
 		if util.VersionLtEq(version, "v0.9") {
 			c.Reply().Redirect(c.RouteURL("docs.show_doc", version, "/centralized-error-handler.html"))
 			return
 		}
-	case "/centralized-error-handler.html":
+	case "centralized-error-handler.html":
 		if util.VersionGtEq(version, "v0.10") {
 			c.Reply().RedirectWithStatus(
 				c.RouteURL("docs.show_doc", version, "/error-handling.html"),

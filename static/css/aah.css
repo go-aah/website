@@ -566,12 +566,12 @@ pre, code {
   font-size: 2.5em;
 }
 
-.aah-security-section p, .aah-security-section li, .aah-security-section li ul li {
+.aah-security-section p, .aah-security-section li {
   font-size: 1.2em;
 }
 
 .aah-security-section li ul li {
-  font-size: 1.02em;
+  font-size: 1.001em;
 }
 
 .aah-security-section li {
@@ -762,7 +762,7 @@ pre, code {
 }
 
 .docs-page-content li ul li {
-  font-size: 1em;
+  font-size: 1.001em;
 }
 
 .docs-page-content .code-toolbar {
@@ -1130,8 +1130,17 @@ pre, code {
   font-size: 1.7em;
 }
 
-.aah-release-notes .docs-page-content p, .aah-release-notes .docs-page-content li{
+.aah-release-notes .docs-page-content p {
   font-size: 1.2em;
+}
+
+.aah-release-notes .change-log li {
+  font-size: 1.2em;
+}
+
+.aah-release-notes .change-log li ul li {
+  font-size: 1.001em;
+  padding-bottom: 3px;
 }
 
 .page-center-msg {

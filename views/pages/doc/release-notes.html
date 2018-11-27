@@ -9,13 +9,13 @@ Release Notes {{ .CurrentDocVersion }} - aah Go web framework
       <div class="col-xs-12 col-md-9 no-padding">
         <div class="row docs-page-content">
             <h1>Release Notes - {{ .CurrentDocVersion }}</h1>
-            <div>
+            <div class="whats-new">
               {{ safeHTML .WhatsNew.Content }}
             </div>
-            <div>
+            <div class="change-log">
               {{ safeHTML .Changelog.Content }}
             </div>
-            <div>
+            <div class="migration">
               {{ safeHTML .MigrationGuide.Content }}
             </div>
         </div>
