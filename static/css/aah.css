@@ -378,21 +378,28 @@ pre, code {
 }
 
 .aah-current-release {
-  padding-top: 30px;
+  padding-top: 15px;
   font-size: 1em;
   font-weight: 500;
   color: #676767;
 }
 
 .aah-release-goreq {
-  padding-top: 5px;
+  padding-top: 3px;
   font-size: 0.9em;
   font-weight: 500;
   color: #676767;
 }
 
 .aah-hey-im-here {
-  padding-top: 80px;
+  padding-top: 70px;
+}
+
+.aah-provide-support {
+  padding-top: 85px;
+  font-size: 1em;
+  color: #676767;
+  font-weight: bold;
 }
 
 .aah-hey-im-here .btn-success {

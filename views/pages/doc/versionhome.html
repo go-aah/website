@@ -171,6 +171,7 @@
               </div>
             </div>
 
+            {{ if .Isv012AndGr }}
             <div class="vh-group">
               <div class="vh-sec-hdr">
                 <h2>Debugging, Diagnosis &amp; Profiling</h2>
@@ -178,9 +179,7 @@
               <div class="row vh-sec-content">
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
-                    {{ if .Isv012AndGr }}
                     <li><a href="{{ docurlc . "docs.diagnosis_profiling" }}">Diagnosis and Profiling</a><sup class="new-sup">new</sup></li>
-                    {{ end }}
                   </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-lg-3">
@@ -195,6 +194,7 @@
                 </div>
               </div>
             </div>
+            {{ end }}
 
             <div class="vh-group">
               <div class="vh-sec-hdr">
