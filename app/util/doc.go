@@ -24,10 +24,11 @@ var (
 
 // BranchName method returns the confirmed branch name
 func BranchName(version string) string {
-	releases, _ := aah.App().Config().StringList("docs.releases")
-	if version == releases[0] {
-		return "master"
-	}
+	// TODO Remove it
+	// releases, _ := aah.App().Config().StringList("docs.releases")
+	// if version == releases[0] {
+	// 	return "master"
+	// }
 	return version
 }
 
@@ -47,9 +48,9 @@ func DocVersionBaseDir(version string) string {
 // It clears cache too.
 func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 	version := pushEvent.BranchName()
-	if version == "master" {
-		version = releases[0]
-	}
+	// if version == "master" {
+	// 	version = releases[0]
+	// }
 
 	if !ess.IsSliceContainsString(releases, version) {
 		log.Warnf("Branch Name [%s] not found", version)
@@ -102,7 +103,7 @@ func ContentBasePath() string {
 func FilePath(reqPath, prefix string) string {
 	reqPath = strings.ToLower(TrimPrefixSlash(reqPath))
 	reqPath = ess.StripExt(reqPath) + ".md"
-	return path.Clean(path.Join(prefix, reqPath))
+	return path.Clean(filepath.ToSlash(path.Join(prefix, reqPath)))
 }
 
 // TrimPrefixSlash method trims the prefix slash from the given path
@@ -120,14 +121,14 @@ func CreateKey(rpath string) string {
 // in the cache
 func PullGithubDocsAndLoadCache(e *aah.Event) {
 	cfg := aah.App().Config()
-	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
 	releases, _ = cfg.StringList("docs.releases")
+	editURLPrefix = fmt.Sprintf(cfg.StringDefault("docs.edit_url_prefix", ""), releases[0])	
 
 	docBasePath := DocBaseDir()
 
-	if aah.App().IsEnvProfile("prod")  {
-		ess.DeleteFiles(docBasePath)
-	}
+	// if aah.App().IsEnvProfile("prod")  {
+	// 	ess.DeleteFiles(docBasePath)
+	// }
 
 	_ = ess.MkDirAll(docBasePath, 0755)
 	GitRefresh(releases[0])

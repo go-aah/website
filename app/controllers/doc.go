@@ -119,7 +119,7 @@ func (c *DocController) ShowDoc(version, content string) {
 	c.AddViewArg("CurrentDocVersion", version)
 	c.addDocVersionComparison(version)
 	branchName := util.BranchName(version)
-	if branchName == "master" {
+	if branchName == releases[0] {
 		c.AddViewArg("LatestRelease", true)
 	}
 
@@ -152,7 +152,7 @@ func (c *DocController) ShowDoc(version, content string) {
 
 // GoDoc method display aah framework godoc links
 func (c *DocController) GoDoc() {
-	jsonPath := path.Join(util.ContentBasePath(), "godoc.json")
+	jsonPath := filepath.ToSlash(path.Join(util.ContentBasePath(), "godoc.json"))
 	var godoc []*struct {
 		Name       string `json:"name"`
 		ImportPath string `json:"importPath"`
@@ -171,7 +171,7 @@ func (c *DocController) GoDoc() {
 
 // Examples method display aah framework examples github links or guide.
 func (c *DocController) Examples() {
-	jsonPath := path.Join(util.ContentBasePath(), "examples.json")
+	jsonPath := filepath.ToSlash(path.Join(util.ContentBasePath(), "examples.json"))
 	var groups []*struct {
 		GroupHeading string `json:"groupHeading"`
 		Examples     []*struct {
