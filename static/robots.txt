@@ -1,3 +1,10 @@
 User-agent: *
-Allow: /
+Disallow: /go-test
+Disallow: /dev-util
+Disallow: /base-before-install
+Disallow: /aah-cmd-build
+Disallow: /migrate.conf
+Disallow: /migrate-0.11.x.conf
+Disallow: /migrate-0.12.x.conf
+Disallow: /releases/
 Sitemap: https://aahframework.org/sitemap.xml

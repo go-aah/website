@@ -1,10 +1,10 @@
 {{ if .ShowVersionNo -}}
 <div class="container-fluid aah-container-fluid">
   <div class="row text-center aah-search-base-version">
-    <input class="form-control" type="text" id="aahDocSearch" placeholder="Search {{ .CurrentDocVersion }} documentation..." title="Search by Algolia">
+    <input class="form-control" type="text" id="aahDocSearch" placeholder="Search {{ dverdis .CurrentDocVersion }} documentation..." title="Search by Algolia">
     <select id="docs_version" class="selectpicker docs-version-dd" data-style="btn-primary">
       {{ range .Releases -}}
-      <option value="{{ . }}">Framework {{ dverdis . }}</option>
+      <option value="{{ . }}">{{ dverdis . }}</option>
       {{- end }}
     </select>
   </div>

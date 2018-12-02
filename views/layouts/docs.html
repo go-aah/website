@@ -24,18 +24,18 @@
     <meta name="twitter:image" content="{{ .Scheme }}:{{ $cdnHost }}/assets/img/aahframework.png">
     {{ template "meta_tags" . -}}
     <title>{{ template "title" . -}}</title>
-    {{ import "docs_head_tags.html" . -}}
+    {{ include "/common/docs_head_tags.html" . -}}
   </head>
   <body>{{ if eq .EnvProfile "prod" -}}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2RCRQR"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->{{ end -}}
-    {{ import "header.html" . -}}
-    {{ include "docs_algolia_search.html" . -}}
+    {{ include "/common/header.html" . -}}
+    {{ include "/common/docs_algolia_search.html" . -}}
     {{ template "body" . -}}
-    {{ import "footer.html" . -}}
-    {{ import "docs_footer_scripts.html" . -}}
+    {{ include "/common/footer.html" . -}}
+    {{ include "/common/docs_footer_scripts.html" . -}}
   </body>
 </html>
 

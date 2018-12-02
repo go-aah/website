@@ -4,9 +4,9 @@ import (
 	"errors"
 	"os/exec"
 
-	"aahframework.org/aah.v0"
-	"aahframework.org/essentials.v0"
-	"aahframework.org/log.v0"
+	"aahframe.work"
+	"aahframe.work/essentials"
+	"aahframe.work/log"
 )
 
 var (
@@ -43,7 +43,7 @@ func GitPull(destDir string) error {
 
 // GitCloneAndPull method does both clone and pull for git Repository.
 func GitCloneAndPull(destDir, branchName string) error {
-	repoURL := aah.AppConfig().StringDefault("docs.repo", "")
+	repoURL := aah.App().Config().StringDefault("docs.repo", "")
 	err := GitClone(destDir, repoURL, branchName)
 	if err == ErrRepoAleadyExists {
 		if err = GitPull(destDir); err != nil {

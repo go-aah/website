@@ -378,21 +378,28 @@ pre, code {
 }
 
 .aah-current-release {
-  padding-top: 30px;
+  padding-top: 15px;
   font-size: 1em;
   font-weight: 500;
   color: #676767;
 }
 
 .aah-release-goreq {
-  padding-top: 5px;
+  padding-top: 3px;
   font-size: 0.9em;
   font-weight: 500;
   color: #676767;
 }
 
 .aah-hey-im-here {
-  padding-top: 80px;
+  padding-top: 70px;
+}
+
+.aah-provide-support {
+  padding-top: 85px;
+  font-size: 1em;
+  color: #676767;
+  font-weight: bold;
 }
 
 .aah-hey-im-here .btn-success {
@@ -566,12 +573,12 @@ pre, code {
   font-size: 2.5em;
 }
 
-.aah-security-section p, .aah-security-section li, .aah-security-section li ul li {
+.aah-security-section p, .aah-security-section li {
   font-size: 1.2em;
 }
 
 .aah-security-section li ul li {
-  font-size: 1.02em;
+  font-size: 1.001em;
 }
 
 .aah-security-section li {
@@ -762,7 +769,7 @@ pre, code {
 }
 
 .docs-page-content li ul li {
-  font-size: 1em;
+  font-size: 1.001em;
 }
 
 .docs-page-content .code-toolbar {
@@ -1045,7 +1052,7 @@ pre, code {
   border-color:#cccccc;
 }
 .docs-version-dd {
-  width: 210px !important;
+  width: 130px !important;
 }
 .docs-version-dd .btn-primary, .docs-lang-dd .btn-primary {
   background-color: inherit;
@@ -1130,8 +1137,17 @@ pre, code {
   font-size: 1.7em;
 }
 
-.aah-release-notes .docs-page-content p, .aah-release-notes .docs-page-content li{
+.aah-release-notes .docs-page-content p {
   font-size: 1.2em;
+}
+
+.aah-release-notes .change-log li {
+  font-size: 1.2em;
+}
+
+.aah-release-notes .change-log li ul li {
+  font-size: 1.001em;
+  padding-bottom: 3px;
 }
 
 .page-center-msg {

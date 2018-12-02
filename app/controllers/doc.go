@@ -8,13 +8,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"aahframework.org/aah.v0"
-	"aahframework.org/ahttp.v0"
-	"aahframework.org/essentials.v0"
+	"aahframe.work"
+	"aahframe.work/ahttp"
+	"aahframe.work/essentials"
 
-	"github.com/go-aah/website/app/markdown"
-	"github.com/go-aah/website/app/models"
-	"github.com/go-aah/website/app/util"
+	"aahframework.org/website/app/markdown"
+	"aahframework.org/website/app/models"
+	"aahframework.org/website/app/util"
 )
 
 var (
@@ -92,15 +92,15 @@ func (c *DocController) VersionHome(version string) {
 func (c *DocController) ShowDoc(version, content string) {
 	// handle certian doc path and updates
 	switch content {
-	case "/release-notes.html":
+	case "release-notes.html":
 		c.ReleaseNotes(version)
 		return
-	case "/error-handling.html":
+	case "error-handling.html":
 		if util.VersionLtEq(version, "v0.9") {
 			c.Reply().Redirect(c.RouteURL("docs.show_doc", version, "/centralized-error-handler.html"))
 			return
 		}
-	case "/centralized-error-handler.html":
+	case "centralized-error-handler.html":
 		if util.VersionGtEq(version, "v0.10") {
 			c.Reply().RedirectWithStatus(
 				c.RouteURL("docs.show_doc", version, "/error-handling.html"),
@@ -119,7 +119,7 @@ func (c *DocController) ShowDoc(version, content string) {
 	c.AddViewArg("CurrentDocVersion", version)
 	c.addDocVersionComparison(version)
 	branchName := util.BranchName(version)
-	if branchName == "master" {
+	if branchName == releases[0] {
 		c.AddViewArg("LatestRelease", true)
 	}
 
@@ -152,7 +152,7 @@ func (c *DocController) ShowDoc(version, content string) {
 
 // GoDoc method display aah framework godoc links
 func (c *DocController) GoDoc() {
-	jsonPath := path.Join(util.ContentBasePath(), "godoc.json")
+	jsonPath := filepath.ToSlash(path.Join(util.ContentBasePath(), "godoc.json"))
 	var godoc []*struct {
 		Name       string `json:"name"`
 		ImportPath string `json:"importPath"`
@@ -171,7 +171,7 @@ func (c *DocController) GoDoc() {
 
 // Examples method display aah framework examples github links or guide.
 func (c *DocController) Examples() {
-	jsonPath := path.Join(util.ContentBasePath(), "examples.json")
+	jsonPath := filepath.ToSlash(path.Join(util.ContentBasePath(), "examples.json"))
 	var groups []*struct {
 		GroupHeading string `json:"groupHeading"`
 		Examples     []*struct {
@@ -273,12 +273,13 @@ func (c *DocController) addDocVersionComparison(curVer string) {
 
 // LoadValuesFromConfig method loads required value from configuration and others
 func LoadValuesFromConfig(e *aah.Event) {
-	releases, _ = aah.AppConfig().StringList("docs.releases")
+	app := aah.App()
+	releases, _ = app.Config().StringList("docs.releases")
 	docBasePath = "/aah/documentation"
 	docPhysicalBasePath := util.DocBaseDir()
 	_ = ess.MkDirAll(docPhysicalBasePath, 0755)
 
-	if err := aah.AppVFS().AddMount(docBasePath, docPhysicalBasePath); err != nil {
-		aah.AppLog().Fatal("vfs:", err)
+	if err := app.VFS().AddMount(docBasePath, docPhysicalBasePath); err != nil {
+		app.Log().Fatal("vfs:", err)
 	}
 }

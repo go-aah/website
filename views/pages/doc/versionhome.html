@@ -48,7 +48,6 @@
                   <ul class="list-unstyled">                    
                     <li><a href="{{ docurlc . "docs.release_development_process" }}">Release & Development Process</a></li>
                     <li><a href="{{ docurlc . "docs.go_aah_code_quality" }}">Coding Standards and Code Quality</a></li>
-                    <li><a href="{{ rurl . "docs.version_home" "godoc.html" }}">Godoc</a></li>
                     <li><a href="{{ docurlc . "docs.release_notes" }}">Release Notes</a></li>
                   </ul>
                 </div>
@@ -102,7 +101,7 @@
                       {{ if .Isv011AndGr }}
                       <li><a href="{{ docurlc . "docs.form_auth_scheme" }}">-&nbsp;&nbsp;Form</a></li>
                       <li><a href="{{ docurlc . "docs.basic_auth_scheme" }}">-&nbsp;&nbsp;Basic</a></li>
-                      <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">-&nbsp;&nbsp;OAuth2</a><sup class="new-sup">new</sup></li>
+                      <li><a href="{{ docurlc . "docs.oauth2_auth_scheme" }}">-&nbsp;&nbsp;OAuth2</a></li>
                       <li><a href="{{ docurlc . "docs.generic_auth_scheme" }}">-&nbsp;&nbsp;Generic</a></li>
                       {{ end }}
                       <li><a href="{{ docurlc . "docs.password_encoders" }}">-&nbsp;&nbsp;Password Encoders</a></li>
@@ -121,7 +120,7 @@
                     <li class="list-style-none"><ul class="sub-li">
                       <li><a href="{{ docurlc . "docs.template_funcs" }}">-&nbsp;&nbsp;Template Functions</a></li>
                     </ul></li>
-                    <li><a href="{{ docurlc . "docs.i18n" }}">I18n Internationalization</a></li>
+                    <li><a href="{{ docurlc . "docs.i18n" }}">i18n Internationalization</a></li>
                     {{ if .Isv08AndGr }}
                     <li><a href="{{ docurlc . "docs.app_config" }}#section-content-negotiation">Content Negotiation</a></li>
                     {{ end }}
@@ -133,8 +132,12 @@
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                   <ul class="list-unstyled">
                     {{ if .Isv011AndGr }}
-                    <li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a><sup class="new-sup">new</sup></li>
-                    <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Emitter</a></li>
+                    <li><a href="{{ docurlc . "docs.websocket" }}">WebSocket</a></li>
+                    <li><a href="{{ docurlc . "docs.event_publisher" }}">Event Pubisher</a></li>
+                    {{ end }}
+                    {{ if .Isv012AndGr }}
+                    <li><a href="{{ docurlc . "docs.cache" }}">Cache Manager</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.console_commands" }}">Console Commands</a><sup class="new-sup">new</sup></li>
                     {{ end }}
                     {{ if .Isv08AndGr }}
                     <li><a href="{{ docurlc . "docs.security_config" }}#section-http-header">Secure HTTP Headers</a></li>
@@ -156,7 +159,7 @@
                     {{ end }}
                     <li><a href="{{ docurlc . "docs.logging" }}">Logging</a></li>
                     {{ if .Isv011AndGr }}
-                    <li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a><sup class="new-sup">new</sup></li>
+                    <li><a href="{{ docurlc . "docs.vfs" }}">Virtual FileSystem (VFS)</a></li>
                     <li><a href="{{ docurlc . "docs.cryptography" }}">Cryptography</a></li>
                     <li><a href="{{ docurlc . "docs.cookie_manager" }}">Cookie Manager</a></li>
                     {{ end }}
@@ -166,6 +169,31 @@
                 </div>
               </div>
             </div>
+
+            {{ if .Isv012AndGr }}
+            <div class="vh-group">
+              <div class="vh-sec-hdr">
+                <h2>Debugging, Diagnosis &amp; Profiling</h2>
+              </div>
+              <div class="row vh-sec-content">
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.diagnosis_profiling" }}">Diagnosis and Profiling</a><sup class="new-sup">new</sup></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <ul class="list-unstyled">
+                    <li><a href="{{ docurlc . "docs.debugging" }}">Debugging aah Application</a><sup class="new-sup">new</sup></li>
+                  </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-lg-3">
+                  <div class="">
+                    &nbsp;
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{ end }}
 
             <div class="vh-group">
               <div class="vh-sec-hdr">
@@ -198,6 +226,7 @@
                 </div>
               </div>
             </div>
+            
           </div> <!-- /docs-page-content -->
       </div>
     </div> <!-- /page content -->

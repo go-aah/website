@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"aahframework.org/aah.v0"
+	"aahframe.work"
 )
 
 // AppController struct application controller
@@ -12,7 +12,7 @@ type AppController struct {
 // Before method is called for all the application requests
 // before the controllers action gets called.
 func (c *AppController) Before() {
-	releases, _ := aah.AppConfig().StringList("docs.releases")
+	releases, _ := aah.App().Config().StringList("docs.releases")
 	c.AddViewArg("Releases", releases)
 }
 

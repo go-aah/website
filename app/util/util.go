@@ -9,9 +9,9 @@ import (
 	"os/exec"
 	"strings"
 
-	"aahframework.org/aah.v0"
-	"aahframework.org/ahttp.v0"
-	"aahframework.org/log.v0"
+	"aahframe.work"
+	"aahframe.work/ahttp"
+	"aahframe.work/log"
 	"github.com/hashicorp/go-version"
 )
 
@@ -61,7 +61,7 @@ func IsValidHubSignature(signature string, payload []byte) bool {
 	actual := make([]byte, 20)
 	_, _ = hex.Decode(actual, []byte(signature[5:]))
 
-	secret := aah.AppConfig().StringDefault("docs.github_secert", "")
+	secret := aah.App().Config().StringDefault("docs.github_secert", "")
 	log.Info("Github Hook: ", secret)
 	computed := hmac.New(sha1.New, []byte(secret))
 	_, _ = computed.Write(payload)

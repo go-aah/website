@@ -18,7 +18,9 @@ func TmplVerGtEq(currentVersion, expectedVersion string) bool {
 
 // TmplDVerDis method creates display version string for dropdown
 func TmplDVerDis(verVal string) string {
-	if strings.HasSuffix(verVal, "-edge") {
+	if strings.HasSuffix(verVal, ".x") ||
+		strings.HasSuffix(verVal, "-edge") ||
+		strings.HasSuffix(verVal, "-beta") {
 		return verVal
 	}
 	return verVal + ".x"

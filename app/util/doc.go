@@ -8,13 +8,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/go-aah/website/app/markdown"
-	"github.com/go-aah/website/app/models"
+	"aahframework.org/website/app/markdown"
+	"aahframework.org/website/app/models"
 
-	"aahframework.org/aah.v0"
-	"aahframework.org/ahttp.v0"
-	"aahframework.org/essentials.v0"
-	"aahframework.org/log.v0"
+	"aahframe.work"
+	"aahframe.work/ahttp"
+	"aahframe.work/essentials"
+	"aahframe.work/log"
 )
 
 var (
@@ -24,16 +24,17 @@ var (
 
 // BranchName method returns the confirmed branch name
 func BranchName(version string) string {
-	releases, _ := aah.AppConfig().StringList("docs.releases")
-	if version == releases[0] {
-		return "master"
-	}
+	// TODO Remove it
+	// releases, _ := aah.App().Config().StringList("docs.releases")
+	// if version == releases[0] {
+	// 	return "master"
+	// }
 	return version
 }
 
 // DocBaseDir method returns the aah documentation based directory.
 func DocBaseDir() string {
-	return filepath.Join(aah.AppConfig().StringDefault("docs.dir", ""), "aah-documentation")
+	return filepath.Join(aah.App().Config().StringDefault("docs.dir", ""), "aah-documentation")
 }
 
 // DocVersionBaseDir method returns the documentation dir path for given
@@ -47,9 +48,9 @@ func DocVersionBaseDir(version string) string {
 // It clears cache too.
 func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 	version := pushEvent.BranchName()
-	if version == "master" {
-		version = releases[0]
-	}
+	// if version == "master" {
+	// 	version = releases[0]
+	// }
 
 	if !ess.IsSliceContainsString(releases, version) {
 		log.Warnf("Branch Name [%s] not found", version)
@@ -94,7 +95,7 @@ func GitRefresh(releases ...string) {
 
 // ContentBasePath method returns the Markdown files base path.
 func ContentBasePath() string {
-	return filepath.Join(aah.AppVirtualBaseDir(), "content")
+	return filepath.Join(aah.App().VirtualBaseDir(), "content")
 }
 
 // FilePath method returns markdown file path from given path.
@@ -102,7 +103,7 @@ func ContentBasePath() string {
 func FilePath(reqPath, prefix string) string {
 	reqPath = strings.ToLower(TrimPrefixSlash(reqPath))
 	reqPath = ess.StripExt(reqPath) + ".md"
-	return path.Clean(path.Join(prefix, reqPath))
+	return path.Clean(filepath.ToSlash(path.Join(prefix, reqPath)))
 }
 
 // TrimPrefixSlash method trims the prefix slash from the given path
@@ -119,15 +120,15 @@ func CreateKey(rpath string) string {
 // PullGithubDocsAndLoadCache method pulls github docs and populate documentation
 // in the cache
 func PullGithubDocsAndLoadCache(e *aah.Event) {
-	cfg := aah.AppConfig()
-	editURLPrefix = cfg.StringDefault("docs.edit_url_prefix", "")
+	cfg := aah.App().Config()
 	releases, _ = cfg.StringList("docs.releases")
+	editURLPrefix = fmt.Sprintf(cfg.StringDefault("docs.edit_url_prefix", ""), releases[0])	
 
 	docBasePath := DocBaseDir()
 
-	if aah.AppProfile() == "prod" {
-		ess.DeleteFiles(docBasePath)
-	}
+	// if aah.App().IsEnvProfile("prod")  {
+	// 	ess.DeleteFiles(docBasePath)
+	// }
 
 	_ = ess.MkDirAll(docBasePath, 0755)
 	GitRefresh(releases[0])
@@ -141,7 +142,7 @@ func PullGithubDocsAndLoadCache(e *aah.Event) {
 
 // ReadJSON method read the JSON file for given path and unmarshals into given object.
 func ReadJSON(ctx *aah.Context, jsonPath string, v interface{}) {
-	f, err := aah.AppVFS().Open(jsonPath)
+	f, err := aah.App().VFS().Open(jsonPath)
 	if err != nil {
 		ctx.Log().Errorf("%s: %v", jsonPath, err)
 	}
@@ -160,13 +161,13 @@ func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 		version = releases[0]
 	}
 
-	fileName := aah.AppConfig().StringDefault(key, "")
+	fileName := aah.App().Config().StringDefault(key, "")
 	return template.HTML(fmt.Sprintf("/%s/%s", version, fileName))
 }
 
 // TmplRDocURL method returns the doc relative url with give prefix.
 func TmplRDocURL(rootPrefix template.URL, key string) template.URL {
-	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix), releases[0], aah.AppConfig().StringDefault(key, "")))
+	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix), releases[0], aah.App().Config().StringDefault(key, "")))
 }
 
 // TmplDocEditURL method compose github documentation edit URL

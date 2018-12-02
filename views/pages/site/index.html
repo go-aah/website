@@ -6,7 +6,7 @@
 {{ $pageTitle := i18n . "page.site.title.index" -}}
 {{ $pageDesc := `aah makes it easy to build secure, scalable, high performance Web and RESTful application with Go. Enterprise grade features OOTB. Code less, achieve goals and aah is free, open source.` -}}
     <meta name="description" content="{{ $pageDesc }}">
-    <meta name="keywords" content="aah Go web framework, aah framework, aah GoLang web framework, aah">
+    <meta name="keywords" content="aah Go web framework, aah framework, aah GoLang web framework, aah, go web framework">
     <meta property="og:title" content="{{ $pageTitle }}"/>
     <meta property="og:description" content="{{ $pageDesc }}"/>
     <meta name="twitter:title" content="{{ $pageTitle }}">
@@ -17,7 +17,7 @@
 {{ $docIndexUrl := (rurl . "docs.index") }}
   <div class="container-fluid aah-container-fluid">
     <div class="pull-right">
-      {{ import "social.html" . -}}
+      {{ include "/common/social.html" . -}}
     </div>
     <div id="aahBanner" class="row text-center aah-banner">
         <h1>aah</h1>
@@ -26,16 +26,19 @@
           <span>Latest release v{{ config "aah_release.latest" }}, {{ config "aah_release.date" }}</span>
         </div>
         <div class="aah-release-goreq">
-          Requires <span style="font-size:16px">&ge;</span> go1.8, <a href="{{ $docIndexUrl }}release-notes.html" class="inherit-color">Release notes</a>
-        </div>
+          Requires >= go1.11, <a href="{{ $docIndexUrl }}release-notes.html" class="inherit-color">Release notes</a>
+        </div>        
         <div class="aah-hey-im-here">
           <a id="heyImHereBtn" href="#introduction" class="btn btn-success btn-aah-color">Hey, I'm here!</a>
+        </div>
+        <div class="aah-provide-support">
+          Write candid reviews, send feedback, provide GitHub star and report bugs.
         </div>
     </div>
     <div class="row text-center aah-intro-section">
       <h2 id="introduction" class="aah-intro no-anchor">Introducing aah framework</h2>
       <div class="summary">
-        <p>aah makes it easy to build secure, scalable, high performance Web and RESTful application with Go. Enterprise grade features OOTB.</p>
+        <p>aah makes it easy to build secure, scalable, high performance Web, RESTful and WebSocket application with Go. Enterprise grade features OOTB.</p>
         <p>Code less, achieve goals and aah is free, open source.</p>
       </div>
     </div>
