@@ -8,4 +8,4 @@ Framework Documentation under [![License: CC BY-SA 4.0](https://img.shields.io/b
 
 aahframework.org website is aah web application, simply follow the same nature of aah application steps to run it.
 
-One more thing, this application uses `glide` as vendoring tool. Also you can just rely on `go get` too. If you don't want to.
+Just go to application base directory and do `aah run`.
