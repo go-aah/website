@@ -32,15 +32,20 @@ Acknowledgement, I'm very thankful for Service Providers generosity towards Open
 
 Acknowledgement, I'm very thankful to library authors and their efforts & time.
 
-#### Used in org github.com/go-aah
+#### Used in org github.com/go-aah/**
 
-  * Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter)
-  * [Enhanced version](https://github.com/go-aah/forge) of config library [forge](https://github.com/brettlangdon/forge)
-  * [Files & directory watcher](https://github.com/radovskyb/watcher) library - cross platform
-  * [Validator](https://github.com/go-playground/validator) library
-  * [WebSocket](https://github.com/gobwas/ws) library
+  * [CLI library](https://github.com/urfave/cli) 
+  * [Files & directory watcher library](https://github.com/radovskyb/watcher) - cross platform
+  * [Enhanced version](https://github.com/go-aah/forge) of config library [forge](https://github.com/brettlangdon/forge)  
+  * [Validator library](https://github.com/go-playground/validator)
+  * [WebSocket library](https://github.com/gobwas/ws)  
+  * [Testing library](github.com/stretchr/testify)
+  * [OAuth2 library](golang.org/x/oauth2) used for security module
+  * Used by aah `v0.11.4` and below 
+    - Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter)
 
-#### Used in org github.com/aah-cb
+##### Used by on-demand aah libraries via pluggable way
 
-  * [Pluggable HTML Minify](https://github.com/aah-cb/minify) using library [github.com/tdewolff/minify](https://github.com/tdewolff/minify)
-  * [Pug View Engine (formerly known as Jade)](https://github.com/aah-cb/ve-pug) using library  [github.com/Joker/jade](https://github.com/Joker/jade) (temporarily support removed due upstream lib issue)
+  * [HTML Minify library](https://github.com/tdewolff/minify)
+  * [Redis Client library](https://github.com/go-redis/redis)
+  * [Memcache Client library](https://github.com/bradfitz/gomemcache/memcache)
