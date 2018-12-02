@@ -39,8 +39,10 @@ Acknowledgement, I'm very thankful to library authors and their efforts & time.
   * [Enhanced version](https://github.com/go-aah/forge) of config library [forge](https://github.com/brettlangdon/forge)  
   * [Validator library](https://github.com/go-playground/validator)
   * [WebSocket library](https://github.com/gobwas/ws)  
-  * [Testing library](github.com/stretchr/testify)
-  * [OAuth2 library](golang.org/x/oauth2) used for security module
+  * [Crypto library](https://github.com/golang/crypto/) used by security module 
+  * [OAuth2 library](https://github.com/golang/oauth2/) used by security module
+  * [Net library](https://github.com/golang/net) used by security module test purpose
+  * [Testing library](https://github.com/stretchr/testify)
   * Used by aah `v0.11.4` and below 
     - Customized version of High performance [httprouter](https://github.com/julienschmidt/httprouter)
 
