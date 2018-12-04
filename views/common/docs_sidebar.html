@@ -6,13 +6,15 @@
       {{ include "/common/docs_guide_links.html" . }}
     </ul>
   </div>
-
+  
+  {{ if .Isv012AndGr }}
   <div class="clear">
     <label class="docs-sidebar-head">Debugging, Diagnosis &amp; Profiling</label>
     <ul class="li-color list-unstyled">
       {{ include "/common/docs_guide_debug_profile.html" . }}
     </ul>
   </div>
+  {{ end }}
 
   <div class="clear">
     <label class="docs-sidebar-head">Deployment &amp; DevOps</label>
