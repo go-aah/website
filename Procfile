@@ -1,1 +1,1 @@
-web: aahwebsite -profile prod_heroku
+web: aahwebsite run --envprofile prod_heroku
