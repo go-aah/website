@@ -64,6 +64,8 @@ func (c *DocController) VersionHome(version string) {
 				File(filepath.Join("static", version))
 		case "godoc":
 			c.GoDoc()
+		case "examples":
+			c.Examples()
 		default:
 			queryStr := c.Req.URL().Query().Encode()
 			targetURL := c.RouteURL("docs.show_doc", releases[0], version)
@@ -90,6 +92,9 @@ func (c *DocController) VersionHome(version string) {
 func (c *DocController) ShowDoc(version, content string) {
 	// handle certian doc path and updates
 	switch content {
+	case "release-notes.html":
+		c.ReleaseNotes(version)
+		return
 	case "error-handling.html":
 		if util.VersionLtEq(version, "v0.9") {
 			c.Reply().Redirect(c.RouteURL("docs.show_doc", version, "/centralized-error-handler.html"))
