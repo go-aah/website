@@ -140,7 +140,7 @@ func RefreshCacheByFile(mdPath string) {
 		mu.Lock()
 		articleCache[mdPath] = article
 		mu.Unlock()
-		log.Infof("Refreshed file: %s", mdPath)
+		log.Debugf("Refreshed file: %s", mdPath)
 	} else {
 		log.Warnf("Referesh: File not found: %s", mdPath)
 	}

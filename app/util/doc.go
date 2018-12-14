@@ -59,8 +59,8 @@ func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 
 	GitRefresh(releases...)
 
-	log.Infof("BranchName: %s", version)
-	docVersionBaseDir := DocVersionBaseDir(version)
+	log.Infof("Documentation getting refreshed for version: %s", version)
+	docVersionBaseDir := "/" + path.Join("aah", "documentation", version) //DocVersionBaseDir(version)
 	for _, commit := range pushEvent.Commits {
 		log.Infof("CommitID: %s, Message: %s", commit.ID, commit.Message)
 		log.Infof("Modified: %s, Removed: %s", commit.Modified, commit.Removed)
@@ -122,7 +122,7 @@ func CreateKey(rpath string) string {
 func PullGithubDocsAndLoadCache(e *aah.Event) {
 	cfg := aah.App().Config()
 	releases, _ = cfg.StringList("docs.releases")
-	editURLPrefix = fmt.Sprintf(cfg.StringDefault("docs.edit_url_prefix", ""), releases[0])	
+	editURLPrefix = fmt.Sprintf(cfg.StringDefault("docs.edit_url_prefix", ""), releases[0])
 
 	docBasePath := DocBaseDir()
 

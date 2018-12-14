@@ -208,6 +208,9 @@ func (c *DocController) ReleaseNotes(version string) {
 
 // BeforeRefreshDoc method is interceptor.
 func (c *DocController) BeforeRefreshDoc() {
+	if !aah.App().IsEnvProfile("prod") {
+		return
+	}
 	githubEvent := strings.TrimSpace(c.Req.Header.Get("X-Github-Event"))
 	githubDeliveryID := strings.TrimSpace(c.Req.Header.Get("X-Github-Delivery"))
 	if githubEvent != "push" || ess.IsStrEmpty(githubDeliveryID) {
