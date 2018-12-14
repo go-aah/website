@@ -1,11 +1,20 @@
-# aahframework.org website
+<p align="center">
+  <img src="https://cdn.aahframework.org/assets/img/aah-logo-64x64.png" />
+  <h2 align="center">aahframework.org website</h2>
+  <p align="center">Visit aah's official website https://aahframework.org to learn more</p>
+</p>
+<p align="center">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/Source_Code_License-MIT-blue.svg" alt="source code license"/></a>  <a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/Content_License-CC%20BY--SA%204.0-blue.svg" alt="content license"/></a>
+</p>
 
-Source Code of aah Framework Official Website under [![License](https://img.shields.io/github/license/go-aah/website.svg)](LICENSE)
+<br>
 
-Framework Documentation under [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-blue.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+### Running aahframework.org website locally
 
-#### Running aahframework.org website locally
+```bash
+$ git clone https://github.com/go-aah/website.git aah-website
 
-aahframework.org website is aah web application, simply follow the same nature of aah application steps to run it.
-
-Just go to application base directory and do `aah run`.
+# Go to application base directory
+$ cd aah-website
+$ aah run
+```
