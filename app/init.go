@@ -11,7 +11,7 @@ import (
 	// Registering HTML minifier for web application
 	_ "aahframe.work/minify/html"
 
-	"aahframework.org/website/app/controllers"
+	"aahframework.org/website/app/docs"
 	"aahframework.org/website/app/markdown"
 	"aahframework.org/website/app/util"
 )
@@ -23,7 +23,7 @@ func init() {
 	// Server Extensions
 	// Doc: https://docs.aahframework.org/server-extension.html
 	//__________________________________________________________________________
-	app.OnStart(controllers.LoadValuesFromConfig)
+	app.OnStart(docs.LoadFromConfig)
 	app.OnStart(markdown.FetchMarkdownConfig)
 	app.OnStart(util.PullGithubDocsAndLoadCache)
 	app.OnStart(SubscribeHTTPEvents)

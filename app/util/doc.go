@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"aahframework.org/website/app/docs"
 	"aahframework.org/website/app/markdown"
 	"aahframework.org/website/app/models"
 
@@ -18,52 +19,27 @@ import (
 )
 
 var (
-	releases      []string
 	editURLPrefix string
 )
-
-// BranchName method returns the confirmed branch name
-func BranchName(version string) string {
-	// TODO Remove it
-	// releases, _ := aah.App().Config().StringList("docs.releases")
-	// if version == releases[0] {
-	// 	return "master"
-	// }
-	return version
-}
-
-// DocBaseDir method returns the aah documentation based directory.
-func DocBaseDir() string {
-	return filepath.Join(aah.App().Config().StringDefault("docs.dir", ""), "aah-documentation")
-}
-
-// DocVersionBaseDir method returns the documentation dir path for given
-// language and version.
-func DocVersionBaseDir(version string) string {
-	return filepath.Join(DocBaseDir(), version)
-}
 
 // RefreshDocContent method clone's the GitHub branch doc version wise into
 // local and if already exits it takes a update from GitHub.
 // It clears cache too.
 func RefreshDocContent(pushEvent *models.GithubPushEvent) {
+	app := aah.App()
 	version := pushEvent.BranchName()
-	// if version == "master" {
-	// 	version = releases[0]
-	// }
-
-	if !ess.IsSliceContainsString(releases, version) {
-		log.Warnf("Branch Name [%s] not found", version)
+	if !docs.ReleaseExists(version) {
+		app.Log().Warnf("Release version[%s] not exists locally", version)
 		return
 	}
 
-	GitRefresh(releases...)
+	GitRefresh(docs.Releases()...)
 
-	log.Infof("Documentation getting refreshed for version: %s", version)
+	app.Log().Infof("Documentation getting refreshed for version: %s", version)
 	docVersionBaseDir := "/" + path.Join("aah", "documentation", version) //DocVersionBaseDir(version)
 	for _, commit := range pushEvent.Commits {
-		log.Infof("CommitID: %s, Message: %s", commit.ID, commit.Message)
-		log.Infof("Modified: %s, Removed: %s", commit.Modified, commit.Removed)
+		app.Log().Infof("CommitID: %s, Message: %s", commit.ID, commit.Message)
+		app.Log().Infof("Modified: %s, Removed: %s", commit.Modified, commit.Removed)
 
 		for _, f := range commit.Modified {
 			if strings.HasSuffix(f, "LICENSE") || strings.HasSuffix(f, "README.md") {
@@ -84,10 +60,9 @@ func RefreshDocContent(pushEvent *models.GithubPushEvent) {
 // local and if already exits it takes a update from GitHub.
 func GitRefresh(releases ...string) {
 	for _, version := range releases {
-		docDirPath := DocVersionBaseDir(version)
-		branchName := BranchName(version)
-		log.Infof("Git refresh: %s => %s", version, docDirPath)
-		if err := GitCloneAndPull(docDirPath, branchName); err != nil {
+		docDirPath := docs.VersionBaseDir(version)
+		aah.App().Log().Infof("Git refresh: %s => %s", version, docDirPath)
+		if err := GitCloneAndPull(docDirPath, version); err != nil {
 			log.Error(err)
 		}
 	}
@@ -121,21 +96,15 @@ func CreateKey(rpath string) string {
 // in the cache
 func PullGithubDocsAndLoadCache(e *aah.Event) {
 	cfg := aah.App().Config()
-	releases, _ = cfg.StringList("docs.releases")
-	editURLPrefix = fmt.Sprintf(cfg.StringDefault("docs.edit_url_prefix", ""), releases[0])
-
-	docBasePath := DocBaseDir()
-
-	// if aah.App().IsEnvProfile("prod")  {
-	// 	ess.DeleteFiles(docBasePath)
-	// }
+	editURLPrefix = fmt.Sprintf(cfg.StringDefault("docs.edit_url_prefix", ""), docs.LatestRelease())
+	docBasePath := docs.BaseDir()
 
 	_ = ess.MkDirAll(docBasePath, 0755)
-	GitRefresh(releases[0])
-	go GitRefresh(releases[1:]...)
+	GitRefresh(docs.LatestRelease())
+	go GitRefresh(docs.Releases()[1:]...)
 
 	if cfg.BoolDefault("markdown.cache", false) {
-		go markdown.LoadCache(filepath.Join(docBasePath, releases[0]))
+		go markdown.LoadCache(filepath.Join(docBasePath, docs.LatestRelease()))
 		go markdown.LoadCache(ContentBasePath())
 	}
 }
@@ -157,8 +126,8 @@ func ReadJSON(ctx *aah.Context, jsonPath string, v interface{}) {
 func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 	req := viewArgs[aah.KeyViewArgRequest].(*ahttp.Request)
 	version := req.PathValue("version")
-	if !ess.IsSliceContainsString(releases, version) {
-		version = releases[0]
+	if !docs.ReleaseExists(version) {
+		version = docs.LatestRelease()
 	}
 
 	fileName := aah.App().Config().StringDefault(key, "")
@@ -167,7 +136,8 @@ func TmplDocURLc(viewArgs map[string]interface{}, key string) template.HTML {
 
 // TmplRDocURL method returns the doc relative url with give prefix.
 func TmplRDocURL(rootPrefix template.URL, key string) template.URL {
-	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix), releases[0], aah.App().Config().StringDefault(key, "")))
+	return template.URL(fmt.Sprintf("%s%s/%s", string(rootPrefix),
+		docs.LatestRelease(), aah.App().Config().StringDefault(key, "")))
 }
 
 // TmplDocEditURL method compose github documentation edit URL

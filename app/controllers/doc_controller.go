@@ -9,17 +9,13 @@ import (
 	"strings"
 
 	"aahframe.work"
-	"aahframe.work/ahttp"
+	// "aahframe.work/ahttp"
 	"aahframe.work/essentials"
 
+	"aahframework.org/website/app/docs"
 	"aahframework.org/website/app/markdown"
 	"aahframework.org/website/app/models"
 	"aahframework.org/website/app/util"
-)
-
-var (
-	releases    []string
-	docBasePath string
 )
 
 // DocController struct documentation domain controller
@@ -39,39 +35,45 @@ func (c *DocController) Before() {
 
 // Index method is documentation application home page
 func (c *DocController) Index() {
-	c.Reply().Redirect(c.RouteURL("docs.version_home", releases[0]))
+	c.Reply().Redirect(c.RouteURL("docs.version_home", docs.LatestRelease()))
 }
 
 // VersionHome method Displays the documentation in selected language. Default
 // is English.
 func (c *DocController) VersionHome(version string) {
-	if !ess.IsSliceContainsString(releases, version) {
-		switch ess.StripExt(version) {
-		case "favicon":
-			c.Reply().ContentType("image/x-icon").
-				File(filepath.Join("static", "img", version))
-		case "robots":
-			c.Reply().ContentType(ahttp.ContentTypePlainText.String()).
-				File(filepath.Join("static", "docs_"+version))
-		case "sitemap":
-			c.Reply().ContentType(ahttp.ContentTypeXML.String()).
-				File(filepath.Join("static", "docs_"+version))
-		case "browserconfig":
-			c.Reply().ContentType(ahttp.ContentTypeXML.String()).
-				File(filepath.Join("static", version))
-		case "site", "manifest":
-			c.Reply().ContentType(ahttp.ContentTypeJSON.String()).
-				File(filepath.Join("static", version))
-		case "godoc":
-			c.GoDoc()
-		default:
-			queryStr := c.Req.URL().Query().Encode()
-			targetURL := c.RouteURL("docs.show_doc", releases[0], version)
-			if !ess.IsStrEmpty(queryStr) {
-				targetURL = targetURL + "?" + queryStr
-			}
-			c.Reply().Redirect(targetURL)
+	if !docs.ReleaseExists(version) {
+		// switch ess.StripExt(version) {
+		// case "favicon":
+		// 	c.Reply().ContentType("image/x-icon").
+		// 		File(filepath.Join("static", "img", version))
+		// case "robots":
+		// 	c.Reply().ContentType(ahttp.ContentTypePlainText.String()).
+		// 		File(filepath.Join("static", "docs_"+version))
+		// case "sitemap":
+		// 	c.Reply().ContentType(ahttp.ContentTypeXML.String()).
+		// 		File(filepath.Join("static", "docs_"+version))
+		// case "browserconfig":
+		// 	c.Reply().ContentType(ahttp.ContentTypeXML.String()).
+		// 		File(filepath.Join("static", version))
+		// case "site", "manifest":
+		// 	c.Reply().ContentType(ahttp.ContentTypeJSON.String()).
+		// 		File(filepath.Join("static", version))
+		// case "godoc":
+		// 	c.GoDoc()
+		// default:
+		// 	queryStr := c.Req.URL().Query().Encode()
+		// 	targetURL := c.RouteURL("docs.show_doc", docs.LatestRelease(), version)
+		// 	if !ess.IsStrEmpty(queryStr) {
+		// 		targetURL = targetURL + "?" + queryStr
+		// 	}
+		// 	c.Reply().Redirect(targetURL)
+		// }
+		queryStr := c.Req.URL().Query().Encode()
+		targetURL := c.RouteURL("docs.show_doc", docs.LatestRelease(), version)
+		if !ess.IsStrEmpty(queryStr) {
+			targetURL = targetURL + "?" + queryStr
 		}
+		c.Reply().Redirect(targetURL)
 		return
 	}
 
@@ -108,26 +110,30 @@ func (c *DocController) ShowDoc(version, content string) {
 	var pathSeg string
 	if !util.IsVersionNo(version) {
 		pathSeg = version
-		version = releases[0]
+		version = docs.LatestRelease()
 	}
 
 	c.AddViewArg("CurrentDocVersion", version)
 	c.addDocVersionComparison(version)
-	branchName := util.BranchName(version)
-	if branchName == releases[0] {
-		c.AddViewArg("LatestRelease", true)
-	}
+	c.AddViewArg("LatestRelease", docs.IsLatestRelease(version))
 
 	docPath := path.Clean(path.Join(version, pathSeg, content))
-	mdPath := util.FilePath(docPath, docBasePath)
+	mdPath := util.FilePath(docPath, docs.VirutalBaseDir())
 	article, found := markdown.Get(mdPath)
 	if !found {
 		if util.VersionLtEq(version, "v0.10") {
 			if strings.Contains(content, "auth-schemes") {
 				c.Reply().Redirect(c.RouteURL("docs.show_doc", version, "authentication.html"))
+				return
 			} else if strings.Contains(content, "cryptography") {
 				c.Reply().Redirect(c.RouteURL("docs.version_home", "cryptography.html"))
+				return
 			}
+		}
+
+		// to send latest version if not found
+		if !docs.IsLatestRelease(version) {
+			c.Reply().Redirect(c.RouteURL("docs.show_doc", docs.LatestRelease(), content))
 			return
 		}
 
@@ -155,11 +161,11 @@ func (c *DocController) GoDoc() {
 	}
 	util.ReadJSON(c.Context, jsonPath, &godoc)
 
-	c.addDocVersionComparison(releases[0])
+	c.addDocVersionComparison(docs.LatestRelease())
 	c.Reply().HTMLlf("docs.html", "godoc.html", aah.Data{
 		"IsGodoc":           true,
 		"ShowVersionNo":     false,
-		"CurrentDocVersion": releases[0],
+		"CurrentDocVersion": docs.LatestRelease(),
 		"Godoc":             godoc,
 	})
 }
@@ -176,20 +182,20 @@ func (c *DocController) Examples() {
 	}
 	util.ReadJSON(c.Context, jsonPath, &groups)
 
-	c.addDocVersionComparison(releases[0])
+	c.addDocVersionComparison(docs.LatestRelease())
 	c.Reply().HTMLlf("docs.html", "examples.html", aah.Data{
 		"IsExamples":        true,
 		"ShowVersionNo":     false,
-		"CurrentDocVersion": releases[0],
+		"CurrentDocVersion": docs.LatestRelease(),
 		"Examples":          groups,
 	})
 }
 
 // ReleaseNotes method display aah framework release notes, changelogs, migration notes.
 func (c *DocController) ReleaseNotes(version string) {
-	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docBasePath)
-	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docBasePath)
-	migrationGuideMdPath := util.FilePath(path.Join(version, "migration-guide.md"), docBasePath)
+	changelogMdPath := util.FilePath(path.Join(version, "changelog.md"), docs.VirutalBaseDir())
+	whatsNewMdPath := util.FilePath(path.Join(version, "whats-new.md"), docs.VirutalBaseDir())
+	migrationGuideMdPath := util.FilePath(path.Join(version, "migration-guide.md"), docs.VirutalBaseDir())
 
 	changelog, _ := markdown.Get(changelogMdPath)
 	whatsNew, _ := markdown.Get(whatsNewMdPath)
@@ -263,21 +269,8 @@ func (c *DocController) NotFound() {
 
 func (c *DocController) addDocVersionComparison(curVer string) {
 	cv := util.VerRep.Replace(curVer)
-	for _, ver := range releases {
+	for _, ver := range docs.Releases() {
 		keyPart := util.VerKeyRep.Replace(ver)
 		c.AddViewArg("Is"+keyPart+"AndGr", util.VersionGtEq(cv, ver))
-	}
-}
-
-// LoadValuesFromConfig method loads required value from configuration and others
-func LoadValuesFromConfig(e *aah.Event) {
-	app := aah.App()
-	releases, _ = app.Config().StringList("docs.releases")
-	docBasePath = "/aah/documentation"
-	docPhysicalBasePath := util.DocBaseDir()
-	_ = ess.MkDirAll(docPhysicalBasePath, 0755)
-
-	if err := app.VFS().AddMount(docBasePath, docPhysicalBasePath); err != nil {
-		app.Log().Fatal("vfs:", err)
 	}
 }
