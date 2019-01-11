@@ -1,9 +1,9 @@
 {{ define "title" -}}
-{{ .Article.Title }} - {{ .CurrentVersion }} {{ i18n . "page.doc.title.suffix" }}
+{{ .Article.Title }} - {{ .CurrentDocVersion }} {{ i18n . "page.doc.title.suffix" }}
 {{- end }}
 
 {{ define "meta_tags" -}}
-{{ $pageTitle := printf "%v - %v %v" (.Article.Title) (.CurrentVersion) (i18n . "page.doc.title.suffix") -}}
+{{ $pageTitle := printf "%v - %v %v" (.Article.Title) (.CurrentDocVersion) (i18n . "page.doc.title.suffix") -}}
 {{ $pageDesc := .Article.Desc -}}
     <meta name="description" content="{{ $pageDesc }}">
     <meta name="keywords" content="{{ .Article.Keywords }}">

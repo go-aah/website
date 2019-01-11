@@ -1,9 +1,9 @@
 {{ define "title" -}}
-{{ .CurrentVersion }} {{ i18n . "page.doc.title.index" }}
+{{ .CurrentDocVersion }} {{ i18n . "page.doc.title.index" }}
 {{- end }}
 
 {{ define "meta_tags" -}}
-{{ $pageTitle := printf "%v %v" (.CurrentVersion) (i18n . "page.doc.title.index") -}}
+{{ $pageTitle := printf "%v %v" (.CurrentDocVersion) (i18n . "page.doc.title.index") -}}
 {{ $pageDesc := `Everything you need to know about aah, the web framework for Go. aah framework provides detailed documentation and keeps improving on it. Documentation is maintained for every version release since first public release` -}}
     <meta name="description" content="{{ $pageDesc }}">
     <meta name="keywords" content="aah documentation, framework documentation, insight into framework, guide">
